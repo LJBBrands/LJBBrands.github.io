@@ -1,0 +1,39 @@
+# macOS
+.DS_Store
+.Trash
+
+# Xcode
+DerivedData/
+build/
+*.xcworkspace
+xcuserdata/
+*.xcuserstate
+
+# Swift Package Manager
+.build/
+
+# User/system junk
+Desktop/
+Documents/
+Downloads/
+Library/
+Movies/
+Music/
+Pictures/
+Public/
+
+# Dev tools
+.codex/
+.cursor/
+.config/
+.npm/
+.ssh/
+.zsh_history
+.zsh_sessions/
+
+# Temp / misc
+*.log
+*.tmp
+
+# Nested repos (IMPORTANT)
+AwyApp-pages-clean/
