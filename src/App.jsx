@@ -210,6 +210,21 @@ const themes = [
   },
 ];
 
+const LEGACY_THEME_ID_MAP = {
+  aurora: "galaxy-aurora",
+  violet: "nebula-violet",
+  cyan: "orbit-blue",
+  sunset: "solar-flare-orange",
+};
+
+function resolveStoredThemeId(saved) {
+  if (!saved) return null;
+  if (themes.some((item) => item.id === saved)) return saved;
+  const migrated = LEGACY_THEME_ID_MAP[saved];
+  if (migrated && themes.some((item) => item.id === migrated)) return migrated;
+  return null;
+}
+
 const showcaseSteps = [
   {
     id: "home",
@@ -306,8 +321,12 @@ export default function App() {
   useEffect(() => {
     try {
       const savedTheme = window.localStorage.getItem(STORAGE_KEY);
-      if (savedTheme && themes.some((item) => item.id === savedTheme)) {
-        setThemeId(savedTheme);
+      const resolved = resolveStoredThemeId(savedTheme);
+      if (resolved) {
+        setThemeId(resolved);
+        if (savedTheme !== resolved) {
+          window.localStorage.setItem(STORAGE_KEY, resolved);
+        }
         return;
       }
 
