@@ -291,11 +291,7 @@ const launchAccessCards = [
   },
 ];
 
-const heroBenefits = [
-  "Waitlist-First Access",
-  "Invite-Only Beta",
-  "Calm Product Updates",
-];
+const heroBenefits = ["Waitlist-First Access", "Invite-Only Beta", "Calm Product Updates"];
 
 const waitlistBenefits = [
   "Early Access Notes",
