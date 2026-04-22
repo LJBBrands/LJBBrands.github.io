@@ -400,7 +400,7 @@ export default function App() {
                     borderColor: theme.cardBorder,
                   }}
                 >
-                  Waitlist-Only Beta
+                  Invite-Only Beta
                 </div>
 
                 <button
