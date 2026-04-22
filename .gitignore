@@ -35,5 +35,9 @@ Public/
 *.log
 *.tmp
 
+# Node / Vite
+node_modules/
+dist/
+
 # Nested repos (IMPORTANT)
 AwyApp-pages-clean/
