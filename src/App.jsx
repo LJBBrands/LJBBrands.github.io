@@ -218,9 +218,11 @@ const LEGACY_THEME_ID_MAP = {
 };
 
 function resolveStoredThemeId(saved) {
-  if (!saved) return null;
-  if (themes.some((item) => item.id === saved)) return saved;
-  const migrated = LEGACY_THEME_ID_MAP[saved];
+  if (saved == null) return null;
+  const raw = String(saved).trim();
+  if (!raw) return null;
+  if (themes.some((item) => item.id === raw)) return raw;
+  const migrated = LEGACY_THEME_ID_MAP[raw];
   if (migrated && themes.some((item) => item.id === migrated)) return migrated;
   return null;
 }
