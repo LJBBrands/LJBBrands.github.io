@@ -32,6 +32,19 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Verify production index (must reference /assets/, not /src/)
+        run: |
+          test -f dist/index.html
+          if grep -q '/src/main' dist/index.html; then
+            echo 'dist/index.html still points at /src — build misconfigured'
+            exit 1
+          fi
+          if ! grep -qE 'src="/assets/[^"]+\.js"' dist/index.html; then
+            echo 'dist/index.html missing hashed /assets/*.js bundle reference'
+            cat dist/index.html
+            exit 1
+          fi
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
