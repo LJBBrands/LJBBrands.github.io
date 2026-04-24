@@ -7,21 +7,6 @@
   </head>
   <body>
     <div id="root"></div>
-    <!-- If GitHub Pages serves this file (not the Vite build), /src/main.jsx is raw JSX and the app will not run. -->
-    <script>
-      (function () {
-        if (!/\.github\.io$/i.test(location.hostname)) return;
-        if (document.querySelector('link[href*="/assets/"]')) return;
-        var el = document.getElementById("root");
-        if (!el) return;
-        el.innerHTML =
-          '<div style="padding:2rem;max-width:40rem;margin:2rem auto;font-family:system-ui,sans-serif;line-height:1.55;color:#e8e8ef;background:#1a1a24;border-radius:14px;border:1px solid rgba(255,255,255,0.12)">' +
-          "<strong>GitHub Pages is serving the wrong files</strong>" +
-          "<p style=\"margin:0.75rem 0 0\">This URL is still using the repository&rsquo;s development <code style=\"background:#111;padding:0.15rem 0.4rem;border-radius:6px\">index.html</code> instead of the Vite <strong>dist</strong> output.</p>" +
-          "<p style=\"margin:0.75rem 0 0\">In GitHub: <strong>Settings → Pages → Build and deployment</strong>, set <strong>Source</strong> to <strong>GitHub Actions</strong> (not &ldquo;Deploy from a branch&rdquo;), wait for the workflow to finish, then hard-refresh.</p>" +
-          "</div>";
-      })();
-    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
