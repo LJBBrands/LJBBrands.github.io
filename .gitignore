@@ -36,8 +36,9 @@ Public/
 *.tmp
 
 # Node / Vite
-node_modules/
-dist/
+node_modules
+dist
+.DS_Store
 package-lock 2.json
 
 # Nested repos (IMPORTANT)
