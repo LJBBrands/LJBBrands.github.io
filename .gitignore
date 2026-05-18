@@ -42,3 +42,13 @@ package-lock 2.json
 
 # Nested repos (IMPORTANT)
 AwyApp-pages-clean/
+.cache/
+.codex/
+.cursor/
+.supabase/
+.zprofile
+node_modules/
+DerivedData/
+
+Public/.localized
+Public/Drop Box/
