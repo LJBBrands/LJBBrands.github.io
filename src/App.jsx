@@ -18,12 +18,14 @@ const themes = [
     id: "galaxy-aurora",
     label: "Galaxy Aurora",
     background:
-      "linear-gradient(180deg, #03030A 0%, #080712 52%, #120D22 100%)",
+      "linear-gradient(180deg, #03030A 0%, #090613 45%, #160B27 100%)",
     glow:
-      "radial-gradient(circle at 18% 10%, rgba(124,58,237,0.18), transparent 24%), radial-gradient(circle at 76% 30%, rgba(168,85,247,0.12), transparent 28%), radial-gradient(circle at 50% 92%, rgba(88,28,135,0.16), transparent 30%)",
+      "radial-gradient(circle at 18% 10%, rgba(124,58,237,0.42), transparent 30%), radial-gradient(circle at 74% 24%, rgba(6,182,212,0.22), transparent 32%), radial-gradient(circle at 54% 88%, rgba(217,70,239,0.30), transparent 34%)",
+    aura:
+      "radial-gradient(circle at 16% 42%, rgba(232,121,249,0.18), transparent 34%), radial-gradient(circle at 88% 70%, rgba(34,211,238,0.14), transparent 30%)",
     accent: "#E879F9",
-    accentSoft: "rgba(232,121,249,0.14)",
-    accentBorder: "rgba(232,121,249,0.28)",
+    accentSoft: "rgba(232,121,249,0.20)",
+    accentBorder: "rgba(232,121,249,0.42)",
     accentText: "#F5D0FE",
     heroPillBg: "rgba(8,8,14,0.62)",
     cardBg: "rgba(10,10,18,0.58)",
@@ -37,12 +39,14 @@ const themes = [
     id: "nebula-violet",
     label: "Nebula Violet",
     background:
-      "linear-gradient(180deg, #03030A 0%, #090611 50%, #160D24 100%)",
+      "linear-gradient(180deg, #03020A 0%, #0D0618 48%, #1D0F32 100%)",
     glow:
-      "radial-gradient(circle at 25% 10%, rgba(124,58,237,0.26), transparent 22%), radial-gradient(circle at 75% 25%, rgba(167,139,250,0.18), transparent 24%), radial-gradient(circle at 50% 85%, rgba(192,132,252,0.14), transparent 26%)",
+      "radial-gradient(circle at 24% 12%, rgba(124,58,237,0.46), transparent 30%), radial-gradient(circle at 78% 28%, rgba(167,139,250,0.30), transparent 30%), radial-gradient(circle at 50% 88%, rgba(244,114,182,0.20), transparent 34%)",
+    aura:
+      "radial-gradient(circle at 12% 76%, rgba(76,29,149,0.26), transparent 34%), radial-gradient(circle at 86% 58%, rgba(236,72,153,0.12), transparent 32%)",
     accent: "#A78BFA",
-    accentSoft: "rgba(167,139,250,0.14)",
-    accentBorder: "rgba(167,139,250,0.26)",
+    accentSoft: "rgba(167,139,250,0.20)",
+    accentBorder: "rgba(167,139,250,0.42)",
     accentText: "#DDD6FE",
     heroPillBg: "rgba(15,10,28,0.28)",
     cardBg: "rgba(10,8,22,0.24)",
@@ -56,12 +60,14 @@ const themes = [
     id: "orbit-blue",
     label: "Orbit Blue",
     background:
-      "linear-gradient(180deg, #03030A 0%, #060911 50%, #0B1020 100%)",
+      "linear-gradient(180deg, #02040B 0%, #031026 48%, #071A35 100%)",
     glow:
-      "radial-gradient(circle at 18% 18%, rgba(59,130,246,0.24), transparent 22%), radial-gradient(circle at 82% 28%, rgba(37,99,235,0.20), transparent 24%), radial-gradient(circle at 50% 82%, rgba(96,165,250,0.16), transparent 28%)",
+      "radial-gradient(circle at 18% 18%, rgba(37,99,235,0.44), transparent 30%), radial-gradient(circle at 82% 28%, rgba(34,211,238,0.26), transparent 32%), radial-gradient(circle at 48% 86%, rgba(96,165,250,0.24), transparent 34%)",
+    aura:
+      "radial-gradient(circle at 12% 70%, rgba(14,165,233,0.18), transparent 34%), radial-gradient(circle at 88% 64%, rgba(29,78,216,0.28), transparent 32%)",
     accent: "#60A5FA",
-    accentSoft: "rgba(96,165,250,0.14)",
-    accentBorder: "rgba(96,165,250,0.26)",
+    accentSoft: "rgba(96,165,250,0.20)",
+    accentBorder: "rgba(96,165,250,0.42)",
     accentText: "#BFDBFE",
     heroPillBg: "rgba(5,18,40,0.26)",
     cardBg: "rgba(5,18,40,0.22)",
@@ -75,12 +81,14 @@ const themes = [
     id: "solar-flare-orange",
     label: "Solar Ember",
     background:
-      "linear-gradient(180deg, #040303 0%, #100908 54%, #1A0D0A 100%)",
+      "linear-gradient(180deg, #050302 0%, #170806 46%, #281008 100%)",
     glow:
-      "radial-gradient(circle at 22% 18%, rgba(251,146,60,0.22), transparent 22%), radial-gradient(circle at 78% 30%, rgba(239,68,68,0.16), transparent 24%), radial-gradient(circle at 50% 90%, rgba(255,180,90,0.18), transparent 24%)",
+      "radial-gradient(circle at 20% 18%, rgba(251,146,60,0.42), transparent 30%), radial-gradient(circle at 78% 28%, rgba(239,68,68,0.28), transparent 32%), radial-gradient(circle at 50% 88%, rgba(245,158,11,0.26), transparent 34%)",
+    aura:
+      "radial-gradient(circle at 12% 72%, rgba(253,186,116,0.16), transparent 34%), radial-gradient(circle at 88% 62%, rgba(220,38,38,0.18), transparent 32%)",
     accent: "#FDBA74",
-    accentSoft: "rgba(253,186,116,0.14)",
-    accentBorder: "rgba(253,186,116,0.28)",
+    accentSoft: "rgba(253,186,116,0.20)",
+    accentBorder: "rgba(253,186,116,0.44)",
     accentText: "#FFEDD5",
     heroPillBg: "rgba(28,10,8,0.26)",
     cardBg: "rgba(28,10,8,0.22)",
@@ -499,6 +507,10 @@ export default function App() {
         <div
           className="absolute inset-0 opacity-95 transition-all duration-700"
           style={{ backgroundImage: theme.glow }}
+        />
+        <div
+          className="absolute inset-0 blur-2xl transition-all duration-700"
+          style={{ backgroundImage: theme.aura }}
         />
         <div
           className="absolute inset-0 transition-colors duration-700"
