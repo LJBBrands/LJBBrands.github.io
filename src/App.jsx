@@ -73,7 +73,7 @@ const themes = [
   },
   {
     id: "solar-flare-orange",
-    label: "Solar Flare Orange",
+    label: "Solar Ember",
     background:
       "linear-gradient(180deg, #040303 0%, #100908 54%, #1A0D0A 100%)",
     glow:
@@ -206,6 +206,13 @@ const themes = [
   },
 ];
 
+const ATMOSPHERE_THEME_IDS = [
+  "galaxy-aurora",
+  "nebula-violet",
+  "orbit-blue",
+  "solar-flare-orange",
+];
+
 const LEGACY_THEME_ID_MAP = {
   aurora: "galaxy-aurora",
   violet: "nebula-violet",
@@ -217,9 +224,9 @@ function resolveStoredThemeId(saved) {
   if (saved == null) return null;
   const raw = String(saved).trim();
   if (!raw) return null;
-  if (themes.some((item) => item.id === raw)) return raw;
+  if (ATMOSPHERE_THEME_IDS.includes(raw)) return raw;
   const migrated = LEGACY_THEME_ID_MAP[raw];
-  if (migrated && themes.some((item) => item.id === migrated)) return migrated;
+  if (migrated && ATMOSPHERE_THEME_IDS.includes(migrated)) return migrated;
   return null;
 }
 
@@ -434,7 +441,12 @@ export default function App() {
         return;
       }
 
-      const randomTheme = themes[Math.floor(Math.random() * themes.length)];
+      const availableThemes = themes.filter((item) =>
+        ATMOSPHERE_THEME_IDS.includes(item.id)
+      );
+      const randomTheme =
+        availableThemes[Math.floor(Math.random() * availableThemes.length)] ??
+        themes[0];
       setThemeId(randomTheme.id);
       window.localStorage.setItem(STORAGE_KEY, randomTheme.id);
     } catch {
@@ -448,8 +460,16 @@ export default function App() {
   );
 
   const cycleTheme = () => {
-    const currentIndex = themes.findIndex((item) => item.id === theme.id);
-    const nextTheme = themes[(currentIndex + 1) % themes.length];
+    const availableThemes = themes.filter((item) =>
+      ATMOSPHERE_THEME_IDS.includes(item.id)
+    );
+    const currentIndex = availableThemes.findIndex(
+      (item) => item.id === theme.id
+    );
+    const nextTheme =
+      availableThemes[
+        (currentIndex === -1 ? 0 : currentIndex + 1) % availableThemes.length
+      ];
 
     setThemeId(nextTheme.id);
 
@@ -473,15 +493,15 @@ export default function App() {
     <div className="min-h-screen overflow-x-hidden bg-[#0B0B14] text-white">
       <div className="pointer-events-none fixed inset-0">
         <div
-          className="absolute inset-0"
-          style={{ backgroundImage: theme.glow }}
-        />
-        <div
-          className="absolute inset-0 opacity-80"
+          className="absolute inset-0 transition-all duration-700"
           style={{ background: theme.background }}
         />
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 opacity-95 transition-all duration-700"
+          style={{ backgroundImage: theme.glow }}
+        />
+        <div
+          className="absolute inset-0 transition-colors duration-700"
           style={{ backgroundColor: theme.overlay }}
         />
       </div>
@@ -495,9 +515,9 @@ export default function App() {
             className="grid items-center gap-12 pb-20 pt-8 lg:grid-cols-[0.92fr_1.08fr]"
           >
             <div>
-              <div className="mb-5 flex flex-wrap items-center gap-3">
+              <div className="mb-5 flex max-w-full flex-wrap items-center gap-2 sm:gap-3">
                 <div
-                  className="inline-flex rounded-full border px-4 py-2 text-sm text-white/78 backdrop-blur-xl"
+                  className="inline-flex shrink-0 whitespace-nowrap rounded-full border px-3 py-2 text-xs text-white/78 backdrop-blur-xl sm:px-4 sm:text-sm"
                   style={{
                     backgroundColor: theme.heroPillBg,
                     borderColor: theme.cardBorder,
@@ -507,7 +527,7 @@ export default function App() {
                 </div>
 
                 <div
-                  className="inline-flex rounded-full border px-4 py-2 text-sm text-white/78 backdrop-blur-xl"
+                  className="inline-flex shrink-0 whitespace-nowrap rounded-full border px-3 py-2 text-xs text-white/78 backdrop-blur-xl sm:px-4 sm:text-sm"
                   style={{
                     backgroundColor: theme.heroPillBg,
                     borderColor: theme.cardBorder,
@@ -519,7 +539,7 @@ export default function App() {
                 <button
                   type="button"
                   onClick={cycleTheme}
-                  className="rounded-full border px-4 py-2 text-sm text-white/88 backdrop-blur-xl transition hover:bg-white/10"
+                  className="inline-flex shrink-0 whitespace-nowrap rounded-full border px-3 py-2 text-xs text-white/88 backdrop-blur-xl transition hover:bg-white/10 sm:px-4 sm:text-sm"
                   style={{
                     backgroundColor: theme.heroPillBg,
                     borderColor: theme.cardBorder,
