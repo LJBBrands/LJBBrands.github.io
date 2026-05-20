@@ -18,15 +18,15 @@ const themes = [
     id: "galaxy-aurora",
     label: "Galaxy Aurora",
     background:
-      "linear-gradient(180deg, #03030A 0%, #0B0617 44%, #1A0B2E 100%)",
+      "linear-gradient(180deg, #05040B 0%, #10101F 44%, #24152D 100%)",
     glow:
-      "radial-gradient(circle at 18% 10%, rgba(124,58,237,0.50), transparent 31%), radial-gradient(circle at 76% 24%, rgba(6,182,212,0.28), transparent 32%), radial-gradient(circle at 54% 88%, rgba(217,70,239,0.36), transparent 34%)",
+      "radial-gradient(circle at 16% 12%, rgba(251,146,60,0.34), transparent 31%), radial-gradient(circle at 76% 22%, rgba(34,211,238,0.34), transparent 32%), radial-gradient(circle at 52% 84%, rgba(168,85,247,0.28), transparent 35%)",
     aura:
-      "radial-gradient(circle at 14% 42%, rgba(232,121,249,0.22), transparent 34%), radial-gradient(circle at 88% 70%, rgba(34,211,238,0.18), transparent 31%)",
-    accent: "#E879F9",
-    accentSoft: "rgba(232,121,249,0.20)",
-    accentBorder: "rgba(232,121,249,0.50)",
-    accentText: "#F5D0FE",
+      "radial-gradient(circle at 12% 56%, rgba(253,186,116,0.16), transparent 34%), radial-gradient(circle at 88% 64%, rgba(56,189,248,0.20), transparent 32%), radial-gradient(circle at 42% 34%, rgba(216,180,254,0.14), transparent 34%)",
+    accent: "#F0ABFC",
+    accentSoft: "rgba(240,171,252,0.18)",
+    accentBorder: "rgba(125,211,252,0.46)",
+    accentText: "#FCE7F3",
     heroPillBg: "rgba(8,8,14,0.62)",
     cardBg: "rgba(10,10,18,0.58)",
     panelBg: "rgba(12,12,20,0.66)",
