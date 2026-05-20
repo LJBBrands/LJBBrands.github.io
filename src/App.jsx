@@ -18,14 +18,14 @@ const themes = [
     id: "galaxy-aurora",
     label: "Galaxy Aurora",
     background:
-      "linear-gradient(180deg, #03030A 0%, #090613 45%, #160B27 100%)",
+      "linear-gradient(180deg, #03030A 0%, #0B0617 44%, #1A0B2E 100%)",
     glow:
-      "radial-gradient(circle at 18% 10%, rgba(124,58,237,0.42), transparent 30%), radial-gradient(circle at 74% 24%, rgba(6,182,212,0.22), transparent 32%), radial-gradient(circle at 54% 88%, rgba(217,70,239,0.30), transparent 34%)",
+      "radial-gradient(circle at 18% 10%, rgba(124,58,237,0.50), transparent 31%), radial-gradient(circle at 76% 24%, rgba(6,182,212,0.28), transparent 32%), radial-gradient(circle at 54% 88%, rgba(217,70,239,0.36), transparent 34%)",
     aura:
-      "radial-gradient(circle at 16% 42%, rgba(232,121,249,0.18), transparent 34%), radial-gradient(circle at 88% 70%, rgba(34,211,238,0.14), transparent 30%)",
+      "radial-gradient(circle at 14% 42%, rgba(232,121,249,0.22), transparent 34%), radial-gradient(circle at 88% 70%, rgba(34,211,238,0.18), transparent 31%)",
     accent: "#E879F9",
     accentSoft: "rgba(232,121,249,0.20)",
-    accentBorder: "rgba(232,121,249,0.42)",
+    accentBorder: "rgba(232,121,249,0.50)",
     accentText: "#F5D0FE",
     heroPillBg: "rgba(8,8,14,0.62)",
     cardBg: "rgba(10,10,18,0.58)",
@@ -39,14 +39,14 @@ const themes = [
     id: "nebula-violet",
     label: "Nebula Violet",
     background:
-      "linear-gradient(180deg, #03020A 0%, #0D0618 48%, #1D0F32 100%)",
+      "linear-gradient(180deg, #03020A 0%, #100620 48%, #230C3B 100%)",
     glow:
-      "radial-gradient(circle at 24% 12%, rgba(124,58,237,0.46), transparent 30%), radial-gradient(circle at 78% 28%, rgba(167,139,250,0.30), transparent 30%), radial-gradient(circle at 50% 88%, rgba(244,114,182,0.20), transparent 34%)",
+      "radial-gradient(circle at 24% 12%, rgba(109,40,217,0.52), transparent 31%), radial-gradient(circle at 78% 28%, rgba(168,85,247,0.28), transparent 30%), radial-gradient(circle at 50% 88%, rgba(244,114,182,0.24), transparent 34%)",
     aura:
-      "radial-gradient(circle at 12% 76%, rgba(76,29,149,0.26), transparent 34%), radial-gradient(circle at 86% 58%, rgba(236,72,153,0.12), transparent 32%)",
+      "radial-gradient(circle at 12% 76%, rgba(76,29,149,0.32), transparent 34%), radial-gradient(circle at 86% 58%, rgba(236,72,153,0.16), transparent 32%)",
     accent: "#A78BFA",
     accentSoft: "rgba(167,139,250,0.20)",
-    accentBorder: "rgba(167,139,250,0.42)",
+    accentBorder: "rgba(167,139,250,0.50)",
     accentText: "#DDD6FE",
     heroPillBg: "rgba(15,10,28,0.28)",
     cardBg: "rgba(10,8,22,0.24)",
@@ -60,14 +60,14 @@ const themes = [
     id: "orbit-blue",
     label: "Orbit Blue",
     background:
-      "linear-gradient(180deg, #02040B 0%, #031026 48%, #071A35 100%)",
+      "linear-gradient(180deg, #01040B 0%, #03142E 48%, #06214A 100%)",
     glow:
-      "radial-gradient(circle at 18% 18%, rgba(37,99,235,0.44), transparent 30%), radial-gradient(circle at 82% 28%, rgba(34,211,238,0.26), transparent 32%), radial-gradient(circle at 48% 86%, rgba(96,165,250,0.24), transparent 34%)",
+      "radial-gradient(circle at 18% 18%, rgba(37,99,235,0.52), transparent 31%), radial-gradient(circle at 82% 28%, rgba(34,211,238,0.34), transparent 32%), radial-gradient(circle at 48% 86%, rgba(14,165,233,0.30), transparent 34%)",
     aura:
-      "radial-gradient(circle at 12% 70%, rgba(14,165,233,0.18), transparent 34%), radial-gradient(circle at 88% 64%, rgba(29,78,216,0.28), transparent 32%)",
+      "radial-gradient(circle at 12% 70%, rgba(14,165,233,0.24), transparent 34%), radial-gradient(circle at 88% 64%, rgba(29,78,216,0.34), transparent 32%)",
     accent: "#60A5FA",
     accentSoft: "rgba(96,165,250,0.20)",
-    accentBorder: "rgba(96,165,250,0.42)",
+    accentBorder: "rgba(96,165,250,0.50)",
     accentText: "#BFDBFE",
     heroPillBg: "rgba(5,18,40,0.26)",
     cardBg: "rgba(5,18,40,0.22)",
@@ -81,14 +81,14 @@ const themes = [
     id: "solar-flare-orange",
     label: "Solar Ember",
     background:
-      "linear-gradient(180deg, #050302 0%, #170806 46%, #281008 100%)",
+      "linear-gradient(180deg, #060302 0%, #1E0905 46%, #3A1406 100%)",
     glow:
-      "radial-gradient(circle at 20% 18%, rgba(251,146,60,0.42), transparent 30%), radial-gradient(circle at 78% 28%, rgba(239,68,68,0.28), transparent 32%), radial-gradient(circle at 50% 88%, rgba(245,158,11,0.26), transparent 34%)",
+      "radial-gradient(circle at 20% 18%, rgba(251,146,60,0.52), transparent 31%), radial-gradient(circle at 78% 28%, rgba(239,68,68,0.36), transparent 32%), radial-gradient(circle at 50% 88%, rgba(245,158,11,0.34), transparent 34%)",
     aura:
-      "radial-gradient(circle at 12% 72%, rgba(253,186,116,0.16), transparent 34%), radial-gradient(circle at 88% 62%, rgba(220,38,38,0.18), transparent 32%)",
+      "radial-gradient(circle at 12% 72%, rgba(253,186,116,0.22), transparent 34%), radial-gradient(circle at 88% 62%, rgba(220,38,38,0.24), transparent 32%)",
     accent: "#FDBA74",
     accentSoft: "rgba(253,186,116,0.20)",
-    accentBorder: "rgba(253,186,116,0.44)",
+    accentBorder: "rgba(253,186,116,0.52)",
     accentText: "#FFEDD5",
     heroPillBg: "rgba(28,10,8,0.26)",
     cardBg: "rgba(28,10,8,0.22)",
@@ -324,7 +324,7 @@ const productSections = [
     headline: "Designed around presence.",
     copy:
       "See what matters without endless feeds, pressure loops, or constant noise. Awy helps people stay aware of shared activity without turning communication into consumption.",
-    bullets: ["Live Presence", "Recent activity", "Gentle reminders", "Calm visibility"],
+    bullets: ["Live Presence", "Recent Activity", "Gentle Reminders", "Calm Visibility"],
     screenshots: [screenshots.homePresence01, screenshots.homePresence02],
   },
   {
@@ -333,7 +333,7 @@ const productSections = [
     headline: "Share intentionally.",
     copy:
       "Awy gives each person a space they control. Photos, posts, voice, videos, and personal context open based on consent, not pressure. Open what people choose to share.",
-    bullets: ["Shared Areas", "Profile Note", "Consent-aware access", "Personal spaces"],
+    bullets: ["Shared Areas", "Profile Note", "Consent-Aware Access", "Personal Spaces"],
     screenshots: [
       screenshots.profileSharedAreas01,
       screenshots.profileSharedAreas02,
@@ -346,7 +346,7 @@ const productSections = [
     headline: "One-to-one threads you hold dear.",
     copy:
       "Strings are intentional conversation threads for people and connections that deserve more care than a noisy inbox.",
-    bullets: ["focused threads", "quieter replies", "personal rhythm", "intentional conversation"],
+    bullets: ["Focused Threads", "Quieter Replies", "Personal Rhythm", "Intentional Conversation"],
     screenshots: [screenshots.strings01, screenshots.strings02],
     reverse: true,
   },
@@ -374,7 +374,7 @@ const productSections = [
     headline: "A space that feels like yours.",
     copy:
       "Awy’s themes and visual system create a softer, more personal environment for communication through theme mode, ambient backgrounds, Galaxy Aurora, Nebula Violet, Orbit Blue, and Nova Glow when present.",
-    bullets: ["theme mode", "ambient backgrounds", "Galaxy Aurora", "Nebula Violet"],
+    bullets: ["Theme Mode", "Ambient Backgrounds", "Galaxy Aurora", "Nebula Violet"],
     screenshots: [screenshots.appearance01],
     reverse: true,
   },
