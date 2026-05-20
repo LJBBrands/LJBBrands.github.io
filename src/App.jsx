@@ -22,26 +22,26 @@ const themes = [
     id: "galaxy-aurora",
     label: "Galaxy Aurora",
     background:
-      "linear-gradient(180deg, #171B52 0%, #2A1F6D 26%, #582168 58%, #9F1F5D 82%, #D62D6E 100%)",
+      "linear-gradient(180deg, #03030A 0%, #080712 52%, #120D22 100%)",
     glow:
-      "radial-gradient(circle at top left, rgba(56,101,255,0.18), transparent 20%), radial-gradient(circle at 50% 15%, rgba(83,52,196,0.38), transparent 28%), radial-gradient(circle at 50% 48%, rgba(154,38,133,0.24), transparent 28%), radial-gradient(circle at 50% 82%, rgba(214,31,120,0.22), transparent 25%), radial-gradient(circle at 50% 100%, rgba(255,88,160,0.22), transparent 24%)",
+      "radial-gradient(circle at 18% 10%, rgba(124,58,237,0.18), transparent 24%), radial-gradient(circle at 76% 30%, rgba(168,85,247,0.12), transparent 28%), radial-gradient(circle at 50% 92%, rgba(88,28,135,0.16), transparent 30%)",
     accent: "#E879F9",
     accentSoft: "rgba(232,121,249,0.14)",
     accentBorder: "rgba(232,121,249,0.28)",
     accentText: "#F5D0FE",
-    heroPillBg: "rgba(0,0,0,0.20)",
-    cardBg: "rgba(0,0,0,0.20)",
-    panelBg: "rgba(0,0,0,0.18)",
-    cardBorder: "rgba(255,255,255,0.08)",
-    overlay: "rgba(0,0,0,0.35)",
-    phoneShell: "rgba(10,10,18,0.55)",
-    phoneInner: "rgba(18,18,28,0.96)",
+    heroPillBg: "rgba(8,8,14,0.62)",
+    cardBg: "rgba(10,10,18,0.58)",
+    panelBg: "rgba(12,12,20,0.66)",
+    cardBorder: "rgba(255,255,255,0.11)",
+    overlay: "rgba(0,0,0,0.42)",
+    phoneShell: "rgba(8,8,14,0.74)",
+    phoneInner: "rgba(13,13,20,0.98)",
   },
   {
     id: "nebula-violet",
     label: "Nebula Violet",
     background:
-      "linear-gradient(180deg, #120A2E 0%, #241456 30%, #3B1868 58%, #5A2280 100%)",
+      "linear-gradient(180deg, #03030A 0%, #090611 50%, #160D24 100%)",
     glow:
       "radial-gradient(circle at 25% 10%, rgba(124,58,237,0.26), transparent 22%), radial-gradient(circle at 75% 25%, rgba(167,139,250,0.18), transparent 24%), radial-gradient(circle at 50% 85%, rgba(192,132,252,0.14), transparent 26%)",
     accent: "#A78BFA",
@@ -52,7 +52,7 @@ const themes = [
     cardBg: "rgba(10,8,22,0.24)",
     panelBg: "rgba(10,8,22,0.22)",
     cardBorder: "rgba(255,255,255,0.08)",
-    overlay: "rgba(0,0,0,0.36)",
+    overlay: "rgba(0,0,0,0.46)",
     phoneShell: "rgba(18,12,28,0.58)",
     phoneInner: "rgba(20,16,34,0.96)",
   },
@@ -60,7 +60,7 @@ const themes = [
     id: "orbit-blue",
     label: "Orbit Blue",
     background:
-      "linear-gradient(180deg, #0A1A44 0%, #102E6E 32%, #1A3F8A 58%, #244798 88%, #1E3470 100%)",
+      "linear-gradient(180deg, #03030A 0%, #060911 50%, #0B1020 100%)",
     glow:
       "radial-gradient(circle at 18% 18%, rgba(59,130,246,0.24), transparent 22%), radial-gradient(circle at 82% 28%, rgba(37,99,235,0.20), transparent 24%), radial-gradient(circle at 50% 82%, rgba(96,165,250,0.16), transparent 28%)",
     accent: "#60A5FA",
@@ -71,7 +71,7 @@ const themes = [
     cardBg: "rgba(5,18,40,0.22)",
     panelBg: "rgba(5,18,40,0.20)",
     cardBorder: "rgba(255,255,255,0.08)",
-    overlay: "rgba(0,0,0,0.34)",
+    overlay: "rgba(0,0,0,0.48)",
     phoneShell: "rgba(8,18,32,0.56)",
     phoneInner: "rgba(14,22,38,0.96)",
   },
@@ -79,7 +79,7 @@ const themes = [
     id: "solar-flare-orange",
     label: "Solar Flare Orange",
     background:
-      "linear-gradient(180deg, #2A0F18 0%, #5C1A22 28%, #8B2818 52%, #C43A12 78%, #F97316 100%)",
+      "linear-gradient(180deg, #040303 0%, #100908 54%, #1A0D0A 100%)",
     glow:
       "radial-gradient(circle at 22% 18%, rgba(251,146,60,0.22), transparent 22%), radial-gradient(circle at 78% 30%, rgba(239,68,68,0.16), transparent 24%), radial-gradient(circle at 50% 90%, rgba(255,180,90,0.18), transparent 24%)",
     accent: "#FDBA74",
@@ -90,7 +90,7 @@ const themes = [
     cardBg: "rgba(28,10,8,0.22)",
     panelBg: "rgba(28,10,8,0.20)",
     cardBorder: "rgba(255,255,255,0.08)",
-    overlay: "rgba(0,0,0,0.36)",
+    overlay: "rgba(0,0,0,0.5)",
     phoneShell: "rgba(32,14,10,0.56)",
     phoneInner: "rgba(28,16,18,0.96)",
   },
@@ -98,7 +98,7 @@ const themes = [
     id: "alien-green",
     label: "Alien Green",
     background:
-      "linear-gradient(180deg, #052E1F 0%, #064E3B 30%, #047857 58%, #22C55E 88%, #4ADE80 100%)",
+      "linear-gradient(180deg, #030403 0%, #06100B 54%, #08170F 100%)",
     glow:
       "radial-gradient(circle at 20% 22%, rgba(74,222,128,0.20), transparent 22%), radial-gradient(circle at 80% 28%, rgba(16,185,129,0.18), transparent 24%), radial-gradient(circle at 50% 85%, rgba(163,230,53,0.14), transparent 26%)",
     accent: "#86EFAC",
@@ -109,7 +109,7 @@ const themes = [
     cardBg: "rgba(4,24,16,0.22)",
     panelBg: "rgba(4,24,16,0.20)",
     cardBorder: "rgba(255,255,255,0.08)",
-    overlay: "rgba(0,0,0,0.32)",
+    overlay: "rgba(0,0,0,0.5)",
     phoneShell: "rgba(6,28,18,0.56)",
     phoneInner: "rgba(12,28,20,0.96)",
   },
@@ -117,7 +117,7 @@ const themes = [
     id: "solar-yellow",
     label: "Solar Yellow",
     background:
-      "linear-gradient(180deg, #2A1F08 0%, #4A3410 28%, #7C5A12 52%, #B8860B 78%, #F59E0B 100%)",
+      "linear-gradient(180deg, #040303 0%, #100C05 54%, #171106 100%)",
     glow:
       "radial-gradient(circle at 24% 20%, rgba(251,191,36,0.22), transparent 22%), radial-gradient(circle at 76% 26%, rgba(245,158,11,0.18), transparent 24%), radial-gradient(circle at 50% 88%, rgba(252,211,77,0.16), transparent 24%)",
     accent: "#FCD34D",
@@ -128,7 +128,7 @@ const themes = [
     cardBg: "rgba(32,22,6,0.22)",
     panelBg: "rgba(32,22,6,0.20)",
     cardBorder: "rgba(255,255,255,0.08)",
-    overlay: "rgba(0,0,0,0.34)",
+    overlay: "rgba(0,0,0,0.5)",
     phoneShell: "rgba(36,24,8,0.56)",
     phoneInner: "rgba(28,22,12,0.96)",
   },
@@ -136,7 +136,7 @@ const themes = [
     id: "horizon-rose",
     label: "Horizon Rose",
     background:
-      "linear-gradient(180deg, #2A1024 0%, #4C1D3D 32%, #7A2E52 60%, #A8557A 88%, #D946A6 100%)",
+      "linear-gradient(180deg, #040306 0%, #120814 54%, #1B0B19 100%)",
     glow:
       "radial-gradient(circle at 22% 18%, rgba(244,114,182,0.20), transparent 22%), radial-gradient(circle at 78% 30%, rgba(192,132,252,0.14), transparent 24%), radial-gradient(circle at 50% 86%, rgba(236,72,153,0.16), transparent 26%)",
     accent: "#F9A8D4",
@@ -147,7 +147,7 @@ const themes = [
     cardBg: "rgba(36,12,28,0.22)",
     panelBg: "rgba(36,12,28,0.20)",
     cardBorder: "rgba(255,255,255,0.08)",
-    overlay: "rgba(0,0,0,0.34)",
+    overlay: "rgba(0,0,0,0.48)",
     phoneShell: "rgba(40,14,30,0.56)",
     phoneInner: "rgba(30,16,26,0.96)",
   },
@@ -155,7 +155,7 @@ const themes = [
     id: "deep-space-navy",
     label: "Deep Space Navy",
     background:
-      "linear-gradient(180deg, #050A1A 0%, #0C1938 32%, #132347 58%, #1E3A5F 88%, #312E81 100%)",
+      "linear-gradient(180deg, #02030A 0%, #050814 54%, #0A0F1D 100%)",
     glow:
       "radial-gradient(circle at 20% 20%, rgba(99,102,241,0.18), transparent 22%), radial-gradient(circle at 80% 24%, rgba(59,130,246,0.14), transparent 24%), radial-gradient(circle at 50% 88%, rgba(30,58,138,0.20), transparent 26%)",
     accent: "#818CF8",
@@ -174,7 +174,7 @@ const themes = [
     id: "luna-mist-grey",
     label: "Luna Mist Grey",
     background:
-      "linear-gradient(180deg, #0F172A 0%, #1E293B 35%, #334155 65%, #475569 92%, #64748B 100%)",
+      "linear-gradient(180deg, #030306 0%, #0A0B10 54%, #12141A 100%)",
     glow:
       "radial-gradient(circle at 22% 20%, rgba(148,163,184,0.18), transparent 22%), radial-gradient(circle at 78% 28%, rgba(100,116,139,0.16), transparent 24%), radial-gradient(circle at 50% 88%, rgba(56,189,248,0.10), transparent 28%)",
     accent: "#94A3B8",
@@ -185,7 +185,7 @@ const themes = [
     cardBg: "rgba(15,23,42,0.28)",
     panelBg: "rgba(15,23,42,0.26)",
     cardBorder: "rgba(255,255,255,0.10)",
-    overlay: "rgba(0,0,0,0.28)",
+    overlay: "rgba(0,0,0,0.48)",
     phoneShell: "rgba(20,28,40,0.58)",
     phoneInner: "rgba(24,30,42,0.96)",
   },
@@ -193,7 +193,7 @@ const themes = [
     id: "starlight-pink",
     label: "Starlight Pink",
     background:
-      "linear-gradient(180deg, #1A0A24 0%, #3B0A3A 30%, #6B0D5C 58%, #9D174D 82%, #DB2777 100%)",
+      "linear-gradient(180deg, #040306 0%, #110713 54%, #1B0A1A 100%)",
     glow:
       "radial-gradient(circle at 24% 18%, rgba(236,72,153,0.22), transparent 22%), radial-gradient(circle at 76% 28%, rgba(217,70,239,0.18), transparent 24%), radial-gradient(circle at 50% 88%, rgba(244,114,182,0.16), transparent 24%)",
     accent: "#F472B6",
@@ -204,7 +204,7 @@ const themes = [
     cardBg: "rgba(28,8,24,0.22)",
     panelBg: "rgba(28,8,24,0.20)",
     cardBorder: "rgba(255,255,255,0.08)",
-    overlay: "rgba(0,0,0,0.34)",
+    overlay: "rgba(0,0,0,0.48)",
     phoneShell: "rgba(32,10,26,0.56)",
     phoneInner: "rgba(28,14,26,0.96)",
   },
@@ -227,93 +227,174 @@ function resolveStoredThemeId(saved) {
   return null;
 }
 
+// Screenshot replacement map for Awy 1.1.0 (2):
+// public/screens/01-home.png -> awy-home-presence-1102.png
+// public/screens/04-profile.png -> awy-profile-shared-areas-1102.png
+// public/screens/02-lounges.png -> awy-lounges-quiet-rooms-1102.png
+// TODO: Add public/screens/awy-search-verified-signals-1102.png.
+// public/screens/05-appearance.png -> awy-appearance-themes-1102.png
+const screenshots = {
+  presence: {
+    label: "Presence",
+    image: screenSrc("01-home.png"),
+    alt: "Awy Home screen showing Live Presence and recent activity",
+  },
+  sharedAreas: {
+    label: "Shared Areas",
+    image: screenSrc("04-profile.png"),
+    alt: "Awy Profile screen showing Shared Areas and consent-based spaces",
+  },
+  lounges: {
+    label: "Lounges",
+    image: screenSrc("02-lounges.png"),
+    alt: "Awy Lounges screen showing quiet rooms and shared spaces",
+  },
+  search: {
+    label: "Search",
+    image: null,
+    missingFile: "public/screens/awy-search-verified-signals-1102.png",
+    alt: "Awy Search screen showing Verified Signals, Lounges, Strings, and People",
+  },
+  appearance: {
+    label: "Appearance",
+    image: screenSrc("05-appearance.png"),
+    alt: "Awy Appearance screen showing theme and background settings",
+  },
+};
+
 const showcaseSteps = [
   {
     id: "home",
     number: "01",
-    title: "Home",
-    text: "Your notification hub for updates, presence, and activity.",
-    image: screenSrc("01-home.png"),
-  },
-  {
-    id: "lounges",
-    number: "02",
-    title: "Lounges",
-    text: "Shared spaces built for presence, discovery, and low-pressure interaction.",
-    image: screenSrc("02-lounges.png"),
-  },
-  {
-    id: "strings",
-    number: "03",
-    title: "Strings",
-    text: "Private conversation designed to feel calmer, clearer, and more intentional.",
-    image: screenSrc("03-strings.png"),
+    title: "Presence",
+    text: "Live activity, quiet awareness, and calmer visibility.",
+    ...screenshots.presence,
   },
   {
     id: "profile",
+    number: "02",
+    title: "Shared Areas",
+    text: "Personal spaces that open through consent-aware sharing.",
+    ...screenshots.sharedAreas,
+  },
+  {
+    id: "lounges",
+    number: "03",
+    title: "Lounges",
+    text: "Quiet rooms for shared rhythm, people, groups, and communities.",
+    ...screenshots.lounges,
+  },
+  {
+    id: "search",
     number: "04",
-    title: "Profile",
-    text: "An expressive identity layer built around updates, music, and personal presence.",
-    image: screenSrc("04-profile.png"),
+    title: "Search",
+    text: "Discovery built around Verified Signals, context, and trusted spaces.",
+    ...screenshots.search,
   },
   {
     id: "appearance",
     number: "05",
     title: "Appearance",
-    text: "Theme modes make the app feel personal, dynamic, and visually aligned with the user.",
-    image: screenSrc("05-appearance.png"),
+    text: "Premium personalization, ambient backgrounds, and theme mode.",
+    ...screenshots.appearance,
   },
 ];
 
 const pillars = [
-  "Avatar-First",
-  "Consent-Based",
-  "No Addictive Feeds",
-  "Built-In Closure",
-];
-
-const adaptiveCards = [
-  {
-    title: "Profile",
-    text: "Users shape how they appear through identity, updates, music, and everyday presence.",
-    type: "profile",
-  },
-  {
-    title: "Appearance Modes",
-    text: "Awy adapts visually through curated themes: Galaxy Aurora, Nebula Violet, Orbit Blue, Solar Flare Orange, Alien Green, Solar Yellow, Horizon Rose, Deep Space Navy, Luna Mist Grey, and Starlight Pink.",
-    type: "appearance",
-  },
-  {
-    title: "Home Hub",
-    text: "Notifications, pings, mentions, and consent updates stay organized in one calm place.",
-    type: "home",
-  },
+  "Private Social Space",
+  "Consent-Based Visibility",
+  "Designed to Reduce Noise",
+  "Built for Calmer Communication",
 ];
 
 const launchAccessCards = [
   {
-    label: "Identity",
-    title: "Theme rotation is part of the product feel.",
-    text: "Ten app-identical themes shape how Awy presents itself across the landing experience.",
+    label: "Presence",
+    title: "Connection has room to breathe.",
+    text: "Awy centers presence, pacing, and intentional sharing instead of endless scrolling.",
   },
   {
-    label: "Surface Area",
-    title: "Core screens are visible and grounded.",
-    text: "Home, Lounges, Strings, Profile, and Appearance are already shown in the live showcase.",
+    label: "Visibility",
+    title: "Sharing is consent-aware by design.",
+    text: "Visibility, media, and participation are framed around mutual comfort and clear context.",
   },
   {
-    label: "Launch Readiness",
-    title: "Early access stays waitlist-first.",
-    text: "Join the waitlist for consideration. Approved testers receive the TestFlight link privately by email.",
+    label: "Media",
+    title: "Photos, videos, and voice memos belong in the conversation.",
+    text: "Awy treats media as part of the sharing system without overstating unfinished layers.",
   },
 ];
 
-const heroBenefits = ["Waitlist-First Access", "Invite-Only Beta", "Calm Product Updates"];
+const heroBenefits = ["Private Social Space", "Lounges", "Strings", "Pulse"];
 
 const waitlistBenefits = [
-  "Early Access Notes",
-  "Launch Timing Updates",
-  "Direct Product Progress",
+  "Product Notes",
+  "Release Timing",
+  "Founder Updates",
+];
+
+const productSections = [
+  {
+    id: "presence",
+    kicker: "Presence",
+    headline: "Designed around presence.",
+    copy:
+      "See what matters without endless feeds, pressure loops, or constant noise. Awy helps people stay aware of shared activity without turning communication into consumption.",
+    bullets: ["Live Presence", "Recent activity", "Gentle reminders", "Calm visibility"],
+    screenshot: screenshots.presence,
+  },
+  {
+    id: "shared-areas",
+    kicker: "Shared Areas",
+    headline: "Share intentionally.",
+    copy:
+      "Awy gives each person a space they control. Photos, posts, voice, videos, and personal context open based on consent, not pressure. Open what people choose to share.",
+    bullets: ["Shared Areas", "Profile Note", "Consent-aware access", "Personal spaces"],
+    screenshot: screenshots.sharedAreas,
+    reverse: true,
+  },
+  {
+    id: "lounges",
+    kicker: "Lounges",
+    headline: "Quiet rooms for shared rhythm.",
+    copy:
+      "Lounges are focused spaces for calmer conversation. They are built for people, groups, and communities that want presence without chaos.",
+    bullets: ["Private Lounges", "Local Lounges", "Founder Lounge", "Pulse Lounge"],
+    screenshot: screenshots.lounges,
+  },
+  {
+    id: "strings",
+    kicker: "Strings",
+    headline: "One-to-one threads you hold dear.",
+    copy:
+      "Strings are intentional conversation threads for people and connections that deserve more care than a noisy inbox.",
+    bullets: ["focused threads", "quieter replies", "personal rhythm", "intentional conversation"],
+    screenshot: {
+      label: "Strings",
+      image: screenSrc("03-strings.png"),
+      alt: "Awy Strings screen showing intentional conversation threads",
+    },
+    reverse: true,
+  },
+  {
+    id: "search",
+    kicker: "Verified Signals",
+    headline: "Discovery built on trusted signals.",
+    copy:
+      "Search in Awy is designed around context, verified signals, Lounges, Strings, and people, not random algorithmic noise.",
+    bullets: ["Verified Signals", "Lounges", "Strings", "People"],
+    screenshot: screenshots.search,
+  },
+  {
+    id: "appearance",
+    kicker: "Appearance",
+    headline: "A space that feels like yours.",
+    copy:
+      "Awy’s themes and visual system create a softer, more personal environment for communication through theme mode, ambient backgrounds, Galaxy Aurora, Nebula Violet, Orbit Blue, and Nova Glow when present.",
+    bullets: ["theme mode", "ambient backgrounds", "Galaxy Aurora", "Nebula Violet"],
+    screenshot: screenshots.appearance,
+    reverse: true,
+  },
 ];
 
 export default function App() {
@@ -417,7 +498,7 @@ export default function App() {
                     borderColor: theme.cardBorder,
                   }}
                 >
-                  Invite-Only Beta
+                  Calm digital environment
                 </div>
 
                 <button
@@ -429,22 +510,22 @@ export default function App() {
                     borderColor: theme.cardBorder,
                   }}
                 >
-                  Change Theme
+                  Change Atmosphere
                 </button>
               </div>
 
               <h1 className="max-w-3xl text-5xl font-semibold tracking-tight sm:text-6xl lg:text-7xl">
-                Connection at your pace.
+                Presence, not noise.
               </h1>
 
               <p className="mt-6 max-w-2xl text-lg leading-8 text-white/74">
-                Awy is a calmer social product built around presence, readiness,
-                and mutual progression.
+                Awy is a private social environment built around quiet spaces,
+                shared rhythm, and consent-aware communication.
               </p>
 
               <p className="mt-4 max-w-2xl text-base leading-7 text-white/58">
-                A live product showcase and a waitlist path into the private beta.
-                No public install links—access is intentional.
+                A calm digital environment for intentional presence, trusted
+                signals, and private shared spaces.
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3">
@@ -453,19 +534,21 @@ export default function App() {
                   onClick={scrollToSection("waitlist")}
                   className="inline-flex rounded-full bg-white px-6 py-3 text-sm font-medium text-black transition hover:opacity-90"
                 >
-                  Join Waitlist
+                  Join the Waitlist
                 </a>
 
                 <a
-                  href={SUPPORT_LINK}
+                  href="#presence"
+                  onClick={scrollToSection("presence")}
                   className="inline-flex rounded-full border px-6 py-3 text-sm font-medium text-white transition hover:bg-white/10"
                   style={{
                     backgroundColor: theme.heroPillBg,
                     borderColor: theme.cardBorder,
                   }}
                 >
-                  Contact Support
+                  Explore Awy
                 </a>
+
               </div>
 
               <div className="mt-6 flex flex-wrap gap-2 text-sm text-white/54">
@@ -552,13 +635,26 @@ export default function App() {
           </motion.div>
         </section>
 
-        <section className="mx-auto max-w-6xl pb-24">
-          <div className="grid gap-8 lg:grid-cols-[0.92fr_1.08fr]">
+        <section id="about" className="mx-auto max-w-6xl pb-24">
+          <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
             <div>
-              <h2 className="text-3xl font-semibold">Why Awy feels different</h2>
+              <div
+                className="inline-flex rounded-full border px-3 py-1 text-xs"
+                style={{
+                  borderColor: theme.accentBorder,
+                  backgroundColor: theme.accentSoft,
+                  color: theme.accentText,
+                }}
+              >
+                Product Positioning
+              </div>
+              <h2 className="mt-5 text-3xl font-semibold sm:text-4xl">
+                A calm digital environment for intentional presence.
+              </h2>
               <p className="mt-4 max-w-xl text-lg leading-8 text-white/70">
-                Designed to reduce pressure, reward clarity, and make progression
-                feel intentional instead of performative.
+                Awy is built around presence, shared rhythm, consent-aware
+                visibility, quiet rooms, trusted signals, and private shared
+                spaces.
               </p>
             </div>
 
@@ -567,10 +663,11 @@ export default function App() {
                 <motion.div
                   key={item}
                   whileHover={{ y: -4 }}
-                  className="rounded-2xl border p-5 text-white/78 backdrop-blur-xl"
+                  className="rounded-[1.5rem] border p-5 text-white/78 backdrop-blur-xl"
                   style={{
                     backgroundColor: theme.cardBg,
                     borderColor: theme.cardBorder,
+                    boxShadow: `0 24px 60px ${theme.accentSoft}`,
                   }}
                 >
                   {item}
@@ -580,97 +677,16 @@ export default function App() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-6xl pb-24">
-          <div className="mb-8">
-            <h2 className="text-3xl font-semibold">
-              Built around how people show up
-            </h2>
-            <p className="mt-4 max-w-3xl text-lg leading-8 text-white/70">
-              Awy is not just about messaging. It adapts to mood, pacing, and the
-              kind of presence users want to bring into the experience.
-            </p>
-          </div>
-
-          <div className="grid gap-5 md:grid-cols-3">
-            {adaptiveCards.map((card) => (
-              <motion.div
-                key={card.title}
-                whileHover={{ y: -5 }}
-                className="rounded-[1.75rem] border p-6 backdrop-blur-2xl shadow-2xl shadow-black/20"
-                style={{
-                  backgroundColor: theme.panelBg,
-                  borderColor: theme.cardBorder,
-                }}
-              >
-                <div
-                  className="inline-flex rounded-full border px-3 py-1 text-xs"
-                  style={{
-                    borderColor: theme.accentBorder,
-                    backgroundColor: theme.accentSoft,
-                    color: theme.accentText,
-                  }}
-                >
-                  {card.title}
-                </div>
-
-                <div className="mt-5">
-                  <CardVisual type={card.type} theme={theme} />
-                </div>
-
-                <p className="mt-5 text-white/68">{card.text}</p>
-              </motion.div>
-            ))}
-          </div>
-        </section>
-
-        <section id="about" className="mx-auto max-w-6xl pb-24">
-          <div className="mb-8">
-            <h2 className="text-3xl font-semibold">About Awy</h2>
-            <p className="mt-4 max-w-3xl text-lg leading-8 text-white/70">
-              Awy exists to make digital connection feel slower, safer, and more
-              intentional.
-            </p>
-          </div>
-
-          <div className="grid gap-5 md:grid-cols-2">
-            <motion.div
-              whileHover={{ y: -4 }}
-              className="rounded-[1.75rem] border p-6 backdrop-blur-2xl shadow-2xl shadow-black/20"
-              style={{
-                backgroundColor: theme.panelBg,
-                borderColor: theme.cardBorder,
-              }}
-            >
-              <h3 className="text-xl font-semibold">What Awy is for</h3>
-              <p className="mt-3 text-white/68">
-                A social experience built around readiness, mutual progression,
-                and more grounded interaction.
-              </p>
-            </motion.div>
-
-            <motion.div
-              whileHover={{ y: -4 }}
-              className="rounded-[1.75rem] border p-6 backdrop-blur-2xl shadow-2xl shadow-black/20"
-              style={{
-                backgroundColor: theme.panelBg,
-                borderColor: theme.cardBorder,
-              }}
-            >
-              <h3 className="text-xl font-semibold">Why it matters</h3>
-              <p className="mt-3 text-white/68">
-                Most apps optimize for speed and attention. Awy is built to
-                support pacing, comfort, and more meaningful outcomes.
-              </p>
-            </motion.div>
-          </div>
-        </section>
+        {productSections.map((section) => (
+          <ProductSection key={section.id} section={section} theme={theme} />
+        ))}
 
         <section id="updates" className="mx-auto max-w-6xl pb-24">
           <div className="mb-8">
-            <h2 className="text-3xl font-semibold">Product Updates</h2>
+            <h2 className="text-3xl font-semibold">What’s coming</h2>
             <p className="mt-4 max-w-3xl text-lg leading-8 text-white/70">
-              Follow launch readiness, feature maturity, and waitlist movement as
-              Awy progresses from showcase to private beta.
+              Pulse will become Awy’s public conversation space, shaped by
+              presence, trusted signals, and calmer discovery.
             </p>
           </div>
 
@@ -684,11 +700,10 @@ export default function App() {
           >
             <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
               <div>
-                <h3 className="text-xl font-semibold">Private Beta (Waitlist)</h3>
+                <h3 className="text-xl font-semibold">Private Access</h3>
                 <p className="mt-2 max-w-2xl text-white/68">
-                  Beta access is waitlist-only. There is no public install link on
-                  this site. Approved testers receive the TestFlight link manually
-                  by email after review.
+                  Awy’s access path is intentional. Join the waitlist for
+                  product notes, release timing, and next-step availability.
                 </p>
               </div>
 
@@ -698,7 +713,7 @@ export default function App() {
                   onClick={scrollToSection("waitlist")}
                   className="inline-flex rounded-full bg-white px-5 py-3 text-sm font-medium text-black transition hover:opacity-90"
                 >
-                  Join Waitlist
+                  Join the Waitlist
                 </a>
 
                 <a
@@ -722,12 +737,13 @@ export default function App() {
                   backgroundColor: theme.heroPillBg,
                 }}
               >
-                iOS • TestFlight (Invite Only)
+                iOS • Private Access
               </div>
             </div>
 
             <p className="mt-4 text-sm text-white/50">
-              Early access is limited. Invites expand gradually from the waitlist.
+              Availability expands thoughtfully so Awy can stay focused on
+              calmer communication.
             </p>
           </motion.div>
 
@@ -762,12 +778,16 @@ export default function App() {
 
         <section id="waitlist" className="mx-auto max-w-6xl pb-24">
           <div
-            className="rounded-[2rem] border p-8 backdrop-blur-2xl shadow-2xl shadow-black/30"
+            className="relative overflow-hidden rounded-[2rem] border p-8 backdrop-blur-2xl shadow-2xl shadow-black/30"
             style={{
               backgroundColor: theme.panelBg,
               borderColor: theme.cardBorder,
             }}
           >
+            <div
+              className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full blur-3xl"
+              style={{ backgroundColor: theme.accentSoft }}
+            />
             <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
               <div>
                 <div
@@ -782,11 +802,11 @@ export default function App() {
                 </div>
 
                 <h2 className="mt-5 text-3xl font-semibold">
-                  Join the Awy Waitlist
+                  A calmer way to stay connected.
                 </h2>
                 <p className="mt-4 max-w-xl text-lg leading-8 text-white/70">
-                  A direct line for early access, launch timing, and thoughtful
-                  product updates.
+                  Awy is being built for people who want communication to feel
+                  more intentional, more private, and less exhausting.
                 </p>
 
                 <div className="mt-8 grid gap-3 sm:grid-cols-3">
@@ -805,8 +825,8 @@ export default function App() {
                 </div>
 
                 <p className="mt-6 max-w-lg text-sm leading-6 text-white/48">
-                  This is a launch-facing waitlist. No long survey, no friction —
-                  just a clean way to stay close to the product.
+                  No long survey, no friction. Just a clean way to stay close to
+                  Awy as Lounges, Strings, and Pulse continue to mature.
                 </p>
 
                 <p className="mt-4 max-w-lg text-sm leading-6 text-white/48">
@@ -841,13 +861,13 @@ export default function App() {
                   href={WAITLIST_MAILTO}
                   className="mt-5 inline-flex rounded-full bg-white px-7 py-3 text-sm font-medium text-black transition hover:opacity-90"
                 >
-                  Join Waitlist
+                  Join the Waitlist
                 </a>
 
                 <div className="mt-4 min-h-[3.25rem]">
                   <div className="text-sm leading-6 text-white/46">
-                    By emailing the waitlist, you’re opting into launch and
-                    product correspondence for Awy.
+                    By emailing the waitlist, you’re opting into product
+                    correspondence for Awy.
                   </div>
                 </div>
               </motion.div>
@@ -868,12 +888,12 @@ export default function App() {
               Awy is committed to respectful, privacy-conscious product design.
               As the platform evolves, a fuller privacy policy will explain what
               data is collected, how it is used, and what choices users have
-              around visibility and participation.
+              around visibility, consent, media, and participation.
             </p>
             <p className="mt-4 max-w-4xl text-white/62">
               This landing page may direct you to email the waitlist voluntarily;
-              any address you send from may be used for launch communication and
-              early access coordination.
+              any address you send from may be used for product communication
+              and access coordination.
             </p>
           </div>
         </section>
@@ -888,10 +908,10 @@ export default function App() {
           >
             <h2 className="text-3xl font-semibold">Terms</h2>
             <p className="mt-4 max-w-4xl text-white/70">
-              Awy is currently presented as an active build in progress. Features,
-              flows, and visuals may continue to evolve. Information on this site
-              is intended to communicate direction, progress, and launch interest
-              rather than final product guarantees.
+              Awy’s features, flows, and visuals may continue to evolve.
+              Information on this site is intended to communicate current
+              direction, product focus, and availability interest rather than
+              final product guarantees.
             </p>
             <p className="mt-4 max-w-4xl text-white/62">
               As the platform approaches broader release, a fuller Terms of Use
@@ -917,15 +937,15 @@ export default function App() {
                 color: theme.accentText,
               }}
             >
-              Stay Close
+              Presence
             </div>
 
             <h2 className="mt-5 text-3xl font-semibold">
-              Choose how you want to stay close to Awy.
+              A calmer way to stay connected.
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-white/72">
-              Join the waitlist, reach support, start an investor conversation, or
-              explore collaboration.
+              Awy is being built for people who want communication to feel more
+              intentional, more private, and less exhausting.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
@@ -934,7 +954,7 @@ export default function App() {
                 onClick={scrollToSection("waitlist")}
                 className="inline-flex rounded-full bg-white px-8 py-4 text-base font-medium text-black transition hover:opacity-90"
               >
-                Join Waitlist
+                Join the Waitlist
               </a>
 
               <a
@@ -1012,114 +1032,115 @@ export default function App() {
   );
 }
 
-function CardVisual({ type, theme }) {
-  if (type === "profile") {
-    return (
+function ProductSection({ section, theme }) {
+  return (
+    <section id={section.id} className="mx-auto max-w-6xl pb-24">
       <div
-        className="rounded-2xl border p-4"
-        style={{
-          backgroundColor: theme.cardBg,
-          borderColor: theme.cardBorder,
-        }}
+        className={`grid items-center gap-10 lg:grid-cols-2 ${
+          section.reverse ? "lg:[&>*:first-child]:order-2" : ""
+        }`}
       >
-        <div className="flex items-center gap-3">
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.45 }}
+        >
           <div
-            className="flex h-12 w-12 items-center justify-center rounded-2xl text-lg font-semibold"
+            className="inline-flex rounded-full border px-3 py-1 text-xs"
             style={{
-              backgroundColor: "rgba(255,255,255,0.08)",
-              border: `1px solid ${theme.cardBorder}`,
+              borderColor: theme.accentBorder,
+              backgroundColor: theme.accentSoft,
+              color: theme.accentText,
             }}
           >
-            K
+            {section.kicker}
           </div>
 
-          <div>
-            <div className="font-medium">Kyle</div>
-            <div className="text-sm text-white/55">@Kyle • Orlando, FL</div>
-          </div>
-        </div>
+          <h2 className="mt-5 text-4xl font-semibold tracking-tight sm:text-5xl">
+            {section.headline}
+          </h2>
+          <p className="mt-5 max-w-xl text-lg leading-8 text-white/70">
+            {section.copy}
+          </p>
 
-        <div className="mt-4 text-sm text-white/58">Music • Posts • Presence</div>
+          <div className="mt-8 grid gap-3 sm:grid-cols-2">
+            {section.bullets.map((item) => (
+              <div
+                key={item}
+                className="rounded-[1.25rem] border px-4 py-3 text-sm text-white/74 backdrop-blur-xl"
+                style={{
+                  backgroundColor: theme.cardBg,
+                  borderColor: theme.cardBorder,
+                }}
+              >
+                {item}
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.45, delay: 0.05 }}
+          className="relative"
+        >
+          <div
+            className="pointer-events-none absolute inset-8 rounded-[3rem] blur-3xl"
+            style={{ backgroundColor: theme.accentSoft }}
+          />
+          <div
+            className="relative mx-auto max-w-[430px] rounded-[2.4rem] border p-3 shadow-2xl shadow-black/40 backdrop-blur-2xl"
+            style={{
+              backgroundColor: theme.phoneShell,
+              borderColor: theme.cardBorder,
+            }}
+          >
+            {section.screenshot.image ? (
+              <img
+                src={section.screenshot.image}
+                alt={section.screenshot.alt}
+                className="block w-full rounded-[2rem] border"
+                style={{ borderColor: theme.cardBorder }}
+              />
+            ) : (
+              <AssetTodoCard screenshot={section.screenshot} theme={theme} />
+            )}
+          </div>
+        </motion.div>
       </div>
-    );
-  }
+    </section>
+  );
+}
 
-  if (type === "appearance") {
-    const gradients = [
-      "linear-gradient(180deg, #4754ff 0%, #8d34bf 55%, #ff5ea8 100%)",
-      "linear-gradient(180deg, #3b1f6b 0%, #6b21a8 55%, #9333ea 100%)",
-      "linear-gradient(180deg, #0c2a6b 0%, #1d4ed8 55%, #2563eb 100%)",
-      "linear-gradient(180deg, #7c2d12 0%, #ea580c 55%, #f97316 100%)",
-      "linear-gradient(180deg, #064e3b 0%, #059669 55%, #4ade80 100%)",
-      "linear-gradient(180deg, #422006 0%, #b45309 55%, #fbbf24 100%)",
-      "linear-gradient(180deg, #4a044e 0%, #9d174d 55%, #ec4899 100%)",
-      "linear-gradient(180deg, #020617 0%, #1e3a8a 55%, #312e81 100%)",
-      "linear-gradient(180deg, #0f172a 0%, #334155 55%, #94a3b8 100%)",
-      "linear-gradient(180deg, #500724 0%, #be185d 55%, #f472b6 100%)",
-    ];
-
-    const labels = [
-      "Galaxy Aurora",
-      "Nebula Violet",
-      "Orbit Blue",
-      "Solar Flare Orange",
-      "Alien Green",
-      "Solar Yellow",
-      "Horizon Rose",
-      "Deep Space Navy",
-      "Luna Mist Grey",
-      "Starlight Pink",
-    ];
-
-    return (
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-5">
-        {labels.map((label, index) => (
-          <div key={label} className="min-w-0">
-            <div
-              className="h-16 rounded-2xl border"
-              style={{
-                background: gradients[index],
-                borderColor: theme.cardBorder,
-              }}
-            />
-            <div className="mt-2 text-xs leading-4 text-white/55">{label}</div>
-          </div>
-        ))}
-      </div>
-    );
-  }
-
+function AssetTodoCard({ screenshot, theme }) {
   return (
     <div
-      className="rounded-2xl border p-4"
+      className="flex min-h-[620px] flex-col justify-center rounded-[2rem] border p-8 text-center"
       style={{
         backgroundColor: theme.cardBg,
         borderColor: theme.cardBorder,
       }}
+      role="img"
+      aria-label={screenshot.alt}
     >
-      <div className="flex items-center gap-2">
-        {["All", "Pings", "Consent"].map((label, index) => (
-          <div
-            key={label}
-            className="rounded-full px-3 py-1 text-xs"
-            style={{
-              backgroundColor:
-                index === 0 ? theme.accentSoft : "rgba(255,255,255,0.06)",
-              border: `1px solid ${
-                index === 0 ? theme.accentBorder : theme.cardBorder
-              }`,
-              color:
-                index === 0 ? theme.accentText : "rgba(255,255,255,0.7)",
-            }}
-          >
-            {label}
-          </div>
-        ))}
+      <div
+        className="mx-auto inline-flex rounded-full border px-3 py-1 text-xs"
+        style={{
+          borderColor: theme.accentBorder,
+          backgroundColor: theme.accentSoft,
+          color: theme.accentText,
+        }}
+      >
+        Screenshot TODO
       </div>
-
-      <div className="mt-4 text-sm text-white/56">
-        One calm place for updates, mentions, and consent activity.
-      </div>
+      <div className="mt-5 text-xl font-semibold">{screenshot.label}</div>
+      <p className="mt-3 text-sm leading-6 text-white/58">
+        Place the updated 1.1.0 (2) screenshot at{" "}
+        <span className="text-white/76">{screenshot.missingFile}</span>.
+      </p>
     </div>
   );
 }
@@ -1160,7 +1181,7 @@ function IPhoneShowcase({ theme, step }) {
             }}
           >
             <AnimatePresence mode="wait">
-              {imageError ? (
+              {imageError || !step.image ? (
                 <motion.div
                   key={`${step.id}-fallback`}
                   initial={{ opacity: 0, y: 10, scale: 0.99 }}
@@ -1180,14 +1201,14 @@ function IPhoneShowcase({ theme, step }) {
                       color: theme.accentText,
                     }}
                   >
-                    Missing File: {step.image}
+                    Missing File: {step.missingFile ?? step.image}
                   </div>
                 </motion.div>
               ) : (
                 <motion.img
                   key={step.id}
                   src={step.image}
-                  alt={step.title}
+                  alt={step.alt}
                   initial={{ opacity: 0, y: 10, scale: 0.99 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: -10, scale: 0.99 }}
