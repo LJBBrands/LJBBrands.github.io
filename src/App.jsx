@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
 
 const screenSrc = (fileName) => `${import.meta.env.BASE_URL}screens/${fileName}`;
@@ -223,81 +223,81 @@ function resolveStoredThemeId(saved) {
   return null;
 }
 
-// TODO: Add final Awy 1.1.0 (2) screenshots to public/screens:
-// - awy-home-presence-1102.jpg
-// - awy-profile-shared-areas-1102.jpg
-// - awy-lounges-quiet-rooms-1102.jpg
-// - awy-search-verified-signals-1102.jpg
-// - awy-appearance-themes-1102.jpg
+// TODO: Add expected multi-screenshot Awy 1.1.0 (2) assets to public/screens:
+// - awy-home-presence-01.jpg
+// - awy-home-presence-02.jpg
+// - awy-profile-shared-areas-01.jpg
+// - awy-profile-shared-areas-02.jpg
+// - awy-strings-01.jpg
+// - awy-strings-02.jpg
+// - awy-lounges-quiet-rooms-01.jpg
+// - awy-lounges-quiet-rooms-02.jpg
+// - awy-search-verified-signals-01.jpg
+// - awy-appearance-themes-01.jpg
+const screenshotAsset = (fileName, label, alt) => ({
+  label,
+  image: screenSrc(fileName),
+  missingFile: `public/screens/${fileName}`,
+  alt,
+});
+
 const screenshots = {
-  presence: {
-    label: "Presence",
-    image: screenSrc("awy-home-presence-1102.jpg"),
-    missingFile: "public/screens/awy-home-presence-1102.jpg",
-    alt: "Awy Home screen showing Live Presence and recent activity",
-  },
-  sharedAreas: {
-    label: "Shared Areas",
-    image: screenSrc("awy-profile-shared-areas-1102.jpg"),
-    missingFile: "public/screens/awy-profile-shared-areas-1102.jpg",
-    alt: "Awy Profile screen showing Shared Areas and consent-based spaces",
-  },
-  lounges: {
-    label: "Lounges",
-    image: screenSrc("awy-lounges-quiet-rooms-1102.jpg"),
-    missingFile: "public/screens/awy-lounges-quiet-rooms-1102.jpg",
-    alt: "Awy Lounges screen showing quiet rooms and shared spaces",
-  },
-  search: {
-    label: "Search",
-    image: screenSrc("awy-search-verified-signals-1102.jpg"),
-    missingFile: "public/screens/awy-search-verified-signals-1102.jpg",
-    alt: "Awy Search screen showing Verified Signals, Lounges, Strings, and People",
-  },
-  appearance: {
-    label: "Appearance",
-    image: screenSrc("awy-appearance-themes-1102.jpg"),
-    missingFile: "public/screens/awy-appearance-themes-1102.jpg",
-    alt: "Awy Appearance screen showing theme and background settings",
-  },
+  homePresence01: screenshotAsset(
+    "awy-home-presence-01.jpg",
+    "Presence 01",
+    "Awy Home screen showing Live Presence and recent activity"
+  ),
+  homePresence02: screenshotAsset(
+    "awy-home-presence-02.jpg",
+    "Presence 02",
+    "Awy Home screen showing quiet activity and calm visibility"
+  ),
+  profileSharedAreas01: screenshotAsset(
+    "awy-profile-shared-areas-01.jpg",
+    "Shared Areas 01",
+    "Awy Profile screen showing Shared Areas and consent-based spaces"
+  ),
+  profileSharedAreas02: screenshotAsset(
+    "awy-profile-shared-areas-02.jpg",
+    "Shared Areas 02",
+    "Awy Profile screen showing personal context and shared spaces"
+  ),
+  strings01: screenshotAsset(
+    "awy-strings-01.jpg",
+    "Strings 01",
+    "Awy Strings screen showing intentional conversation threads"
+  ),
+  strings02: screenshotAsset(
+    "awy-strings-02.jpg",
+    "Strings 02",
+    "Awy Strings screen showing quieter replies and personal rhythm"
+  ),
+  lounges01: screenshotAsset(
+    "awy-lounges-quiet-rooms-01.jpg",
+    "Lounges 01",
+    "Awy Lounges screen showing quiet rooms and shared spaces"
+  ),
+  lounges02: screenshotAsset(
+    "awy-lounges-quiet-rooms-02.jpg",
+    "Lounges 02",
+    "Awy Lounges screen showing shared rhythm in private spaces"
+  ),
+  search01: screenshotAsset(
+    "awy-search-verified-signals-01.jpg",
+    "Verified Signals",
+    "Awy Search screen showing Verified Signals, Lounges, Strings, and People"
+  ),
+  appearance01: screenshotAsset(
+    "awy-appearance-themes-01.jpg",
+    "Appearance",
+    "Awy Appearance screen showing theme and background settings"
+  ),
 };
 
-const showcaseSteps = [
-  {
-    id: "home",
-    number: "01",
-    title: "Presence",
-    text: "Live activity, quiet awareness, and calmer visibility.",
-    ...screenshots.presence,
-  },
-  {
-    id: "profile",
-    number: "02",
-    title: "Shared Areas",
-    text: "Personal spaces that open through consent-aware sharing.",
-    ...screenshots.sharedAreas,
-  },
-  {
-    id: "lounges",
-    number: "03",
-    title: "Lounges",
-    text: "Quiet rooms for shared rhythm, people, groups, and communities.",
-    ...screenshots.lounges,
-  },
-  {
-    id: "search",
-    number: "04",
-    title: "Search",
-    text: "Discovery built around Verified Signals, context, and trusted spaces.",
-    ...screenshots.search,
-  },
-  {
-    id: "appearance",
-    number: "05",
-    title: "Appearance",
-    text: "Premium personalization, ambient backgrounds, and theme mode.",
-    ...screenshots.appearance,
-  },
+const heroScreenshots = [
+  screenshots.homePresence01,
+  screenshots.profileSharedAreas01,
+  screenshots.lounges01,
 ];
 
 const heroBenefits = ["Private Social Space", "Lounges", "Strings", "Pulse"];
@@ -310,7 +310,7 @@ const productSections = [
     copy:
       "See what matters without endless feeds, pressure loops, or constant noise. Awy helps people stay aware of shared activity without turning communication into consumption.",
     bullets: ["Live Presence", "Recent activity", "Gentle reminders", "Calm visibility"],
-    screenshot: screenshots.presence,
+    screenshots: [screenshots.homePresence01, screenshots.homePresence02],
   },
   {
     id: "shared-areas",
@@ -319,7 +319,20 @@ const productSections = [
     copy:
       "Awy gives each person a space they control. Photos, posts, voice, videos, and personal context open based on consent, not pressure. Open what people choose to share.",
     bullets: ["Shared Areas", "Profile Note", "Consent-aware access", "Personal spaces"],
-    screenshot: screenshots.sharedAreas,
+    screenshots: [
+      screenshots.profileSharedAreas01,
+      screenshots.profileSharedAreas02,
+    ],
+    reverse: true,
+  },
+  {
+    id: "strings",
+    kicker: "Strings",
+    headline: "One-to-one threads you hold dear.",
+    copy:
+      "Strings are intentional conversation threads for people and connections that deserve more care than a noisy inbox.",
+    bullets: ["focused threads", "quieter replies", "personal rhythm", "intentional conversation"],
+    screenshots: [screenshots.strings01, screenshots.strings02],
     reverse: true,
   },
   {
@@ -329,17 +342,7 @@ const productSections = [
     copy:
       "Lounges are focused spaces for calmer conversation. They are built for people, groups, and communities that want presence without chaos.",
     bullets: ["Private Lounges", "Local Lounges", "Founder Lounge", "Pulse Lounge"],
-    screenshot: screenshots.lounges,
-  },
-  {
-    id: "strings",
-    kicker: "Strings",
-    headline: "One-to-one threads you hold dear.",
-    copy:
-      "Strings are intentional conversation threads for people and connections that deserve more care than a noisy inbox.",
-    bullets: ["focused threads", "quieter replies", "personal rhythm", "intentional conversation"],
-    visual: "strings",
-    reverse: true,
+    screenshots: [screenshots.lounges01, screenshots.lounges02],
   },
   {
     id: "search",
@@ -348,7 +351,7 @@ const productSections = [
     copy:
       "Search in Awy is designed around context, verified signals, Lounges, Strings, and people, not random algorithmic noise.",
     bullets: ["Verified Signals", "Lounges", "Strings", "People"],
-    screenshot: screenshots.search,
+    screenshots: [screenshots.search01],
   },
   {
     id: "appearance",
@@ -357,14 +360,67 @@ const productSections = [
     copy:
       "Awy’s themes and visual system create a softer, more personal environment for communication through theme mode, ambient backgrounds, Galaxy Aurora, Nebula Violet, Orbit Blue, and Nova Glow when present.",
     bullets: ["theme mode", "ambient backgrounds", "Galaxy Aurora", "Nebula Violet"],
-    screenshot: screenshots.appearance,
+    screenshots: [screenshots.appearance01],
     reverse: true,
+  },
+];
+
+// TODO: Replace with exact in-app FAQ copy if/when it is added to this repo.
+const faqItems = [
+  {
+    question: "What is Awy?",
+    answer:
+      "Awy is a private social environment built around presence, quiet spaces, shared rhythm, and consent-aware communication.",
+  },
+  {
+    question: "How is Awy different from a regular social app?",
+    answer:
+      "Awy is designed to reduce noise instead of increase it. It focuses on intentional sharing, calmer communication, trusted signals, and spaces that feel more personal.",
+  },
+  {
+    question: "What are Lounges?",
+    answer:
+      "Lounges are quiet shared rooms for people, groups, and communities. They are built for focused connection without the chaos of constant feeds or crowded group chats.",
+  },
+  {
+    question: "What are Strings?",
+    answer:
+      "Strings are intentional one-to-one conversation threads for people and connections that deserve more care than a noisy inbox.",
+  },
+  {
+    question: "What are Shared Areas?",
+    answer:
+      "Shared Areas are personal spaces that open around what someone chooses to share. They are designed around consent-aware visibility and intentional access.",
+  },
+  {
+    question: "What is Pulse?",
+    answer:
+      "Pulse will become Awy’s public conversation space — a calmer layer for broader discovery and shared context.",
+  },
+  {
+    question: "What are Verified Signals?",
+    answer:
+      "Verified Signals help make discovery feel more trusted and contextual. They support finding people, Lounges, Strings, and shared spaces with more intention.",
+  },
+  {
+    question: "Is Awy public yet?",
+    answer:
+      "Awy is currently being prepared for wider availability. Join the waitlist for product notes, release timing, and next-step availability.",
+  },
+  {
+    question: "Does Awy replace messaging apps?",
+    answer:
+      "Awy is not trying to recreate a noisy inbox. It is being built as a calmer social environment for presence, shared spaces, and more intentional communication.",
+  },
+  {
+    question: "Why is Awy built around consent-aware sharing?",
+    answer:
+      "Awy is designed so personal spaces feel more controlled and intentional. People should be able to choose what they share, where it appears, and who can access it.",
   },
 ];
 
 export default function App() {
   const [themeId, setThemeId] = useState(themes[0].id);
-  const [activeStep, setActiveStep] = useState(showcaseSteps[0].id);
 
   useEffect(() => {
     try {
@@ -389,12 +445,6 @@ export default function App() {
   const theme = useMemo(
     () => themes.find((item) => item.id === themeId) ?? themes[0],
     [themeId]
-  );
-
-  const activeShowcase = useMemo(
-    () =>
-      showcaseSteps.find((item) => item.id === activeStep) ?? showcaseSteps[0],
-    [activeStep]
   );
 
   const cycleTheme = () => {
@@ -442,7 +492,7 @@ export default function App() {
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55 }}
-            className="grid items-center gap-14 pb-24 pt-8 lg:grid-cols-[0.92fr_1.08fr]"
+            className="grid items-center gap-14 pb-24 pt-8 lg:grid-cols-[0.9fr_1.1fr]"
           >
             <div>
               <div className="mb-5 flex flex-wrap items-center gap-3">
@@ -531,72 +581,30 @@ export default function App() {
                 ))}
               </div>
 
-              <div className="mt-10 space-y-3">
-                {showcaseSteps.map((step) => {
-                  const isActive = step.id === activeStep;
-
-                  return (
-                    <button
-                      key={step.id}
-                      type="button"
-                      onClick={() => setActiveStep(step.id)}
-                      className="flex w-full max-w-xl items-center gap-4 rounded-2xl border px-4 py-4 text-left backdrop-blur-xl transition"
-                      style={{
-                        backgroundColor: isActive
-                          ? theme.accentSoft
-                          : theme.panelBg,
-                        borderColor: isActive
-                          ? theme.accentBorder
-                          : theme.cardBorder,
-                      }}
-                    >
-                      <div
-                        className="rounded-full border px-3 py-1 text-xs"
-                        style={{
-                          borderColor: isActive
-                            ? theme.accentBorder
-                            : theme.cardBorder,
-                          color: isActive
-                            ? theme.accentText
-                            : "rgba(255,255,255,0.62)",
-                        }}
-                      >
-                        {step.number}
-                      </div>
-
-                      <div>
-                        <div className="text-base font-medium">{step.title}</div>
-                        <div className="mt-1 text-sm text-white/60">
-                          {step.text}
-                        </div>
-                      </div>
-                    </button>
-                  );
-                })}
+              <div className="mt-10 grid max-w-xl gap-3 sm:grid-cols-2">
+                {[
+                  "Presence",
+                  "Shared Areas",
+                  "Lounges",
+                  "Strings",
+                  "Verified Signals",
+                  "Pulse",
+                ].map((item) => (
+                  <div
+                    key={item}
+                    className="rounded-2xl border px-4 py-3 text-sm text-white/68 backdrop-blur-xl"
+                    style={{
+                      backgroundColor: theme.panelBg,
+                      borderColor: theme.cardBorder,
+                    }}
+                  >
+                    {item}
+                  </div>
+                ))}
               </div>
             </div>
 
-            <div>
-              <div
-                className="mb-5 rounded-[1.5rem] border px-5 py-4 backdrop-blur-2xl"
-                style={{
-                  backgroundColor: theme.panelBg,
-                  borderColor: theme.cardBorder,
-                }}
-              >
-                <div
-                  className="text-[11px] uppercase tracking-[0.22em]"
-                  style={{ color: theme.accentText }}
-                >
-                  {activeShowcase.number} • {activeShowcase.title}
-                </div>
-                <div className="mt-2 text-sm text-white/64">
-                  {activeShowcase.text}
-                </div>
-              </div>
-
-              <IPhoneShowcase theme={theme} step={activeShowcase} />
-            </div>
+            <HeroShowcase screenshots={heroScreenshots} theme={theme} />
           </motion.div>
         </section>
 
@@ -628,6 +636,54 @@ export default function App() {
             <p className="mt-4 max-w-3xl text-lg leading-8 text-white/70">
               Pulse will become Awy’s public conversation space.
             </p>
+          </div>
+        </section>
+
+        <section id="faq" className="mx-auto max-w-6xl pb-20">
+          <div className="mb-8">
+            <div
+              className="inline-flex rounded-full border px-3 py-1 text-xs"
+              style={{
+                borderColor: theme.accentBorder,
+                backgroundColor: theme.accentSoft,
+                color: theme.accentText,
+              }}
+            >
+              FAQ
+            </div>
+            <h2 className="mt-5 text-3xl font-semibold sm:text-4xl">
+              Frequently asked questions.
+            </h2>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-2">
+            {faqItems.map((item) => (
+              <details
+                key={item.question}
+                className="group rounded-[1.5rem] border p-5 backdrop-blur-2xl"
+                style={{
+                  backgroundColor: theme.panelBg,
+                  borderColor: theme.cardBorder,
+                }}
+              >
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-base font-medium text-white">
+                  <span>{item.question}</span>
+                  <span
+                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border text-lg leading-none text-white/70 transition group-open:rotate-45"
+                    style={{
+                      borderColor: theme.cardBorder,
+                      backgroundColor: theme.cardBg,
+                    }}
+                    aria-hidden="true"
+                  >
+                    +
+                  </span>
+                </summary>
+                <p className="mt-4 text-sm leading-6 text-white/62">
+                  {item.answer}
+                </p>
+              </details>
+            ))}
           </div>
         </section>
 
@@ -682,52 +738,6 @@ export default function App() {
           </div>
         </section>
 
-        <section id="privacy" className="mx-auto max-w-6xl pb-24">
-          <div
-            className="rounded-[1.75rem] border p-8 backdrop-blur-2xl shadow-2xl shadow-black/20"
-            style={{
-              backgroundColor: theme.panelBg,
-              borderColor: theme.cardBorder,
-            }}
-          >
-            <h2 className="text-3xl font-semibold">Privacy</h2>
-            <p className="mt-4 max-w-4xl text-white/70">
-              Awy is committed to respectful, privacy-conscious product design.
-              As the platform evolves, a fuller privacy policy will explain what
-              data is collected, how it is used, and what choices users have
-              around visibility, consent, media, and participation.
-            </p>
-            <p className="mt-4 max-w-4xl text-white/62">
-              This landing page may direct you to email the waitlist voluntarily;
-              any address you send from may be used for product communication
-              and access coordination.
-            </p>
-          </div>
-        </section>
-
-        <section id="terms" className="mx-auto max-w-6xl pb-24">
-          <div
-            className="rounded-[1.75rem] border p-8 backdrop-blur-2xl shadow-2xl shadow-black/20"
-            style={{
-              backgroundColor: theme.panelBg,
-              borderColor: theme.cardBorder,
-            }}
-          >
-            <h2 className="text-3xl font-semibold">Terms</h2>
-            <p className="mt-4 max-w-4xl text-white/70">
-              Awy’s features, flows, and visuals may continue to evolve.
-              Information on this site is intended to communicate current
-              direction, product focus, and availability interest rather than
-              final product guarantees.
-            </p>
-            <p className="mt-4 max-w-4xl text-white/62">
-              As the platform approaches broader release, a fuller Terms of Use
-              document should define account expectations, acceptable use, and
-              platform protections more formally.
-            </p>
-          </div>
-        </section>
-
         <footer className="mx-auto max-w-6xl pb-10">
           <div
             className="flex flex-col gap-4 rounded-[1.5rem] border px-6 py-5 backdrop-blur-2xl md:flex-row md:items-center md:justify-between"
@@ -753,6 +763,13 @@ export default function App() {
                 Support
               </a>
               <a
+                href="#faq"
+                onClick={scrollToSection("faq")}
+                className="transition hover:text-white"
+              >
+                FAQ
+              </a>
+              <a
                 href="#waitlist"
                 onClick={scrollToSection("waitlist")}
                 className="transition hover:text-white"
@@ -768,10 +785,12 @@ export default function App() {
 }
 
 function ProductSection({ section, theme }) {
+  const isSingle = section.screenshots.length === 1;
+
   return (
     <section id={section.id} className="mx-auto max-w-6xl pb-24">
       <div
-        className={`grid items-center gap-10 lg:grid-cols-2 ${
+        className={`grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] ${
           section.reverse ? "lg:[&>*:first-child]:order-2" : ""
         }`}
       >
@@ -827,13 +846,14 @@ function ProductSection({ section, theme }) {
             style={{ backgroundColor: theme.accentSoft }}
           />
           <div
-            className="relative mx-auto max-w-[430px] rounded-[2.4rem] border p-3 shadow-2xl shadow-black/40 backdrop-blur-2xl"
+            className={`relative mx-auto w-full ${
+              isSingle ? "max-w-[440px]" : "max-w-[620px]"
+            }`}
             style={{
-              backgroundColor: theme.phoneShell,
-              borderColor: theme.cardBorder,
+              filter: "drop-shadow(0 30px 80px rgba(0,0,0,0.45))",
             }}
           >
-            <SectionVisual section={section} theme={theme} />
+            <ScreenshotCluster screenshots={section.screenshots} theme={theme} />
           </div>
         </motion.div>
       </div>
@@ -841,74 +861,90 @@ function ProductSection({ section, theme }) {
   );
 }
 
-function SectionVisual({ section, theme }) {
-  const [imageError, setImageError] = useState(false);
-
-  useEffect(() => {
-    setImageError(false);
-  }, [section.id]);
-
-  if (section.visual === "strings") {
-    return <StringsVisual theme={theme} />;
-  }
-
-  if (!section.screenshot?.image || imageError) {
-    return <AssetTodoCard screenshot={section.screenshot} theme={theme} />;
-  }
-
+function HeroShowcase({ screenshots, theme }) {
   return (
-    <img
-      src={section.screenshot.image}
-      alt={section.screenshot.alt}
-      className="block w-full rounded-[2rem] border"
-      style={{ borderColor: theme.cardBorder }}
-      onError={() => setImageError(true)}
-    />
-  );
-}
+    <div className="relative mx-auto min-h-[680px] w-full max-w-[640px]">
+      <div
+        className="pointer-events-none absolute inset-x-8 top-16 h-96 rounded-full blur-3xl"
+        style={{ backgroundColor: theme.accentSoft }}
+      />
 
-function StringsVisual({ theme }) {
-  return (
-    <div
-      className="min-h-[620px] rounded-[2rem] border p-6"
-      style={{
-        backgroundColor: theme.cardBg,
-        borderColor: theme.cardBorder,
-      }}
-    >
-      <div className="flex h-full min-h-[568px] flex-col justify-between">
-        <div>
-          <div className="text-sm text-white/50">Strings</div>
-          <div className="mt-3 text-2xl font-semibold">One-to-one rhythm</div>
+      <div className="grid gap-5 sm:hidden">
+        {screenshots.map((shot) => (
+          <ScreenshotCard key={shot.missingFile} screenshot={shot} theme={theme} />
+        ))}
+      </div>
+
+      <div className="relative hidden min-h-[680px] sm:block">
+        <div className="absolute left-0 top-20 w-[42%] -rotate-6">
+          <ScreenshotCard screenshot={screenshots[1]} theme={theme} compact />
         </div>
-        <div className="space-y-3">
-          {["Focused threads", "Quieter replies", "Personal rhythm"].map(
-            (item, index) => (
-              <div
-                key={item}
-                className="rounded-[1.5rem] border p-4"
-                style={{
-                  backgroundColor:
-                    index === 0 ? theme.accentSoft : "rgba(255,255,255,0.05)",
-                  borderColor:
-                    index === 0 ? theme.accentBorder : theme.cardBorder,
-                }}
-              >
-                <div className="text-sm text-white/78">{item}</div>
-                <div className="mt-3 h-1.5 w-32 rounded-full bg-white/12" />
-              </div>
-            )
-          )}
+        <div className="absolute left-[30%] top-0 z-10 w-[46%]">
+          <ScreenshotCard screenshot={screenshots[0]} theme={theme} />
+        </div>
+        <div className="absolute bottom-2 right-0 w-[42%] rotate-6">
+          <ScreenshotCard screenshot={screenshots[2]} theme={theme} compact />
         </div>
       </div>
     </div>
   );
 }
 
-function AssetTodoCard({ screenshot, theme }) {
+function ScreenshotCluster({ screenshots, theme }) {
+  if (screenshots.length === 1) {
+    return <ScreenshotCard screenshot={screenshots[0]} theme={theme} />;
+  }
+
+  return (
+    <div className="grid gap-5 sm:grid-cols-2">
+      {screenshots.map((screenshot, index) => (
+        <div
+          key={screenshot.missingFile}
+          className={index === 1 ? "sm:mt-14" : ""}
+        >
+          <ScreenshotCard screenshot={screenshot} theme={theme} compact />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function ScreenshotCard({ screenshot, theme, compact = false }) {
+  const [imageError, setImageError] = useState(false);
+
+  useEffect(() => {
+    setImageError(false);
+  }, [screenshot.missingFile]);
+
   return (
     <div
-      className="flex min-h-[620px] flex-col justify-center rounded-[2rem] border p-8 text-center"
+      className="rounded-[2.3rem] border p-3 shadow-2xl shadow-black/40 backdrop-blur-2xl"
+      style={{
+        backgroundColor: theme.phoneShell,
+        borderColor: theme.cardBorder,
+      }}
+    >
+      {!imageError ? (
+        <img
+          src={screenshot.image}
+          alt={screenshot.alt}
+          className="block w-full rounded-[1.9rem] border"
+          style={{ borderColor: theme.cardBorder }}
+          onError={() => setImageError(true)}
+        />
+      ) : (
+        <AssetTodoCard screenshot={screenshot} theme={theme} compact={compact} />
+      )}
+    </div>
+  );
+}
+
+function AssetTodoCard({ screenshot, theme, compact = false }) {
+  return (
+    <div
+      className={`flex flex-col justify-center rounded-[1.9rem] border p-6 text-center ${
+        compact ? "min-h-[420px]" : "min-h-[620px]"
+      }`}
       style={{
         backgroundColor: theme.cardBg,
         borderColor: theme.cardBorder,
@@ -932,85 +968,5 @@ function AssetTodoCard({ screenshot, theme }) {
         <span className="text-white/76">{screenshot.missingFile}</span>.
       </p>
     </div>
-  );
-}
-
-function IPhoneShowcase({ theme, step }) {
-  const [imageError, setImageError] = useState(false);
-
-  useEffect(() => {
-    setImageError(false);
-  }, [step.id]);
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.97, y: 18 }}
-      animate={{ opacity: 1, scale: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: 0.08 }}
-      className="mx-auto w-full max-w-[430px]"
-    >
-      <div
-        className="rounded-[3.1rem] border p-[10px] shadow-2xl shadow-black/40 backdrop-blur-2xl"
-        style={{
-          backgroundColor: theme.phoneShell,
-          borderColor: "rgba(255,255,255,0.10)",
-        }}
-      >
-        <div
-          className="rounded-[2.65rem] border p-[10px]"
-          style={{
-            backgroundColor: "rgba(0,0,0,0.18)",
-            borderColor: "rgba(255,255,255,0.08)",
-          }}
-        >
-          <div
-            className="overflow-hidden rounded-[2.3rem] border"
-            style={{
-              backgroundColor: theme.phoneInner,
-              borderColor: theme.cardBorder,
-            }}
-          >
-            <AnimatePresence mode="wait">
-              {imageError || !step.image ? (
-                <motion.div
-                  key={`${step.id}-fallback`}
-                  initial={{ opacity: 0, y: 10, scale: 0.99 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: -10, scale: 0.99 }}
-                  transition={{ duration: 0.28 }}
-                  className="flex h-[860px] w-full flex-col items-center justify-center px-8 text-center"
-                  style={{ backgroundColor: theme.cardBg }}
-                >
-                  <div className="text-xl font-semibold">{step.title}</div>
-                  <div className="mt-3 text-white/60">{step.text}</div>
-                  <div
-                    className="mt-5 rounded-full border px-3 py-1 text-xs"
-                    style={{
-                      borderColor: theme.accentBorder,
-                      backgroundColor: theme.accentSoft,
-                      color: theme.accentText,
-                    }}
-                  >
-                    Missing File: {step.missingFile ?? step.image}
-                  </div>
-                </motion.div>
-              ) : (
-                <motion.img
-                  key={step.id}
-                  src={step.image}
-                  alt={step.alt}
-                  initial={{ opacity: 0, y: 10, scale: 0.99 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: -10, scale: 0.99 }}
-                  transition={{ duration: 0.28 }}
-                  className="block w-full rounded-[2.3rem]"
-                  onError={() => setImageError(true)}
-                />
-              )}
-            </AnimatePresence>
-          </div>
-        </div>
-      </div>
-    </motion.div>
   );
 }
