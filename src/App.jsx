@@ -10,10 +10,6 @@ const GITHUB_URL = "";
 
 const SUPPORT_LINK =
   "mailto:support@ljbbrands.com?subject=Awy%20Support";
-const INVESTOR_LINK =
-  "mailto:investors@ljbbrands.com?subject=Awy%20Investor%20Interest";
-const COLLABORATE_LINK =
-  "mailto:contact@ljbbrands.com?subject=Awy%20Collaboration";
 const WAITLIST_MAILTO =
   "mailto:hello@ljbbrands.com?subject=Awy%20Waitlist";
 
@@ -227,37 +223,41 @@ function resolveStoredThemeId(saved) {
   return null;
 }
 
-// Screenshot replacement map for Awy 1.1.0 (2):
-// public/screens/01-home.png -> awy-home-presence-1102.png
-// public/screens/04-profile.png -> awy-profile-shared-areas-1102.png
-// public/screens/02-lounges.png -> awy-lounges-quiet-rooms-1102.png
-// TODO: Add public/screens/awy-search-verified-signals-1102.png.
-// public/screens/05-appearance.png -> awy-appearance-themes-1102.png
+// TODO: Add final Awy 1.1.0 (2) screenshots to public/screens:
+// - awy-home-presence-1102.jpg
+// - awy-profile-shared-areas-1102.jpg
+// - awy-lounges-quiet-rooms-1102.jpg
+// - awy-search-verified-signals-1102.jpg
+// - awy-appearance-themes-1102.jpg
 const screenshots = {
   presence: {
     label: "Presence",
-    image: screenSrc("01-home.png"),
+    image: screenSrc("awy-home-presence-1102.jpg"),
+    missingFile: "public/screens/awy-home-presence-1102.jpg",
     alt: "Awy Home screen showing Live Presence and recent activity",
   },
   sharedAreas: {
     label: "Shared Areas",
-    image: screenSrc("04-profile.png"),
+    image: screenSrc("awy-profile-shared-areas-1102.jpg"),
+    missingFile: "public/screens/awy-profile-shared-areas-1102.jpg",
     alt: "Awy Profile screen showing Shared Areas and consent-based spaces",
   },
   lounges: {
     label: "Lounges",
-    image: screenSrc("02-lounges.png"),
+    image: screenSrc("awy-lounges-quiet-rooms-1102.jpg"),
+    missingFile: "public/screens/awy-lounges-quiet-rooms-1102.jpg",
     alt: "Awy Lounges screen showing quiet rooms and shared spaces",
   },
   search: {
     label: "Search",
-    image: null,
-    missingFile: "public/screens/awy-search-verified-signals-1102.png",
+    image: screenSrc("awy-search-verified-signals-1102.jpg"),
+    missingFile: "public/screens/awy-search-verified-signals-1102.jpg",
     alt: "Awy Search screen showing Verified Signals, Lounges, Strings, and People",
   },
   appearance: {
     label: "Appearance",
-    image: screenSrc("05-appearance.png"),
+    image: screenSrc("awy-appearance-themes-1102.jpg"),
+    missingFile: "public/screens/awy-appearance-themes-1102.jpg",
     alt: "Awy Appearance screen showing theme and background settings",
   },
 };
@@ -300,38 +300,7 @@ const showcaseSteps = [
   },
 ];
 
-const pillars = [
-  "Private Social Space",
-  "Consent-Based Visibility",
-  "Designed to Reduce Noise",
-  "Built for Calmer Communication",
-];
-
-const launchAccessCards = [
-  {
-    label: "Presence",
-    title: "Connection has room to breathe.",
-    text: "Awy centers presence, pacing, and intentional sharing instead of endless scrolling.",
-  },
-  {
-    label: "Visibility",
-    title: "Sharing is consent-aware by design.",
-    text: "Visibility, media, and participation are framed around mutual comfort and clear context.",
-  },
-  {
-    label: "Media",
-    title: "Photos, videos, and voice memos belong in the conversation.",
-    text: "Awy treats media as part of the sharing system without overstating unfinished layers.",
-  },
-];
-
 const heroBenefits = ["Private Social Space", "Lounges", "Strings", "Pulse"];
-
-const waitlistBenefits = [
-  "Product Notes",
-  "Release Timing",
-  "Founder Updates",
-];
 
 const productSections = [
   {
@@ -369,11 +338,7 @@ const productSections = [
     copy:
       "Strings are intentional conversation threads for people and connections that deserve more care than a noisy inbox.",
     bullets: ["focused threads", "quieter replies", "personal rhythm", "intentional conversation"],
-    screenshot: {
-      label: "Strings",
-      image: screenSrc("03-strings.png"),
-      alt: "Awy Strings screen showing intentional conversation threads",
-    },
+    visual: "strings",
     reverse: true,
   },
   {
@@ -635,150 +600,40 @@ export default function App() {
           </motion.div>
         </section>
 
-        <section id="about" className="mx-auto max-w-6xl pb-24">
-          <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
-            <div>
-              <div
-                className="inline-flex rounded-full border px-3 py-1 text-xs"
-                style={{
-                  borderColor: theme.accentBorder,
-                  backgroundColor: theme.accentSoft,
-                  color: theme.accentText,
-                }}
-              >
-                Product Positioning
-              </div>
-              <h2 className="mt-5 text-3xl font-semibold sm:text-4xl">
-                A calm digital environment for intentional presence.
-              </h2>
-              <p className="mt-4 max-w-xl text-lg leading-8 text-white/70">
-                Awy is built around presence, shared rhythm, consent-aware
-                visibility, quiet rooms, trusted signals, and private shared
-                spaces.
-              </p>
-            </div>
-
-            <div className="grid gap-4 sm:grid-cols-2">
-              {pillars.map((item) => (
-                <motion.div
-                  key={item}
-                  whileHover={{ y: -4 }}
-                  className="rounded-[1.5rem] border p-5 text-white/78 backdrop-blur-xl"
-                  style={{
-                    backgroundColor: theme.cardBg,
-                    borderColor: theme.cardBorder,
-                    boxShadow: `0 24px 60px ${theme.accentSoft}`,
-                  }}
-                >
-                  {item}
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {productSections.map((section) => (
           <ProductSection key={section.id} section={section} theme={theme} />
         ))}
 
-        <section id="updates" className="mx-auto max-w-6xl pb-24">
-          <div className="mb-8">
-            <h2 className="text-3xl font-semibold">What’s coming</h2>
-            <p className="mt-4 max-w-3xl text-lg leading-8 text-white/70">
-              Pulse will become Awy’s public conversation space, shaped by
-              presence, trusted signals, and calmer discovery.
-            </p>
-          </div>
-
-          <motion.div
-            whileHover={{ y: -4 }}
-            className="rounded-[1.75rem] border p-6 backdrop-blur-2xl shadow-2xl shadow-black/20"
+        <section id="pulse" className="mx-auto max-w-6xl pb-20">
+          <div
+            className="rounded-[2rem] border p-8 backdrop-blur-2xl shadow-2xl shadow-black/20"
             style={{
               backgroundColor: theme.panelBg,
               borderColor: theme.cardBorder,
             }}
           >
-            <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-              <div>
-                <h3 className="text-xl font-semibold">Private Access</h3>
-                <p className="mt-2 max-w-2xl text-white/68">
-                  Awy’s access path is intentional. Join the waitlist for
-                  product notes, release timing, and next-step availability.
-                </p>
-              </div>
-
-              <div className="flex flex-wrap gap-3">
-                <a
-                  href="#waitlist"
-                  onClick={scrollToSection("waitlist")}
-                  className="inline-flex rounded-full bg-white px-5 py-3 text-sm font-medium text-black transition hover:opacity-90"
-                >
-                  Join the Waitlist
-                </a>
-
-                <a
-                  href={SUPPORT_LINK}
-                  className="inline-flex rounded-full border px-5 py-3 text-sm font-medium text-white transition hover:bg-white/10"
-                  style={{
-                    backgroundColor: theme.heroPillBg,
-                    borderColor: theme.cardBorder,
-                  }}
-                >
-                  Contact Support
-                </a>
-              </div>
+            <div
+              className="inline-flex rounded-full border px-3 py-1 text-xs"
+              style={{
+                borderColor: theme.accentBorder,
+                backgroundColor: theme.accentSoft,
+                color: theme.accentText,
+              }}
+            >
+              Pulse
             </div>
-
-            <div className="mt-5 flex flex-wrap gap-2">
-              <div
-                className="inline-flex rounded-full border px-3 py-1 text-xs text-white/65"
-                style={{
-                  borderColor: theme.cardBorder,
-                  backgroundColor: theme.heroPillBg,
-                }}
-              >
-                iOS • Private Access
-              </div>
-            </div>
-
-            <p className="mt-4 text-sm text-white/50">
-              Availability expands thoughtfully so Awy can stay focused on
-              calmer communication.
+            <h2 className="mt-5 text-3xl font-semibold sm:text-4xl">
+              A public layer with a calmer rhythm.
+            </h2>
+            <p className="mt-4 max-w-3xl text-lg leading-8 text-white/70">
+              Pulse will become Awy’s public conversation space.
             </p>
-          </motion.div>
-
-          <div className="mt-5 grid gap-5 md:grid-cols-3">
-            {launchAccessCards.map((item) => (
-              <motion.div
-                key={item.title}
-                whileHover={{ y: -4 }}
-                className="rounded-[1.75rem] border p-6 backdrop-blur-2xl shadow-2xl shadow-black/20"
-                style={{
-                  backgroundColor: theme.panelBg,
-                  borderColor: theme.cardBorder,
-                }}
-              >
-                <div
-                  className="inline-flex rounded-full border px-3 py-1 text-xs"
-                  style={{
-                    borderColor: theme.accentBorder,
-                    backgroundColor: theme.accentSoft,
-                    color: theme.accentText,
-                  }}
-                >
-                  {item.label}
-                </div>
-
-                <h3 className="mt-5 text-xl font-semibold">{item.title}</h3>
-                <p className="mt-3 text-white/68">{item.text}</p>
-              </motion.div>
-            ))}
           </div>
         </section>
 
-        <section id="waitlist" className="mx-auto max-w-6xl pb-24">
+        <section id="waitlist" className="mx-auto max-w-5xl pb-20 text-center">
           <div
-            className="relative overflow-hidden rounded-[2rem] border p-8 backdrop-blur-2xl shadow-2xl shadow-black/30"
+            className="relative overflow-hidden rounded-[2rem] border px-8 py-12 backdrop-blur-2xl shadow-2xl shadow-black/30"
             style={{
               backgroundColor: theme.panelBg,
               borderColor: theme.cardBorder,
@@ -788,89 +643,41 @@ export default function App() {
               className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full blur-3xl"
               style={{ backgroundColor: theme.accentSoft }}
             />
-            <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
-              <div>
-                <div
-                  className="inline-flex rounded-full border px-3 py-1 text-xs"
-                  style={{
-                    borderColor: theme.accentBorder,
-                    backgroundColor: theme.accentSoft,
-                    color: theme.accentText,
-                  }}
-                >
-                  Waitlist
-                </div>
+            <div
+              className="mx-auto inline-flex rounded-full border px-3 py-1 text-xs"
+              style={{
+                borderColor: theme.accentBorder,
+                backgroundColor: theme.accentSoft,
+                color: theme.accentText,
+              }}
+            >
+              Waitlist
+            </div>
+            <h2 className="mx-auto mt-5 max-w-3xl text-3xl font-semibold sm:text-4xl">
+              A calmer way to stay connected.
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-lg leading-8 text-white/70">
+              Join the waitlist for product notes, release timing, and next-step
+              availability.
+            </p>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+              <a
+                href={WAITLIST_MAILTO}
+                className="inline-flex rounded-full bg-white px-8 py-4 text-base font-medium text-black transition hover:opacity-90"
+              >
+                Join the Waitlist
+              </a>
 
-                <h2 className="mt-5 text-3xl font-semibold">
-                  A calmer way to stay connected.
-                </h2>
-                <p className="mt-4 max-w-xl text-lg leading-8 text-white/70">
-                  Awy is being built for people who want communication to feel
-                  more intentional, more private, and less exhausting.
-                </p>
-
-                <div className="mt-8 grid gap-3 sm:grid-cols-3">
-                  {waitlistBenefits.map((item) => (
-                    <div
-                      key={item}
-                      className="rounded-2xl border px-4 py-4 text-sm text-white/72 backdrop-blur-xl"
-                      style={{
-                        backgroundColor: theme.cardBg,
-                        borderColor: theme.cardBorder,
-                      }}
-                    >
-                      {item}
-                    </div>
-                  ))}
-                </div>
-
-                <p className="mt-6 max-w-lg text-sm leading-6 text-white/48">
-                  No long survey, no friction. Just a clean way to stay close to
-                  Awy as Lounges, Strings, and Pulse continue to mature.
-                </p>
-
-                <p className="mt-4 max-w-lg text-sm leading-6 text-white/48">
-                  Prefer Email?{" "}
-                  <a
-                    href={WAITLIST_MAILTO}
-                    className="text-white/70 underline decoration-white/25 underline-offset-4 transition hover:text-white"
-                  >
-                    hello@ljbbrands.com
-                  </a>
-                </p>
-              </div>
-
-              <motion.div
-                className="rounded-[1.75rem] border p-6 backdrop-blur-2xl shadow-2xl shadow-black/20"
+              <a
+                href={SUPPORT_LINK}
+                className="inline-flex rounded-full border px-8 py-4 text-base font-medium text-white transition hover:bg-white/10"
                 style={{
-                  backgroundColor: theme.cardBg,
+                  backgroundColor: theme.heroPillBg,
                   borderColor: theme.cardBorder,
                 }}
               >
-                <div>
-                  <div className="text-sm font-medium text-white/78">
-                    Waitlist Email
-                  </div>
-                  <p className="mt-2 text-sm leading-6 text-white/54">
-                    Opens your email app to hello@ljbbrands.com with the subject
-                    line prefilled. Send from the address you want on the list.
-                  </p>
-                </div>
-
-                <a
-                  href={WAITLIST_MAILTO}
-                  className="mt-5 inline-flex rounded-full bg-white px-7 py-3 text-sm font-medium text-black transition hover:opacity-90"
-                >
-                  Join the Waitlist
-                </a>
-
-                <div className="mt-4 min-h-[3.25rem]">
-                  <div className="text-sm leading-6 text-white/46">
-                    By emailing the waitlist, you’re opting into product
-                    correspondence for Awy.
-                  </div>
-                </div>
-              </motion.div>
+                Contact Support
+              </a>
             </div>
           </div>
         </section>
@@ -918,78 +725,6 @@ export default function App() {
               document should define account expectations, acceptable use, and
               platform protections more formally.
             </p>
-          </div>
-        </section>
-
-        <section className="mx-auto max-w-5xl pb-12 text-center">
-          <div
-            className="rounded-[2rem] border px-8 py-12 backdrop-blur-2xl shadow-2xl shadow-black/30"
-            style={{
-              backgroundColor: theme.panelBg,
-              borderColor: theme.cardBorder,
-            }}
-          >
-            <div
-              className="mx-auto inline-flex rounded-full border px-3 py-1 text-xs"
-              style={{
-                borderColor: theme.accentBorder,
-                backgroundColor: theme.accentSoft,
-                color: theme.accentText,
-              }}
-            >
-              Presence
-            </div>
-
-            <h2 className="mt-5 text-3xl font-semibold">
-              A calmer way to stay connected.
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-white/72">
-              Awy is being built for people who want communication to feel more
-              intentional, more private, and less exhausting.
-            </p>
-
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-              <a
-                href="#waitlist"
-                onClick={scrollToSection("waitlist")}
-                className="inline-flex rounded-full bg-white px-8 py-4 text-base font-medium text-black transition hover:opacity-90"
-              >
-                Join the Waitlist
-              </a>
-
-              <a
-                href={SUPPORT_LINK}
-                className="inline-flex rounded-full border px-8 py-4 text-base font-medium text-white transition hover:bg-white/10"
-                style={{
-                  backgroundColor: theme.heroPillBg,
-                  borderColor: theme.cardBorder,
-                }}
-              >
-                Contact Support
-              </a>
-
-              <a
-                href={INVESTOR_LINK}
-                className="inline-flex rounded-full border px-8 py-4 text-base font-medium text-white transition hover:bg-white/10"
-                style={{
-                  backgroundColor: theme.heroPillBg,
-                  borderColor: theme.cardBorder,
-                }}
-              >
-                Investor Interest
-              </a>
-
-              <a
-                href={COLLABORATE_LINK}
-                className="inline-flex rounded-full border px-8 py-4 text-base font-medium text-white transition hover:bg-white/10"
-                style={{
-                  backgroundColor: theme.heroPillBg,
-                  borderColor: theme.cardBorder,
-                }}
-              >
-                Collaborate
-              </a>
-            </div>
           </div>
         </section>
 
@@ -1098,20 +833,75 @@ function ProductSection({ section, theme }) {
               borderColor: theme.cardBorder,
             }}
           >
-            {section.screenshot.image ? (
-              <img
-                src={section.screenshot.image}
-                alt={section.screenshot.alt}
-                className="block w-full rounded-[2rem] border"
-                style={{ borderColor: theme.cardBorder }}
-              />
-            ) : (
-              <AssetTodoCard screenshot={section.screenshot} theme={theme} />
-            )}
+            <SectionVisual section={section} theme={theme} />
           </div>
         </motion.div>
       </div>
     </section>
+  );
+}
+
+function SectionVisual({ section, theme }) {
+  const [imageError, setImageError] = useState(false);
+
+  useEffect(() => {
+    setImageError(false);
+  }, [section.id]);
+
+  if (section.visual === "strings") {
+    return <StringsVisual theme={theme} />;
+  }
+
+  if (!section.screenshot?.image || imageError) {
+    return <AssetTodoCard screenshot={section.screenshot} theme={theme} />;
+  }
+
+  return (
+    <img
+      src={section.screenshot.image}
+      alt={section.screenshot.alt}
+      className="block w-full rounded-[2rem] border"
+      style={{ borderColor: theme.cardBorder }}
+      onError={() => setImageError(true)}
+    />
+  );
+}
+
+function StringsVisual({ theme }) {
+  return (
+    <div
+      className="min-h-[620px] rounded-[2rem] border p-6"
+      style={{
+        backgroundColor: theme.cardBg,
+        borderColor: theme.cardBorder,
+      }}
+    >
+      <div className="flex h-full min-h-[568px] flex-col justify-between">
+        <div>
+          <div className="text-sm text-white/50">Strings</div>
+          <div className="mt-3 text-2xl font-semibold">One-to-one rhythm</div>
+        </div>
+        <div className="space-y-3">
+          {["Focused threads", "Quieter replies", "Personal rhythm"].map(
+            (item, index) => (
+              <div
+                key={item}
+                className="rounded-[1.5rem] border p-4"
+                style={{
+                  backgroundColor:
+                    index === 0 ? theme.accentSoft : "rgba(255,255,255,0.05)",
+                  borderColor:
+                    index === 0 ? theme.accentBorder : theme.cardBorder,
+                }}
+              >
+                <div className="text-sm text-white/78">{item}</div>
+                <div className="mt-3 h-1.5 w-32 rounded-full bg-white/12" />
+              </div>
+            )
+          )}
+        </div>
+      </div>
+    </div>
   );
 }
 
