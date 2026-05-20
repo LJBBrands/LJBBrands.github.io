@@ -230,8 +230,8 @@ function resolveStoredThemeId(saved) {
 // - awy-profile-shared-areas-02.jpg
 // - awy-strings-01.jpg
 // - awy-strings-02.jpg
-// - awy-lounges-quiet-rooms-01.jpg
-// - awy-lounges-quiet-rooms-02.jpg
+// - awy-lounges-support-lounge-01.jpg
+// - awy-lounges-main-02.jpg
 // - awy-search-verified-signals-01.jpg
 // - awy-appearance-themes-01.jpg
 const screenshotAsset = (fileName, label, alt) => ({
@@ -273,14 +273,14 @@ const screenshots = {
     "Awy Strings screen showing quieter replies and personal rhythm"
   ),
   lounges01: screenshotAsset(
-    "awy-lounges-quiet-rooms-01.jpg",
-    "Lounges 01",
-    "Awy Lounges screen showing quiet rooms and shared spaces"
+    "awy-lounges-support-lounge-01.jpg",
+    "Supporter Lounge",
+    "Awy Lounges screen showing the Supporter Lounge"
   ),
   lounges02: screenshotAsset(
-    "awy-lounges-quiet-rooms-02.jpg",
-    "Lounges 02",
-    "Awy Lounges screen showing shared rhythm in private spaces"
+    "awy-lounges-main-02.jpg",
+    "Lounge Overview",
+    "Awy Lounges screen showing the Lounge Overview"
   ),
   search01: screenshotAsset(
     "awy-search-verified-signals-01.jpg",
@@ -341,7 +341,7 @@ const productSections = [
     headline: "Quiet rooms for shared rhythm.",
     copy:
       "Lounges are focused spaces for calmer conversation. They are built for people, groups, and communities that want presence without chaos.",
-    bullets: ["Private Lounges", "Local Lounges", "Founder Lounge", "Pulse Lounge"],
+    bullets: ["Private Lounges", "Local Lounges", "Supporter Lounge", "Pulse Lounge"],
     screenshots: [screenshots.lounges01, screenshots.lounges02],
   },
   {
@@ -492,7 +492,7 @@ export default function App() {
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55 }}
-            className="grid items-center gap-14 pb-24 pt-8 lg:grid-cols-[0.9fr_1.1fr]"
+            className="grid items-center gap-12 pb-20 pt-8 lg:grid-cols-[0.92fr_1.08fr]"
           >
             <div>
               <div className="mb-5 flex flex-wrap items-center gap-3">
@@ -612,7 +612,7 @@ export default function App() {
           <ProductSection key={section.id} section={section} theme={theme} />
         ))}
 
-        <section id="pulse" className="mx-auto max-w-6xl pb-20">
+        <section id="pulse" className="mx-auto max-w-6xl pb-16">
           <div
             className="rounded-[2rem] border p-8 backdrop-blur-2xl shadow-2xl shadow-black/20"
             style={{
@@ -639,7 +639,7 @@ export default function App() {
           </div>
         </section>
 
-        <section id="faq" className="mx-auto max-w-6xl pb-20">
+        <section id="faq" className="mx-auto max-w-6xl pb-16">
           <div className="mb-8">
             <div
               className="inline-flex rounded-full border px-3 py-1 text-xs"
@@ -687,7 +687,7 @@ export default function App() {
           </div>
         </section>
 
-        <section id="waitlist" className="mx-auto max-w-5xl pb-20 text-center">
+        <section id="waitlist" className="mx-auto max-w-5xl pb-16 text-center">
           <div
             className="relative overflow-hidden rounded-[2rem] border px-8 py-12 backdrop-blur-2xl shadow-2xl shadow-black/30"
             style={{
@@ -788,9 +788,9 @@ function ProductSection({ section, theme }) {
   const isSingle = section.screenshots.length === 1;
 
   return (
-    <section id={section.id} className="mx-auto max-w-6xl pb-24">
+    <section id={section.id} className="mx-auto max-w-6xl pb-20">
       <div
-        className={`grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] ${
+        className={`grid items-center gap-10 lg:grid-cols-[0.92fr_1.08fr] ${
           section.reverse ? "lg:[&>*:first-child]:order-2" : ""
         }`}
       >
@@ -847,7 +847,7 @@ function ProductSection({ section, theme }) {
           />
           <div
             className={`relative mx-auto w-full ${
-              isSingle ? "max-w-[440px]" : "max-w-[620px]"
+              isSingle ? "max-w-[400px]" : "max-w-[580px]"
             }`}
             style={{
               filter: "drop-shadow(0 30px 80px rgba(0,0,0,0.45))",
@@ -863,9 +863,9 @@ function ProductSection({ section, theme }) {
 
 function HeroShowcase({ screenshots, theme }) {
   return (
-    <div className="relative mx-auto min-h-[680px] w-full max-w-[640px]">
+    <div className="relative mx-auto min-h-[610px] w-full max-w-[610px]">
       <div
-        className="pointer-events-none absolute inset-x-8 top-16 h-96 rounded-full blur-3xl"
+        className="pointer-events-none absolute inset-x-8 top-14 h-80 rounded-full blur-3xl"
         style={{ backgroundColor: theme.accentSoft }}
       />
 
@@ -875,14 +875,14 @@ function HeroShowcase({ screenshots, theme }) {
         ))}
       </div>
 
-      <div className="relative hidden min-h-[680px] sm:block">
-        <div className="absolute left-0 top-20 w-[42%] -rotate-6">
+      <div className="relative hidden min-h-[610px] sm:block">
+        <div className="absolute left-0 top-16 w-[40%] -rotate-6">
           <ScreenshotCard screenshot={screenshots[1]} theme={theme} compact />
         </div>
-        <div className="absolute left-[30%] top-0 z-10 w-[46%]">
+        <div className="absolute left-[29%] top-0 z-10 w-[44%]">
           <ScreenshotCard screenshot={screenshots[0]} theme={theme} />
         </div>
-        <div className="absolute bottom-2 right-0 w-[42%] rotate-6">
+        <div className="absolute bottom-1 right-0 w-[40%] rotate-6">
           <ScreenshotCard screenshot={screenshots[2]} theme={theme} compact />
         </div>
       </div>
@@ -896,11 +896,11 @@ function ScreenshotCluster({ screenshots, theme }) {
   }
 
   return (
-    <div className="grid gap-5 sm:grid-cols-2">
+    <div className="grid gap-4 sm:grid-cols-2">
       {screenshots.map((screenshot, index) => (
         <div
           key={screenshot.missingFile}
-          className={index === 1 ? "sm:mt-14" : ""}
+          className={index === 1 ? "sm:mt-10" : ""}
         >
           <ScreenshotCard screenshot={screenshot} theme={theme} compact />
         </div>
@@ -918,7 +918,7 @@ function ScreenshotCard({ screenshot, theme, compact = false }) {
 
   return (
     <div
-      className="rounded-[2.3rem] border p-3 shadow-2xl shadow-black/40 backdrop-blur-2xl"
+      className="rounded-[2rem] border p-2.5 shadow-2xl shadow-black/40 backdrop-blur-2xl"
       style={{
         backgroundColor: theme.phoneShell,
         borderColor: theme.cardBorder,
@@ -928,7 +928,7 @@ function ScreenshotCard({ screenshot, theme, compact = false }) {
         <img
           src={screenshot.image}
           alt={screenshot.alt}
-          className="block w-full rounded-[1.9rem] border"
+          className="block w-full rounded-[1.65rem] border"
           style={{ borderColor: theme.cardBorder }}
           onError={() => setImageError(true)}
         />
@@ -942,8 +942,8 @@ function ScreenshotCard({ screenshot, theme, compact = false }) {
 function AssetTodoCard({ screenshot, theme, compact = false }) {
   return (
     <div
-      className={`flex flex-col justify-center rounded-[1.9rem] border p-6 text-center ${
-        compact ? "min-h-[420px]" : "min-h-[620px]"
+      className={`flex flex-col justify-center rounded-[1.65rem] border p-6 text-center ${
+        compact ? "min-h-[360px]" : "min-h-[540px]"
       }`}
       style={{
         backgroundColor: theme.cardBg,
