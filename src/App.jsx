@@ -794,6 +794,12 @@ export default function App() {
               <a href={SUPPORT_LINK} className="transition hover:text-white">
                 Support
               </a>
+              <a href="/privacy/" className="transition hover:text-white">
+                Privacy
+              </a>
+              <a href="/terms/" className="transition hover:text-white">
+                Terms
+              </a>
               <a
                 href="#faq"
                 onClick={scrollToSection("faq")}
