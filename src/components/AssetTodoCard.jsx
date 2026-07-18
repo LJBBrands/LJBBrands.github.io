@@ -1,8 +1,8 @@
 export default function AssetTodoCard({ screenshot, theme, compact = false }) {
   return (
     <div
-      className={`flex flex-col justify-center rounded-[1.65rem] border p-6 text-center ${
-        compact ? "min-h-[360px]" : "min-h-[540px]"
+      className={`flex flex-col justify-center rounded-[1.65rem] border p-5 text-center ${
+        compact ? "min-h-[160px]" : "min-h-[240px]"
       }`}
       style={{
         backgroundColor: theme.cardBg,

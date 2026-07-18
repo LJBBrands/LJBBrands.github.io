@@ -1,5 +1,7 @@
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { useEffect, useId, useRef } from "react";
+import { useEffect, useId, useMemo, useRef } from "react";
+import { groupGallery } from "../data/projects";
+import ProjectVisual from "./ProjectVisual";
 import ScreenshotCard from "./ScreenshotCard";
 
 const FOCUSABLE =
@@ -60,14 +62,23 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
     };
   }, [open, onClose]);
 
+  const gallery = project?.visual?.gallery ?? [];
+  const galleryGroups = useMemo(() => groupGallery(gallery), [gallery]);
+  const hasScreenshotGallery = project?.visual?.type === "screenshots";
+  const heroShot =
+    gallery.find((item) => item.label === "Home Live Presence") ||
+    project?.visual?.card?.primary ||
+    gallery[0];
+  const accent = project?.accent || theme.accent;
+
   return (
     <AnimatePresence>
       {open && project ? (
-        <div className="fixed inset-0 z-[80] flex items-end justify-center p-0 sm:items-center sm:p-6">
+        <div className="fixed inset-0 z-[80] flex items-end justify-center p-0 sm:items-center sm:p-5 lg:p-8">
           <motion.button
             type="button"
             aria-label="Close project details"
-            className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+            className="absolute inset-0 bg-black/72 backdrop-blur-sm"
             initial={reduceMotion ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={reduceMotion ? undefined : { opacity: 0 }}
@@ -83,44 +94,36 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
             aria-describedby={descriptionId}
             tabIndex={-1}
             initial={
-              reduceMotion
-                ? false
-                : { opacity: 0, y: 28, scale: 0.98 }
+              reduceMotion ? false : { opacity: 0, y: 24, scale: 0.985 }
             }
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={
-              reduceMotion ? undefined : { opacity: 0, y: 18, scale: 0.98 }
+              reduceMotion ? undefined : { opacity: 0, y: 16, scale: 0.985 }
             }
-            transition={{ duration: reduceMotion ? 0 : 0.25 }}
-            className="relative z-10 flex max-h-[92vh] w-full max-w-3xl flex-col overflow-hidden rounded-t-[1.75rem] border border-b-0 sm:max-h-[86vh] sm:rounded-[1.75rem] sm:border-b"
+            transition={{ duration: reduceMotion ? 0 : 0.22 }}
+            className="relative z-10 flex max-h-[92vh] w-full max-w-5xl flex-col overflow-hidden rounded-t-[1.75rem] border border-b-0 sm:max-h-[88vh] sm:rounded-[1.75rem] sm:border-b"
             style={{
-              backgroundColor: "rgba(8,10,8,0.96)",
+              backgroundColor: "rgba(7,9,7,0.97)",
               borderColor: theme.cardBorder,
+              boxShadow: `inset 0 1px 0 ${accent}22`,
             }}
           >
             <div
-              className="flex items-start justify-between gap-4 border-b px-5 py-4 sm:px-6"
-              style={{ borderColor: theme.cardBorder }}
+              className="sticky top-0 z-20 flex items-center justify-between gap-3 border-b px-5 py-3.5 backdrop-blur-xl sm:px-6"
+              style={{
+                borderColor: theme.cardBorder,
+                backgroundColor: "rgba(7,9,7,0.92)",
+              }}
             >
               <div className="min-w-0">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span
-                    className="inline-flex rounded-full border px-3 py-1 text-xs"
-                    style={{
-                      borderColor: theme.accentBorder,
-                      backgroundColor: theme.accentSoft,
-                      color: theme.accentText,
-                    }}
-                  >
+                  <span className="text-[11px] font-medium uppercase tracking-[0.14em] text-white/45">
                     {project.category}
                   </span>
                   {project.status ? (
                     <span
-                      className="inline-flex rounded-full border px-3 py-1 text-xs text-white/70"
-                      style={{
-                        borderColor: theme.cardBorder,
-                        backgroundColor: theme.cardBg,
-                      }}
+                      className="rounded-full border px-2.5 py-0.5 text-[11px] text-white/65"
+                      style={{ borderColor: theme.cardBorder }}
                     >
                       {project.status}
                     </span>
@@ -128,7 +131,7 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
                 </div>
                 <h2
                   id={titleId}
-                  className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl"
+                  className="mt-1 truncate text-xl font-semibold tracking-tight sm:text-2xl"
                 >
                   {project.name}
                 </h2>
@@ -138,81 +141,184 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
                 ref={closeRef}
                 type="button"
                 onClick={onClose}
-                className="inline-flex min-h-[44px] min-w-[44px] shrink-0 items-center justify-center rounded-full border px-4 text-sm text-white/80 transition hover:bg-white/10 hover:text-white"
+                className="inline-flex min-h-[44px] min-w-[44px] shrink-0 items-center justify-center rounded-full border px-4 text-sm text-white/75 transition hover:bg-white/8 hover:text-white"
                 style={{ borderColor: theme.cardBorder }}
               >
                 Close
               </button>
             </div>
 
-            <div className="overflow-y-auto px-5 py-5 sm:px-6 sm:py-6">
-              <p
-                id={descriptionId}
-                className="max-w-2xl text-base leading-7 text-white/70"
-              >
-                {project.description}
-              </p>
+            <div className="overflow-y-auto overscroll-contain">
+              {hasScreenshotGallery ? (
+                <div className="p-5 sm:p-6">
+                  <div className="grid gap-6 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
+                    <div className="mx-auto w-full max-w-[280px] lg:max-w-none">
+                      {heroShot ? (
+                        <ScreenshotCard
+                          screenshot={heroShot}
+                          theme={theme}
+                          caption
+                        />
+                      ) : (
+                        <div
+                          className="overflow-hidden rounded-[1.35rem] border"
+                          style={{ borderColor: theme.cardBorder }}
+                        >
+                          <ProjectVisual project={project} theme={theme} />
+                        </div>
+                      )}
+                    </div>
 
-              {project.highlights?.length ? (
-                <div className="mt-6">
-                  <h3 className="text-sm font-medium text-white/80">
-                    Highlights
-                  </h3>
-                  <ul className="mt-3 grid gap-2 sm:grid-cols-2">
-                    {project.highlights.map((item) => (
-                      <li
-                        key={item}
-                        className="rounded-2xl border px-4 py-3 text-sm text-white/72"
-                        style={{
-                          borderColor: theme.cardBorder,
-                          backgroundColor: theme.cardBg,
-                        }}
+                    <div>
+                      <p
+                        id={descriptionId}
+                        className="text-sm leading-6 text-white/68 sm:text-[15px] sm:leading-7"
                       >
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ) : null}
+                        {project.description}
+                      </p>
 
-              {project.images?.length ? (
-                <div className="mt-8">
-                  <h3 className="text-sm font-medium text-white/80">
-                    Selected views
-                  </h3>
-                  <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                    {project.images.slice(0, 6).map((shot) => (
-                      <ScreenshotCard
-                        key={shot.missingFile}
-                        screenshot={shot}
-                        theme={theme}
-                        compact
-                      />
-                    ))}
+                      {project.summary ? (
+                        <p
+                          className="mt-4 rounded-[1.1rem] border px-4 py-3 text-sm leading-6 text-white/62"
+                          style={{ borderColor: theme.cardBorder }}
+                        >
+                          {project.summary}
+                        </p>
+                      ) : null}
+
+                      {project.highlights?.length ? (
+                        <div className="mt-5">
+                          <h3 className="text-xs font-medium uppercase tracking-[0.14em] text-white/40">
+                            Highlights
+                          </h3>
+                          <ul className="mt-3 flex flex-wrap gap-2">
+                            {project.highlights.map((item) => (
+                              <li
+                                key={item}
+                                className="rounded-full border px-3 py-1.5 text-[13px] text-white/72"
+                                style={{ borderColor: theme.cardBorder }}
+                              >
+                                {item}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ) : null}
+                    </div>
+                  </div>
+
+                  {galleryGroups.length ? (
+                    <div className="mt-8 space-y-8">
+                      {galleryGroups.map((group) => (
+                        <section key={group.name}>
+                          <h3 className="text-xs font-medium uppercase tracking-[0.14em] text-white/40">
+                            {group.name}
+                          </h3>
+                          <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3">
+                            {group.items.map((shot) => (
+                              <ScreenshotCard
+                                key={shot.src}
+                                screenshot={shot}
+                                theme={theme}
+                                compact
+                                caption
+                              />
+                            ))}
+                          </div>
+                        </section>
+                      ))}
+                    </div>
+                  ) : null}
+                </div>
+              ) : (
+                <div className="grid gap-0 lg:grid-cols-[0.95fr_1.05fr]">
+                  <div
+                    className="border-b p-5 sm:p-6 lg:border-b-0 lg:border-r"
+                    style={{ borderColor: theme.cardBorder }}
+                  >
+                    <div
+                      className="overflow-hidden rounded-[1.35rem] border"
+                      style={{ borderColor: theme.cardBorder }}
+                    >
+                      <ProjectVisual project={project} theme={theme} />
+                    </div>
+
+                    {project.mediaReady ? (
+                      <div
+                        className="mt-4 rounded-[1.25rem] border px-4 py-4"
+                        style={{ borderColor: theme.cardBorder }}
+                      >
+                        <div className="text-xs font-medium uppercase tracking-[0.14em] text-white/40">
+                          Media library
+                        </div>
+                        <p className="mt-2 text-sm leading-6 text-white/55">
+                          Episode links, thumbnails, and watch destinations will
+                          appear here when published.
+                        </p>
+                      </div>
+                    ) : null}
+                  </div>
+
+                  <div className="p-5 sm:p-6">
+                    <p
+                      id={descriptionId}
+                      className="text-sm leading-6 text-white/68 sm:text-[15px] sm:leading-7"
+                    >
+                      {project.description}
+                    </p>
+
+                    {project.summary ? (
+                      <p
+                        className="mt-4 rounded-[1.1rem] border px-4 py-3 text-sm leading-6 text-white/62"
+                        style={{ borderColor: theme.cardBorder }}
+                      >
+                        {project.summary}
+                      </p>
+                    ) : null}
+
+                    {project.highlights?.length ? (
+                      <div className="mt-6">
+                        <h3 className="text-xs font-medium uppercase tracking-[0.14em] text-white/40">
+                          Highlights
+                        </h3>
+                        <ul className="mt-3 flex flex-wrap gap-2">
+                          {project.highlights.map((item) => (
+                            <li
+                              key={item}
+                              className="rounded-full border px-3 py-1.5 text-[13px] text-white/72"
+                              style={{ borderColor: theme.cardBorder }}
+                            >
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ) : null}
+
+                    {project.primaryAction?.href ? (
+                      <div className="mt-7">
+                        <a
+                          href={project.primaryAction.href}
+                          target={
+                            project.primaryAction.href.startsWith("http")
+                              ? "_blank"
+                              : undefined
+                          }
+                          rel={
+                            project.primaryAction.href.startsWith("http")
+                              ? "noreferrer"
+                              : undefined
+                          }
+                          className="inline-flex min-h-[44px] items-center rounded-full border px-5 text-sm font-medium text-white transition hover:bg-white/[0.06]"
+                          style={{ borderColor: theme.cardBorder }}
+                        >
+                          {project.primaryAction.label}
+                        </a>
+                      </div>
+                    ) : null}
                   </div>
                 </div>
-              ) : null}
-
-              {project.primaryAction?.href ? (
-                <div className="mt-8">
-                  <a
-                    href={project.primaryAction.href}
-                    target={
-                      project.primaryAction.href.startsWith("http")
-                        ? "_blank"
-                        : undefined
-                    }
-                    rel={
-                      project.primaryAction.href.startsWith("http")
-                        ? "noreferrer"
-                        : undefined
-                    }
-                    className="inline-flex min-h-[44px] items-center rounded-full bg-white px-6 py-3 text-sm font-medium text-black transition hover:opacity-90"
-                  >
-                    {project.primaryAction.label}
-                  </a>
-                </div>
-              ) : null}
+              )}
             </div>
           </motion.div>
         </div>

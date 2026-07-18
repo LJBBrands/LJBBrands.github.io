@@ -1,4 +1,12 @@
-import { screenshots } from "./awyContent";
+const projectAsset = (projectId, fileName) =>
+  `${import.meta.env.BASE_URL}projects/${projectId}/${fileName}`;
+
+const awyShot = (fileName, label, alt, group) => ({
+  src: projectAsset("awy", fileName),
+  label,
+  alt,
+  group,
+});
 
 export const projects = [
   {
@@ -9,6 +17,8 @@ export const projects = [
       "A private social environment built around presence, shared rhythm, quiet spaces, and consent-aware communication.",
     description:
       "Awy is a private social environment designed for intentional presence, consent-aware sharing, and calmer communication — without turning connection into consumption.",
+    summary:
+      "What makes Awy different: quieter spaces, consent-aware sharing, and presence without feed pressure.",
     status: null,
     highlights: [
       "Presence",
@@ -18,15 +28,121 @@ export const projects = [
       "Verified Signals",
       "Personalization",
     ],
-    visualType: "awy",
-    images: [
-      screenshots.homePresence01,
-      screenshots.profileSharedAreas01,
-      screenshots.lounges01,
-      screenshots.strings01,
-      screenshots.search01,
-      screenshots.appearance01,
-    ],
+    visual: {
+      type: "screenshots",
+      card: {
+        primary: awyShot(
+          "awy-card-home-live-presence.jpg",
+          "Home Live Presence",
+          "Awy Home screen showing Live Presence",
+          "Presence"
+        ),
+        left: awyShot(
+          "awy-card-profile-create-menu.jpg",
+          "Profile Create Menu",
+          "Awy Profile create menu",
+          "Identity"
+        ),
+        right: awyShot(
+          "awy-card-lounges-featured.jpg",
+          "Featured Lounges",
+          "Awy Featured Lounges screen",
+          "Community"
+        ),
+      },
+      gallery: [
+        awyShot(
+          "awy-profile-overview.jpg",
+          "Profile Overview",
+          "Awy profile overview",
+          "Identity"
+        ),
+        awyShot(
+          "awy-profile-create-menu.jpg",
+          "Profile Create Menu",
+          "Awy profile create menu",
+          "Identity"
+        ),
+        awyShot(
+          "awy-shared-profile.jpg",
+          "Shared Profile",
+          "Awy shared profile view",
+          "Identity"
+        ),
+        awyShot(
+          "awy-connect-as.jpg",
+          "Connect As",
+          "Awy Connect As screen",
+          "Identity"
+        ),
+        awyShot(
+          "awy-home-live-presence.jpg",
+          "Home Live Presence",
+          "Awy Home Live Presence",
+          "Presence"
+        ),
+        awyShot(
+          "awy-home-activity-overview.jpg",
+          "Home Activity Overview",
+          "Awy Home activity overview",
+          "Presence"
+        ),
+        awyShot(
+          "awy-strings-list.jpg",
+          "Strings List",
+          "Awy Strings list",
+          "Private Connections"
+        ),
+        awyShot(
+          "awy-string-conversation.jpg",
+          "String Conversation",
+          "Awy String conversation",
+          "Private Connections"
+        ),
+        awyShot(
+          "awy-string-controls.jpg",
+          "String Controls",
+          "Awy String controls",
+          "Private Connections"
+        ),
+        awyShot(
+          "awy-lounges-featured.jpg",
+          "Featured Lounges",
+          "Awy Featured Lounges",
+          "Community"
+        ),
+        awyShot(
+          "awy-lounge-entry.jpg",
+          "Lounge Entry",
+          "Awy Lounge entry",
+          "Community"
+        ),
+        awyShot(
+          "awy-pulse-lounge-controls.jpg",
+          "Pulse Lounge Controls",
+          "Awy Pulse Lounge controls",
+          "Community"
+        ),
+        awyShot(
+          "awy-search-discovery.jpg",
+          "Search Discovery",
+          "Awy Search discovery",
+          "Discovery and Control"
+        ),
+        awyShot(
+          "awy-settings-overview.jpg",
+          "Settings Overview",
+          "Awy Settings overview",
+          "Discovery and Control"
+        ),
+        awyShot(
+          "awy-appearance-themes.jpg",
+          "Appearance Themes",
+          "Awy Appearance themes",
+          "Discovery and Control"
+        ),
+      ],
+    },
     primaryAction: null,
     accent: "#B8FF5A",
   },
@@ -37,7 +153,7 @@ export const projects = [
     preview:
       "Podcasts, gaming, unboxings, LEGO builds, road trips, and behind-the-scenes stories.",
     description:
-      "LJB Rewind is the media arm of LJB Media Group — long-form and short-form storytelling across podcasts, gaming, builds, travel, and behind-the-scenes moments.",
+      "LJB Rewind is the media arm of LJB Media Group — storytelling across podcasts, gaming, builds, travel, and behind-the-scenes moments.",
     status: null,
     highlights: [
       "Podcast",
@@ -47,9 +163,13 @@ export const projects = [
       "Road Trips",
       "Behind the Scenes",
     ],
-    visualType: "media",
-    images: [],
-    // Future: primaryAction with confirmed watch destination + thumbnail assets
+    visual: {
+      type: "branded",
+      brand: "rewind",
+      hero: projectAsset("ljb-rewind", "ljb-rewind-hero.webp"),
+      alt: "LJB Rewind media preview",
+    },
+    mediaReady: true,
     primaryAction: null,
     accent: "#D9FF9A",
   },
@@ -69,8 +189,12 @@ export const projects = [
       "Project Stories",
       "Future Partnerships",
     ],
-    visualType: "auto",
-    images: [],
+    visual: {
+      type: "branded",
+      brand: "rt345lc",
+      hero: projectAsset("rt345lc", "rt345lc-hero.webp"),
+      alt: "RT345LC project vehicle",
+    },
     primaryAction: null,
     accent: "#F2F2F2",
   },
@@ -90,8 +214,12 @@ export const projects = [
       "Shirts",
       "Special Editions",
     ],
-    visualType: "apparel",
-    images: [],
+    visual: {
+      type: "branded",
+      brand: "give-love-co",
+      hero: projectAsset("give-love-co", "give-love-co-hero.webp"),
+      alt: "Give Love Co. apparel preview",
+    },
     primaryAction: null,
     accent: "#F5F5F5",
   },
@@ -111,12 +239,41 @@ export const projects = [
       "External Storage Support",
       "File-Safety Controls",
     ],
-    visualType: "arbor",
-    images: [],
+    visual: {
+      type: "branded",
+      brand: "arbor",
+      hero: projectAsset("arbor", "arbor-hero.webp"),
+      alt: "Arbor file organization preview",
+    },
     primaryAction: null,
     accent: "#B8FF5A",
   },
 ];
+
+export const GALLERY_GROUP_ORDER = [
+  "Identity",
+  "Presence",
+  "Private Connections",
+  "Community",
+  "Discovery and Control",
+];
+
+export function groupGallery(gallery = []) {
+  const groups = new Map();
+
+  for (const item of gallery) {
+    const key = item.group || "Gallery";
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(item);
+  }
+
+  return GALLERY_GROUP_ORDER.filter((name) => groups.has(name)).map(
+    (name) => ({
+      name,
+      items: groups.get(name),
+    })
+  );
+}
 
 export const navItems = [
   { label: "Home", href: "#top" },
