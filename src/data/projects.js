@@ -8,6 +8,14 @@ const awyShot = (fileName, label, alt, group) => ({
   group,
 });
 
+/*
+  Public Awy set only. Installed but excluded from the public site:
+  - awy-lounge-owner-controls-dark.jpg
+  - awy-lounge-safety-controls-dark.jpg
+  Also continue excluding Membership, Moderator Tools, unfinished billing,
+  incomplete workflows, admin-heavy menus, and empty/unfinished states.
+*/
+
 export const projects = [
   {
     id: "awy",
@@ -32,114 +40,73 @@ export const projects = [
       type: "screenshots",
       card: {
         primary: awyShot(
-          "awy-card-home-live-presence.jpg",
-          "Home Live Presence",
-          "Awy Home screen showing Live Presence",
+          "awy-card-home-dark.jpg",
+          "Home — Live Presence",
+          "Awy Home screen showing Live Presence in a dark theme",
           "Presence"
         ),
         left: awyShot(
-          "awy-card-profile-create-menu.jpg",
-          "Profile Create Menu",
-          "Awy Profile create menu",
+          "awy-card-profile-dark.jpg",
+          "Profile — Overview",
+          "Awy Profile screen in a dark theme",
           "Identity"
         ),
         right: awyShot(
-          "awy-card-lounges-featured.jpg",
-          "Featured Lounges",
-          "Awy Featured Lounges screen",
+          "awy-card-lounges-aurora.jpg",
+          "Lounges — Featured Lounges",
+          "Awy Featured Lounges screen with Aurora theme accent",
           "Community"
         ),
       },
+      // Exact public gallery order (8 images). Dark primary, Aurora as accent.
       gallery: [
         awyShot(
-          "awy-profile-overview.jpg",
-          "Profile Overview",
-          "Awy profile overview",
-          "Identity"
-        ),
-        awyShot(
-          "awy-profile-create-menu.jpg",
-          "Profile Create Menu",
-          "Awy profile create menu",
-          "Identity"
-        ),
-        awyShot(
-          "awy-shared-profile.jpg",
-          "Shared Profile",
-          "Awy shared profile view",
-          "Identity"
-        ),
-        awyShot(
-          "awy-connect-as.jpg",
-          "Connect As",
-          "Awy Connect As screen",
-          "Identity"
-        ),
-        awyShot(
-          "awy-home-live-presence.jpg",
-          "Home Live Presence",
-          "Awy Home Live Presence",
+          "awy-home-live-presence-dark.jpg",
+          "Home — Live Presence",
+          "Awy Home Live Presence in a dark theme",
           "Presence"
         ),
         awyShot(
-          "awy-home-activity-overview.jpg",
-          "Home Activity Overview",
-          "Awy Home activity overview",
+          "awy-profile-overview-dark.jpg",
+          "Profile — Overview",
+          "Awy Profile overview in a dark theme",
+          "Identity"
+        ),
+        awyShot(
+          "awy-profile-create-menu-dark.jpg",
+          "Profile — Create Menu",
+          "Awy Profile create menu in a dark theme",
+          "Identity"
+        ),
+        awyShot(
+          "awy-home-activity-dark.jpg",
+          "Home — Activity",
+          "Awy Home activity overview in a dark theme",
           "Presence"
         ),
         awyShot(
-          "awy-strings-list.jpg",
-          "Strings List",
-          "Awy Strings list",
-          "Private Connections"
+          "awy-string-privacy-controls-dark.jpg",
+          "String — Privacy Controls",
+          "Awy String privacy controls in a dark theme",
+          "Private Connection"
         ),
         awyShot(
-          "awy-string-conversation.jpg",
-          "String Conversation",
-          "Awy String conversation",
-          "Private Connections"
-        ),
-        awyShot(
-          "awy-string-controls.jpg",
-          "String Controls",
-          "Awy String controls",
-          "Private Connections"
-        ),
-        awyShot(
-          "awy-lounges-featured.jpg",
-          "Featured Lounges",
-          "Awy Featured Lounges",
+          "awy-lounges-featured-aurora.jpg",
+          "Lounges — Featured Lounges",
+          "Awy Featured Lounges with Aurora theme accent",
           "Community"
         ),
         awyShot(
-          "awy-lounge-entry.jpg",
-          "Lounge Entry",
-          "Awy Lounge entry",
+          "awy-lounge-car-culture-dark.jpg",
+          "Lounge — Car Culture",
+          "Awy Car Culture Lounge in a dark theme",
           "Community"
         ),
         awyShot(
-          "awy-pulse-lounge-controls.jpg",
-          "Pulse Lounge Controls",
-          "Awy Pulse Lounge controls",
-          "Community"
-        ),
-        awyShot(
-          "awy-search-discovery.jpg",
-          "Search Discovery",
-          "Awy Search discovery",
-          "Discovery and Control"
-        ),
-        awyShot(
-          "awy-settings-overview.jpg",
-          "Settings Overview",
-          "Awy Settings overview",
-          "Discovery and Control"
-        ),
-        awyShot(
-          "awy-appearance-themes.jpg",
-          "Appearance Themes",
-          "Awy Appearance themes",
-          "Discovery and Control"
+          "awy-profile-studio-aurora.jpg",
+          "Profile Studio",
+          "Awy Profile Studio with Aurora theme accent",
+          "Personalization"
         ),
       ],
     },
@@ -251,11 +218,11 @@ export const projects = [
 ];
 
 export const GALLERY_GROUP_ORDER = [
-  "Identity",
   "Presence",
-  "Private Connections",
+  "Identity",
+  "Private Connection",
   "Community",
-  "Discovery and Control",
+  "Personalization",
 ];
 
 export function groupGallery(gallery = []) {

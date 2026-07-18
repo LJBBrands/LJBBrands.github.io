@@ -153,7 +153,7 @@ function Rt345lcBranded({ accent, theme }) {
             RT345LC
           </div>
           <div className="mt-1 text-[11px] text-white/50">
-            Builds · Photography · Road trips
+            Builds · Photography · Road Trips
           </div>
         </div>
       </div>
@@ -189,7 +189,7 @@ function GiveLoveBranded({ theme }) {
               Give Love Co.
             </div>
             <div className="mt-2 text-[11px] text-white/50">
-              Intentional apparel · Limited drops
+              Intentional apparel and limited drops
             </div>
           </div>
           <div className="mx-auto mt-5 h-px w-16 bg-white/20" />
@@ -230,7 +230,7 @@ function ArborBranded({ accent, theme }) {
         <div className="flex items-center justify-between gap-3">
           <div>
             <div className="text-[10px] uppercase tracking-[0.2em] text-white/40">
-              macOS utility
+              macOS Utility
             </div>
             <div className="mt-1 text-2xl font-semibold tracking-tight text-white">
               Arbor

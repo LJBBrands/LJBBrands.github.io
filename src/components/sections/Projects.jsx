@@ -28,7 +28,7 @@ export default function Projects({ theme }) {
       <SectionHeader
         theme={theme}
         kicker="Projects"
-        title="Explore the LJB ecosystem"
+        title="Explore the LJB Ecosystem"
         description="Preview each part of the company, then open a project for highlights, selected visuals, and next steps."
       />
 

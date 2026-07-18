@@ -71,7 +71,7 @@ export default function ContactCard({ channel, theme, index = 0 }) {
         {channel.description}
       </p>
       <span className="mt-5 inline-flex min-h-[44px] items-center text-sm font-medium text-white/80 transition group-hover:text-white">
-        Send email
+        Send Email
       </span>
     </motion.a>
   );

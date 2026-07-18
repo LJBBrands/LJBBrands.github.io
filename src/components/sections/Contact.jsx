@@ -8,7 +8,7 @@ export default function Contact({ theme }) {
       <SectionHeader
         theme={theme}
         kicker="Contact"
-        title="Start a conversation"
+        title="Start a Conversation"
         description="Choose the inbox that matches your inquiry. Each card opens a direct email with a useful subject line."
       />
 

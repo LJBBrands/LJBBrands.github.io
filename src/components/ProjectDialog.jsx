@@ -66,7 +66,7 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
   const galleryGroups = useMemo(() => groupGallery(gallery), [gallery]);
   const hasScreenshotGallery = project?.visual?.type === "screenshots";
   const heroShot =
-    gallery.find((item) => item.label === "Home Live Presence") ||
+    gallery.find((item) => item.label === "Home — Live Presence") ||
     project?.visual?.card?.primary ||
     gallery[0];
   const accent = project?.accent || theme.accent;
@@ -188,7 +188,7 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
 
                       {project.highlights?.length ? (
                         <div className="mt-5">
-                          <h3 className="text-xs font-medium uppercase tracking-[0.14em] text-white/40">
+                          <h3 className="text-xs font-medium tracking-[0.04em] text-white/45">
                             Highlights
                           </h3>
                           <ul className="mt-3 flex flex-wrap gap-2">
@@ -209,24 +209,34 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
 
                   {galleryGroups.length ? (
                     <div className="mt-8 space-y-8">
-                      {galleryGroups.map((group) => (
-                        <section key={group.name}>
-                          <h3 className="text-xs font-medium uppercase tracking-[0.14em] text-white/40">
-                            {group.name}
-                          </h3>
-                          <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3">
-                            {group.items.map((shot) => (
-                              <ScreenshotCard
-                                key={shot.src}
-                                screenshot={shot}
-                                theme={theme}
-                                compact
-                                caption
-                              />
-                            ))}
-                          </div>
-                        </section>
-                      ))}
+                      {galleryGroups.map((group) => {
+                        const lone = group.items.length === 1;
+
+                        return (
+                          <section key={group.name}>
+                            <h3 className="text-xs font-medium tracking-[0.04em] text-white/45">
+                              {group.name}
+                            </h3>
+                            <div
+                              className={`mt-3 grid gap-4 ${
+                                lone
+                                  ? "max-w-xs grid-cols-1 sm:max-w-sm"
+                                  : "grid-cols-1 sm:grid-cols-2"
+                              }`}
+                            >
+                              {group.items.map((shot) => (
+                                <ScreenshotCard
+                                  key={shot.src}
+                                  screenshot={shot}
+                                  theme={theme}
+                                  compact
+                                  caption
+                                />
+                              ))}
+                            </div>
+                          </section>
+                        );
+                      })}
                     </div>
                   ) : null}
                 </div>
@@ -248,8 +258,8 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
                         className="mt-4 rounded-[1.25rem] border px-4 py-4"
                         style={{ borderColor: theme.cardBorder }}
                       >
-                        <div className="text-xs font-medium uppercase tracking-[0.14em] text-white/40">
-                          Media library
+                        <div className="text-xs font-medium tracking-[0.04em] text-white/45">
+                          Media Library
                         </div>
                         <p className="mt-2 text-sm leading-6 text-white/55">
                           Episode links, thumbnails, and watch destinations will
@@ -278,7 +288,7 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
 
                     {project.highlights?.length ? (
                       <div className="mt-6">
-                        <h3 className="text-xs font-medium uppercase tracking-[0.14em] text-white/40">
+                        <h3 className="text-xs font-medium tracking-[0.04em] text-white/45">
                           Highlights
                         </h3>
                         <ul className="mt-3 flex flex-wrap gap-2">
