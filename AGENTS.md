@@ -9,6 +9,7 @@ These instructions apply to the entire repository. Preserve and evolve the exist
 - The public parent brand is **LJB Media Group**.
 - The public product name for the macOS file-organization tool is **Arbor**.
 - Do not use the internal codenames **Atlas** or **Project Atlas** in any public-facing UI, navigation, metadata, alt text, status labels, or customer-facing copy.
+- Prefer a card-driven interactive directory: concise hero, project grid with expandable details, compact About/Contact/Support.
 - Keep the experience premium, cinematic, minimal, and handcrafted.
 - Preserve the dark visual system with restrained white and neon-green accents.
 - Avoid generic AI-style layouts, cheap gradients, excessive effects, visual clutter, and unnecessary rewrites.

@@ -7,7 +7,7 @@ export default function SiteNav({ theme }) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
+    const onScroll = () => setScrolled(window.scrollY > 10);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -24,9 +24,7 @@ export default function SiteNav({ theme }) {
     if (!open) return undefined;
 
     const onKeyDown = (event) => {
-      if (event.key === "Escape") {
-        setOpen(false);
-      }
+      if (event.key === "Escape") setOpen(false);
     };
 
     window.addEventListener("keydown", onKeyDown);
@@ -34,8 +32,7 @@ export default function SiteNav({ theme }) {
   }, [open]);
 
   const onNavClick = (href) => (event) => {
-    const id = href.replace("#", "");
-    handleSectionClick(id)(event);
+    handleSectionClick(href.replace("#", ""))(event);
     setOpen(false);
   };
 
@@ -46,18 +43,18 @@ export default function SiteNav({ theme }) {
       }`}
       style={{
         backgroundColor:
-          scrolled || open ? "rgba(0,0,0,0.72)" : "transparent",
+          scrolled || open ? "rgba(0,0,0,0.78)" : "transparent",
         borderBottom:
           scrolled || open
             ? `1px solid ${theme.cardBorder}`
             : "1px solid transparent",
       }}
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4 sm:px-8 lg:px-10">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3.5 sm:px-8 lg:px-10">
         <a
           href="#top"
           onClick={onNavClick("#top")}
-          className="group flex min-w-0 items-center gap-3"
+          className="flex min-w-0 items-center gap-3"
           aria-label="LJB Media Group home"
         >
           <span
@@ -75,16 +72,13 @@ export default function SiteNav({ theme }) {
           </span>
         </a>
 
-        <nav
-          className="hidden items-center gap-0.5 xl:flex"
-          aria-label="Primary"
-        >
+        <nav className="hidden items-center gap-1 md:flex" aria-label="Primary">
           {navItems.map((item) => (
             <a
               key={item.href}
               href={item.href}
               onClick={onNavClick(item.href)}
-              className="rounded-full px-2.5 py-2 text-[13px] text-white/68 transition hover:bg-white/5 hover:text-white"
+              className="rounded-full px-3 py-2 text-sm text-white/68 transition hover:bg-white/5 hover:text-white"
             >
               {item.label}
             </a>
@@ -93,7 +87,7 @@ export default function SiteNav({ theme }) {
 
         <button
           type="button"
-          className="inline-flex items-center justify-center rounded-full border px-4 py-2 text-sm text-white/88 transition hover:bg-white/10 xl:hidden"
+          className="inline-flex min-h-[44px] items-center justify-center rounded-full border px-4 py-2 text-sm text-white/88 transition hover:bg-white/10 md:hidden"
           style={{
             backgroundColor: theme.heroPillBg,
             borderColor: theme.cardBorder,
@@ -110,7 +104,7 @@ export default function SiteNav({ theme }) {
       {open ? (
         <nav
           id="mobile-nav"
-          className="border-t px-6 py-5 xl:hidden"
+          className="border-t px-5 py-4 md:hidden"
           style={{ borderColor: theme.cardBorder }}
           aria-label="Mobile"
         >

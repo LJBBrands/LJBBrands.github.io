@@ -1,55 +1,48 @@
-import { GITHUB_URL, SUPPORT_LINK } from "../../data/awyContent";
+import { navItems } from "../../data/projects";
 import { handleSectionClick } from "../../utils/scrollToSection";
 
 export default function SiteFooter({ theme }) {
+  const year = new Date().getFullYear();
+
   return (
-    <footer className="mx-auto max-w-6xl pb-10">
+    <footer className="mx-auto max-w-6xl pb-8">
       <div
-        className="flex flex-col gap-4 rounded-[1.5rem] border px-6 py-5 backdrop-blur-2xl md:flex-row md:items-center md:justify-between"
+        className="flex flex-col gap-5 rounded-[1.5rem] border px-5 py-5 backdrop-blur-2xl sm:px-6 md:flex-row md:items-center md:justify-between"
         style={{
           backgroundColor: theme.panelBg,
           borderColor: theme.cardBorder,
         }}
       >
-        <div className="text-sm text-white/58">
-          © 2026 LJB Media Group. Built with purpose.
+        <div>
+          <div className="text-sm font-medium text-white/80">
+            LJB Media Group
+          </div>
+          <div className="mt-1 text-sm text-white/50">
+            © {year} LJB Media Group
+          </div>
         </div>
 
-        <div className="flex flex-wrap items-center gap-5 text-sm text-white/70">
-          {GITHUB_URL ? (
+        <nav
+          className="flex flex-wrap items-center gap-x-5 gap-y-3 text-sm text-white/70"
+          aria-label="Footer"
+        >
+          {navItems.map((item) => (
             <a
-              href={GITHUB_URL}
-              target="_blank"
-              rel="noreferrer"
+              key={item.href}
+              href={item.href}
+              onClick={handleSectionClick(item.href.replace("#", ""))}
               className="transition hover:text-white"
             >
-              GitHub
+              {item.label}
             </a>
-          ) : null}
-          <a
-            href="#support"
-            onClick={handleSectionClick("support")}
-            className="transition hover:text-white"
-          >
-            Support
-          </a>
-          <a href={SUPPORT_LINK} className="transition hover:text-white">
-            Awy Support
-          </a>
+          ))}
           <a href="/privacy/" className="transition hover:text-white">
             Privacy
           </a>
           <a href="/terms/" className="transition hover:text-white">
             Terms
           </a>
-          <a
-            href="#contact"
-            onClick={handleSectionClick("contact")}
-            className="transition hover:text-white"
-          >
-            Contact
-          </a>
-        </div>
+        </nav>
       </div>
     </footer>
   );
