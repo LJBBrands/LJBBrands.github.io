@@ -1,8 +1,8 @@
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useEffect, useId, useMemo, useRef } from "react";
 import { groupGallery } from "../data/projects";
+import DeviceFrame from "./DeviceFrame";
 import ProjectVisual from "./ProjectVisual";
-import ScreenshotCard from "./ScreenshotCard";
 
 const FOCUSABLE =
   'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
@@ -101,7 +101,7 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
               reduceMotion ? undefined : { opacity: 0, y: 16, scale: 0.985 }
             }
             transition={{ duration: reduceMotion ? 0 : 0.22 }}
-            className="relative z-10 flex max-h-[92vh] w-full max-w-5xl flex-col overflow-hidden rounded-t-[1.75rem] border border-b-0 sm:max-h-[88vh] sm:rounded-[1.75rem] sm:border-b"
+            className="relative z-10 flex max-h-[90vh] w-full max-w-5xl flex-col overflow-hidden rounded-t-[1.75rem] border border-b-0 sm:max-h-[86vh] sm:rounded-[1.75rem] sm:border-b"
             style={{
               backgroundColor: "rgba(7,9,7,0.97)",
               borderColor: theme.cardBorder,
@@ -150,26 +150,19 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
 
             <div className="overflow-y-auto overscroll-contain">
               {hasScreenshotGallery ? (
-                <div className="p-5 sm:p-6">
-                  <div className="grid gap-6 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
-                    <div className="mx-auto w-full max-w-[280px] lg:max-w-none">
+                <div className="px-5 pb-8 pt-5 sm:px-8 sm:pb-10 sm:pt-6">
+                  <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-10">
+                    <div className="awy-hero-stage">
                       {heroShot ? (
-                        <ScreenshotCard
+                        <DeviceFrame
                           screenshot={heroShot}
-                          theme={theme}
+                          size="hero"
                           caption
                         />
-                      ) : (
-                        <div
-                          className="overflow-hidden rounded-[1.35rem] border"
-                          style={{ borderColor: theme.cardBorder }}
-                        >
-                          <ProjectVisual project={project} theme={theme} />
-                        </div>
-                      )}
+                      ) : null}
                     </div>
 
-                    <div>
+                    <div className="lg:py-4">
                       <p
                         id={descriptionId}
                         className="text-sm leading-6 text-white/68 sm:text-[15px] sm:leading-7"
@@ -208,28 +201,25 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
                   </div>
 
                   {galleryGroups.length ? (
-                    <div className="mt-8 space-y-8">
+                    <div className="mt-10 space-y-10 border-t pt-8 sm:mt-12 sm:space-y-12 sm:pt-10"
+                      style={{ borderColor: theme.cardBorder }}
+                    >
                       {galleryGroups.map((group) => {
                         const lone = group.items.length === 1;
 
                         return (
                           <section key={group.name}>
-                            <h3 className="text-xs font-medium tracking-[0.04em] text-white/45">
+                            <h3 className="mb-4 text-center text-xs font-medium tracking-[0.04em] text-white/45 sm:text-left">
                               {group.name}
                             </h3>
                             <div
-                              className={`mt-3 grid gap-4 ${
-                                lone
-                                  ? "max-w-xs grid-cols-1 sm:max-w-sm"
-                                  : "grid-cols-1 sm:grid-cols-2"
-                              }`}
+                              className={lone ? "device-solo" : "device-pair"}
                             >
                               {group.items.map((shot) => (
-                                <ScreenshotCard
+                                <DeviceFrame
                                   key={shot.src}
                                   screenshot={shot}
-                                  theme={theme}
-                                  compact
+                                  size="gallery"
                                   caption
                                 />
                               ))}

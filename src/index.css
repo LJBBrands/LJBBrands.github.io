@@ -64,3 +64,132 @@ a {
 summary::-webkit-details-marker {
   display: none;
 }
+
+/* Phone presentation stages — believable device scale */
+.device-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.65rem;
+  width: 100%;
+}
+
+.device-frame {
+  position: relative;
+  flex-shrink: 0;
+  border-radius: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(8, 10, 10, 0.92);
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  padding: 0;
+}
+
+.device-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center top;
+  border-radius: inherit;
+  vertical-align: middle;
+}
+
+.device-frame--hero {
+  width: clamp(210px, 22vw, 310px);
+}
+
+.device-frame--gallery {
+  width: clamp(210px, 18vw, 270px);
+}
+
+.device-frame--card {
+  width: 100%;
+  border-radius: 1.35rem;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.4);
+}
+
+.device-frame--card-side {
+  width: 100%;
+  border-radius: 1.2rem;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.36);
+}
+
+.device-frame__fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 9 / 19.5;
+  width: 100%;
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.device-caption {
+  max-width: 16rem;
+  text-align: center;
+  font-size: 0.75rem;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.52);
+}
+
+.device-pair {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  width: 100%;
+  padding: 0.5rem 0 0.25rem;
+}
+
+.device-solo {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 0.5rem 0 0.25rem;
+}
+
+.awy-hero-stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  padding: clamp(1rem, 2.5vh, 2rem) 0.5rem;
+}
+
+.awy-card-stage {
+  position: relative;
+  height: 210px;
+  width: 100%;
+  overflow: hidden;
+}
+
+@media (min-width: 640px) {
+  .awy-card-stage {
+    height: 228px;
+  }
+}
+
+@media (max-width: 639px) {
+  .device-frame--hero {
+    width: clamp(210px, 58vw, 260px);
+  }
+
+  .device-frame--gallery {
+    width: clamp(210px, 56vw, 255px);
+  }
+
+  .device-pair {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.75rem;
+  }
+}
+

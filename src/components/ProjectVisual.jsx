@@ -1,5 +1,6 @@
 import { useState } from "react";
-import ScreenshotCard from "./ScreenshotCard";
+import DeviceFrame from "./DeviceFrame";
+import MuscleSedanOutline from "./MuscleSedanOutline";
 
 const FRAME = "relative h-[210px] w-full overflow-hidden sm:h-[228px]";
 
@@ -11,31 +12,25 @@ function PreviewShell({ children, className = "" }) {
   );
 }
 
-function AwyScreenshotVisual({ visual, theme }) {
+function AwyScreenshotVisual({ visual }) {
   const { primary, left, right } = visual.card;
 
   return (
-    <PreviewShell className="px-2 pt-3 sm:px-3 sm:pt-4">
-      <div className="absolute inset-0 bg-gradient-to-b from-white/[0.045] via-transparent to-black/10" />
+    <div className="awy-card-stage" aria-hidden="true">
+      <div className="absolute inset-0 bg-gradient-to-b from-white/[0.03] via-transparent to-black/20" />
 
-      <div className="absolute left-[2%] top-[18%] w-[32%] max-w-[110px] -rotate-[6deg] opacity-90 sm:left-[4%] sm:w-[34%] sm:max-w-none">
-        <div className="drop-shadow-[0_12px_24px_rgba(0,0,0,0.4)]">
-          <ScreenshotCard screenshot={left} theme={theme} compact />
-        </div>
+      <div className="absolute left-[6%] top-[20%] w-[28%] max-w-[96px] -rotate-[6deg] opacity-80 sm:left-[8%] sm:top-[18%] sm:w-[30%] sm:max-w-[108px]">
+        <DeviceFrame screenshot={left} size="cardSide" decorative />
       </div>
 
-      <div className="absolute right-[2%] top-[22%] w-[32%] max-w-[110px] rotate-[6deg] opacity-90 sm:right-[4%] sm:w-[34%] sm:max-w-none">
-        <div className="drop-shadow-[0_12px_24px_rgba(0,0,0,0.4)]">
-          <ScreenshotCard screenshot={right} theme={theme} compact />
-        </div>
+      <div className="absolute right-[6%] top-[24%] w-[28%] max-w-[96px] rotate-[6deg] opacity-80 sm:right-[8%] sm:top-[22%] sm:w-[30%] sm:max-w-[108px]">
+        <DeviceFrame screenshot={right} size="cardSide" decorative />
       </div>
 
-      <div className="absolute left-1/2 top-[4%] z-10 w-[48%] max-w-[148px] -translate-x-1/2 sm:w-[50%] sm:max-w-[168px]">
-        <div className="drop-shadow-[0_20px_36px_rgba(0,0,0,0.48)]">
-          <ScreenshotCard screenshot={primary} theme={theme} compact />
-        </div>
+      <div className="absolute left-1/2 top-[8%] z-10 w-[36%] max-w-[118px] -translate-x-1/2 sm:top-[6%] sm:w-[38%] sm:max-w-[128px]">
+        <DeviceFrame screenshot={primary} size="card" decorative />
       </div>
-    </PreviewShell>
+    </div>
   );
 }
 
@@ -103,14 +98,14 @@ function RewindBranded({ accent, theme }) {
   );
 }
 
-function Rt345lcBranded({ accent, theme }) {
+function Rt345lcBranded({ theme }) {
   return (
     <PreviewShell className="px-5 py-5">
       <div
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(160deg, rgba(255,255,255,0.05) 0%, transparent 45%), radial-gradient(circle at 70% 30%, rgba(184,255,90,0.08), transparent 40%)",
+            "linear-gradient(160deg, rgba(255,255,255,0.04) 0%, transparent 48%), radial-gradient(circle at 50% 40%, rgba(184,255,90,0.06), transparent 46%)",
         }}
       />
       <div className="relative flex h-full flex-col justify-between">
@@ -126,35 +121,12 @@ function Rt345lcBranded({ accent, theme }) {
           </span>
         </div>
 
-        <div className="relative mx-auto w-full max-w-[240px]">
-          <div
-            className="absolute inset-x-6 top-1/2 h-px -translate-y-1/2"
-            style={{
-              background: `linear-gradient(90deg, transparent, ${accent}55, transparent)`,
-            }}
-          />
-          <svg
-            viewBox="0 0 240 72"
-            className="relative mx-auto h-16 w-full text-white/75"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.4"
-          >
-            <path d="M28 48h18l14-18h78l22 18h42" />
-            <path d="M58 48c0 8-6 14-14 14s-14-6-14-14 6-14 14-14 14 6 14 14Z" />
-            <path d="M196 48c0 8-6 14-14 14s-14-6-14-14 6-14 14-14 14 6 14 14Z" />
-            <path d="M72 30h54l12 12H84L72 30Z" opacity="0.7" />
-            <path d="M20 56h200" opacity="0.35" />
-          </svg>
+        <div className="relative mx-auto w-full max-w-[280px] px-1">
+          <MuscleSedanOutline className="mx-auto h-[4.75rem] w-full text-[#C8CDD4] sm:h-[5.25rem]" />
         </div>
 
-        <div>
-          <div className="text-2xl font-semibold tracking-tight text-white">
-            RT345LC
-          </div>
-          <div className="mt-1 text-[11px] text-white/50">
-            Builds · Photography · Road Trips
-          </div>
+        <div className="text-[11px] text-white/50">
+          Builds · Photography · Road Trips
         </div>
       </div>
     </PreviewShell>
@@ -274,7 +246,7 @@ function getBrandedFallback(project, theme) {
   const brand = project.visual?.brand;
 
   if (brand === "rewind") return <RewindBranded accent={accent} theme={theme} />;
-  if (brand === "rt345lc") return <Rt345lcBranded accent={accent} theme={theme} />;
+  if (brand === "rt345lc") return <Rt345lcBranded theme={theme} />;
   if (brand === "give-love-co") return <GiveLoveBranded theme={theme} />;
   if (brand === "arbor") return <ArborBranded accent={accent} theme={theme} />;
   return <PreviewShell />;
@@ -317,7 +289,7 @@ export default function ProjectVisual({ project, theme }) {
   const visual = project.visual;
 
   if (visual?.type === "screenshots" && visual.card?.primary) {
-    return <AwyScreenshotVisual visual={visual} theme={theme} />;
+    return <AwyScreenshotVisual visual={visual} />;
   }
 
   if (visual?.type === "branded") {
