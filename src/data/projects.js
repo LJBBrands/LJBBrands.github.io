@@ -16,6 +16,13 @@ const awyShot = (fileName, label, alt, group) => ({
   incomplete workflows, admin-heavy menus, and empty/unfinished states.
 */
 
+/*
+  RT345LC visual: preferred asset is an owner-supplied photograph of the
+  actual Charger at public/projects/rt345lc/rt345lc-hero.webp
+  (side or front three-quarter, cinematic crop). Until that file is present,
+  the card uses a temporary non-public-facing outline fallback.
+*/
+
 export const projects = [
   {
     id: "awy",
@@ -58,89 +65,120 @@ export const projects = [
           "Community"
         ),
       },
-      // Exact public gallery order (8 images). Dark primary, Aurora as accent.
-      gallery: [
-        awyShot(
-          "awy-home-live-presence-dark.jpg",
-          "Home — Live Presence",
-          "Awy Home Live Presence in a dark theme",
-          "Presence"
-        ),
-        awyShot(
-          "awy-profile-overview-dark.jpg",
-          "Profile — Overview",
-          "Awy Profile overview in a dark theme",
-          "Identity"
-        ),
-        awyShot(
-          "awy-profile-create-menu-dark.jpg",
-          "Profile — Create Menu",
-          "Awy Profile create menu in a dark theme",
-          "Identity"
-        ),
-        awyShot(
-          "awy-home-activity-dark.jpg",
-          "Home — Activity",
-          "Awy Home activity overview in a dark theme",
-          "Presence"
-        ),
-        awyShot(
-          "awy-string-privacy-controls-dark.jpg",
-          "String — Privacy Controls",
-          "Awy String privacy controls in a dark theme",
-          "Private Connection"
-        ),
-        awyShot(
-          "awy-lounges-featured-aurora.jpg",
-          "Lounges — Featured Lounges",
-          "Awy Featured Lounges with Aurora theme accent",
-          "Community"
-        ),
-        awyShot(
-          "awy-lounge-car-culture-dark.jpg",
-          "Lounge — Car Culture",
-          "Awy Car Culture Lounge in a dark theme",
-          "Community"
-        ),
-        awyShot(
-          "awy-profile-studio-aurora.jpg",
-          "Profile Studio",
-          "Awy Profile Studio with Aurora theme accent",
-          "Personalization"
-        ),
-      ],
     },
-    story: {
-      sections: [
+    showcase: {
+      slides: [
         {
-          group: "Presence",
-          title: "Presence",
-          headline: "Stay aware without the feed.",
-          body: "Live Presence and calm activity keep shared rhythm visible — so connection stays intentional instead of constant.",
+          id: "presence",
+          eyebrow: "Presence",
+          title: "Live Presence",
+          description:
+            "See what is active now without turning connection into an endless feed.",
+          points: ["Live status", "Shared rhythm", "No feed pressure"],
+          image: awyShot(
+            "awy-home-live-presence-dark.jpg",
+            "Home — Live Presence",
+            "Awy Home Live Presence in a dark theme",
+            "Presence"
+          ),
         },
         {
-          group: "Identity",
-          title: "Identity",
-          headline: "A profile you control.",
-          body: "Overview and create flows keep personal space clear, consent-aware, and ready when you choose to share.",
+          id: "activity",
+          eyebrow: "Activity",
+          title: "A Calmer Activity View",
+          description:
+            "Recent activity stays organized around meaningful interactions rather than engagement pressure.",
+          points: ["Meaningful updates", "Clear context", "Less noise"],
+          image: awyShot(
+            "awy-home-activity-dark.jpg",
+            "Home — Activity",
+            "Awy Home activity overview in a dark theme",
+            "Presence"
+          ),
         },
         {
-          group: "Private Connection",
-          title: "Private Connection",
-          headline: "Strings built for care.",
-          body: "Privacy controls protect one-to-one threads that deserve more attention than a noisy inbox.",
+          id: "identity",
+          eyebrow: "Identity",
+          title: "Your Space",
+          description:
+            "A personal profile built around identity, availability, and intentional sharing.",
+          points: ["Identity", "Availability", "Intentional sharing"],
+          image: awyShot(
+            "awy-profile-overview-dark.jpg",
+            "Profile — Overview",
+            "Awy Profile overview in a dark theme",
+            "Identity"
+          ),
         },
         {
-          group: "Community",
-          title: "Community",
-          headline: "Quiet rooms with shared purpose.",
-          body: "Featured Lounges and focused spaces like Car Culture gather people around rhythm, not chaos.",
+          id: "create",
+          eyebrow: "Create",
+          title: "Share With Intention",
+          description:
+            "Choose the right format for the moment without being pushed into a single posting pattern.",
+          points: ["Format choice", "Moment-first", "No single pattern"],
+          image: awyShot(
+            "awy-profile-create-menu-dark.jpg",
+            "Profile — Create Menu",
+            "Awy Profile create menu in a dark theme",
+            "Identity"
+          ),
         },
         {
-          group: "Personalization",
-          title: "Personalization",
-          headline: "A space that feels like yours.",
-          body: "Profile Studio lets atmosphere and expression stay personal while the product remains calm and restrained.",
+          id: "private-connection",
+          eyebrow: "Private Connection",
+          title: "Consent-Aware Conversations",
+          description:
+            "Private connections include clear boundaries and controls that remain understandable.",
+          points: ["Clear boundaries", "Privacy controls", "Understandable"],
+          image: awyShot(
+            "awy-string-privacy-controls-dark.jpg",
+            "String — Privacy Controls",
+            "Awy String privacy controls in a dark theme",
+            "Private Connection"
+          ),
+        },
+        {
+          id: "lounges",
+          eyebrow: "Lounges",
+          title: "Spaces With Purpose",
+          description:
+            "Join communities organized around interests, support, location, and shared rhythm.",
+          points: ["Interests", "Support", "Shared rhythm"],
+          image: awyShot(
+            "awy-lounges-featured-aurora.jpg",
+            "Lounges — Featured Lounges",
+            "Awy Featured Lounges with Aurora theme accent",
+            "Community"
+          ),
+        },
+        {
+          id: "community",
+          eyebrow: "Community",
+          title: "Communities That Feel Alive",
+          description:
+            "Lounges give hobbies and shared interests a focused place to develop.",
+          points: ["Focused rooms", "Shared interests", "Living spaces"],
+          image: awyShot(
+            "awy-lounge-car-culture-dark.jpg",
+            "Lounge — Car Culture",
+            "Awy Car Culture Lounge in a dark theme",
+            "Community"
+          ),
+        },
+        {
+          id: "personalization",
+          eyebrow: "Personalization",
+          title: "Make Awy Yours",
+          description:
+            "Personalization adds atmosphere and identity without compromising clarity.",
+          points: ["Atmosphere", "Identity", "Clarity first"],
+          image: awyShot(
+            "awy-profile-studio-aurora.jpg",
+            "Profile Studio",
+            "Awy Profile Studio with Aurora theme accent",
+            "Personalization"
+          ),
         },
       ],
     },
@@ -193,8 +231,10 @@ export const projects = [
     visual: {
       type: "branded",
       brand: "rt345lc",
+      // Preferred: owner Charger photo (side or front 3/4). See asset note above.
       hero: projectAsset("rt345lc", "rt345lc-hero.webp"),
       alt: "RT345LC project vehicle",
+      coverStyle: "automotive-editorial",
     },
     primaryAction: null,
     accent: "#F2F2F2",
@@ -251,44 +291,8 @@ export const projects = [
   },
 ];
 
-export const GALLERY_GROUP_ORDER = [
-  "Presence",
-  "Identity",
-  "Private Connection",
-  "Community",
-  "Personalization",
-];
-
-export function groupGallery(gallery = []) {
-  const groups = new Map();
-
-  for (const item of gallery) {
-    const key = item.group || "Gallery";
-    if (!groups.has(key)) groups.set(key, []);
-    groups.get(key).push(item);
-  }
-
-  return GALLERY_GROUP_ORDER.filter((name) => groups.has(name)).map(
-    (name) => ({
-      name,
-      items: groups.get(name),
-    })
-  );
-}
-
-export function buildAwyStory(project) {
-  if (!project?.story?.sections) return [];
-
-  const grouped = groupGallery(project.visual?.gallery ?? []);
-  const byGroup = new Map(grouped.map((entry) => [entry.name, entry.items]));
-
-  return project.story.sections
-    .map((section, index) => ({
-      ...section,
-      items: byGroup.get(section.group) ?? [],
-      reverse: index % 2 === 1,
-    }))
-    .filter((section) => section.items.length > 0);
+export function getAwyShowcaseSlides(project) {
+  return project?.showcase?.slides ?? [];
 }
 
 export const navItems = [

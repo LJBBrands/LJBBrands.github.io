@@ -1,6 +1,8 @@
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useEffect, useId, useRef } from "react";
-import AwyProductStory from "./AwyProductStory";
+import { faqItems } from "../data/awyContent";
+import { getAwyShowcaseSlides } from "../data/projects";
+import AwyShowcase from "./AwyShowcase";
 import ProjectVisual from "./ProjectVisual";
 
 const FOCUSABLE =
@@ -61,8 +63,11 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
     };
   }, [open, onClose]);
 
-  const hasScreenshotGallery = project?.visual?.type === "screenshots";
+  const isAwyShowcase =
+    project?.visual?.type === "screenshots" &&
+    getAwyShowcaseSlides(project).length > 0;
   const accent = project?.accent || theme.accent;
+  const slides = isAwyShowcase ? getAwyShowcaseSlides(project) : [];
 
   return (
     <AnimatePresence>
@@ -94,7 +99,7 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
               reduceMotion ? undefined : { opacity: 0, y: 16, scale: 0.985 }
             }
             transition={{ duration: reduceMotion ? 0 : 0.22 }}
-            className="relative z-10 flex max-h-[90vh] w-full max-w-6xl flex-col overflow-hidden rounded-t-[1.75rem] border border-b-0 sm:max-h-[88vh] sm:rounded-[1.75rem] sm:border-b"
+            className="relative z-10 flex max-h-[92vh] w-full max-w-6xl flex-col overflow-hidden rounded-t-[1.75rem] border border-b-0 sm:max-h-[90vh] sm:rounded-[1.75rem] sm:border-b"
             style={{
               backgroundColor: "rgba(7,9,7,0.97)",
               borderColor: theme.cardBorder,
@@ -142,13 +147,80 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
             </div>
 
             <div className="overflow-y-auto overscroll-contain">
-              {hasScreenshotGallery ? (
-                <div className="px-5 pb-12 pt-6 sm:px-10 sm:pb-16 sm:pt-8 lg:px-12">
-                  <AwyProductStory
-                    project={project}
-                    theme={theme}
-                    descriptionId={descriptionId}
-                  />
+              {isAwyShowcase ? (
+                <div className="px-5 pb-10 pt-5 sm:px-8 sm:pb-12 sm:pt-6 lg:px-10">
+                  <p
+                    id={descriptionId}
+                    className="max-w-3xl text-sm leading-6 text-white/68 sm:text-[15px] sm:leading-7"
+                  >
+                    {project.description}
+                  </p>
+
+                  <div className="mt-5 sm:mt-6">
+                    <AwyShowcase slides={slides} theme={theme} />
+                  </div>
+
+                  <div
+                    className="mt-8 space-y-6 border-t pt-7 sm:mt-10 sm:pt-8"
+                    style={{ borderColor: theme.cardBorder }}
+                  >
+                    {project.summary ? (
+                      <p className="max-w-2xl text-sm leading-6 text-white/58">
+                        {project.summary}
+                      </p>
+                    ) : null}
+
+                    {project.highlights?.length ? (
+                      <ul className="flex flex-wrap gap-2">
+                        {project.highlights.map((item) => (
+                          <li
+                            key={item}
+                            className="rounded-full border px-3 py-1.5 text-[13px] text-white/72"
+                            style={{ borderColor: theme.cardBorder }}
+                          >
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    ) : null}
+
+                    <div>
+                      <h3 className="text-xs font-medium tracking-[0.04em] text-white/45">
+                        FAQ
+                      </h3>
+                      <div className="mt-3 space-y-2">
+                        {faqItems.slice(0, 5).map((item) => (
+                          <details
+                            key={item.question}
+                            className="rounded-[1rem] border px-4 py-3"
+                            style={{ borderColor: theme.cardBorder }}
+                          >
+                            <summary className="cursor-pointer text-sm text-white/80">
+                              {item.question}
+                            </summary>
+                            <p className="mt-2 text-sm leading-6 text-white/55">
+                              {item.answer}
+                            </p>
+                          </details>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="flex flex-wrap gap-4 text-sm text-white/55">
+                      <a
+                        href={`${import.meta.env.BASE_URL}privacy/`}
+                        className="transition hover:text-white"
+                      >
+                        Privacy
+                      </a>
+                      <a
+                        href={`${import.meta.env.BASE_URL}terms/`}
+                        className="transition hover:text-white"
+                      >
+                        Terms
+                      </a>
+                    </div>
+                  </div>
                 </div>
               ) : (
                 <div className="grid gap-0 lg:grid-cols-[0.95fr_1.05fr]">

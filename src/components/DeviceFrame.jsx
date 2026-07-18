@@ -20,13 +20,15 @@ export default function DeviceFrame({
   }, [src]);
 
   const frameClass =
-    size === "hero"
-      ? "device-frame device-frame--hero"
-      : size === "card"
-        ? "device-frame device-frame--card"
-        : size === "cardSide"
-          ? "device-frame device-frame--card-side"
-          : "device-frame device-frame--gallery";
+    size === "showcase"
+      ? "device-frame device-frame--showcase"
+      : size === "hero"
+        ? "device-frame device-frame--hero"
+        : size === "card"
+          ? "device-frame device-frame--card"
+          : size === "cardSide"
+            ? "device-frame device-frame--card-side"
+            : "device-frame device-frame--gallery";
 
   return (
     <figure className={`device-stage ${className}`.trim()}>

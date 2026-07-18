@@ -19,15 +19,15 @@ function AwyScreenshotVisual({ visual }) {
     <div className="awy-card-stage" aria-hidden="true">
       <div className="absolute inset-0 bg-gradient-to-b from-white/[0.03] via-transparent to-black/20" />
 
-      <div className="absolute left-[6%] top-[20%] w-[28%] max-w-[96px] -rotate-[6deg] opacity-80 sm:left-[8%] sm:top-[18%] sm:w-[30%] sm:max-w-[108px]">
+      <div className="awy-card-phone awy-card-phone--left">
         <DeviceFrame screenshot={left} size="cardSide" decorative />
       </div>
 
-      <div className="absolute right-[6%] top-[24%] w-[28%] max-w-[96px] rotate-[6deg] opacity-80 sm:right-[8%] sm:top-[22%] sm:w-[30%] sm:max-w-[108px]">
+      <div className="awy-card-phone awy-card-phone--right">
         <DeviceFrame screenshot={right} size="cardSide" decorative />
       </div>
 
-      <div className="absolute left-1/2 top-[8%] z-10 w-[36%] max-w-[118px] -translate-x-1/2 sm:top-[6%] sm:w-[38%] sm:max-w-[128px]">
+      <div className="awy-card-phone awy-card-phone--center">
         <DeviceFrame screenshot={primary} size="card" decorative />
       </div>
     </div>
@@ -98,37 +98,65 @@ function RewindBranded({ accent, theme }) {
   );
 }
 
-function Rt345lcBranded({ theme }) {
+function Rt345lcEditorialChrome({ theme, children = null }) {
   return (
-    <PreviewShell className="px-5 py-5">
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(160deg, rgba(255,255,255,0.04) 0%, transparent 48%), radial-gradient(circle at 50% 40%, rgba(184,255,90,0.06), transparent 46%)",
-        }}
-      />
-      <div className="relative flex h-full flex-col justify-between">
-        <div className="flex items-center justify-between">
-          <span
-            className="rounded-md border px-2 py-1 text-[10px] font-semibold tracking-[0.18em]"
-            style={{ borderColor: theme.accentBorder, color: theme.accent }}
-          >
-            LJB
-          </span>
-          <span className="text-[10px] uppercase tracking-[0.18em] text-white/40">
-            Automotive
-          </span>
-        </div>
-
-        <div className="relative mx-auto w-full max-w-[280px] px-1">
-          <MuscleSedanOutline className="mx-auto h-[5.25rem] w-full text-[#C8CDD4] sm:h-[5.75rem]" />
-        </div>
-
-        <div className="text-[11px] text-white/50">
-          Builds · Photography · Road Trips
-        </div>
+    <div className="relative flex h-full flex-col justify-between px-5 py-4">
+      <div className="relative z-10 flex items-center justify-between">
+        <span
+          className="rounded-md border px-2 py-1 text-[10px] font-semibold tracking-[0.18em]"
+          style={{ borderColor: theme.accentBorder, color: theme.accent }}
+        >
+          LJB
+        </span>
+        <span className="text-[10px] uppercase tracking-[0.18em] text-white/40">
+          Automotive
+        </span>
       </div>
+
+      <div className="relative z-10 flex min-h-0 flex-1 items-center justify-center py-2">
+        {children}
+      </div>
+
+      <div className="relative z-10 text-[11px] text-white/50">
+        Builds · Photography · Road Trips
+      </div>
+    </div>
+  );
+}
+
+function Rt345lcPhotoCover({ project, theme }) {
+  const [failed, setFailed] = useState(false);
+  const hero = project.visual?.hero;
+
+  if (!hero || failed) {
+    return (
+      <PreviewShell>
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(160deg, rgba(255,255,255,0.04) 0%, transparent 48%), radial-gradient(circle at 50% 42%, rgba(184,255,90,0.05), transparent 48%)",
+          }}
+        />
+        <Rt345lcEditorialChrome theme={theme}>
+          <MuscleSedanOutline className="rt345lc-outline-temp mx-auto w-[78%] max-w-[320px] text-[#C8CDD4]" />
+        </Rt345lcEditorialChrome>
+      </PreviewShell>
+    );
+  }
+
+  return (
+    <PreviewShell>
+      <img
+        src={hero}
+        alt=""
+        className="absolute inset-0 h-full w-full object-cover object-center"
+        loading="lazy"
+        draggable={false}
+        onError={() => setFailed(true)}
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/78 via-black/28 to-black/35" />
+      <Rt345lcEditorialChrome theme={theme} />
     </PreviewShell>
   );
 }
@@ -246,7 +274,7 @@ function getBrandedFallback(project, theme) {
   const brand = project.visual?.brand;
 
   if (brand === "rewind") return <RewindBranded accent={accent} theme={theme} />;
-  if (brand === "rt345lc") return <Rt345lcBranded theme={theme} />;
+  if (brand === "rt345lc") return <Rt345lcPhotoCover project={project} theme={theme} />;
   if (brand === "give-love-co") return <GiveLoveBranded theme={theme} />;
   if (brand === "arbor") return <ArborBranded accent={accent} theme={theme} />;
   return <PreviewShell />;
@@ -254,7 +282,11 @@ function getBrandedFallback(project, theme) {
 
 function HeroWithFallback({ project, theme }) {
   const [failed, setFailed] = useState(false);
-  const { hero, alt } = project.visual;
+  const { hero, alt, brand, coverStyle } = project.visual;
+
+  if (brand === "rt345lc" || coverStyle === "automotive-editorial") {
+    return <Rt345lcPhotoCover project={project} theme={theme} />;
+  }
 
   if (!hero || failed) {
     return getBrandedFallback(project, theme);
