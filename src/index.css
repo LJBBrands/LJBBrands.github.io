@@ -2,7 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Base layout: theme gradients and accents are driven in App.jsx (themes array). */
+:root {
+  --ljb-bg: #000000;
+  --ljb-accent: #b8ff5a;
+  --ljb-accent-soft: rgba(184, 255, 90, 0.14);
+  --ljb-accent-border: rgba(184, 255, 90, 0.42);
+  --ljb-text: #ffffff;
+  --ljb-muted: rgba(255, 255, 255, 0.64);
+}
 
 html {
   scroll-behavior: smooth;
@@ -12,7 +19,7 @@ body {
   margin: 0;
   min-width: 320px;
   font-family:
-    Inter,
+    Sora,
     ui-sans-serif,
     system-ui,
     -apple-system,
@@ -20,8 +27,8 @@ body {
     "SF Pro Display",
     "SF Pro Text",
     sans-serif;
-  background: #07111f;
-  color: white;
+  background: var(--ljb-bg);
+  color: var(--ljb-text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -34,6 +41,20 @@ a {
   text-decoration: none;
 }
 
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ljb-accent);
+  outline-offset: 3px;
+}
+
 ::selection {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(184, 255, 90, 0.28);
+  color: #000;
+}
+
+summary::-webkit-details-marker {
+  display: none;
 }
