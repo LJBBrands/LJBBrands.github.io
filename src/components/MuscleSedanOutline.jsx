@@ -1,8 +1,11 @@
-/** Decorative Charger-inspired muscle sedan side profile. */
+/**
+ * Original monoline side profile of a modern American muscle sedan.
+ * Stance and proportions only — not traced from manufacturer artwork.
+ */
 export default function MuscleSedanOutline({ className = "" }) {
   return (
     <svg
-      viewBox="0 0 400 130"
+      viewBox="0 0 520 160"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
@@ -11,37 +14,50 @@ export default function MuscleSedanOutline({ className = "" }) {
     >
       <g
         stroke="currentColor"
-        strokeWidth="1.75"
+        strokeWidth="1.9"
         strokeLinecap="round"
         strokeLinejoin="round"
       >
-        {/* Continuous body: long hood, tucked cabin, muscular rear */}
-        <path d="M22 86 C30 78 44 72 62 70 L118 66 C128 52 156 40 196 38 C238 36 272 42 298 54 L334 68 C352 70 368 74 382 80 C388 83 390 88 386 92 L372 98 C348 102 310 104 250 104 L112 104 C78 104 50 102 34 98 C24 95 18 90 22 86 Z" />
+        {/* Body: long hood, tucked cabin, muscular rear quarter */}
+        <path d="M22 104 C28 90 46 80 74 74 L168 66 C176 66 182 62 186 54 C198 32 232 20 278 18 C328 16 372 26 404 44 C416 52 434 62 456 68 L498 76 C508 78 514 86 512 96 C510 104 500 110 486 112 L448 116 C400 120 320 122 250 122 L118 122 C72 122 42 118 28 112 C18 108 16 106 22 104 Z" />
 
-        {/* Character / shoulder line */}
+        {/* Hood surface / fender crown */}
+        <path d="M76 74 C110 70 142 68 168 66" opacity="0.55" />
+
+        {/* Flank character line */}
         <path
-          d="M66 72 C110 68 168 64 214 62 C268 60 318 66 352 78"
-          opacity="0.5"
+          d="M86 88 C150 80 230 74 310 74 C390 74 450 82 492 96"
+          opacity="0.42"
         />
 
-        {/* Greenhouse — low, stretched */}
-        <path d="M138 66 C162 48 188 40 218 38 C250 36 276 42 296 54 L276 66 C258 58 236 54 214 54 C190 54 164 58 138 66 Z" />
-        <path d="M172 50 L178 66" opacity="0.4" />
-        <path d="M236 40 L236 64" opacity="0.32" />
+        {/* Low greenhouse */}
+        <path d="M196 62 C218 40 250 26 288 24 C330 22 366 30 392 46 L408 60 C384 50 352 44 316 44 C272 44 230 50 204 62 Z" />
 
-        {/* Front nose / grille plane */}
-        <path d="M28 84 C36 76 48 72 64 70" opacity="0.75" />
-        {/* Rear deck */}
-        <path d="M334 68 L356 70 L368 80" opacity="0.7" />
+        {/* Window division (A / B / C) */}
+        <path d="M236 36 L244 60" opacity="0.4" />
+        <path d="M300 24 L300 60" opacity="0.28" />
+        <path d="M360 34 L368 58" opacity="0.36" />
+
+        {/* Nose plane */}
+        <path d="M26 102 C38 88 56 78 80 74" opacity="0.72" />
+
+        {/* Deck / rear shoulder */}
+        <path d="M408 60 L448 66 L486 82" opacity="0.7" />
+
+        {/* Door cut suggestion */}
+        <path d="M252 62 L252 112" opacity="0.18" />
+        <path d="M332 58 L336 112" opacity="0.16" />
 
         {/* Rocker */}
-        <path d="M84 98 C140 102 230 102 318 98" opacity="0.32" />
+        <path d="M108 118 C180 122 300 122 430 116" opacity="0.26" />
 
-        {/* Wheels — grounded, proportional */}
-        <circle cx="108" cy="96" r="18" />
-        <circle cx="108" cy="96" r="8" opacity="0.5" />
-        <circle cx="300" cy="96" r="18" />
-        <circle cx="300" cy="96" r="8" opacity="0.5" />
+        {/* Front wheel */}
+        <circle cx="138" cy="114" r="22" />
+        <circle cx="138" cy="114" r="9" opacity="0.5" />
+
+        {/* Rear wheel under haunch */}
+        <circle cx="402" cy="114" r="22" />
+        <circle cx="402" cy="114" r="9" opacity="0.5" />
       </g>
     </svg>
   );

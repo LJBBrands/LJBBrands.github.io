@@ -122,7 +122,7 @@ function Rt345lcBranded({ theme }) {
         </div>
 
         <div className="relative mx-auto w-full max-w-[280px] px-1">
-          <MuscleSedanOutline className="mx-auto h-[4.75rem] w-full text-[#C8CDD4] sm:h-[5.25rem]" />
+          <MuscleSedanOutline className="mx-auto h-[5.25rem] w-full text-[#C8CDD4] sm:h-[5.75rem]" />
         </div>
 
         <div className="text-[11px] text-white/50">

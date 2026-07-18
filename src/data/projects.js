@@ -110,6 +110,40 @@ export const projects = [
         ),
       ],
     },
+    story: {
+      sections: [
+        {
+          group: "Presence",
+          title: "Presence",
+          headline: "Stay aware without the feed.",
+          body: "Live Presence and calm activity keep shared rhythm visible — so connection stays intentional instead of constant.",
+        },
+        {
+          group: "Identity",
+          title: "Identity",
+          headline: "A profile you control.",
+          body: "Overview and create flows keep personal space clear, consent-aware, and ready when you choose to share.",
+        },
+        {
+          group: "Private Connection",
+          title: "Private Connection",
+          headline: "Strings built for care.",
+          body: "Privacy controls protect one-to-one threads that deserve more attention than a noisy inbox.",
+        },
+        {
+          group: "Community",
+          title: "Community",
+          headline: "Quiet rooms with shared purpose.",
+          body: "Featured Lounges and focused spaces like Car Culture gather people around rhythm, not chaos.",
+        },
+        {
+          group: "Personalization",
+          title: "Personalization",
+          headline: "A space that feels like yours.",
+          body: "Profile Studio lets atmosphere and expression stay personal while the product remains calm and restrained.",
+        },
+      ],
+    },
     primaryAction: null,
     accent: "#B8FF5A",
   },
@@ -240,6 +274,21 @@ export function groupGallery(gallery = []) {
       items: groups.get(name),
     })
   );
+}
+
+export function buildAwyStory(project) {
+  if (!project?.story?.sections) return [];
+
+  const grouped = groupGallery(project.visual?.gallery ?? []);
+  const byGroup = new Map(grouped.map((entry) => [entry.name, entry.items]));
+
+  return project.story.sections
+    .map((section, index) => ({
+      ...section,
+      items: byGroup.get(section.group) ?? [],
+      reverse: index % 2 === 1,
+    }))
+    .filter((section) => section.items.length > 0);
 }
 
 export const navItems = [

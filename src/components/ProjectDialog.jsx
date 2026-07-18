@@ -1,7 +1,6 @@
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { useEffect, useId, useMemo, useRef } from "react";
-import { groupGallery } from "../data/projects";
-import DeviceFrame from "./DeviceFrame";
+import { useEffect, useId, useRef } from "react";
+import AwyProductStory from "./AwyProductStory";
 import ProjectVisual from "./ProjectVisual";
 
 const FOCUSABLE =
@@ -62,13 +61,7 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
     };
   }, [open, onClose]);
 
-  const gallery = project?.visual?.gallery ?? [];
-  const galleryGroups = useMemo(() => groupGallery(gallery), [gallery]);
   const hasScreenshotGallery = project?.visual?.type === "screenshots";
-  const heroShot =
-    gallery.find((item) => item.label === "Home — Live Presence") ||
-    project?.visual?.card?.primary ||
-    gallery[0];
   const accent = project?.accent || theme.accent;
 
   return (
@@ -101,7 +94,7 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
               reduceMotion ? undefined : { opacity: 0, y: 16, scale: 0.985 }
             }
             transition={{ duration: reduceMotion ? 0 : 0.22 }}
-            className="relative z-10 flex max-h-[90vh] w-full max-w-5xl flex-col overflow-hidden rounded-t-[1.75rem] border border-b-0 sm:max-h-[86vh] sm:rounded-[1.75rem] sm:border-b"
+            className="relative z-10 flex max-h-[90vh] w-full max-w-6xl flex-col overflow-hidden rounded-t-[1.75rem] border border-b-0 sm:max-h-[88vh] sm:rounded-[1.75rem] sm:border-b"
             style={{
               backgroundColor: "rgba(7,9,7,0.97)",
               borderColor: theme.cardBorder,
@@ -109,7 +102,7 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
             }}
           >
             <div
-              className="sticky top-0 z-20 flex items-center justify-between gap-3 border-b px-5 py-3.5 backdrop-blur-xl sm:px-6"
+              className="sticky top-0 z-20 flex items-center justify-between gap-3 border-b px-5 py-3.5 backdrop-blur-xl sm:px-8"
               style={{
                 borderColor: theme.cardBorder,
                 backgroundColor: "rgba(7,9,7,0.92)",
@@ -150,85 +143,12 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
 
             <div className="overflow-y-auto overscroll-contain">
               {hasScreenshotGallery ? (
-                <div className="px-5 pb-8 pt-5 sm:px-8 sm:pb-10 sm:pt-6">
-                  <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-10">
-                    <div className="awy-hero-stage">
-                      {heroShot ? (
-                        <DeviceFrame
-                          screenshot={heroShot}
-                          size="hero"
-                          caption
-                        />
-                      ) : null}
-                    </div>
-
-                    <div className="lg:py-4">
-                      <p
-                        id={descriptionId}
-                        className="text-sm leading-6 text-white/68 sm:text-[15px] sm:leading-7"
-                      >
-                        {project.description}
-                      </p>
-
-                      {project.summary ? (
-                        <p
-                          className="mt-4 rounded-[1.1rem] border px-4 py-3 text-sm leading-6 text-white/62"
-                          style={{ borderColor: theme.cardBorder }}
-                        >
-                          {project.summary}
-                        </p>
-                      ) : null}
-
-                      {project.highlights?.length ? (
-                        <div className="mt-5">
-                          <h3 className="text-xs font-medium tracking-[0.04em] text-white/45">
-                            Highlights
-                          </h3>
-                          <ul className="mt-3 flex flex-wrap gap-2">
-                            {project.highlights.map((item) => (
-                              <li
-                                key={item}
-                                className="rounded-full border px-3 py-1.5 text-[13px] text-white/72"
-                                style={{ borderColor: theme.cardBorder }}
-                              >
-                                {item}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      ) : null}
-                    </div>
-                  </div>
-
-                  {galleryGroups.length ? (
-                    <div className="mt-10 space-y-10 border-t pt-8 sm:mt-12 sm:space-y-12 sm:pt-10"
-                      style={{ borderColor: theme.cardBorder }}
-                    >
-                      {galleryGroups.map((group) => {
-                        const lone = group.items.length === 1;
-
-                        return (
-                          <section key={group.name}>
-                            <h3 className="mb-4 text-center text-xs font-medium tracking-[0.04em] text-white/45 sm:text-left">
-                              {group.name}
-                            </h3>
-                            <div
-                              className={lone ? "device-solo" : "device-pair"}
-                            >
-                              {group.items.map((shot) => (
-                                <DeviceFrame
-                                  key={shot.src}
-                                  screenshot={shot}
-                                  size="gallery"
-                                  caption
-                                />
-                              ))}
-                            </div>
-                          </section>
-                        );
-                      })}
-                    </div>
-                  ) : null}
+                <div className="px-5 pb-12 pt-6 sm:px-10 sm:pb-16 sm:pt-8 lg:px-12">
+                  <AwyProductStory
+                    project={project}
+                    theme={theme}
+                    descriptionId={descriptionId}
+                  />
                 </div>
               ) : (
                 <div className="grid gap-0 lg:grid-cols-[0.95fr_1.05fr]">
