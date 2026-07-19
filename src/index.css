@@ -93,13 +93,23 @@ summary::-webkit-details-marker {
   width: 100%;
   height: auto;
   object-fit: contain;
-  object-position: center top;
+  object-position: center;
   border-radius: inherit;
   vertical-align: middle;
 }
 
+/*
+  Showcase device width only — height follows intrinsic screenshot ratio (706×1536).
+  Viewport term shrinks the phone on short screens instead of clipping it.
+*/
 .device-frame--showcase {
-  width: clamp(320px, 29vw, 390px);
+  width: min(
+    360px,
+    28vw,
+    max(220px, calc((100dvh - 240px) * 706 / 1536))
+  );
+  max-width: 100%;
+  flex: 0 0 auto;
 }
 
 .device-frame--hero {
@@ -143,12 +153,17 @@ summary::-webkit-details-marker {
   color: rgba(255, 255, 255, 0.52);
 }
 
-/* Homepage Awy card — three-device preview */
+/* Homepage Awy card — three-device preview (card height unchanged) */
 .awy-card-stage {
   position: relative;
   height: 210px;
   width: 100%;
   overflow: hidden;
+}
+
+.awy-card-stage .device-frame img {
+  object-fit: contain;
+  object-position: center top;
 }
 
 .awy-card-phone {
@@ -157,30 +172,30 @@ summary::-webkit-details-marker {
 
 .awy-card-phone--center {
   left: 50%;
-  top: 6%;
+  top: 4%;
   z-index: 10;
-  width: 44%;
-  max-width: 148px;
+  width: 34%;
+  max-width: 112px;
   transform: translateX(-50%);
 }
 
 .awy-card-phone--left {
-  left: 5%;
-  top: 16%;
-  width: 37%;
-  max-width: 128px;
-  transform: rotate(-5deg);
-  opacity: 0.84;
+  left: 8%;
+  top: 10%;
+  width: 28%;
+  max-width: 94px;
+  transform: rotate(-4deg);
+  opacity: 0.86;
   transform-origin: center top;
 }
 
 .awy-card-phone--right {
-  right: 5%;
-  top: 18%;
-  width: 37%;
-  max-width: 128px;
-  transform: rotate(5deg);
-  opacity: 0.84;
+  right: 8%;
+  top: 12%;
+  width: 28%;
+  max-width: 94px;
+  transform: rotate(4deg);
+  opacity: 0.86;
   transform-origin: center top;
 }
 
@@ -190,21 +205,66 @@ summary::-webkit-details-marker {
   }
 
   .awy-card-phone--center {
-    top: 5%;
-    width: 45%;
-    max-width: 158px;
+    top: 3%;
+    width: 35%;
+    max-width: 118px;
   }
 
   .awy-card-phone--left,
   .awy-card-phone--right {
-    width: 38%;
-    max-width: 132px;
+    top: 9%;
+    width: 29%;
+    max-width: 100px;
+  }
+
+  .awy-card-phone--right {
+    top: 11%;
   }
 }
 
-/* Temporary RT345LC outline sizing until owner photo ships */
-.rt345lc-outline-temp {
-  height: clamp(4.5rem, 12vw, 5.75rem);
+/* RT345LC neutral fallback (no vehicle drawing) */
+.rt345lc-fallback {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(165deg, rgba(255, 255, 255, 0.05) 0%, transparent 42%),
+    linear-gradient(180deg, #0c0e10 0%, #08090a 55%, #050606 100%);
+}
+
+.rt345lc-fallback__lines {
+  position: absolute;
+  inset: 28% 10% 32%;
+  background-image: repeating-linear-gradient(
+    180deg,
+    transparent 0,
+    transparent 10px,
+    rgba(255, 255, 255, 0.035) 10px,
+    rgba(255, 255, 255, 0.035) 11px
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 18%,
+    #000 82%,
+    transparent
+  );
+  pointer-events: none;
+}
+
+.rt345lc-fallback__title {
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.rt345lc-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
 }
 
 /* Awy swipeable showcase (dialog) */
@@ -225,9 +285,11 @@ summary::-webkit-details-marker {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: min(58vh, 560px);
-  max-height: min(62vh, 620px);
-  padding: clamp(1.25rem, 3vw, 2rem);
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  max-height: none;
+  padding: clamp(1rem, 2.5vw, 1.75rem);
   border-radius: 1.75rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
   background:
@@ -243,7 +305,7 @@ summary::-webkit-details-marker {
     ),
     rgba(10, 10, 14, 0.88);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
-  overflow: hidden;
+  overflow: visible;
   touch-action: pan-y;
   cursor: grab;
   user-select: none;
@@ -271,11 +333,24 @@ summary::-webkit-details-marker {
   z-index: 1;
   display: flex;
   justify-content: center;
-  width: 100%;
+  align-items: flex-start;
+  width: auto;
+  max-width: 100%;
+  flex: 0 0 auto;
 }
 
 .awy-showcase__device .device-stage {
   width: auto;
+  max-width: 100%;
+}
+
+.awy-showcase__device .device-frame--showcase img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+  object-position: center;
 }
 
 .awy-showcase__panel {
@@ -488,24 +563,31 @@ summary::-webkit-details-marker {
   }
 
   .device-frame--showcase {
-    width: clamp(340px, 28vw, 410px);
+    width: min(
+      370px,
+      27vw,
+      max(240px, calc((100dvh - 230px) * 706 / 1536))
+    );
   }
 }
 
 @media (max-width: 1024px) {
   .device-frame--showcase {
-    width: clamp(280px, 38vw, 340px);
-  }
-
-  .awy-showcase__stage {
-    min-height: min(52vh, 520px);
-    max-height: min(58vh, 560px);
+    width: min(
+      320px,
+      38vw,
+      max(230px, calc((100dvh - 220px) * 706 / 1536))
+    );
   }
 }
 
 @media (max-width: 639px) {
   .device-frame--showcase {
-    width: clamp(245px, 72vw, 310px);
+    width: min(
+      290px,
+      72vw,
+      max(220px, calc((100dvh - 210px) * 706 / 1536))
+    );
   }
 
   .awy-showcase__layout {
@@ -513,9 +595,7 @@ summary::-webkit-details-marker {
   }
 
   .awy-showcase__stage {
-    min-height: auto;
-    max-height: none;
-    padding: 1.1rem 0.85rem 1.25rem;
+    padding: 1rem 0.75rem 1.15rem;
   }
 
   .awy-showcase__panel {

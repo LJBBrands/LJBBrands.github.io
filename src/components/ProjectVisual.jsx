@@ -1,6 +1,5 @@
 import { useState } from "react";
 import DeviceFrame from "./DeviceFrame";
-import MuscleSedanOutline from "./MuscleSedanOutline";
 
 const FRAME = "relative h-[210px] w-full overflow-hidden sm:h-[228px]";
 
@@ -98,10 +97,10 @@ function RewindBranded({ accent, theme }) {
   );
 }
 
-function Rt345lcEditorialChrome({ theme, children = null }) {
+function Rt345lcEditorialChrome({ theme, showTitle = false }) {
   return (
-    <div className="relative flex h-full flex-col justify-between px-5 py-4">
-      <div className="relative z-10 flex items-center justify-between">
+    <div className="relative z-10 flex h-full flex-col justify-between px-5 py-4">
+      <div className="flex items-center justify-between">
         <span
           className="rounded-md border px-2 py-1 text-[10px] font-semibold tracking-[0.18em]"
           style={{ borderColor: theme.accentBorder, color: theme.accent }}
@@ -113,11 +112,13 @@ function Rt345lcEditorialChrome({ theme, children = null }) {
         </span>
       </div>
 
-      <div className="relative z-10 flex min-h-0 flex-1 items-center justify-center py-2">
-        {children}
+      <div className="flex min-h-0 flex-1 items-center justify-center py-2">
+        {showTitle ? (
+          <div className="rt345lc-fallback__title">RT345LC</div>
+        ) : null}
       </div>
 
-      <div className="relative z-10 text-[11px] text-white/50">
+      <div className="text-[11px] text-white/50">
         Builds · Photography · Road Trips
       </div>
     </div>
@@ -126,37 +127,40 @@ function Rt345lcEditorialChrome({ theme, children = null }) {
 
 function Rt345lcPhotoCover({ project, theme }) {
   const [failed, setFailed] = useState(false);
+  const [loaded, setLoaded] = useState(false);
   const hero = project.visual?.hero;
-
-  if (!hero || failed) {
-    return (
-      <PreviewShell>
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(160deg, rgba(255,255,255,0.04) 0%, transparent 48%), radial-gradient(circle at 50% 42%, rgba(184,255,90,0.05), transparent 48%)",
-          }}
-        />
-        <Rt345lcEditorialChrome theme={theme}>
-          <MuscleSedanOutline className="rt345lc-outline-temp mx-auto w-[78%] max-w-[320px] text-[#C8CDD4]" />
-        </Rt345lcEditorialChrome>
-      </PreviewShell>
-    );
-  }
+  const showPhoto = Boolean(hero) && !failed && loaded;
+  const showFallback = !hero || failed || !loaded;
 
   return (
     <PreviewShell>
-      <img
-        src={hero}
-        alt=""
-        className="absolute inset-0 h-full w-full object-cover object-center"
-        loading="lazy"
-        draggable={false}
-        onError={() => setFailed(true)}
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/78 via-black/28 to-black/35" />
-      <Rt345lcEditorialChrome theme={theme} />
+      {hero && !failed ? (
+        <img
+          src={hero}
+          alt=""
+          className="rt345lc-photo"
+          loading="lazy"
+          draggable={false}
+          onLoad={() => setLoaded(true)}
+          onError={() => {
+            setFailed(true);
+            setLoaded(false);
+          }}
+          style={{ opacity: showPhoto ? 1 : 0 }}
+        />
+      ) : null}
+
+      {showPhoto ? (
+        <div className="absolute inset-0 bg-gradient-to-t from-black/78 via-black/28 to-black/35" />
+      ) : null}
+
+      {showFallback ? (
+        <div className="rt345lc-fallback" aria-hidden="true">
+          <div className="rt345lc-fallback__lines" />
+        </div>
+      ) : null}
+
+      <Rt345lcEditorialChrome theme={theme} showTitle={!showPhoto} />
     </PreviewShell>
   );
 }

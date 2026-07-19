@@ -121,17 +121,21 @@ export default function AwyShowcase({ slides = [], theme }) {
               initial={
                 reduceMotion
                   ? { opacity: 0 }
-                  : { opacity: 0, x: direction >= 0 ? 28 : -28 }
+                  : { opacity: 0, x: direction >= 0 ? 20 : -20 }
               }
               animate={{ opacity: 1, x: 0 }}
               exit={
                 reduceMotion
                   ? { opacity: 0 }
-                  : { opacity: 0, x: direction >= 0 ? -24 : 24 }
+                  : { opacity: 0, x: direction >= 0 ? -16 : 16 }
               }
               transition={{ duration, ease: [0.22, 1, 0.36, 1] }}
             >
-              <DeviceFrame screenshot={slide.image} size="showcase" />
+              <DeviceFrame
+                screenshot={slide.image}
+                size="showcase"
+                className="awy-showcase-device"
+              />
             </motion.div>
           </AnimatePresence>
         </div>

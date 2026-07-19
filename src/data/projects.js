@@ -17,10 +17,10 @@ const awyShot = (fileName, label, alt, group) => ({
 */
 
 /*
-  RT345LC visual: preferred asset is an owner-supplied photograph of the
-  actual Charger at public/projects/rt345lc/rt345lc-hero.webp
-  (side or front three-quarter, cinematic crop). Until that file is present,
-  the card uses a temporary non-public-facing outline fallback.
+  RT345LC visual: owner Charger photograph at
+  public/projects/rt345lc/rt345lc-hero.webp
+  (side or front three-quarter, cinematic crop).
+  Until present, the card uses a neutral automotive panel — no vehicle SVG.
 */
 
 export const projects = [
