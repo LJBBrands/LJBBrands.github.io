@@ -7,41 +7,44 @@
 
 export const primaryContact = {
   id: "general",
-  label: "General Inquiries",
   email: "hello@ljbbrands.com",
   subject: "LJB%20Media%20Group%20Inquiry",
-  ariaLabel: "Email General Inquiries",
-  cta: "Send an Email",
+  ariaLabel: "Email LJB Media Group at hello@ljbbrands.com",
+  cta: "Email LJB Media Group",
 };
 
 export const departmentContacts = [
   {
     id: "business",
     label: "Business & Partnerships",
+    shortLabel: "Business",
     email: "contact@ljbbrands.com",
     subject: "Business%20and%20Partnership%20Inquiry",
     ariaLabel: "Email Business and Partnerships",
   },
   {
     id: "podcast",
-    label: "LJB Rewind & Podcast",
+    label: "LJB Rewind",
+    shortLabel: "LJB Rewind",
     email: "podcast@ljbbrands.com",
     subject: "LJB%20Rewind%20Inquiry",
-    ariaLabel: "Email LJB Rewind and Podcast",
+    ariaLabel: "Email LJB Rewind",
   },
   {
     id: "development",
-    label: "Product Development",
+    label: "Development",
+    shortLabel: "Development",
     email: "dev@ljbbrands.com",
     subject: "Product%20Development%20Inquiry",
-    ariaLabel: "Email Product Development",
+    ariaLabel: "Email Development",
   },
   {
     id: "support",
-    label: "Customer Support",
+    label: "Support",
+    shortLabel: "Support",
     email: "support@ljbbrands.com",
     subject: "Support%20Request",
-    ariaLabel: "Email Customer Support",
+    ariaLabel: "Email Support",
   },
 ];
 
