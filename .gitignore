@@ -1,0 +1,54 @@
+# macOS
+.DS_Store
+.Trash
+
+# Xcode
+DerivedData/
+build/
+*.xcworkspace
+xcuserdata/
+*.xcuserstate
+
+# Swift Package Manager
+.build/
+
+# User/system junk
+Desktop/
+Documents/
+Downloads/
+Library/
+Movies/
+Music/
+Pictures/
+
+# Dev tools
+.codex/
+.cursor/
+.config/
+.npm/
+.ssh/
+.zsh_history
+.zsh_sessions/
+
+# Temp / misc
+*.log
+*.tmp
+
+# Node / Vite
+node_modules
+dist
+.DS_Store
+package-lock 2.json
+
+# Nested repos (IMPORTANT)
+AwyApp-pages-clean/
+.cache/
+.codex/
+.cursor/
+.supabase/
+.zprofile
+node_modules/
+DerivedData/
+
+Public/.localized
+Public/Drop Box/
