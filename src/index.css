@@ -619,3 +619,103 @@ summary::-webkit-details-marker {
   }
 }
 
+/* Contact — single premium destination */
+.contact-card {
+  display: grid;
+  gap: 2rem;
+  padding: 1.5rem;
+  border: 1px solid;
+  border-radius: 1.75rem;
+  backdrop-filter: blur(24px);
+}
+
+.contact-intro {
+  max-width: 28rem;
+}
+
+.contact-directory {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  min-width: 0;
+}
+
+.contact-primary {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid;
+}
+
+.contact-primary__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 1.25rem;
+  border: 1px solid;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.contact-primary__cta:hover {
+  background-color: rgba(184, 255, 90, 0.2);
+}
+
+.contact-departments {
+  list-style: none;
+  margin: 0;
+  padding: 0.35rem 0 0;
+}
+
+.contact-department {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 44px;
+  padding: 0.9rem 0.15rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  color: inherit;
+  transition: background-color 0.2s ease;
+}
+
+.contact-departments li:last-child .contact-department {
+  border-bottom: 0;
+  padding-bottom: 0.25rem;
+}
+
+.contact-department:hover,
+.contact-department:focus-visible {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+@media (min-width: 900px) {
+  .contact-card {
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    gap: 2.5rem 3rem;
+    align-items: center;
+    padding: 2rem 2.25rem;
+  }
+
+  .contact-primary {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 640px) {
+  .contact-card {
+    padding: 1.75rem 2rem;
+  }
+}
+

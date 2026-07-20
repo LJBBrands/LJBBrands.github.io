@@ -1,69 +1,50 @@
 /*
-  Confirmed addresses (internal / not for public UI):
+  Confirmed addresses kept internal / not for public UI:
   - backend@ljbbrands.com
   - review@ljbbrands.com
+  - investors@ljbbrands.com
 */
 
-export const contactChannels = [
-  {
-    id: "general",
-    label: "General Inquiries",
-    email: "hello@ljbbrands.com",
-    description:
-      "Questions about LJB Media Group, its projects, and general information.",
-    subject: "General%20Inquiry",
-    public: true,
-  },
+export const primaryContact = {
+  id: "general",
+  label: "General Inquiries",
+  email: "hello@ljbbrands.com",
+  subject: "LJB%20Media%20Group%20Inquiry",
+  ariaLabel: "Email General Inquiries",
+  cta: "Send an Email",
+};
+
+export const departmentContacts = [
   {
     id: "business",
-    label: "Business Inquiries",
+    label: "Business & Partnerships",
     email: "contact@ljbbrands.com",
-    description:
-      "Business discussions, collaborations, company communication, and professional opportunities.",
-    subject: "Business%20Inquiry",
-    public: true,
+    subject: "Business%20and%20Partnership%20Inquiry",
+    ariaLabel: "Email Business and Partnerships",
   },
   {
     id: "podcast",
-    label: "Podcast & LJB Rewind",
+    label: "LJB Rewind & Podcast",
     email: "podcast@ljbbrands.com",
-    description:
-      "Podcast guests, LJB Rewind opportunities, interviews, appearances, and media discussions.",
     subject: "LJB%20Rewind%20Inquiry",
-    public: true,
+    ariaLabel: "Email LJB Rewind and Podcast",
   },
   {
     id: "development",
-    label: "Technology & Development",
+    label: "Product Development",
     email: "dev@ljbbrands.com",
-    description:
-      "Awy, Arbor, software development, APIs, technical partnerships, and engineering discussions.",
-    subject: "Technology%20and%20Development%20Inquiry",
-    public: true,
+    subject: "Product%20Development%20Inquiry",
+    ariaLabel: "Email Product Development",
   },
   {
     id: "support",
-    label: "Product Support",
+    label: "Customer Support",
     email: "support@ljbbrands.com",
-    description:
-      "Help with LJB Media Group products, services, access, and customer support.",
-    subject: "Product%20Support%20Request",
-    public: true,
-  },
-  {
-    id: "investors",
-    label: "Investor Relations",
-    email: "investors@ljbbrands.com",
-    description: "Investor communications for LJB Media Group.",
-    subject: "Investor%20Inquiry",
-    public: false,
+    subject: "Support%20Request",
+    ariaLabel: "Email Customer Support",
   },
 ];
 
-export const publicContactChannels = contactChannels.filter(
-  (channel) => channel.public
-);
-
-export function contactMailto(channel) {
-  return `mailto:${channel.email}?subject=${channel.subject}`;
+export function contactMailto({ email, subject }) {
+  return `mailto:${email}?subject=${subject}`;
 }

@@ -20,6 +20,13 @@ export default function SiteFooter({ theme }) {
           <div className="mt-1 text-sm text-white/50">
             © {year} LJB Media Group
           </div>
+          <a
+            href="mailto:hello@ljbbrands.com?subject=LJB%20Media%20Group%20Inquiry"
+            aria-label="Email General Inquiries"
+            className="mt-2 inline-block text-sm text-white/55 transition hover:text-white"
+          >
+            hello@ljbbrands.com
+          </a>
         </div>
 
         <nav

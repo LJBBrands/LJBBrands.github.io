@@ -60,7 +60,7 @@ export default function SupportCard({ theme }) {
             href={supportContent.inquiryMailto}
             className="inline-flex min-h-[44px] items-center rounded-full bg-white px-6 py-3 text-sm font-medium text-black transition hover:opacity-90"
           >
-            Contact About Support
+            Email Support
           </a>
           <p className="text-sm text-white/50">
             Direct contribution links will be published when available.

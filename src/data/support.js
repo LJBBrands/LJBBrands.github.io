@@ -15,5 +15,5 @@ export const supportContent = {
     "Independent Creative Work",
   ],
   inquiryMailto:
-    "mailto:contact@ljbbrands.com?subject=Support%20the%20Mission",
+    "mailto:support@ljbbrands.com?subject=Support%20Request",
 };
