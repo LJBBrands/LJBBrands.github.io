@@ -10,8 +10,8 @@ export const aboutCompany = {
   title: "LJB Media Group",
   subtitle: "Independent Company",
   description:
-    "LJB Media Group brings technology, media, automotive culture, apparel, and independent creative work under one roof. Each project serves a different audience, but every project shares the same foundation: thoughtful design, real experiences, and work built for the long term.",
-  projects: ["Awy", "LJB Rewind", "RT345LC", "Give Love Co.", "Arbor"],
+    "LJB Media Group brings technology, media, automotive culture, apparel, and independent creative work under one roof. Each project serves a different audience, but every project shares the same foundation: thoughtful design, real experiences, and work built for the long term. LJB Media Group builds products, tells stories, and shares every step of the journey through video, streaming, writing, and software.",
+  projects: ["Awy", "LJB Rewind", "RT345LC", "Give Love Co.", "Arbor", "Hemlock Hollow"],
 };
 
 export const aboutSection = {

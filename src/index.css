@@ -1001,3 +1001,218 @@ summary::-webkit-details-marker {
   }
 }
 
+/* Ecosystem destination cards — destinations, not product showcases */
+.destination-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.destination-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  height: 100%;
+  padding: 1.35rem 1.35rem 1.25rem;
+  border-radius: 1.35rem;
+  border-width: 1px;
+  border-style: solid;
+  text-decoration: none;
+  color: inherit;
+  backdrop-filter: blur(24px);
+  transition:
+    border-color 0.22s ease,
+    transform 0.22s ease,
+    background-color 0.22s ease;
+}
+
+.destination-card:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.destination-card:focus-visible {
+  outline: 2px solid rgba(184, 255, 90, 0.55);
+  outline-offset: 3px;
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+.destination-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 0.7rem;
+  border-width: 1px;
+  border-style: solid;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.destination-icon {
+  display: inline-flex;
+  width: 1.1rem;
+  height: 1.1rem;
+  color: inherit;
+}
+
+.destination-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.destination-card__title {
+  margin-top: 1.1rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: #fff;
+}
+
+.destination-card__copy {
+  margin-top: 0.55rem;
+  flex: 1;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.58);
+}
+
+.destination-card__cta {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  min-height: 44px;
+  margin-top: 1.15rem;
+  padding: 0 1rem;
+  border-radius: 999px;
+  border-width: 1px;
+  border-style: solid;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.destination-card:hover .destination-card__cta,
+.destination-card:focus-visible .destination-card__cta {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+}
+
+.rewind-destinations {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.rewind-destination {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 44px;
+  padding: 0.55rem 0.85rem;
+  border-radius: 0.85rem;
+  border-width: 1px;
+  border-style: solid;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.82);
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.02);
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.rewind-destination .destination-icon {
+  width: 1rem;
+  height: 1rem;
+  color: rgba(184, 255, 90, 0.9);
+  flex-shrink: 0;
+}
+
+.rewind-destination:hover,
+.rewind-destination:focus-visible {
+  border-color: rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+}
+
+.rewind-destination:focus-visible {
+  outline: 2px solid rgba(184, 255, 90, 0.55);
+  outline-offset: 2px;
+}
+
+@media (min-width: 640px) {
+  .destination-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.1rem;
+  }
+
+  .destination-card {
+    padding: 1.45rem 1.4rem 1.3rem;
+  }
+
+  .destination-card__title {
+    font-size: 1.1rem;
+  }
+
+  .destination-card__copy {
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+}
+
+@media (min-width: 1100px) {
+  .destination-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 0.95rem;
+  }
+
+  .destination-card {
+    padding: 1.2rem 1.05rem 1.1rem;
+    border-radius: 1.2rem;
+  }
+
+  .destination-card__title {
+    margin-top: 0.95rem;
+    font-size: 0.98rem;
+  }
+
+  .destination-card__copy {
+    font-size: 0.78rem;
+    line-height: 1.5;
+  }
+
+  .destination-card__cta {
+    padding: 0 0.85rem;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 479px) {
+  .rewind-destinations {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .destination-card,
+  .destination-card__cta,
+  .rewind-destination {
+    transition: none;
+  }
+
+  .destination-card:hover {
+    transform: none;
+  }
+}
+

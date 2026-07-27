@@ -310,6 +310,7 @@ export function getAwyShowcaseSlides(project) {
 export const navItems = [
   { label: "Home", href: "#top" },
   { label: "Projects", href: "#projects" },
+  { label: "Ecosystem", href: "#ecosystem" },
   { label: "About", href: "#about" },
   { label: "Contact", href: "#contact" },
   { label: "Support", href: "#support" },

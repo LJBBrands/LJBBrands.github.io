@@ -3,6 +3,7 @@ import AtmosphereBackground from "./components/AtmosphereBackground";
 import SiteNav from "./components/SiteNav";
 import About from "./components/sections/About";
 import Contact from "./components/sections/Contact";
+import Ecosystem from "./components/sections/Ecosystem";
 import LjbHero from "./components/sections/LjbHero";
 import Projects from "./components/sections/Projects";
 import SiteFooter from "./components/sections/SiteFooter";
@@ -31,6 +32,7 @@ export default function App() {
       <main className="relative px-5 py-6 sm:px-8 lg:px-10">
         <LjbHero theme={ljbTheme} />
         <Projects theme={ljbTheme} />
+        <Ecosystem theme={ljbTheme} />
         <About theme={ljbTheme} />
         <Contact theme={ljbTheme} />
         <Support theme={ljbTheme} />

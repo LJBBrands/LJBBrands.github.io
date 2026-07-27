@@ -1,8 +1,10 @@
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useEffect, useId, useRef } from "react";
 import { faqItems } from "../data/awyContent";
+import { rewindDialogDestinations } from "../data/ecosystem";
 import { getAwyShowcaseSlides } from "../data/projects";
 import AwyShowcase from "./AwyShowcase";
+import DestinationIcon from "./DestinationIcon";
 import ProjectVisual from "./ProjectVisual";
 
 const FOCUSABLE =
@@ -253,7 +255,32 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
                       />
                     </div>
 
-                    {project.mediaReady ? (
+                    {project.id === "ljb-rewind" ? (
+                      <div
+                        className="mt-4 rounded-[1.25rem] border px-4 py-4"
+                        style={{ borderColor: theme.cardBorder }}
+                      >
+                        <div className="text-xs font-medium tracking-[0.04em] text-white/45">
+                          Destinations
+                        </div>
+                        <div className="rewind-destinations mt-3">
+                          {rewindDialogDestinations.map((item) => (
+                            <a
+                              key={item.id}
+                              href={item.href}
+                              aria-label={item.ariaLabel}
+                              target={item.external ? "_blank" : undefined}
+                              rel={item.external ? "noreferrer" : undefined}
+                              className="rewind-destination"
+                              style={{ borderColor: theme.cardBorder }}
+                            >
+                              <DestinationIcon name={item.icon} />
+                              <span>{item.cta}</span>
+                            </a>
+                          ))}
+                        </div>
+                      </div>
+                    ) : project.mediaReady ? (
                       <div
                         className="mt-4 rounded-[1.25rem] border px-4 py-4"
                         style={{ borderColor: theme.cardBorder }}

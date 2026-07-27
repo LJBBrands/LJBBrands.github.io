@@ -4,15 +4,14 @@
 export const supportContent = {
   headline: "Support the Mission",
   copy:
-    "Support helps fund product development, media production, equipment, automotive content, apparel work, and independent creative projects across LJB Media Group.",
+    "Support helps fund independent software, media, books, and future creative projects across LJB Media Group — from product development and podcast production to apparel, automotive storytelling, and long-form creative work.",
   areas: [
-    "Awy Development",
-    "Arbor Development",
-    "Podcast Production",
-    "Camera Equipment",
+    "Software Development",
+    "Media Production",
+    "Books & Story Worlds",
+    "Future Creative Projects",
     "Automotive Content",
     "Apparel Projects",
-    "Independent Creative Work",
   ],
   inquiryMailto:
     "mailto:support@ljbbrands.com?subject=Support%20Request",

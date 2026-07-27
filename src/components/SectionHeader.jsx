@@ -6,6 +6,7 @@ export default function SectionHeader({
   title,
   description,
   className = "",
+  titleId,
 }) {
   const reduceMotion = useReducedMotion();
 
@@ -30,6 +31,7 @@ export default function SectionHeader({
         </div>
       ) : null}
       <h2
+        id={titleId}
         className={`text-3xl font-semibold tracking-tight sm:text-4xl ${
           kicker ? "mt-4" : ""
         }`}
