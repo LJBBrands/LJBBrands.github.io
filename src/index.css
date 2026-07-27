@@ -222,7 +222,71 @@ summary::-webkit-details-marker {
   }
 }
 
-/* RT345LC neutral fallback (no vehicle drawing) */
+/* RT345LC automotive photo cover */
+.rt345lc-shell {
+  position: relative;
+  height: 210px;
+  width: 100%;
+  overflow: hidden;
+  background: #070809;
+}
+
+.rt345lc-shell--dialog {
+  height: clamp(240px, 42vw, 340px);
+}
+
+@media (min-width: 640px) {
+  .rt345lc-shell {
+    height: 228px;
+  }
+}
+
+.rt345lc-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 58%;
+}
+
+.rt345lc-photo__shade {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.55) 0%,
+      rgba(0, 0, 0, 0.12) 34%,
+      rgba(0, 0, 0, 0.18) 62%,
+      rgba(0, 0, 0, 0.72) 100%
+    );
+}
+
+.rt345lc-photo__vignette {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 42%,
+    rgba(0, 0, 0, 0.38) 100%
+  );
+}
+
+.rt345lc-photo__glow {
+  pointer-events: none;
+  position: absolute;
+  inset: auto 0 -18% 0;
+  height: 48%;
+  background: radial-gradient(
+    ellipse at 50% 80%,
+    rgba(184, 255, 90, 0.1),
+    transparent 68%
+  );
+}
+
 .rt345lc-fallback {
   position: absolute;
   inset: 0;
@@ -251,20 +315,10 @@ summary::-webkit-details-marker {
   pointer-events: none;
 }
 
-.rt345lc-fallback__title {
-  font-size: 1.35rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  color: rgba(255, 255, 255, 0.88);
-}
-
-.rt345lc-photo {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center bottom;
+@media (max-width: 639px) {
+  .rt345lc-photo {
+    object-position: center 54%;
+  }
 }
 
 /* Awy swipeable showcase (dialog) */

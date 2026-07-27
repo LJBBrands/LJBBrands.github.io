@@ -244,7 +244,13 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
                       className="overflow-hidden rounded-[1.35rem] border"
                       style={{ borderColor: theme.cardBorder }}
                     >
-                      <ProjectVisual project={project} theme={theme} />
+                      <ProjectVisual
+                        project={project}
+                        theme={theme}
+                        size={
+                          project.id === "rt345lc" ? "dialog" : "card"
+                        }
+                      />
                     </div>
 
                     {project.mediaReady ? (

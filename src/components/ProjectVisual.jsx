@@ -97,7 +97,7 @@ function RewindBranded({ accent, theme }) {
   );
 }
 
-function Rt345lcEditorialChrome({ theme, showTitle = false }) {
+function Rt345lcEditorialChrome({ theme }) {
   return (
     <div className="relative z-10 flex h-full flex-col justify-between px-5 py-4">
       <div className="flex items-center justify-between">
@@ -107,61 +107,57 @@ function Rt345lcEditorialChrome({ theme, showTitle = false }) {
         >
           LJB
         </span>
-        <span className="text-[10px] uppercase tracking-[0.18em] text-white/40">
+        <span className="text-[10px] uppercase tracking-[0.18em] text-white/55">
           Automotive
         </span>
       </div>
 
-      <div className="flex min-h-0 flex-1 items-center justify-center py-2">
-        {showTitle ? (
-          <div className="rt345lc-fallback__title">RT345LC</div>
-        ) : null}
-      </div>
+      <div className="flex-1" aria-hidden="true" />
 
-      <div className="text-[11px] text-white/50">
+      <div className="text-[11px] font-medium tracking-[0.02em] text-white/70">
         Builds · Photography · Road Trips
       </div>
     </div>
   );
 }
 
-function Rt345lcPhotoCover({ project, theme }) {
+function Rt345lcPhotoCover({ project, theme, size = "card" }) {
   const [failed, setFailed] = useState(false);
-  const [loaded, setLoaded] = useState(false);
   const hero = project.visual?.hero;
-  const showPhoto = Boolean(hero) && !failed && loaded;
-  const showFallback = !hero || failed || !loaded;
+  const alt =
+    project.visual?.alt || "Front view of the green RT345LC performance sedan";
+  const shellClass =
+    size === "dialog" ? "rt345lc-shell rt345lc-shell--dialog" : "rt345lc-shell";
 
-  return (
-    <PreviewShell>
-      {hero && !failed ? (
-        <img
-          src={hero}
-          alt=""
-          className="rt345lc-photo"
-          loading="lazy"
-          draggable={false}
-          onLoad={() => setLoaded(true)}
-          onError={() => {
-            setFailed(true);
-            setLoaded(false);
-          }}
-          style={{ opacity: showPhoto ? 1 : 0 }}
-        />
-      ) : null}
-
-      {showPhoto ? (
-        <div className="absolute inset-0 bg-gradient-to-t from-black/78 via-black/28 to-black/35" />
-      ) : null}
-
-      {showFallback ? (
-        <div className="rt345lc-fallback" aria-hidden="true">
+  if (!hero || failed) {
+    return (
+      <div className={`${shellClass} relative overflow-hidden`} aria-hidden="true">
+        <div className="rt345lc-fallback">
           <div className="rt345lc-fallback__lines" />
         </div>
-      ) : null}
+        <Rt345lcEditorialChrome theme={theme} />
+      </div>
+    );
+  }
 
-      <Rt345lcEditorialChrome theme={theme} showTitle={!showPhoto} />
-    </PreviewShell>
+  return (
+    <div className={`${shellClass} relative overflow-hidden`}>
+      <img
+        src={hero}
+        alt={size === "dialog" ? alt : ""}
+        className="rt345lc-photo"
+        loading={size === "dialog" ? "eager" : "lazy"}
+        decoding="async"
+        draggable={false}
+        onError={() => setFailed(true)}
+      />
+      <div className="rt345lc-photo__shade" aria-hidden="true" />
+      <div className="rt345lc-photo__vignette" aria-hidden="true" />
+      <div className="rt345lc-photo__glow" aria-hidden="true" />
+      <div aria-hidden={size !== "dialog" ? true : undefined}>
+        <Rt345lcEditorialChrome theme={theme} />
+      </div>
+    </div>
   );
 }
 
@@ -284,12 +280,12 @@ function getBrandedFallback(project, theme) {
   return <PreviewShell />;
 }
 
-function HeroWithFallback({ project, theme }) {
+function HeroWithFallback({ project, theme, size = "card" }) {
   const [failed, setFailed] = useState(false);
   const { hero, alt, brand, coverStyle } = project.visual;
 
   if (brand === "rt345lc" || coverStyle === "automotive-editorial") {
-    return <Rt345lcPhotoCover project={project} theme={theme} />;
+    return <Rt345lcPhotoCover project={project} theme={theme} size={size} />;
   }
 
   if (!hero || failed) {
@@ -321,7 +317,7 @@ function HeroWithFallback({ project, theme }) {
   );
 }
 
-export default function ProjectVisual({ project, theme }) {
+export default function ProjectVisual({ project, theme, size = "card" }) {
   const visual = project.visual;
 
   if (visual?.type === "screenshots" && visual.card?.primary) {
@@ -329,7 +325,7 @@ export default function ProjectVisual({ project, theme }) {
   }
 
   if (visual?.type === "branded") {
-    return <HeroWithFallback project={project} theme={theme} />;
+    return <HeroWithFallback project={project} theme={theme} size={size} />;
   }
 
   return <PreviewShell />;

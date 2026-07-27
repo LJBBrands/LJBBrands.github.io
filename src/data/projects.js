@@ -17,10 +17,8 @@ const awyShot = (fileName, label, alt, group) => ({
 */
 
 /*
-  RT345LC visual: owner Charger photograph at
+  RT345LC visual uses owner Charger photography at
   public/projects/rt345lc/rt345lc-hero.webp
-  (side or front three-quarter, cinematic crop).
-  Until present, the card uses a neutral automotive panel — no vehicle SVG.
 */
 
 export const projects = [
@@ -228,18 +226,17 @@ export const projects = [
       "RT345LC focuses on automotive culture through photography, builds, road trips, and long-form project storytelling.",
     status: null,
     highlights: [
-      "Automotive Builds",
+      "Builds",
       "Photography",
       "Road Trips",
-      "Project Stories",
       "Collaborations",
+      "Long-form Project Stories",
     ],
     visual: {
       type: "branded",
       brand: "rt345lc",
-      // Preferred: owner Charger photo (side or front 3/4). See asset note above.
       hero: projectAsset("rt345lc", "rt345lc-hero.webp"),
-      alt: "RT345LC project vehicle",
+      alt: "Front view of the green RT345LC performance sedan",
       coverStyle: "automotive-editorial",
     },
     primaryAction: {
