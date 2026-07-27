@@ -37,6 +37,8 @@ export default function DeviceFrame({
           <img
             src={src}
             alt={alt}
+            width={706}
+            height={1536}
             loading="lazy"
             draggable={false}
             onError={() => setFailed(true)}

@@ -220,6 +220,18 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
                         Terms
                       </a>
                     </div>
+
+                    {project.primaryAction?.href ? (
+                      <div>
+                        <a
+                          href={project.primaryAction.href}
+                          className="inline-flex min-h-[44px] items-center rounded-full border px-5 text-sm font-medium text-white transition hover:bg-white/[0.06]"
+                          style={{ borderColor: theme.cardBorder }}
+                        >
+                          {project.primaryAction.label}
+                        </a>
+                      </div>
+                    ) : null}
                   </div>
                 </div>
               ) : (
@@ -244,8 +256,8 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
                           Media Library
                         </div>
                         <p className="mt-2 text-sm leading-6 text-white/55">
-                          Episode links, thumbnails, and watch destinations will
-                          appear here when published.
+                          Podcast episodes, YouTube destinations, and watch links
+                          will appear here when published.
                         </p>
                       </div>
                     ) : null}

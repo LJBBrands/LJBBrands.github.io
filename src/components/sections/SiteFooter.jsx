@@ -22,7 +22,7 @@ export default function SiteFooter({ theme }) {
           </div>
           <a
             href="mailto:hello@ljbbrands.com?subject=LJB%20Media%20Group%20Inquiry"
-            aria-label="Email General Inquiries"
+            aria-label="Email LJB Media Group at hello@ljbbrands.com"
             className="mt-2 inline-block text-sm text-white/55 transition hover:text-white"
           >
             hello@ljbbrands.com

@@ -31,7 +31,7 @@ export default function LjbHero({ theme }) {
             <span className="block">Technology.</span>
             <span className="block">Stories.</span>
             <span className="mt-1 block" style={{ color: theme.accent }}>
-              Built with purpose.
+              Built with Purpose.
             </span>
           </h1>
 

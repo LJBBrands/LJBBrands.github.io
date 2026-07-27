@@ -12,9 +12,17 @@ export default function About({ theme }) {
         description={aboutSection.supporting}
       />
 
-      <div className="grid items-stretch gap-5 md:grid-cols-2 xl:grid-cols-3">
+      <div
+        className={`grid items-stretch gap-5 ${
+          teamMembers.length
+            ? "md:grid-cols-2 xl:grid-cols-3"
+            : "md:grid-cols-1"
+        }`}
+      >
         <article
-          className="flex h-full flex-col rounded-[1.75rem] border p-6 backdrop-blur-2xl md:col-span-2 xl:col-span-2"
+          className={`flex h-full flex-col rounded-[1.75rem] border p-6 backdrop-blur-2xl ${
+            teamMembers.length ? "md:col-span-2 xl:col-span-2" : "max-w-4xl"
+          }`}
           style={{
             backgroundColor: theme.panelBg,
             borderColor: theme.cardBorder,

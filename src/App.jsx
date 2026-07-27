@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import AtmosphereBackground from "./components/AtmosphereBackground";
 import SiteNav from "./components/SiteNav";
 import About from "./components/sections/About";
@@ -7,8 +8,20 @@ import Projects from "./components/sections/Projects";
 import SiteFooter from "./components/sections/SiteFooter";
 import Support from "./components/sections/Support";
 import { ljbTheme } from "./data/ljbTheme";
+import { scrollToSection } from "./utils/scrollToSection";
 
 export default function App() {
+  useEffect(() => {
+    const hash = window.location.hash.replace("#", "");
+    if (!hash) return undefined;
+
+    const timer = window.setTimeout(() => {
+      scrollToSection(hash);
+    }, 50);
+
+    return () => window.clearTimeout(timer);
+  }, []);
+
   return (
     <div className="min-h-screen overflow-x-hidden bg-black text-white">
       <AtmosphereBackground theme={ljbTheme} />

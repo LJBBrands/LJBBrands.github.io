@@ -182,7 +182,10 @@ export const projects = [
         },
       ],
     },
-    primaryAction: null,
+    primaryAction: {
+      label: "Email About Awy",
+      href: "mailto:dev@ljbbrands.com?subject=Awy%20Inquiry",
+    },
     accent: "#B8FF5A",
   },
   {
@@ -196,7 +199,7 @@ export const projects = [
     status: null,
     highlights: [
       "Podcast",
-      "Gaming",
+      "YouTube",
       "Unboxings",
       "LEGO Builds",
       "Road Trips",
@@ -209,7 +212,10 @@ export const projects = [
       alt: "LJB Rewind media preview",
     },
     mediaReady: true,
-    primaryAction: null,
+    primaryAction: {
+      label: "Email LJB Rewind",
+      href: "mailto:podcast@ljbbrands.com?subject=LJB%20Rewind%20Inquiry",
+    },
     accent: "#D9FF9A",
   },
   {
@@ -226,7 +232,7 @@ export const projects = [
       "Photography",
       "Road Trips",
       "Project Stories",
-      "Future Partnerships",
+      "Collaborations",
     ],
     visual: {
       type: "branded",
@@ -236,7 +242,10 @@ export const projects = [
       alt: "RT345LC project vehicle",
       coverStyle: "automotive-editorial",
     },
-    primaryAction: null,
+    primaryAction: {
+      label: "Email About RT345LC",
+      href: "mailto:hello@ljbbrands.com?subject=RT345LC%20Inquiry",
+    },
     accent: "#F2F2F2",
   },
   {
@@ -261,7 +270,10 @@ export const projects = [
       hero: projectAsset("give-love-co", "give-love-co-hero.webp"),
       alt: "Give Love Co. apparel preview",
     },
-    primaryAction: null,
+    primaryAction: {
+      label: "Email Give Love Co.",
+      href: "mailto:hello@ljbbrands.com?subject=Give%20Love%20Co.%20Inquiry",
+    },
     accent: "#F5F5F5",
   },
   {
@@ -286,7 +298,10 @@ export const projects = [
       hero: projectAsset("arbor", "arbor-hero.webp"),
       alt: "Arbor file organization preview",
     },
-    primaryAction: null,
+    primaryAction: {
+      label: "Email About Arbor",
+      href: "mailto:dev@ljbbrands.com?subject=Arbor%20Inquiry",
+    },
     accent: "#B8FF5A",
   },
 ];

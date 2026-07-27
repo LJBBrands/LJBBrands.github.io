@@ -1,5 +1,5 @@
 // Confirmed public support destination (Cash App / similar) not published yet.
-// Until then, inquiries use contact@ljbbrands.com — do not invent payment URLs.
+// Until then, support inquiries use support@ljbbrands.com — do not invent payment URLs.
 
 export const supportContent = {
   headline: "Support the Mission",

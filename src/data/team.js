@@ -15,7 +15,7 @@ export const aboutCompany = {
 };
 
 export const aboutSection = {
-  title: "The People Behind LJB",
+  title: "About LJB Media Group",
   supporting:
-    "A small independent team building technology, media, products, and stories across the LJB Media Group ecosystem.",
+    "An independent company building technology, media, products, and stories across one connected ecosystem.",
 };
