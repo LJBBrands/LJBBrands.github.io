@@ -161,52 +161,44 @@ function Rt345lcPhotoCover({ project, theme, size = "card" }) {
   );
 }
 
-function GiveLoveBranded({ theme }) {
-  return (
-    <PreviewShell className="px-5 py-5">
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(circle at 50% 20%, rgba(255,255,255,0.06), transparent 46%)",
-        }}
-      />
-      <div className="relative flex h-full items-center justify-center">
-        <div
-          className="relative w-full max-w-[210px] rounded-[1.25rem] border px-5 py-6"
-          style={{
-            borderColor: theme.cardBorder,
-            background:
-              "linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02))",
-          }}
-        >
-          <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.2em] text-white/40">
-            <span>Label</span>
-            <span>Ltd</span>
-          </div>
-          <div className="mt-4 text-center">
-            <div className="text-xl font-semibold tracking-tight text-white">
-              Give Love Co.
-            </div>
-            <div className="mt-2 text-[11px] text-white/50">
-              Intentional apparel and limited drops
-            </div>
-          </div>
-          <div className="mx-auto mt-5 h-px w-16 bg-white/20" />
-          <div className="mt-4 flex justify-center gap-2">
-            {["Preorder", "Hoodies", "Shirts"].map((item) => (
-              <span
-                key={item}
-                className="rounded-full border px-2 py-0.5 text-[10px] text-white/50"
-                style={{ borderColor: theme.cardBorder }}
-              >
-                {item}
-              </span>
-            ))}
-          </div>
-        </div>
+function GiveLoveLogoVisual({ project, theme, size = "card" }) {
+  const [failed, setFailed] = useState(false);
+  const logo = project.visual?.logo || project.visual?.hero;
+  const alt =
+    project.visual?.alt || "Give Love Co. official wordmark logo";
+  const shellClass =
+    size === "dialog"
+      ? "give-love-shell give-love-shell--dialog"
+      : "give-love-shell";
+
+  if (!logo || failed) {
+    return (
+      <div className={`${shellClass} relative overflow-hidden`} aria-hidden="true">
+        <div className="give-love-shell__glow" />
+        <div className="give-love-panel give-love-panel--fallback" />
       </div>
-    </PreviewShell>
+    );
+  }
+
+  return (
+    <div className={`${shellClass} relative overflow-hidden`}>
+      <div className="give-love-shell__glow" aria-hidden="true" />
+      <div className="give-love-shell__vignette" aria-hidden="true" />
+      <div
+        className="give-love-panel"
+        style={{ borderColor: theme.cardBorder }}
+      >
+        <img
+          src={logo}
+          alt={size === "dialog" ? alt : ""}
+          className="give-love-logo"
+          loading={size === "dialog" ? "eager" : "lazy"}
+          decoding="async"
+          draggable={false}
+          onError={() => setFailed(true)}
+        />
+      </div>
+    </div>
   );
 }
 
@@ -335,7 +327,9 @@ function getBrandedFallback(project, theme) {
 
   if (brand === "rewind") return <RewindBranded accent={accent} theme={theme} />;
   if (brand === "rt345lc") return <Rt345lcPhotoCover project={project} theme={theme} />;
-  if (brand === "give-love-co") return <GiveLoveBranded theme={theme} />;
+  if (brand === "give-love-co") {
+    return <GiveLoveLogoVisual project={project} theme={theme} />;
+  }
   if (brand === "arbor") return <ArborBranded accent={accent} theme={theme} />;
   if (brand === "hemlock-hollow") return <HemlockBranded theme={theme} />;
   return <PreviewShell />;
@@ -347,6 +341,10 @@ function HeroWithFallback({ project, theme, size = "card" }) {
 
   if (brand === "rt345lc" || coverStyle === "automotive-editorial") {
     return <Rt345lcPhotoCover project={project} theme={theme} size={size} />;
+  }
+
+  if (brand === "give-love-co" || coverStyle === "logo-panel") {
+    return <GiveLoveLogoVisual project={project} theme={theme} size={size} />;
   }
 
   if (!hero || failed) {

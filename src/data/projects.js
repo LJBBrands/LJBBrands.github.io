@@ -252,23 +252,19 @@ export const projects = [
     preview:
       "An independent clothing brand centered on intentional designs, preorder drops, and limited releases.",
     description:
-      "Give Love Co. is an independent apparel brand built around intentional designs, preorder drops, and limited releases.",
+      "Give Love Co. is an independent clothing brand built around intentional design, limited preorder drops, and messages centered on kindness, connection, and purpose.",
     status: null,
-    highlights: [
-      "Preorder Drops",
-      "Limited Releases",
-      "Hoodies",
-      "Shirts",
-      "Special Editions",
-    ],
+    highlights: ["Give Love", "Be Kind", "Embrace Peace", "Spread Joy"],
     visual: {
       type: "branded",
       brand: "give-love-co",
-      hero: projectAsset("give-love-co", "give-love-co-hero.webp"),
-      alt: "Give Love Co. apparel preview",
+      coverStyle: "logo-panel",
+      logo: projectAsset("give-love-co", "give-love-co-logo.webp"),
+      hero: projectAsset("give-love-co", "give-love-co-logo.webp"),
+      alt: "Give Love Co. official wordmark logo",
     },
     primaryAction: {
-      label: "Email Give Love Co.",
+      label: "Contact Give Love Co.",
       href: "mailto:hello@ljbbrands.com?subject=Give%20Love%20Co.%20Inquiry",
     },
     accent: "#F5F5F5",
