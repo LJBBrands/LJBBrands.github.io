@@ -537,6 +537,55 @@ summary::-webkit-details-marker {
   }
 }
 
+/* Projects grid — center incomplete last rows without changing card width */
+.projects-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: stretch;
+}
+
+.project-grid-item {
+  min-width: 0;
+}
+
+@media (min-width: 640px) {
+  .projects-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .project-grid-item {
+    grid-column: span 2;
+  }
+
+  .project-grid-item--tablet-last-center {
+    grid-column: 2 / span 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .projects-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .project-grid-item {
+    grid-column: span 2;
+  }
+
+  .project-grid-item--tablet-last-center {
+    grid-column: span 2;
+  }
+
+  .project-grid-item--desktop-last-left {
+    grid-column: 2 / span 2;
+  }
+
+  .project-grid-item--desktop-last-right {
+    grid-column: 4 / span 2;
+  }
+}
+
 /* Awy swipeable showcase (dialog) */
 .awy-showcase {
   display: flex;

@@ -5,6 +5,7 @@ export default function ProjectCard({
   project,
   theme,
   index = 0,
+  className = "",
   onOpen,
   buttonRef,
 }) {
@@ -16,7 +17,7 @@ export default function ProjectCard({
       whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.4, delay: index * 0.03 }}
-      className="h-full"
+      className={`h-full ${className}`.trim()}
     >
       <button
         ref={buttonRef}
