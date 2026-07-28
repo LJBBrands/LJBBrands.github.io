@@ -1,8 +1,28 @@
+import { useCallback, useRef, useState } from "react";
 import { destinations, ecosystemSection } from "../../data/ecosystem";
+import { getProjectById } from "../../data/projects";
 import DestinationCard from "../DestinationCard";
+import ProjectDialog from "../ProjectDialog";
 import SectionHeader from "../SectionHeader";
 
 export default function Ecosystem({ theme }) {
+  const [activeId, setActiveId] = useState(null);
+  const triggerRefs = useRef({});
+
+  const activeProject = activeId ? getProjectById(activeId) : null;
+
+  const openProject = useCallback((id) => {
+    setActiveId(id);
+  }, []);
+
+  const closeProject = useCallback(() => {
+    const returningId = activeId;
+    setActiveId(null);
+    window.requestAnimationFrame(() => {
+      triggerRefs.current[returningId]?.focus();
+    });
+  }, [activeId]);
+
   return (
     <section
       id="ecosystem"
@@ -24,9 +44,26 @@ export default function Ecosystem({ theme }) {
             destination={destination}
             theme={theme}
             index={index}
+            onOpenProject={openProject}
+            ref={
+              destination.action === "project"
+                ? (node) => {
+                    if (destination.projectId) {
+                      triggerRefs.current[destination.projectId] = node;
+                    }
+                  }
+                : undefined
+            }
           />
         ))}
       </div>
+
+      <ProjectDialog
+        project={activeProject}
+        theme={theme}
+        open={Boolean(activeProject)}
+        onClose={closeProject}
+      />
     </section>
   );
 }

@@ -270,7 +270,11 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
                               href={item.href}
                               aria-label={item.ariaLabel}
                               target={item.external ? "_blank" : undefined}
-                              rel={item.external ? "noreferrer" : undefined}
+                              rel={
+                                item.external
+                                  ? "noopener noreferrer"
+                                  : undefined
+                              }
                               className="rewind-destination"
                               style={{ borderColor: theme.cardBorder }}
                             >
@@ -343,7 +347,25 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
                           }
                           rel={
                             project.primaryAction.href.startsWith("http")
-                              ? "noreferrer"
+                              ? "noopener noreferrer"
+                              : undefined
+                          }
+                          onClick={
+                            project.primaryAction.href.startsWith("#")
+                              ? (event) => {
+                                  event.preventDefault();
+                                  onClose();
+                                  const id =
+                                    project.primaryAction.href.slice(1);
+                                  window.requestAnimationFrame(() => {
+                                    document
+                                      .getElementById(id)
+                                      ?.scrollIntoView({
+                                        behavior: "smooth",
+                                        block: "start",
+                                      });
+                                  });
+                                }
                               : undefined
                           }
                           className="inline-flex min-h-[44px] items-center rounded-full border px-5 text-sm font-medium text-white transition hover:bg-white/[0.06]"

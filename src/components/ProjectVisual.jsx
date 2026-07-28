@@ -269,6 +269,66 @@ function ArborBranded({ accent, theme }) {
   );
 }
 
+function HemlockBranded({ theme }) {
+  return (
+    <PreviewShell className="px-5 py-5">
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(circle at 22% 18%, rgba(200,212,192,0.10), transparent 42%), radial-gradient(circle at 78% 78%, rgba(255,255,255,0.04), transparent 40%), linear-gradient(180deg, rgba(8,10,8,0.2), rgba(0,0,0,0.55))",
+        }}
+      />
+      <div className="relative flex h-full flex-col justify-between">
+        <div>
+          <div className="text-[10px] font-medium uppercase tracking-[0.22em] text-white/45">
+            Fiction
+          </div>
+          <div className="mt-1.5 text-2xl font-semibold tracking-tight text-white sm:text-[1.65rem]">
+            Hemlock Hollow
+          </div>
+          <p className="mt-2 max-w-[16rem] text-[12px] leading-5 text-white/55">
+            A small town with a dark secret.
+          </p>
+        </div>
+
+        <div className="flex items-end justify-between gap-3">
+          <div
+            className="flex h-11 w-9 items-center justify-center rounded-md border"
+            style={{ borderColor: theme.cardBorder, color: "rgba(200,212,192,0.9)" }}
+          >
+            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" aria-hidden="true">
+              <path
+                d="M5.5 5.75h5.2c1.4 0 2.55 1.15 2.55 2.55v10.2c0-.97-.78-1.75-1.75-1.75H5.5V5.75Z"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M18.5 5.75h-5.2c-1.4 0-2.55 1.15-2.55 2.55v10.2c0-.97.78-1.75 1.75-1.75H18.5V5.75Z"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </div>
+          <div className="flex flex-wrap justify-end gap-1.5">
+            {["Mystery", "Family", "Secrets"].map((label) => (
+              <span
+                key={label}
+                className="rounded-full border px-2 py-0.5 text-[10px] text-white/55"
+                style={{ borderColor: theme.cardBorder }}
+              >
+                {label}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </PreviewShell>
+  );
+}
+
 function getBrandedFallback(project, theme) {
   const accent = project.accent || theme.accent;
   const brand = project.visual?.brand;
@@ -277,6 +337,7 @@ function getBrandedFallback(project, theme) {
   if (brand === "rt345lc") return <Rt345lcPhotoCover project={project} theme={theme} />;
   if (brand === "give-love-co") return <GiveLoveBranded theme={theme} />;
   if (brand === "arbor") return <ArborBranded accent={accent} theme={theme} />;
+  if (brand === "hemlock-hollow") return <HemlockBranded theme={theme} />;
   return <PreviewShell />;
 }
 

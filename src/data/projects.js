@@ -301,10 +301,49 @@ export const projects = [
     },
     accent: "#B8FF5A",
   },
+  {
+    id: "hemlock-hollow",
+    name: "Hemlock Hollow",
+    category: "Fiction / Mystery Thriller",
+    preview:
+      "A woman returns home after new evidence surfaces in her twin sister’s disappearance, uncovering secrets buried beneath Hemlock Hollow.",
+    description:
+      "After years away, Veronica returns to Hemlock Hollow when new evidence surfaces in the disappearance of her twin sister, Lena. A cryptic letter, a gold necklace, and a trail through the town’s lakeside secrets pull her into a mystery shaped by silence, power, and the people determined to keep the truth buried.",
+    summary: "A small town with a dark secret.",
+    status: "In Development",
+    listed: false,
+    highlights: [
+      "Family",
+      "Disappearance",
+      "Buried Secrets",
+      "Small-Town Power",
+      "Memory",
+      "Guilt",
+      "Truth",
+    ],
+    visual: {
+      type: "branded",
+      brand: "hemlock-hollow",
+    },
+    primaryAction: {
+      label: "Follow the Story",
+      href: "#contact",
+    },
+    accent: "#C8D4C0",
+  },
 ];
 
 export function getAwyShowcaseSlides(project) {
   return project?.showcase?.slides ?? [];
+}
+
+export function getProjectById(id) {
+  return projects.find((project) => project.id === id) ?? null;
+}
+
+/** Projects shown in the public Projects grid. */
+export function getListedProjects() {
+  return projects.filter((project) => project.listed !== false);
 }
 
 export const navItems = [

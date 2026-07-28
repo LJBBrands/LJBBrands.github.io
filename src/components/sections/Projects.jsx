@@ -1,5 +1,5 @@
 import { useCallback, useRef, useState } from "react";
-import { projects } from "../../data/projects";
+import { getListedProjects, getProjectById } from "../../data/projects";
 import ProjectCard from "../ProjectCard";
 import ProjectDialog from "../ProjectDialog";
 import SectionHeader from "../SectionHeader";
@@ -7,9 +7,9 @@ import SectionHeader from "../SectionHeader";
 export default function Projects({ theme }) {
   const [activeId, setActiveId] = useState(null);
   const triggerRefs = useRef({});
+  const listedProjects = getListedProjects();
 
-  const activeProject =
-    projects.find((project) => project.id === activeId) ?? null;
+  const activeProject = activeId ? getProjectById(activeId) : null;
 
   const openProject = useCallback((id) => {
     setActiveId(id);
@@ -33,7 +33,7 @@ export default function Projects({ theme }) {
       />
 
       <div className="grid items-stretch gap-5 sm:gap-6 md:grid-cols-2 xl:grid-cols-3">
-        {projects.map((project, index) => (
+        {listedProjects.map((project, index) => (
           <ProjectCard
             key={project.id}
             project={project}
