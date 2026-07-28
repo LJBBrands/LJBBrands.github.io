@@ -202,62 +202,46 @@ function GiveLoveLogoVisual({ project, theme, size = "card" }) {
   );
 }
 
-function ArborBranded({ accent, theme }) {
-  const rows = [
-    { label: "Scan", tone: accent },
-    { label: "Preview", tone: "rgba(255,255,255,0.55)" },
-    { label: "Organize", tone: "rgba(255,255,255,0.4)" },
-  ];
+function ArborIconVisual({ project, theme, size = "card" }) {
+  const [failed, setFailed] = useState(false);
+  const logo = project.visual?.logo || project.visual?.hero;
+  const alt = project.visual?.logoAlt || "Arbor macOS app icon";
+  const shellClass =
+    size === "dialog" ? "arbor-shell arbor-shell--dialog" : "arbor-shell";
+
+  if (!logo || failed) {
+    return (
+      <div className={`${shellClass} relative overflow-hidden`} aria-hidden="true">
+        <div className="arbor-shell__glow" />
+      </div>
+    );
+  }
 
   return (
-    <PreviewShell className="px-5 py-5">
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(circle at 20% 15%, rgba(184,255,90,0.10), transparent 40%)",
-        }}
-      />
-      <div className="relative flex h-full flex-col justify-between">
-        <div className="flex items-center justify-between gap-3">
-          <div>
-            <div className="text-[10px] uppercase tracking-[0.2em] text-white/40">
-              macOS Utility
-            </div>
-            <div className="mt-1 text-2xl font-semibold tracking-tight text-white">
-              Arbor
-            </div>
-          </div>
-          <span
-            className="rounded-full border px-2.5 py-1 text-[10px] text-white/60"
-            style={{ borderColor: theme.cardBorder }}
-          >
-            Local + External
-          </span>
-        </div>
+    <div className={`${shellClass} relative overflow-hidden`}>
+      <div className="arbor-shell__glow" aria-hidden="true" />
+      <div className="arbor-shell__vignette" aria-hidden="true" />
 
-        <div className="space-y-2">
-          {rows.map((row, index) => (
-            <div
-              key={row.label}
-              className="flex items-center gap-3 rounded-xl border px-3 py-2.5"
-              style={{
-                borderColor: theme.cardBorder,
-                backgroundColor: theme.cardBg,
-                transform: `translateX(${index * 4}px)`,
-              }}
-            >
-              <span
-                className="h-2.5 w-2.5 rounded-sm"
-                style={{ backgroundColor: row.tone }}
-              />
-              <span className="text-xs text-white/70">{row.label}</span>
-              <span className="ml-auto h-1 w-12 rounded-full bg-white/12" />
-            </div>
-          ))}
-        </div>
+      <div className="arbor-shell__chrome">
+        <span className="arbor-shell__eyebrow">macOS Utility</span>
+        <span
+          className="arbor-shell__badge"
+          style={{ borderColor: theme.cardBorder }}
+        >
+          Local + External
+        </span>
       </div>
-    </PreviewShell>
+
+      <img
+        src={logo}
+        alt={size === "dialog" ? alt : ""}
+        className="arbor-app-icon"
+        loading={size === "dialog" ? "eager" : "lazy"}
+        decoding="async"
+        draggable={false}
+        onError={() => setFailed(true)}
+      />
+    </div>
   );
 }
 
@@ -330,7 +314,9 @@ function getBrandedFallback(project, theme) {
   if (brand === "give-love-co") {
     return <GiveLoveLogoVisual project={project} theme={theme} />;
   }
-  if (brand === "arbor") return <ArborBranded accent={accent} theme={theme} />;
+  if (brand === "arbor") {
+    return <ArborIconVisual project={project} theme={theme} />;
+  }
   if (brand === "hemlock-hollow") return <HemlockBranded theme={theme} />;
   return <PreviewShell />;
 }
@@ -345,6 +331,10 @@ function HeroWithFallback({ project, theme, size = "card" }) {
 
   if (brand === "give-love-co" || coverStyle === "logo-panel") {
     return <GiveLoveLogoVisual project={project} theme={theme} size={size} />;
+  }
+
+  if (brand === "arbor" || coverStyle === "app-icon") {
+    return <ArborIconVisual project={project} theme={theme} size={size} />;
   }
 
   if (!hero || failed) {

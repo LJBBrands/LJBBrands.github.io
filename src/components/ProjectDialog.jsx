@@ -251,7 +251,8 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
                         theme={theme}
                         size={
                           project.id === "rt345lc" ||
-                          project.id === "give-love-co"
+                          project.id === "give-love-co" ||
+                          project.id === "arbor"
                             ? "dialog"
                             : "card"
                         }

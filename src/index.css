@@ -415,6 +415,122 @@ summary::-webkit-details-marker {
   }
 }
 
+/* Arbor official app icon stage */
+.arbor-shell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 210px;
+  width: 100%;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 50% 55%,
+      rgba(184, 255, 90, 0.12),
+      transparent 46%
+    ),
+    radial-gradient(
+      circle at 50% 40%,
+      rgba(255, 255, 255, 0.04),
+      transparent 52%
+    ),
+    #070809;
+}
+
+.arbor-shell--dialog {
+  height: clamp(240px, 42vw, 320px);
+}
+
+@media (min-width: 640px) {
+  .arbor-shell {
+    height: 228px;
+  }
+}
+
+.arbor-shell__glow {
+  pointer-events: none;
+  position: absolute;
+  inset: 18% 22%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(184, 255, 90, 0.16),
+    transparent 70%
+  );
+}
+
+.arbor-shell__vignette {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 46%,
+    rgba(0, 0, 0, 0.36) 100%
+  );
+}
+
+.arbor-shell__chrome {
+  position: absolute;
+  z-index: 2;
+  inset: 0.95rem 1rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  pointer-events: none;
+}
+
+.arbor-shell__eyebrow {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.42);
+}
+
+.arbor-shell__badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0.2rem 0.55rem;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.arbor-app-icon {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: clamp(88px, 18vw, 128px);
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: contain;
+  object-position: center;
+  filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.45));
+}
+
+.arbor-shell--dialog .arbor-app-icon {
+  width: clamp(112px, 16vw, 148px);
+}
+
+@media (min-width: 640px) {
+  .arbor-app-icon {
+    width: clamp(108px, 12vw, 140px);
+  }
+}
+
+@media (max-width: 639px) {
+  .arbor-app-icon {
+    width: clamp(88px, 26vw, 108px);
+  }
+
+  .arbor-shell__chrome {
+    inset: 0.8rem 0.85rem auto;
+  }
+}
+
 @media (max-width: 639px) {
   .rt345lc-photo {
     object-position: center 54%;

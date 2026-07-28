@@ -276,20 +276,23 @@ export const projects = [
     preview:
       "A macOS file-organization tool built to help people scan, preview, and safely organize files across local and external storage.",
     description:
-      "Arbor helps people scan, preview, and safely organize files across local and external storage — with controls designed to keep organization deliberate and reversible.",
+      "Arbor helps people scan local and external storage, preview proposed organization, and organize files safely — with recovery and verification controls designed to keep organization deliberate and reversible.",
     status: "In Development",
     highlights: [
-      "Local File Scanning",
-      "Preview Before Execution",
-      "Safe Organization",
-      "External Storage Support",
-      "File-Safety Controls",
+      "Scan Local and External Storage",
+      "Preview Proposed Organization",
+      "Organize Files Safely",
+      "Recovery and Verification",
+      "macOS Utility",
     ],
     visual: {
       type: "branded",
       brand: "arbor",
-      hero: projectAsset("arbor", "arbor-hero.webp"),
-      alt: "Arbor file organization preview",
+      coverStyle: "app-icon",
+      logo: projectAsset("arbor", "arbor-app-icon.webp"),
+      logoAlt: "Arbor macOS app icon",
+      hero: projectAsset("arbor", "arbor-app-icon.webp"),
+      alt: "Arbor macOS app icon",
     },
     primaryAction: {
       label: "Email About Arbor",
