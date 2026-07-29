@@ -251,54 +251,60 @@ function ArborIconVisual({ project, theme, size = "card" }) {
   );
 }
 
-function HemlockAtmosphere({ theme, size = "card" }) {
+function HemlockEditorialChrome({ theme }) {
+  return (
+    <div className="hemlock-shell__chrome">
+      <div className="hemlock-shell__chrome-top">
+        <span
+          className="hemlock-shell__badge"
+          style={{ borderColor: theme.accentBorder, color: theme.accent }}
+        >
+          LJB
+        </span>
+        <span className="hemlock-shell__eyebrow">Novel</span>
+      </div>
+      <div className="hemlock-shell__footer">Every town buries something.</div>
+    </div>
+  );
+}
+
+function HemlockAtmosphere({ project, theme, size = "card" }) {
+  const [failed, setFailed] = useState(false);
+  const hero = project.visual?.hero;
+  const alt =
+    project.visual?.alt ||
+    "Secluded luxury mansion in wooded hills at blue hour";
   const shellClass =
     size === "dialog"
       ? "hemlock-shell hemlock-shell--dialog"
       : "hemlock-shell";
 
+  if (!hero || failed) {
+    return (
+      <div className={`${shellClass} relative overflow-hidden`} aria-hidden="true">
+        <div className="hemlock-shell__fallback" />
+        <HemlockEditorialChrome theme={theme} />
+      </div>
+    );
+  }
+
   return (
-    <div className={`${shellClass} relative overflow-hidden`} aria-hidden="true">
-      <div className="hemlock-shell__fog" />
-      <div className="hemlock-shell__lake" />
-      <div className="hemlock-shell__trees" />
-      <div className="hemlock-shell__vignette" />
-
-      <div className="hemlock-shell__chrome">
-        <span
-          className="hemlock-shell__badge"
-          style={{ borderColor: theme.cardBorder }}
-        >
-          STORY
-        </span>
-        <span className="hemlock-shell__eyebrow">Fiction</span>
-      </div>
-
-      <div className="hemlock-shell__mark">
-        <span className="hemlock-shell__monogram">HH</span>
-        <svg
-          className="hemlock-shell__book"
-          viewBox="0 0 24 24"
-          fill="none"
-          aria-hidden="true"
-        >
-          <path
-            d="M5.5 5.75h5.2c1.4 0 2.55 1.15 2.55 2.55v10.2c0-.97-.78-1.75-1.75-1.75H5.5V5.75Z"
-            stroke="currentColor"
-            strokeWidth="1.35"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M18.5 5.75h-5.2c-1.4 0-2.55 1.15-2.55 2.55v10.2c0-.97.78-1.75 1.75-1.75H18.5V5.75Z"
-            stroke="currentColor"
-            strokeWidth="1.35"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </div>
-
-      <div className="hemlock-shell__footer">
-        A Small Town with a Dark Secret.
+    <div className={`${shellClass} relative overflow-hidden`}>
+      <img
+        src={hero}
+        alt={size === "dialog" ? alt : ""}
+        width={1536}
+        height={1024}
+        className="hemlock-shell__photo"
+        loading={size === "dialog" ? "eager" : "lazy"}
+        decoding="async"
+        draggable={false}
+        onError={() => setFailed(true)}
+      />
+      <div className="hemlock-shell__shade" aria-hidden="true" />
+      <div className="hemlock-shell__vignette" aria-hidden="true" />
+      <div aria-hidden={size !== "dialog" ? true : undefined}>
+        <HemlockEditorialChrome theme={theme} />
       </div>
     </div>
   );
@@ -317,7 +323,7 @@ function getBrandedFallback(project, theme) {
     return <ArborIconVisual project={project} theme={theme} />;
   }
   if (brand === "hemlock-hollow") {
-    return <HemlockAtmosphere theme={theme} />;
+    return <HemlockAtmosphere project={project} theme={theme} />;
   }
   return <PreviewShell />;
 }
@@ -342,8 +348,8 @@ function HeroWithFallback({ project, theme, size = "card" }) {
     return <ArborIconVisual project={project} theme={theme} size={size} />;
   }
 
-  if (brand === "hemlock-hollow" || coverStyle === "literary-atmosphere") {
-    return <HemlockAtmosphere theme={theme} size={size} />;
+  if (brand === "hemlock-hollow" || coverStyle === "cinematic-environment") {
+    return <HemlockAtmosphere project={project} theme={theme} size={size} />;
   }
 
   if (!hero || failed) {

@@ -537,19 +537,14 @@ summary::-webkit-details-marker {
   }
 }
 
-/* Hemlock Hollow — literary mystery atmosphere */
+/* Hemlock Hollow — cinematic story environment */
 .hemlock-shell {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
   width: 100%;
   height: 210px;
-  background:
-    radial-gradient(ellipse at 50% 78%, rgba(70, 96, 78, 0.28), transparent 52%),
-    radial-gradient(circle at 18% 22%, rgba(200, 212, 192, 0.08), transparent 40%),
-    linear-gradient(180deg, #0a100d 0%, #07100c 42%, #040706 100%);
   overflow: hidden;
+  background: #050806;
 }
 
 .hemlock-shell--dialog {
@@ -562,57 +557,51 @@ summary::-webkit-details-marker {
   }
 }
 
-.hemlock-shell__fog {
+.hemlock-shell__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 42%;
+  display: block;
+}
+
+.hemlock-shell__fallback {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 40%, rgba(70, 96, 78, 0.28), transparent 55%),
+    linear-gradient(180deg, #0a1210 0%, #050806 100%);
+}
+
+.hemlock-shell__shade {
   pointer-events: none;
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(180, 196, 176, 0.05), transparent 35%),
-    radial-gradient(ellipse at 50% 100%, rgba(160, 180, 160, 0.14), transparent 55%);
-  opacity: 0.9;
-}
-
-.hemlock-shell__lake {
-  pointer-events: none;
-  position: absolute;
-  left: -8%;
-  right: -8%;
-  bottom: -18%;
-  height: 48%;
-  border-radius: 50%;
-  background:
-    radial-gradient(ellipse at 50% 30%, rgba(90, 120, 100, 0.22), transparent 60%),
-    linear-gradient(180deg, rgba(30, 48, 38, 0.35), rgba(8, 14, 12, 0.75));
-  filter: blur(0.5px);
-}
-
-.hemlock-shell__trees {
-  pointer-events: none;
-  position: absolute;
-  inset: auto 0 22% 0;
-  height: 42%;
-  background:
-    linear-gradient(90deg, transparent 0%, rgba(12, 22, 16, 0.55) 8%, transparent 18%),
-    linear-gradient(90deg, transparent 22%, rgba(10, 18, 14, 0.5) 34%, transparent 46%),
-    linear-gradient(90deg, transparent 52%, rgba(14, 24, 18, 0.55) 64%, transparent 76%),
-    linear-gradient(90deg, transparent 80%, rgba(10, 18, 14, 0.45) 90%, transparent 100%);
-  opacity: 0.85;
-  mask-image: linear-gradient(180deg, transparent, #000 35%, #000 80%, transparent);
+    linear-gradient(180deg, rgba(0, 0, 0, 0.28) 0%, transparent 34%, rgba(0, 0, 0, 0.55) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.18), transparent 35%, transparent 65%, rgba(0, 0, 0, 0.16));
 }
 
 .hemlock-shell__vignette {
   pointer-events: none;
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(circle at 50% 45%, transparent 28%, rgba(0, 0, 0, 0.45) 100%),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.18), transparent 30%, rgba(0, 0, 0, 0.55));
+  background: radial-gradient(circle at 50% 42%, transparent 34%, rgba(0, 0, 0, 0.42) 100%);
 }
 
 .hemlock-shell__chrome {
   position: absolute;
   z-index: 2;
-  inset: 0.95rem 1rem auto;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.95rem 1rem;
+}
+
+.hemlock-shell__chrome-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -629,7 +618,8 @@ summary::-webkit-details-marker {
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.18em;
-  color: rgba(200, 212, 192, 0.9);
+  background: rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(8px);
 }
 
 .hemlock-shell__eyebrow {
@@ -637,49 +627,16 @@ summary::-webkit-details-marker {
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.hemlock-shell__mark {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.55rem;
-  margin-top: 0.35rem;
-}
-
-.hemlock-shell__monogram {
-  font-size: clamp(1.85rem, 4vw, 2.35rem);
-  font-weight: 600;
-  letter-spacing: 0.28em;
-  line-height: 1;
-  color: rgba(214, 224, 210, 0.88);
-  text-indent: 0.28em;
-}
-
-.hemlock-shell__book {
-  width: 1.35rem;
-  height: 1.35rem;
-  color: rgba(184, 200, 178, 0.72);
+  color: rgba(255, 255, 255, 0.62);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.55);
 }
 
 .hemlock-shell__footer {
-  position: absolute;
-  z-index: 2;
-  left: 1rem;
-  right: 1rem;
-  bottom: 0.95rem;
   font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.02em;
-  color: rgba(255, 255, 255, 0.68);
-  text-align: center;
-}
-
-.hemlock-shell--dialog .hemlock-shell__monogram {
-  font-size: clamp(2.2rem, 5vw, 2.8rem);
+  color: rgba(255, 255, 255, 0.78);
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.65);
 }
 
 .hemlock-shell--dialog .hemlock-shell__footer {
@@ -688,11 +645,15 @@ summary::-webkit-details-marker {
 
 @media (max-width: 639px) {
   .hemlock-shell__chrome {
-    inset: 0.8rem 0.85rem auto;
+    padding: 0.8rem 0.85rem;
   }
 
   .hemlock-shell__footer {
     font-size: 10.5px;
+  }
+
+  .hemlock-shell__photo {
+    object-position: center 46%;
   }
 }
 

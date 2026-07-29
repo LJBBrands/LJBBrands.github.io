@@ -303,9 +303,9 @@ export const projects = [
   {
     id: "hemlock-hollow",
     name: "Hemlock Hollow",
-    category: "Fiction / Mystery Thriller",
+    category: "Novel / Mystery Thriller",
     preview:
-      "A woman returns home after new evidence surfaces in her twin sister’s disappearance, uncovering buried secrets in Hemlock Hollow.",
+      "A woman returns home after new evidence surfaces in her twin sister’s disappearance, uncovering buried secrets beneath Hemlock Hollow.",
     description:
       "After years away, Veronica returns to Hemlock Hollow when new evidence surfaces in the disappearance of her twin sister, Lena. A cryptic letter, a gold necklace, and a trail through the town’s lakeside secrets pull her into a mystery shaped by silence, power, and the people determined to keep the truth buried.",
     summary: "A small town with a dark secret.",
@@ -322,8 +322,9 @@ export const projects = [
     visual: {
       type: "branded",
       brand: "hemlock-hollow",
-      coverStyle: "literary-atmosphere",
-      alt: "Hemlock Hollow literary mystery visual",
+      coverStyle: "cinematic-environment",
+      hero: projectAsset("hemlock-hollow", "hemlock-hollow-hero.webp"),
+      alt: "Secluded luxury mansion in wooded hills at blue hour for Hemlock Hollow",
     },
     primaryAction: {
       label: "Follow the Story",
