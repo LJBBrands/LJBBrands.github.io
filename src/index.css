@@ -1274,6 +1274,10 @@ summary::-webkit-details-marker {
   align-items: stretch;
 }
 
+.destination-grid-item {
+  min-width: 0;
+}
+
 .destination-card {
   display: flex;
   flex-direction: column;
@@ -1384,16 +1388,11 @@ summary::-webkit-details-marker {
   color: #fff;
 }
 
-.rewind-destinations {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.65rem;
-}
-
 .rewind-destination {
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
+  width: 100%;
   min-height: 44px;
   padding: 0.55rem 0.85rem;
   border-radius: 0.85rem;
@@ -1435,6 +1434,10 @@ summary::-webkit-details-marker {
     gap: 1.1rem;
   }
 
+  .destination-grid-item--tablet-full {
+    grid-column: 1 / -1;
+  }
+
   .destination-card {
     padding: 1.45rem 1.4rem 1.3rem;
   }
@@ -1451,8 +1454,20 @@ summary::-webkit-details-marker {
 
 @media (min-width: 1024px) {
   .destination-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(6, minmax(0, 1fr));
     gap: 1.15rem;
+  }
+
+  .destination-grid-item {
+    grid-column: span 2;
+  }
+
+  .destination-grid-item--tablet-full {
+    grid-column: span 2;
+  }
+
+  .destination-grid-item--desktop-half {
+    grid-column: span 3;
   }
 
   .destination-card {
@@ -1467,12 +1482,6 @@ summary::-webkit-details-marker {
   .destination-card__copy {
     font-size: 0.875rem;
     line-height: 1.6;
-  }
-}
-
-@media (max-width: 479px) {
-  .rewind-destinations {
-    grid-template-columns: minmax(0, 1fr);
   }
 }
 

@@ -267,26 +267,35 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
                         <div className="text-xs font-medium tracking-[0.04em] text-white/45">
                           Destinations
                         </div>
-                        <div className="rewind-destinations mt-3">
+                        <ul className="mt-3 space-y-3">
                           {rewindDialogDestinations.map((item) => (
-                            <a
-                              key={item.id}
-                              href={item.href}
-                              aria-label={item.ariaLabel}
-                              target={item.external ? "_blank" : undefined}
-                              rel={
-                                item.external
-                                  ? "noopener noreferrer"
-                                  : undefined
-                              }
-                              className="rewind-destination"
-                              style={{ borderColor: theme.cardBorder }}
-                            >
-                              <DestinationIcon name={item.icon} />
-                              <span>{item.cta}</span>
-                            </a>
+                            <li key={item.id}>
+                              {item.description ? (
+                                <p className="mb-2 text-xs leading-5 text-white/50">
+                                  <span className="font-medium text-white/70">
+                                    {item.title}:
+                                  </span>{" "}
+                                  {item.description}
+                                </p>
+                              ) : null}
+                              <a
+                                href={item.href}
+                                aria-label={item.ariaLabel}
+                                target={item.external ? "_blank" : undefined}
+                                rel={
+                                  item.external
+                                    ? "noopener noreferrer"
+                                    : undefined
+                                }
+                                className="rewind-destination"
+                                style={{ borderColor: theme.cardBorder }}
+                              >
+                                <DestinationIcon name={item.icon} />
+                                <span>{item.cta}</span>
+                              </a>
+                            </li>
                           ))}
-                        </div>
+                        </ul>
                       </div>
                     ) : project.mediaReady ? (
                       <div
@@ -297,7 +306,7 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
                           Media Library
                         </div>
                         <p className="mt-2 text-sm leading-6 text-white/55">
-                          Podcast episodes, YouTube destinations, and watch links
+                          Podcast episodes, LIVE destinations, and watch links
                           will appear here when published.
                         </p>
                       </div>

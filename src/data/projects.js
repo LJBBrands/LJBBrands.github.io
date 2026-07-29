@@ -191,15 +191,17 @@ export const projects = [
     name: "LJB Rewind",
     category: "Media / Entertainment",
     preview:
-      "Podcasts, gaming, unboxings, LEGO builds, road trips, and behind-the-scenes stories.",
+      "Podcasts, LEGO builds, unboxings, road trips, LIVE conversations, and behind-the-scenes project stories.",
     description:
-      "LJB Rewind is the media arm of LJB Media Group — storytelling across podcasts, gaming, builds, travel, and behind-the-scenes moments.",
+      "LJB Rewind is the media arm of LJB Media Group — podcasts, LEGO builds, unboxings, LIVE discussions, project updates, community content, road trips, and behind-the-scenes stories.",
+    summary:
+      "LJB Rewind now uses a focused public presence: Instagram for updates, short-form moments, and LIVE announcements; Kick for full-length LIVE podcasts, LEGO builds, unboxings, and community conversations.",
     status: null,
     highlights: [
-      "Podcast",
-      "YouTube",
-      "Unboxings",
+      "Podcasts",
       "LEGO Builds",
+      "Unboxings",
+      "LIVE Conversations",
       "Road Trips",
       "Behind the Scenes",
     ],

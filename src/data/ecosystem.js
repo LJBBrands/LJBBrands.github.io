@@ -4,9 +4,8 @@
 */
 
 export const destinationUrls = {
-  youtube: "https://www.youtube.com/@LJBRewind",
+  instagram: "https://www.instagram.com/rt345lc/",
   kick: "https://kick.com/ljbrewind",
-  twitch: "https://www.twitch.tv/ljbrewind",
   github: "https://github.com/LJBBrands",
   support: "#support",
 };
@@ -15,11 +14,11 @@ export const ecosystemSection = {
   kicker: "Destinations",
   title: "Explore the Ecosystem.",
   description:
-    "Watch, read, stream, contribute, and follow the projects that make up LJB Media Group.",
+    "Follow, watch LIVE, read, contribute, and support the projects that make up LJB Media Group.",
 };
 
 /**
- * @typedef {"play" | "live" | "chat" | "book" | "code" | "spark"} DestinationIconName
+ * @typedef {"camera" | "live" | "book" | "code" | "spark"} DestinationIconName
  * @typedef {"external" | "hash" | "project"} DestinationAction
  */
 
@@ -37,40 +36,28 @@ export const ecosystemSection = {
  * }>} */
 export const destinations = [
   {
-    id: "youtube",
-    title: "YouTube",
+    id: "instagram",
+    title: "Instagram",
     description:
-      "Watch podcasts, builds, reviews, road trips, unboxings, LEGO projects, and behind-the-scenes stories.",
-    cta: "Watch on YouTube",
-    href: destinationUrls.youtube,
+      "Follow RT345LC, behind-the-scenes updates, project moments, short-form content, and announcements for upcoming LIVE sessions.",
+    cta: "Follow on Instagram",
+    href: destinationUrls.instagram,
     external: true,
-    icon: "play",
+    icon: "camera",
     action: "external",
-    ariaLabel: "Open LJB Rewind on YouTube",
+    ariaLabel: "Open RT345LC on Instagram",
   },
   {
     id: "kick",
     title: "Kick",
     description:
-      "Join live conversations, community hangouts, development sessions, and real-time updates.",
-    cta: "Watch Live",
+      "Watch LJB Rewind LIVE for podcasts, LEGO builds, unboxings, community conversations, development sessions, and project updates.",
+    cta: "Watch LIVE on Kick",
     href: destinationUrls.kick,
     external: true,
     icon: "live",
     action: "external",
-    ariaLabel: "Open LJB Rewind on Kick",
-  },
-  {
-    id: "twitch",
-    title: "Twitch",
-    description:
-      "Watch gaming streams, community nights, creator sessions, and future GTA VI content.",
-    cta: "Watch on Twitch",
-    href: destinationUrls.twitch,
-    external: true,
-    icon: "chat",
-    action: "external",
-    ariaLabel: "Open LJB Rewind on Twitch",
+    ariaLabel: "Open LJB Rewind LIVE on Kick",
   },
   {
     id: "hemlock-hollow",
@@ -101,7 +88,7 @@ export const destinations = [
     id: "support",
     title: "Support the Mission",
     description:
-      "Help support independent software, media, books, and the next generation of LJB creative projects.",
+      "Help support independent software, media, books, automotive storytelling, and future LJB creative projects.",
     cta: "Support LJB",
     href: destinationUrls.support,
     external: false,
@@ -114,34 +101,70 @@ export const destinations = [
 /** Destinations surfaced inside the LJB Rewind project dialog. */
 export const rewindDialogDestinations = [
   {
-    id: "youtube",
-    title: "YouTube",
-    cta: "YouTube",
-    href: destinationUrls.youtube,
-    icon: "play",
+    id: "instagram",
+    title: "Instagram",
+    description:
+      "Short-form content, project updates, announcements, clips, automotive content, and notices for upcoming LIVE sessions.",
+    cta: "Follow on Instagram",
+    href: destinationUrls.instagram,
+    icon: "camera",
     external: true,
-    ariaLabel: "Open LJB Rewind on YouTube",
+    ariaLabel: "Open RT345LC on Instagram",
   },
   {
     id: "kick",
     title: "Kick",
-    cta: "Kick",
+    description:
+      "Full LIVE podcasts, LEGO builds, unboxings, community discussions, development sessions, and long-form broadcasts.",
+    cta: "Watch LIVE on Kick",
     href: destinationUrls.kick,
     icon: "live",
     external: true,
-    ariaLabel: "Open LJB Rewind on Kick",
+    ariaLabel: "Open LJB Rewind LIVE on Kick",
+  },
+];
+
+/** Restrained footer platform links. */
+export const footerPlatformLinks = [
+  {
+    id: "instagram",
+    label: "Instagram",
+    href: destinationUrls.instagram,
+    external: true,
+    ariaLabel: "Open RT345LC on Instagram",
   },
   {
-    id: "twitch",
-    title: "Twitch",
-    cta: "Twitch",
-    href: destinationUrls.twitch,
-    icon: "chat",
+    id: "kick",
+    label: "Kick",
+    href: destinationUrls.kick,
     external: true,
-    ariaLabel: "Open LJB Rewind on Twitch",
+    ariaLabel: "Open LJB Rewind LIVE on Kick",
+  },
+  {
+    id: "github",
+    label: "GitHub",
+    href: destinationUrls.github,
+    external: true,
+    ariaLabel: "Open LJB Brands on GitHub",
   },
 ];
 
 export function getDestinationById(id) {
   return destinations.find((item) => item.id === id) ?? null;
+}
+
+export function getDestinationGridItemClass(index, total) {
+  const classes = ["destination-grid-item"];
+
+  // Desktop: first three share a 3-col row; final two share a full-width 2-col row.
+  if (total === 5 && index >= 3) {
+    classes.push("destination-grid-item--desktop-half");
+  }
+
+  // Tablet: odd final card spans the full row.
+  if (total % 2 === 1 && index === total - 1) {
+    classes.push("destination-grid-item--tablet-full");
+  }
+
+  return classes.join(" ");
 }

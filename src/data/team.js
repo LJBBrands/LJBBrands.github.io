@@ -10,12 +10,12 @@ export const aboutCompany = {
   title: "LJB Media Group",
   subtitle: "Independent Company",
   description:
-    "LJB Media Group brings technology, media, automotive culture, apparel, and independent creative work under one roof. Each project serves a different audience, but every project shares the same foundation: thoughtful design, real experiences, and work built for the long term. LJB Media Group builds products, tells stories, and shares every step of the journey through video, streaming, writing, and software.",
+    "LJB Media Group brings technology, media, automotive culture, apparel, and independent creative work under one roof. Each project serves a different audience, but every project shares the same foundation: thoughtful design, real experiences, and work built for the long term. LJB Media Group follows a privacy-first operating philosophy: reduce unnecessary accounts, limit platform dependence, retain ownership of creative work, and keep the public ecosystem focused and intentional. Public updates and LIVE content are concentrated on Instagram and Kick, while product development remains documented through LJB-owned repositories and infrastructure where practical.",
   projects: ["Awy", "LJB Rewind", "RT345LC", "Give Love Co.", "Arbor", "Hemlock Hollow"],
 };
 
 export const aboutSection = {
   title: "About LJB Media Group",
   supporting:
-    "An independent company building technology, media, products, and stories across one connected ecosystem.",
+    "LJB Media Group is intentionally reducing its platform footprint and maintaining a focused public presence across fewer destinations.",
 };

@@ -80,7 +80,7 @@ function RewindBranded({ accent, theme }) {
         </div>
 
         <div className="flex flex-wrap gap-1.5">
-          {["Podcast", "Gaming", "Unboxings", "LEGO", "Road Trips"].map(
+          {["Podcast", "LIVE", "Unboxings", "LEGO", "Road Trips"].map(
             (label) => (
               <span
                 key={label}

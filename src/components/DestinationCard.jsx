@@ -23,7 +23,7 @@ function ExternalIndicator() {
 }
 
 const DestinationCard = forwardRef(function DestinationCard(
-  { destination, theme, index = 0, onOpenProject },
+  { destination, theme, index = 0, className = "", onOpenProject },
   ref
 ) {
   const reduceMotion = useReducedMotion();
@@ -77,7 +77,7 @@ const DestinationCard = forwardRef(function DestinationCard(
         aria-haspopup="dialog"
         onClick={() => onOpenProject?.(destination.projectId)}
         {...sharedMotion}
-        className="destination-card group"
+        className={`destination-card group ${className}`.trim()}
         style={cardStyle}
       >
         {content}
@@ -98,7 +98,7 @@ const DestinationCard = forwardRef(function DestinationCard(
           : undefined
       }
       {...sharedMotion}
-      className="destination-card group"
+      className={`destination-card group ${className}`.trim()}
       style={cardStyle}
     >
       {content}

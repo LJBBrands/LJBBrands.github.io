@@ -1,5 +1,9 @@
 import { useCallback, useRef, useState } from "react";
-import { destinations, ecosystemSection } from "../../data/ecosystem";
+import {
+  destinations,
+  ecosystemSection,
+  getDestinationGridItemClass,
+} from "../../data/ecosystem";
 import { getProjectById } from "../../data/projects";
 import DestinationCard from "../DestinationCard";
 import ProjectDialog from "../ProjectDialog";
@@ -8,6 +12,7 @@ import SectionHeader from "../SectionHeader";
 export default function Ecosystem({ theme }) {
   const [activeId, setActiveId] = useState(null);
   const triggerRefs = useRef({});
+  const visibleCount = destinations.length;
 
   const activeProject = activeId ? getProjectById(activeId) : null;
 
@@ -44,6 +49,7 @@ export default function Ecosystem({ theme }) {
             destination={destination}
             theme={theme}
             index={index}
+            className={getDestinationGridItemClass(index, visibleCount)}
             onOpenProject={openProject}
             ref={
               destination.action === "project"

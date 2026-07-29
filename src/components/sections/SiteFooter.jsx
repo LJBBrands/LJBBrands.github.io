@@ -1,3 +1,4 @@
+import { footerPlatformLinks } from "../../data/ecosystem";
 import { navItems } from "../../data/projects";
 import { handleSectionClick } from "../../utils/scrollToSection";
 
@@ -27,6 +28,23 @@ export default function SiteFooter({ theme }) {
           >
             hello@ljbbrands.com
           </a>
+          <nav
+            className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-white/55"
+            aria-label="Platform destinations"
+          >
+            {footerPlatformLinks.map((link) => (
+              <a
+                key={link.id}
+                href={link.href}
+                aria-label={link.ariaLabel}
+                target={link.external ? "_blank" : undefined}
+                rel={link.external ? "noopener noreferrer" : undefined}
+                className="transition hover:text-white"
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
         </div>
 
         <nav
