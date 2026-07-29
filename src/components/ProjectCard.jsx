@@ -23,8 +23,9 @@ export default function ProjectCard({
         ref={buttonRef}
         type="button"
         onClick={() => onOpen(project.id)}
+        aria-label={`View ${project.name} project`}
         aria-haspopup="dialog"
-        className="group flex h-full min-h-[44px] w-full flex-col overflow-hidden rounded-[1.75rem] border text-left backdrop-blur-2xl transition hover:border-white/20 focus-visible:border-white/30"
+        className="group flex h-full min-h-[44px] w-full flex-col overflow-hidden rounded-[1.75rem] border text-left backdrop-blur-2xl transition hover:border-white/20 focus-visible:border-white/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgba(184,255,90,0.55)]"
         style={{
           backgroundColor: theme.panelBg,
           borderColor: theme.cardBorder,

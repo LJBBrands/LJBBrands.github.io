@@ -245,63 +245,56 @@ function ArborIconVisual({ project, theme, size = "card" }) {
   );
 }
 
-function HemlockBranded({ theme }) {
-  return (
-    <PreviewShell className="px-5 py-5">
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(circle at 22% 18%, rgba(200,212,192,0.10), transparent 42%), radial-gradient(circle at 78% 78%, rgba(255,255,255,0.04), transparent 40%), linear-gradient(180deg, rgba(8,10,8,0.2), rgba(0,0,0,0.55))",
-        }}
-      />
-      <div className="relative flex h-full flex-col justify-between">
-        <div>
-          <div className="text-[10px] font-medium uppercase tracking-[0.22em] text-white/45">
-            Fiction
-          </div>
-          <div className="mt-1.5 text-2xl font-semibold tracking-tight text-white sm:text-[1.65rem]">
-            Hemlock Hollow
-          </div>
-          <p className="mt-2 max-w-[16rem] text-[12px] leading-5 text-white/55">
-            A small town with a dark secret.
-          </p>
-        </div>
+function HemlockAtmosphere({ theme, size = "card" }) {
+  const shellClass =
+    size === "dialog"
+      ? "hemlock-shell hemlock-shell--dialog"
+      : "hemlock-shell";
 
-        <div className="flex items-end justify-between gap-3">
-          <div
-            className="flex h-11 w-9 items-center justify-center rounded-md border"
-            style={{ borderColor: theme.cardBorder, color: "rgba(200,212,192,0.9)" }}
-          >
-            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" aria-hidden="true">
-              <path
-                d="M5.5 5.75h5.2c1.4 0 2.55 1.15 2.55 2.55v10.2c0-.97-.78-1.75-1.75-1.75H5.5V5.75Z"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M18.5 5.75h-5.2c-1.4 0-2.55 1.15-2.55 2.55v10.2c0-.97.78-1.75 1.75-1.75H18.5V5.75Z"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </div>
-          <div className="flex flex-wrap justify-end gap-1.5">
-            {["Mystery", "Family", "Secrets"].map((label) => (
-              <span
-                key={label}
-                className="rounded-full border px-2 py-0.5 text-[10px] text-white/55"
-                style={{ borderColor: theme.cardBorder }}
-              >
-                {label}
-              </span>
-            ))}
-          </div>
-        </div>
+  return (
+    <div className={`${shellClass} relative overflow-hidden`} aria-hidden="true">
+      <div className="hemlock-shell__fog" />
+      <div className="hemlock-shell__lake" />
+      <div className="hemlock-shell__trees" />
+      <div className="hemlock-shell__vignette" />
+
+      <div className="hemlock-shell__chrome">
+        <span
+          className="hemlock-shell__badge"
+          style={{ borderColor: theme.cardBorder }}
+        >
+          STORY
+        </span>
+        <span className="hemlock-shell__eyebrow">Fiction</span>
       </div>
-    </PreviewShell>
+
+      <div className="hemlock-shell__mark">
+        <span className="hemlock-shell__monogram">HH</span>
+        <svg
+          className="hemlock-shell__book"
+          viewBox="0 0 24 24"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M5.5 5.75h5.2c1.4 0 2.55 1.15 2.55 2.55v10.2c0-.97-.78-1.75-1.75-1.75H5.5V5.75Z"
+            stroke="currentColor"
+            strokeWidth="1.35"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M18.5 5.75h-5.2c-1.4 0-2.55 1.15-2.55 2.55v10.2c0-.97.78-1.75 1.75-1.75H18.5V5.75Z"
+            stroke="currentColor"
+            strokeWidth="1.35"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </div>
+
+      <div className="hemlock-shell__footer">
+        A Small Town with a Dark Secret.
+      </div>
+    </div>
   );
 }
 
@@ -317,7 +310,9 @@ function getBrandedFallback(project, theme) {
   if (brand === "arbor") {
     return <ArborIconVisual project={project} theme={theme} />;
   }
-  if (brand === "hemlock-hollow") return <HemlockBranded theme={theme} />;
+  if (brand === "hemlock-hollow") {
+    return <HemlockAtmosphere theme={theme} />;
+  }
   return <PreviewShell />;
 }
 
@@ -335,6 +330,10 @@ function HeroWithFallback({ project, theme, size = "card" }) {
 
   if (brand === "arbor" || coverStyle === "app-icon") {
     return <ArborIconVisual project={project} theme={theme} size={size} />;
+  }
+
+  if (brand === "hemlock-hollow" || coverStyle === "literary-atmosphere") {
+    return <HemlockAtmosphere theme={theme} size={size} />;
   }
 
   if (!hero || failed) {

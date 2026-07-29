@@ -4,29 +4,10 @@ import ProjectCard from "../ProjectCard";
 import ProjectDialog from "../ProjectDialog";
 import SectionHeader from "../SectionHeader";
 
-const DESKTOP_ROW = 3;
-const TABLET_ROW = 2;
-
-function getProjectGridItemClass(index, total) {
-  const classes = ["project-grid-item"];
-
-  if (total % DESKTOP_ROW === 2) {
-    if (index === total - 2) classes.push("project-grid-item--desktop-last-left");
-    if (index === total - 1) classes.push("project-grid-item--desktop-last-right");
-  }
-
-  if (total % TABLET_ROW === 1 && index === total - 1) {
-    classes.push("project-grid-item--tablet-last-center");
-  }
-
-  return classes.join(" ");
-}
-
 export default function Projects({ theme }) {
   const [activeId, setActiveId] = useState(null);
   const triggerRefs = useRef({});
   const listedProjects = getListedProjects();
-  const visibleCount = listedProjects.length;
 
   const activeProject = activeId ? getProjectById(activeId) : null;
 
@@ -58,7 +39,6 @@ export default function Projects({ theme }) {
             project={project}
             theme={theme}
             index={index}
-            className={getProjectGridItemClass(index, visibleCount)}
             onOpen={openProject}
             buttonRef={(node) => {
               triggerRefs.current[project.id] = node;

@@ -307,12 +307,11 @@ export const projects = [
     name: "Hemlock Hollow",
     category: "Fiction / Mystery Thriller",
     preview:
-      "A woman returns home after new evidence surfaces in her twin sister’s disappearance, uncovering secrets buried beneath Hemlock Hollow.",
+      "A woman returns home after new evidence surfaces in her twin sister’s disappearance, uncovering buried secrets in Hemlock Hollow.",
     description:
       "After years away, Veronica returns to Hemlock Hollow when new evidence surfaces in the disappearance of her twin sister, Lena. A cryptic letter, a gold necklace, and a trail through the town’s lakeside secrets pull her into a mystery shaped by silence, power, and the people determined to keep the truth buried.",
     summary: "A small town with a dark secret.",
     status: "In Development",
-    listed: false,
     highlights: [
       "Family",
       "Disappearance",
@@ -325,6 +324,8 @@ export const projects = [
     visual: {
       type: "branded",
       brand: "hemlock-hollow",
+      coverStyle: "literary-atmosphere",
+      alt: "Hemlock Hollow literary mystery visual",
     },
     primaryAction: {
       label: "Follow the Story",
