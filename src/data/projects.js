@@ -9,11 +9,9 @@ const awyShot = (fileName, label, alt, group) => ({
 });
 
 /*
-  Public Awy set only. Installed but excluded from the public site:
-  - awy-lounge-owner-controls-dark.jpg
-  - awy-lounge-safety-controls-dark.jpg
-  Also continue excluding Membership, Moderator Tools, unfinished billing,
-  incomplete workflows, admin-heavy menus, and empty/unfinished states.
+  Public Awy set only. Continue excluding Membership, Moderator Tools,
+  unfinished billing, incomplete workflows, admin-heavy menus, and
+  empty/unfinished states from the public site.
 */
 
 /*
@@ -208,7 +206,7 @@ export const projects = [
     visual: {
       type: "branded",
       brand: "rewind",
-      hero: projectAsset("ljb-rewind", "ljb-rewind-hero.webp"),
+      coverStyle: "media-atmosphere",
       alt: "LJB Rewind media preview",
     },
     mediaReady: true,

@@ -5,7 +5,7 @@ export default function LjbHero({ theme }) {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section id="top" className="mx-auto max-w-6xl pb-12 pt-24 sm:pb-14 sm:pt-28">
+    <section id="top" className="mx-auto max-w-6xl scroll-mt-24 pb-12 pt-24 sm:pb-14 sm:pt-28">
       <motion.div
         initial={reduceMotion ? false : { opacity: 0, y: 16 }}
         animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}

@@ -36,8 +36,11 @@ export default function App() {
         <About theme={ljbTheme} />
         <Contact theme={ljbTheme} />
         <Support theme={ljbTheme} />
-        <SiteFooter theme={ljbTheme} />
       </main>
+
+      <div className="relative px-5 pb-6 sm:px-8 lg:px-10">
+        <SiteFooter theme={ljbTheme} />
+      </div>
     </div>
   );
 }

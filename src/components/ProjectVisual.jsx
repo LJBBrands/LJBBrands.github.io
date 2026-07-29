@@ -145,6 +145,8 @@ function Rt345lcPhotoCover({ project, theme, size = "card" }) {
       <img
         src={hero}
         alt={size === "dialog" ? alt : ""}
+        width={1600}
+        height={1000}
         className="rt345lc-photo"
         loading={size === "dialog" ? "eager" : "lazy"}
         decoding="async"
@@ -191,6 +193,8 @@ function GiveLoveLogoVisual({ project, theme, size = "card" }) {
         <img
           src={logo}
           alt={size === "dialog" ? alt : ""}
+          width={1200}
+          height={630}
           className="give-love-logo"
           loading={size === "dialog" ? "eager" : "lazy"}
           decoding="async"
@@ -235,6 +239,8 @@ function ArborIconVisual({ project, theme, size = "card" }) {
       <img
         src={logo}
         alt={size === "dialog" ? alt : ""}
+        width={1024}
+        height={1024}
         className="arbor-app-icon"
         loading={size === "dialog" ? "eager" : "lazy"}
         decoding="async"
@@ -319,6 +325,10 @@ function getBrandedFallback(project, theme) {
 function HeroWithFallback({ project, theme, size = "card" }) {
   const [failed, setFailed] = useState(false);
   const { hero, alt, brand, coverStyle } = project.visual;
+
+  if (brand === "rewind" || coverStyle === "media-atmosphere") {
+    return <RewindBranded accent={project.accent || theme.accent} theme={theme} />;
+  }
 
   if (brand === "rt345lc" || coverStyle === "automotive-editorial") {
     return <Rt345lcPhotoCover project={project} theme={theme} size={size} />;

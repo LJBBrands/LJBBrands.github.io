@@ -58,7 +58,7 @@ export default function ProjectCard({
             {project.name}
           </h3>
 
-          <p className="mt-2 text-[13px] leading-6 text-white/58 sm:text-sm sm:leading-6">
+          <p className="mt-2 line-clamp-4 text-[13px] leading-6 text-white/58 sm:text-sm sm:leading-6">
             {project.preview}
           </p>
 
