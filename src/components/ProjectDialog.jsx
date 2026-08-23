@@ -1,8 +1,12 @@
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useEffect, useId, useRef } from "react";
+import { createPortal } from "react-dom";
 import { faqItems } from "../data/awyContent";
 import { rewindDialogDestinations } from "../data/ecosystem";
 import { getAwyShowcaseSlides } from "../data/projects";
+import { useBodyScrollLock } from "../hooks/useBodyScrollLock";
+import { getScrollBehavior } from "../utils/prefersReducedMotion";
+import { setInert } from "../utils/setInert";
 import AwyShowcase from "./AwyShowcase";
 import DestinationIcon from "./DestinationIcon";
 import ProjectVisual from "./ProjectVisual";
@@ -15,13 +19,21 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
   const descriptionId = useId();
   const panelRef = useRef(null);
   const closeRef = useRef(null);
+  const triggerRef = useRef(null);
   const reduceMotion = useReducedMotion();
+
+  useBodyScrollLock(open);
 
   useEffect(() => {
     if (!open) return undefined;
 
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
+    triggerRef.current =
+      document.activeElement instanceof HTMLElement
+        ? document.activeElement
+        : null;
+
+    const site = document.getElementById("site-content");
+    setInert(site, true);
 
     const focusTimer = window.setTimeout(() => {
       closeRef.current?.focus();
@@ -42,6 +54,7 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
 
       if (focusable.length === 0) {
         event.preventDefault();
+        panelRef.current.focus();
         return;
       }
 
@@ -60,8 +73,14 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
     window.addEventListener("keydown", onKeyDown);
     return () => {
       window.clearTimeout(focusTimer);
-      document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", onKeyDown);
+      setInert(site, false);
+      const trigger = triggerRef.current;
+      if (trigger && typeof trigger.focus === "function") {
+        window.requestAnimationFrame(() =>
+          trigger.focus({ preventScroll: true }),
+        );
+      }
     };
   }, [open, onClose]);
 
@@ -71,10 +90,12 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
   const accent = project?.accent || theme.accent;
   const slides = isAwyShowcase ? getAwyShowcaseSlides(project) : [];
 
-  return (
+  if (typeof document === "undefined") return null;
+
+  const dialog = (
     <AnimatePresence>
       {open && project ? (
-        <div className="fixed inset-0 z-[80] flex items-end justify-center p-0 sm:items-center sm:p-5 lg:p-8">
+        <div className="project-dialog-root fixed inset-0 z-[80] flex items-end justify-center sm:items-center">
           <motion.button
             type="button"
             aria-label="Close project details"
@@ -93,15 +114,13 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
             aria-labelledby={titleId}
             aria-describedby={descriptionId}
             tabIndex={-1}
-            initial={
-              reduceMotion ? false : { opacity: 0, y: 24, scale: 0.985 }
-            }
+            initial={reduceMotion ? false : { opacity: 0, y: 24, scale: 0.985 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={
               reduceMotion ? undefined : { opacity: 0, y: 16, scale: 0.985 }
             }
             transition={{ duration: reduceMotion ? 0 : 0.22 }}
-            className="relative z-10 flex max-h-[92vh] w-full max-w-6xl flex-col overflow-hidden rounded-t-[1.75rem] border border-b-0 sm:max-h-[90vh] sm:rounded-[1.75rem] sm:border-b"
+            className="project-dialog relative z-10 flex w-full max-w-6xl flex-col overflow-hidden rounded-t-[1.75rem] border border-b-0 sm:rounded-[1.75rem] sm:border-b"
             style={{
               backgroundColor: "rgba(7,9,7,0.97)",
               borderColor: theme.cardBorder,
@@ -109,7 +128,7 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
             }}
           >
             <div
-              className="sticky top-0 z-20 flex items-center justify-between gap-3 border-b px-5 py-3.5 backdrop-blur-xl sm:px-8"
+              className="project-dialog__header sticky top-0 z-20 flex items-center justify-between gap-3 border-b px-5 py-3.5 backdrop-blur-xl sm:px-8"
               style={{
                 borderColor: theme.cardBorder,
                 backgroundColor: "rgba(7,9,7,0.92)",
@@ -117,7 +136,7 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
             >
               <div className="min-w-0">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="text-[11px] font-medium uppercase tracking-[0.14em] text-white/45">
+                  <span className="text-[11px] font-medium uppercase tracking-[0.14em] text-white/52">
                     {project.category}
                   </span>
                   {project.status ? (
@@ -148,7 +167,10 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
               </button>
             </div>
 
-            <div className="overflow-y-auto overscroll-contain">
+            <div
+              className="project-dialog__body overflow-y-auto overscroll-contain"
+              data-scroll-lock-allow
+            >
               {isAwyShowcase ? (
                 <div className="px-5 pb-10 pt-5 sm:px-8 sm:pb-12 sm:pt-6 lg:px-10">
                   <p
@@ -187,7 +209,7 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
                     ) : null}
 
                     <div>
-                      <h3 className="text-xs font-medium tracking-[0.04em] text-white/45">
+                      <h3 className="text-xs font-medium tracking-[0.04em] text-white/52">
                         FAQ
                       </h3>
                       <div className="mt-3 space-y-2">
@@ -211,13 +233,13 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
                     <div className="flex flex-wrap gap-4 text-sm text-white/55">
                       <a
                         href={`${import.meta.env.BASE_URL}privacy/`}
-                        className="transition hover:text-white"
+                        className="inline-flex min-h-[44px] items-center transition hover:text-white"
                       >
                         Privacy
                       </a>
                       <a
                         href={`${import.meta.env.BASE_URL}terms/`}
-                        className="transition hover:text-white"
+                        className="inline-flex min-h-[44px] items-center transition hover:text-white"
                       >
                         Terms
                       </a>
@@ -265,7 +287,7 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
                         className="mt-4 rounded-[1.25rem] border px-4 py-4"
                         style={{ borderColor: theme.cardBorder }}
                       >
-                        <div className="text-xs font-medium tracking-[0.04em] text-white/45">
+                        <div className="text-xs font-medium tracking-[0.04em] text-white/52">
                           Destinations
                         </div>
                         <ul className="mt-3 space-y-3">
@@ -303,7 +325,7 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
                         className="mt-4 rounded-[1.25rem] border px-4 py-4"
                         style={{ borderColor: theme.cardBorder }}
                       >
-                        <div className="text-xs font-medium tracking-[0.04em] text-white/45">
+                        <div className="text-xs font-medium tracking-[0.04em] text-white/52">
                           Media Library
                         </div>
                         <p className="mt-2 text-sm leading-6 text-white/55">
@@ -333,7 +355,7 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
 
                     {project.highlights?.length ? (
                       <div className="mt-6">
-                        <h3 className="text-xs font-medium tracking-[0.04em] text-white/45">
+                        <h3 className="text-xs font-medium tracking-[0.04em] text-white/52">
                           Highlights
                         </h3>
                         <ul className="mt-3 flex flex-wrap gap-2">
@@ -375,7 +397,7 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
                                     document
                                       .getElementById(id)
                                       ?.scrollIntoView({
-                                        behavior: "smooth",
+                                        behavior: getScrollBehavior(),
                                         block: "start",
                                       });
                                   });
@@ -398,4 +420,6 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
       ) : null}
     </AnimatePresence>
   );
+
+  return createPortal(dialog, document.body);
 }

@@ -31,4 +31,3 @@ These instructions apply to the entire repository. Preserve and evolve the exist
 4. Run relevant linting, type checks, and tests exposed by the existing project when practical.
 5. Run the repository's existing production build command before reporting implementation work complete.
 6. If the production build cannot run, report the exact blocker and do not claim the implementation is complete.
-

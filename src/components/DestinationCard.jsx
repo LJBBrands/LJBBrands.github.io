@@ -24,7 +24,7 @@ function ExternalIndicator() {
 
 const DestinationCard = forwardRef(function DestinationCard(
   { destination, theme, index = 0, className = "", onOpenProject },
-  ref
+  ref,
 ) {
   const reduceMotion = useReducedMotion();
   const isExternal = Boolean(destination.external);

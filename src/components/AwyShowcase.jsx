@@ -27,7 +27,7 @@ export default function AwyShowcase({ slides = [], theme }) {
       setDirection(dir || (clamped > index ? 1 : -1));
       setIndex(clamped);
     },
-    [index, total]
+    [index, total],
   );
 
   const goPrev = useCallback(() => {
@@ -182,9 +182,7 @@ export default function AwyShowcase({ slides = [], theme }) {
                       active ? " awy-showcase__dot--active" : ""
                     }`}
                     style={
-                      active
-                        ? { color: theme.accent || "#B8FF5A" }
-                        : undefined
+                      active ? { color: theme.accent || "#B8FF5A" } : undefined
                     }
                     onClick={() =>
                       goTo(slideIndex, slideIndex > index ? 1 : -1)
@@ -246,7 +244,12 @@ export default function AwyShowcase({ slides = [], theme }) {
         })}
       </div>
 
-      <div id={liveId} className="sr-only" aria-live="polite" aria-atomic="true">
+      <div
+        id={liveId}
+        className="sr-only"
+        aria-live="polite"
+        aria-atomic="true"
+      >
         {slide.title}. {slide.description}
       </div>
     </div>

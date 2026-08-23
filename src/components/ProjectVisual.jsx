@@ -1,5 +1,5 @@
-import { useState } from "react";
 import DeviceFrame from "./DeviceFrame";
+import { useImageFallback } from "../hooks/useImageFallback";
 
 const FRAME = "relative h-[210px] w-full overflow-hidden sm:h-[228px]";
 
@@ -48,7 +48,7 @@ function RewindBranded({ accent, theme }) {
       <div className="relative flex h-full flex-col justify-between">
         <div className="flex items-start justify-between gap-3">
           <div>
-            <div className="text-[10px] font-medium uppercase tracking-[0.22em] text-white/45">
+            <div className="text-[10px] font-medium uppercase tracking-[0.22em] text-white/52">
               Media
             </div>
             <div className="mt-1.5 text-2xl font-semibold tracking-tight text-white sm:text-[1.7rem]">
@@ -89,7 +89,7 @@ function RewindBranded({ accent, theme }) {
               >
                 {label}
               </span>
-            )
+            ),
           )}
         </div>
       </div>
@@ -122,8 +122,8 @@ function Rt345lcEditorialChrome({ theme }) {
 }
 
 function Rt345lcPhotoCover({ project, theme, size = "card" }) {
-  const [failed, setFailed] = useState(false);
   const hero = project.visual?.hero;
+  const [failed, markFailed] = useImageFallback(hero);
   const alt =
     project.visual?.alt || "Front view of the green RT345LC performance sedan";
   const shellClass =
@@ -131,7 +131,10 @@ function Rt345lcPhotoCover({ project, theme, size = "card" }) {
 
   if (!hero || failed) {
     return (
-      <div className={`${shellClass} relative overflow-hidden`} aria-hidden="true">
+      <div
+        className={`${shellClass} relative overflow-hidden`}
+        aria-hidden="true"
+      >
         <div className="rt345lc-fallback">
           <div className="rt345lc-fallback__lines" />
         </div>
@@ -151,7 +154,7 @@ function Rt345lcPhotoCover({ project, theme, size = "card" }) {
         loading={size === "dialog" ? "eager" : "lazy"}
         decoding="async"
         draggable={false}
-        onError={() => setFailed(true)}
+        onError={markFailed}
       />
       <div className="rt345lc-photo__shade" aria-hidden="true" />
       <div className="rt345lc-photo__vignette" aria-hidden="true" />
@@ -164,10 +167,9 @@ function Rt345lcPhotoCover({ project, theme, size = "card" }) {
 }
 
 function GiveLoveLogoVisual({ project, theme, size = "card" }) {
-  const [failed, setFailed] = useState(false);
   const logo = project.visual?.logo || project.visual?.hero;
-  const alt =
-    project.visual?.alt || "Give Love Co. official wordmark logo";
+  const [failed, markFailed] = useImageFallback(logo);
+  const alt = project.visual?.alt || "Give Love Co. official wordmark logo";
   const shellClass =
     size === "dialog"
       ? "give-love-shell give-love-shell--dialog"
@@ -175,7 +177,10 @@ function GiveLoveLogoVisual({ project, theme, size = "card" }) {
 
   if (!logo || failed) {
     return (
-      <div className={`${shellClass} relative overflow-hidden`} aria-hidden="true">
+      <div
+        className={`${shellClass} relative overflow-hidden`}
+        aria-hidden="true"
+      >
         <div className="give-love-shell__glow" />
         <div className="give-love-panel give-love-panel--fallback" />
       </div>
@@ -199,7 +204,7 @@ function GiveLoveLogoVisual({ project, theme, size = "card" }) {
           loading={size === "dialog" ? "eager" : "lazy"}
           decoding="async"
           draggable={false}
-          onError={() => setFailed(true)}
+          onError={markFailed}
         />
       </div>
     </div>
@@ -207,15 +212,18 @@ function GiveLoveLogoVisual({ project, theme, size = "card" }) {
 }
 
 function ArborIconVisual({ project, theme, size = "card" }) {
-  const [failed, setFailed] = useState(false);
   const logo = project.visual?.logo || project.visual?.hero;
+  const [failed, markFailed] = useImageFallback(logo);
   const alt = project.visual?.logoAlt || "Arbor macOS app icon";
   const shellClass =
     size === "dialog" ? "arbor-shell arbor-shell--dialog" : "arbor-shell";
 
   if (!logo || failed) {
     return (
-      <div className={`${shellClass} relative overflow-hidden`} aria-hidden="true">
+      <div
+        className={`${shellClass} relative overflow-hidden`}
+        aria-hidden="true"
+      >
         <div className="arbor-shell__glow" />
       </div>
     );
@@ -245,7 +253,7 @@ function ArborIconVisual({ project, theme, size = "card" }) {
         loading={size === "dialog" ? "eager" : "lazy"}
         decoding="async"
         draggable={false}
-        onError={() => setFailed(true)}
+        onError={markFailed}
       />
     </div>
   );
@@ -269,19 +277,20 @@ function HemlockEditorialChrome({ theme }) {
 }
 
 function HemlockAtmosphere({ project, theme, size = "card" }) {
-  const [failed, setFailed] = useState(false);
   const hero = project.visual?.hero;
+  const [failed, markFailed] = useImageFallback(hero);
   const alt =
     project.visual?.alt ||
     "Secluded luxury mansion in wooded hills at blue hour";
   const shellClass =
-    size === "dialog"
-      ? "hemlock-shell hemlock-shell--dialog"
-      : "hemlock-shell";
+    size === "dialog" ? "hemlock-shell hemlock-shell--dialog" : "hemlock-shell";
 
   if (!hero || failed) {
     return (
-      <div className={`${shellClass} relative overflow-hidden`} aria-hidden="true">
+      <div
+        className={`${shellClass} relative overflow-hidden`}
+        aria-hidden="true"
+      >
         <div className="hemlock-shell__fallback" />
         <HemlockEditorialChrome theme={theme} />
       </div>
@@ -299,7 +308,7 @@ function HemlockAtmosphere({ project, theme, size = "card" }) {
         loading={size === "dialog" ? "eager" : "lazy"}
         decoding="async"
         draggable={false}
-        onError={() => setFailed(true)}
+        onError={markFailed}
       />
       <div className="hemlock-shell__shade" aria-hidden="true" />
       <div className="hemlock-shell__vignette" aria-hidden="true" />
@@ -314,8 +323,10 @@ function getBrandedFallback(project, theme) {
   const accent = project.accent || theme.accent;
   const brand = project.visual?.brand;
 
-  if (brand === "rewind") return <RewindBranded accent={accent} theme={theme} />;
-  if (brand === "rt345lc") return <Rt345lcPhotoCover project={project} theme={theme} />;
+  if (brand === "rewind")
+    return <RewindBranded accent={accent} theme={theme} />;
+  if (brand === "rt345lc")
+    return <Rt345lcPhotoCover project={project} theme={theme} />;
   if (brand === "give-love-co") {
     return <GiveLoveLogoVisual project={project} theme={theme} />;
   }
@@ -329,11 +340,13 @@ function getBrandedFallback(project, theme) {
 }
 
 function HeroWithFallback({ project, theme, size = "card" }) {
-  const [failed, setFailed] = useState(false);
   const { hero, alt, brand, coverStyle } = project.visual;
+  const [failed, markFailed] = useImageFallback(hero);
 
   if (brand === "rewind" || coverStyle === "media-atmosphere") {
-    return <RewindBranded accent={project.accent || theme.accent} theme={theme} />;
+    return (
+      <RewindBranded accent={project.accent || theme.accent} theme={theme} />
+    );
   }
 
   if (brand === "rt345lc" || coverStyle === "automotive-editorial") {
@@ -363,7 +376,7 @@ function HeroWithFallback({ project, theme, size = "card" }) {
         alt={alt || project.name}
         className="absolute inset-0 h-full w-full object-cover"
         loading="lazy"
-        onError={() => setFailed(true)}
+        onError={markFailed}
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/15" />
       <div className="absolute inset-x-0 bottom-0 p-5">

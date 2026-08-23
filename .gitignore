@@ -2,15 +2,13 @@
 .DS_Store
 .Trash
 
-# Xcode
+# Xcode / Swift
 DerivedData/
-build/
 *.xcworkspace
 xcuserdata/
 *.xcuserstate
-
-# Swift Package Manager
 .build/
+.swiftpm/
 
 # User/system junk
 Desktop/
@@ -20,6 +18,9 @@ Library/
 Movies/
 Music/
 Pictures/
+.CFUserTextEncoding
+.lesshst
+.viminfo
 
 # Dev tools
 .codex/
@@ -29,26 +30,25 @@ Pictures/
 .ssh/
 .zsh_history
 .zsh_sessions/
+.zprofile
 
 # Temp / misc
 *.log
 *.tmp
+.cache/
 
-# Node / Vite
-node_modules
-dist
-.DS_Store
+# Node / Vite / test artifacts
+node_modules/
+dist/
+playwright-report/
+test-results/
+blob-report/
+coverage/
 package-lock 2.json
 
-# Nested repos (IMPORTANT)
+# Nested repos
 AwyApp-pages-clean/
-.cache/
-.codex/
-.cursor/
 .supabase/
-.zprofile
-node_modules/
-DerivedData/
 
 Public/.localized
 Public/Drop Box/

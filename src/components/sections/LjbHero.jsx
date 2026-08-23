@@ -5,7 +5,10 @@ export default function LjbHero({ theme }) {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section id="top" className="mx-auto max-w-6xl scroll-mt-24 pb-12 pt-24 sm:pb-14 sm:pt-28">
+    <section
+      id="top"
+      className="mx-auto max-w-6xl scroll-mt-24 pb-12 pt-24 sm:pb-14 sm:pt-28"
+    >
       <motion.div
         initial={reduceMotion ? false : { opacity: 0, y: 16 }}
         animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
@@ -36,9 +39,9 @@ export default function LjbHero({ theme }) {
           </h1>
 
           <p className="mt-6 max-w-2xl text-base leading-7 text-white/68 sm:text-lg sm:leading-8">
-            LJB Media Group is an independent company building technology, media,
-            automotive stories, apparel, and creative experiences as one connected
-            ecosystem.
+            LJB Media Group is an independent company building technology,
+            media, automotive stories, apparel, and creative experiences as one
+            connected ecosystem.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">

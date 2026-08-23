@@ -1,6 +1,8 @@
+import { getScrollBehavior } from "./prefersReducedMotion";
+
 export function scrollToSection(sectionId) {
   document.getElementById(sectionId)?.scrollIntoView({
-    behavior: "smooth",
+    behavior: getScrollBehavior(),
     block: "start",
   });
 }

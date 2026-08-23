@@ -46,19 +46,19 @@ export const projects = [
           "awy-card-home-dark.jpg",
           "Home — Live Presence",
           "Awy Home screen showing Live Presence in a dark theme",
-          "Presence"
+          "Presence",
         ),
         left: awyShot(
           "awy-card-profile-dark.jpg",
           "Profile — Overview",
           "Awy Profile screen in a dark theme",
-          "Identity"
+          "Identity",
         ),
         right: awyShot(
           "awy-card-lounges-aurora.jpg",
           "Lounges — Featured Lounges",
           "Awy Featured Lounges screen with Aurora theme accent",
-          "Community"
+          "Community",
         ),
       },
     },
@@ -75,7 +75,7 @@ export const projects = [
             "awy-home-live-presence-dark.jpg",
             "Home — Live Presence",
             "Awy Home Live Presence in a dark theme",
-            "Presence"
+            "Presence",
           ),
         },
         {
@@ -89,7 +89,7 @@ export const projects = [
             "awy-home-activity-dark.jpg",
             "Home — Activity",
             "Awy Home activity overview in a dark theme",
-            "Presence"
+            "Presence",
           ),
         },
         {
@@ -103,7 +103,7 @@ export const projects = [
             "awy-profile-overview-dark.jpg",
             "Profile — Overview",
             "Awy Profile overview in a dark theme",
-            "Identity"
+            "Identity",
           ),
         },
         {
@@ -117,7 +117,7 @@ export const projects = [
             "awy-profile-create-menu-dark.jpg",
             "Profile — Create Menu",
             "Awy Profile create menu in a dark theme",
-            "Identity"
+            "Identity",
           ),
         },
         {
@@ -131,7 +131,7 @@ export const projects = [
             "awy-string-privacy-controls-dark.jpg",
             "String — Privacy Controls",
             "Awy String privacy controls in a dark theme",
-            "Private Connection"
+            "Private Connection",
           ),
         },
         {
@@ -145,7 +145,7 @@ export const projects = [
             "awy-lounges-featured-aurora.jpg",
             "Lounges — Featured Lounges",
             "Awy Featured Lounges with Aurora theme accent",
-            "Community"
+            "Community",
           ),
         },
         {
@@ -159,7 +159,7 @@ export const projects = [
             "awy-lounge-car-culture-dark.jpg",
             "Lounge — Car Culture",
             "Awy Car Culture Lounge in a dark theme",
-            "Community"
+            "Community",
           ),
         },
         {
@@ -173,7 +173,7 @@ export const projects = [
             "awy-profile-studio-aurora.jpg",
             "Profile Studio",
             "Awy Profile Studio with Aurora theme accent",
-            "Personalization"
+            "Personalization",
           ),
         },
       ],
