@@ -1,3 +1,5 @@
+import { contactMailto } from "./contact";
+
 const projectAsset = (projectId, fileName) =>
   `${import.meta.env.BASE_URL}projects/${projectId}/${fileName}`;
 
@@ -180,7 +182,7 @@ export const projects = [
     },
     primaryAction: {
       label: "Email About Awy",
-      href: "mailto:dev@ljbbrands.com?subject=Awy%20Inquiry",
+      href: contactMailto({ subject: "Awy%20Inquiry" }),
     },
     accent: "#B8FF5A",
   },
@@ -212,7 +214,7 @@ export const projects = [
     mediaReady: true,
     primaryAction: {
       label: "Email LJB Rewind",
-      href: "mailto:podcast@ljbbrands.com?subject=LJB%20Rewind%20Inquiry",
+      href: contactMailto({ subject: "LJB%20Rewind%20Inquiry" }),
     },
     accent: "#D9FF9A",
   },
@@ -241,7 +243,7 @@ export const projects = [
     },
     primaryAction: {
       label: "Email About RT345LC",
-      href: "mailto:hello@ljbbrands.com?subject=RT345LC%20Inquiry",
+      href: contactMailto({ subject: "RT345LC%20Inquiry" }),
     },
     accent: "#F2F2F2",
   },
@@ -265,7 +267,7 @@ export const projects = [
     },
     primaryAction: {
       label: "Contact Give Love Co.",
-      href: "mailto:hello@ljbbrands.com?subject=Give%20Love%20Co.%20Inquiry",
+      href: contactMailto({ subject: "Give%20Love%20Co.%20Inquiry" }),
     },
     accent: "#F5F5F5",
   },
@@ -296,7 +298,7 @@ export const projects = [
     },
     primaryAction: {
       label: "Email About Arbor",
-      href: "mailto:dev@ljbbrands.com?subject=Arbor%20Inquiry",
+      href: contactMailto({ subject: "Arbor%20Inquiry" }),
     },
     accent: "#B8FF5A",
   },

@@ -214,3 +214,70 @@ test.describe("project dialog", () => {
     await expect(page.getByRole("dialog")).toHaveCount(0);
   });
 });
+
+const PUBLIC_EMAIL = "K.Bousquet92@pm.me";
+
+test.describe("public contact", () => {
+  test("shows the approved email in contact, footer, and metadata", async ({
+    page,
+  }) => {
+    const errors = [];
+    page.on("pageerror", (error) => errors.push(error.message));
+    page.on("console", (message) => {
+      if (message.type() === "error") errors.push(message.text());
+    });
+
+    await page.goto("/");
+    await expect(
+      page
+        .getByRole("link", { name: `Email LJB Media Group at ${PUBLIC_EMAIL}` })
+        .first(),
+    ).toBeVisible();
+    await expect(page.locator(".contact-primary-action__email")).toHaveText(
+      PUBLIC_EMAIL,
+    );
+    await expect(
+      page.locator(".contact-primary-action__email"),
+    ).toHaveAttribute(
+      "href",
+      new RegExp(`^mailto:${PUBLIC_EMAIL.replaceAll(".", "\\.")}`),
+    );
+    await expect(
+      page.getByRole("navigation", { name: "Department contacts" }),
+    ).toHaveCount(0);
+
+    const footer = page.locator("footer");
+    await expect(footer.getByText(PUBLIC_EMAIL, { exact: true })).toBeVisible();
+    await expect(
+      footer.getByRole("link", {
+        name: `Email LJB Media Group at ${PUBLIC_EMAIL}`,
+      }),
+    ).toHaveAttribute(
+      "href",
+      new RegExp(`^mailto:${PUBLIC_EMAIL.replaceAll(".", "\\.")}`),
+    );
+
+    const jsonLd = await page
+      .locator('script[type="application/ld+json"]')
+      .textContent();
+    expect(jsonLd).toContain(`"email": "${PUBLIC_EMAIL}"`);
+    expect(jsonLd).not.toMatch(/@ljbbrands\.com/);
+    expect(errors).toEqual([]);
+  });
+
+  test("uses the approved email on privacy and terms pages", async ({
+    page,
+  }) => {
+    await page.goto("/privacy/");
+    await expect(page.getByText("Last updated: August 26, 2026")).toBeVisible();
+    await expect(
+      page.getByRole("link", { name: PUBLIC_EMAIL }).first(),
+    ).toHaveAttribute("href", `mailto:${PUBLIC_EMAIL}`);
+
+    await page.goto("/terms/");
+    await expect(page.getByText("Last updated: August 26, 2026")).toBeVisible();
+    await expect(
+      page.getByRole("link", { name: PUBLIC_EMAIL }).first(),
+    ).toHaveAttribute("href", `mailto:${PUBLIC_EMAIL}`);
+  });
+});

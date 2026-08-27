@@ -1,4 +1,5 @@
 import { footerPlatformLinks } from "../../data/ecosystem";
+import { contactMailto, primaryContact } from "../../data/contact";
 import { navItems } from "../../data/projects";
 import { handleSectionClick } from "../../utils/scrollToSection";
 
@@ -22,11 +23,11 @@ export default function SiteFooter({ theme }) {
             © {year} LJB Media Group
           </div>
           <a
-            href="mailto:hello@ljbbrands.com?subject=LJB%20Media%20Group%20Inquiry"
-            aria-label="Email LJB Media Group at hello@ljbbrands.com"
+            href={contactMailto(primaryContact)}
+            aria-label={primaryContact.ariaLabel}
             className="mt-2 inline-block text-sm text-white/55 transition hover:text-white"
           >
-            hello@ljbbrands.com
+            {primaryContact.email}
           </a>
           <nav
             className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-white/55"

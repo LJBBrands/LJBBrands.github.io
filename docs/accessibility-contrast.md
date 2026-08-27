@@ -12,7 +12,7 @@ Relative luminance and contrast are computed with the sRGB formula in `src/utils
 | `rgba(255,255,255,0.42)` | `#6B6B6B`     | 4.32:1                                               | Raised to `0.52`                                        |
 | `text-white/45` / `0.45` | `#737373`     | 4.83:1 on pure black; **4.36:1** on dialog `#070907` | Raised to `text-white/52` / `0.52` for 11px–13px labels |
 
-Affected surfaces: project category labels, dialog section headings, Arbor eyebrow, Awy showcase eyebrow/progress label, contact eyebrow, contact department emails, 404 eyebrow.
+Affected surfaces: project category labels, dialog section headings, Arbor eyebrow, Awy showcase eyebrow/progress label, contact eyebrow, 404 eyebrow.
 
 `--ljb-muted` (`0.64`) and body copy at `0.55`–`0.68` already meet AA and were left unchanged.
 

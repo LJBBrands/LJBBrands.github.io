@@ -1276,87 +1276,6 @@ summary::-webkit-details-marker {
   transform: translateX(3px);
 }
 
-.contact-secondary-links {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.15rem 0;
-  margin-top: clamp(1.75rem, 3.5vw, 2.5rem);
-  padding-top: clamp(1.25rem, 2.5vw, 1.75rem);
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.contact-secondary-item {
-  display: inline-flex;
-  align-items: center;
-}
-
-.contact-secondary-sep {
-  display: none;
-  margin: 0 0.85rem;
-  color: rgba(255, 255, 255, 0.22);
-  user-select: none;
-}
-
-.contact-secondary-link {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 44px;
-  padding: 0.35rem 0.15rem;
-  color: rgba(255, 255, 255, 0.62);
-  transition: color 0.2s ease;
-}
-
-.contact-secondary-link:hover,
-.contact-secondary-link:focus-visible {
-  color: rgba(255, 255, 255, 0.95);
-}
-
-.contact-secondary-link__label {
-  font-size: 0.84rem;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-}
-
-.contact-secondary-link__full {
-  display: none;
-}
-
-.contact-secondary-link__short {
-  display: inline;
-}
-
-.contact-secondary-link__email {
-  margin-top: 0.15rem;
-  font-size: 0.72rem;
-  color: rgba(255, 255, 255, 0.52);
-  word-break: break-all;
-}
-
-.contact-secondary-link:hover .contact-secondary-link__email,
-.contact-secondary-link:focus-visible .contact-secondary-link__email {
-  color: rgba(255, 255, 255, 0.55);
-}
-
-@media (min-width: 640px) {
-  .contact-secondary-links {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: 1.5rem;
-    row-gap: 0.35rem;
-  }
-
-  .contact-secondary-item {
-    display: block;
-  }
-
-  .contact-secondary-sep {
-    display: none;
-  }
-}
-
 @media (min-width: 900px) {
   .contact-copy__headline {
     font-size: clamp(2.75rem, 5vw, 5rem);
@@ -1377,57 +1296,6 @@ summary::-webkit-details-marker {
   .contact-cta {
     min-width: 15.5rem;
   }
-
-  .contact-secondary-links {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    gap: 0;
-    justify-content: flex-start;
-  }
-
-  .contact-secondary-item {
-    display: inline-flex;
-    align-items: baseline;
-  }
-
-  .contact-secondary-sep {
-    display: inline;
-  }
-
-  .contact-secondary-link {
-    flex-direction: row;
-    align-items: baseline;
-    gap: 0.45rem;
-    min-height: 44px;
-    padding: 0.25rem 0;
-  }
-
-  .contact-secondary-link__full {
-    display: inline;
-  }
-
-  .contact-secondary-link__short {
-    display: none;
-  }
-
-  .contact-secondary-link__email {
-    margin-top: 0;
-    opacity: 0;
-    max-width: 0;
-    overflow: hidden;
-    white-space: nowrap;
-    transition:
-      opacity 0.2s ease,
-      max-width 0.25s ease,
-      color 0.2s ease;
-  }
-
-  .contact-secondary-link:hover .contact-secondary-link__email,
-  .contact-secondary-link:focus-visible .contact-secondary-link__email {
-    opacity: 1;
-    max-width: 16rem;
-  }
 }
 
 @media (max-width: 899px) and (min-width: 640px) {
@@ -1445,29 +1313,12 @@ summary::-webkit-details-marker {
   .contact-cta {
     width: 100%;
   }
-
-  .contact-secondary-links {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: 1rem;
-    row-gap: 0.25rem;
-  }
-
-  .contact-secondary-item {
-    display: block;
-  }
-
-  .contact-secondary-sep {
-    display: none;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .contact-cta,
   .contact-cta__arrow,
-  .contact-primary-action__email,
-  .contact-secondary-link,
-  .contact-secondary-link__email {
+  .contact-primary-action__email {
     transition: none;
   }
 }

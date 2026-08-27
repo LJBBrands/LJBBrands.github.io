@@ -18,17 +18,14 @@ Use a version manager (`nvm`, `fnm`, or `n`) so the local toolchain matches CI.
 ```sh
 npm ci
 npm run dev
-npm run lint
-npm run format:check
-npm run test
+npm run ci
 npm run build
 npm run preview
 npm run test:e2e:webkit
 ```
 
-- `lint` — ESLint
-- `format:check` / `format` — Prettier
-- `test` — Vitest unit tests
+- `ci` — ESLint, Prettier check, and unit tests
+- `lint` / `format:check` / `test` — individual checks
 - `test:e2e` / `test:e2e:webkit` — Playwright browser smoke tests
 
 Install the WebKit browser once after `npm ci`:
