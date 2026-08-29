@@ -58,6 +58,7 @@ export default function SupportCard({ theme }) {
         <div className="mt-7 flex flex-wrap items-center gap-3">
           <a
             href={supportContent.inquiryMailto}
+            aria-label={supportContent.inquiryAriaLabel}
             className="inline-flex min-h-[44px] items-center rounded-full bg-white px-6 py-3 text-sm font-medium text-black transition hover:opacity-90"
           >
             Email Support

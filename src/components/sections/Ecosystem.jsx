@@ -24,7 +24,7 @@ export default function Ecosystem({ theme }) {
     const returningId = activeId;
     setActiveId(null);
     window.requestAnimationFrame(() => {
-      triggerRefs.current[returningId]?.focus();
+      triggerRefs.current[returningId]?.focus({ preventScroll: true });
     });
   }, [activeId]);
 

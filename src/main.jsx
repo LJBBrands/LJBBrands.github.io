@@ -36,8 +36,8 @@ class RootErrorBoundary extends React.Component {
             Something went wrong
           </h1>
           <p style={{ opacity: 0.85 }}>
-            The page failed to render. Try a hard refresh. If it continues, open the browser
-            developer console for details.
+            The page failed to render. Try a hard refresh. If it continues, open
+            the browser developer console for details.
           </p>
         </div>
       );
@@ -53,6 +53,6 @@ if (rootEl) {
       <RootErrorBoundary>
         <App />
       </RootErrorBoundary>
-    </React.StrictMode>
+    </React.StrictMode>,
   );
 }

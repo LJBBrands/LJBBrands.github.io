@@ -19,12 +19,15 @@ export default function Projects({ theme }) {
     const returningId = activeId;
     setActiveId(null);
     window.requestAnimationFrame(() => {
-      triggerRefs.current[returningId]?.focus();
+      triggerRefs.current[returningId]?.focus({ preventScroll: true });
     });
   }, [activeId]);
 
   return (
-    <section id="projects" className="mx-auto max-w-6xl scroll-mt-24 pb-16 sm:pb-20">
+    <section
+      id="projects"
+      className="mx-auto max-w-6xl scroll-mt-24 pb-16 sm:pb-20"
+    >
       <SectionHeader
         theme={theme}
         kicker="Projects"

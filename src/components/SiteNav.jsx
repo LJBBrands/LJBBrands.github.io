@@ -1,10 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useBodyScrollLock } from "../hooks/useBodyScrollLock";
 import { navItems } from "../data/projects";
+import { setInert } from "../utils/setInert";
 import { handleSectionClick } from "../utils/scrollToSection";
 
 export default function SiteNav({ theme }) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const menuButtonRef = useRef(null);
+  const mobileNavRef = useRef(null);
+  const restoreFocusRef = useRef(true);
+
+  useBodyScrollLock(open);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -14,36 +21,54 @@ export default function SiteNav({ theme }) {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
+    const main = document.getElementById("site-main");
+    setInert(main, open);
+    return () => setInert(main, false);
   }, [open]);
 
   useEffect(() => {
     if (!open) return undefined;
 
+    restoreFocusRef.current = true;
+
+    const focusTimer = window.setTimeout(() => {
+      const firstLink = mobileNavRef.current?.querySelector("a");
+      firstLink?.focus();
+    }, 0);
+
+    const trigger = menuButtonRef.current;
+
     const onKeyDown = (event) => {
-      if (event.key === "Escape") setOpen(false);
+      if (event.key === "Escape") {
+        event.preventDefault();
+        restoreFocusRef.current = true;
+        setOpen(false);
+      }
     };
 
     window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
+    return () => {
+      window.clearTimeout(focusTimer);
+      window.removeEventListener("keydown", onKeyDown);
+      if (restoreFocusRef.current) {
+        trigger?.focus();
+      }
+    };
   }, [open]);
 
   const onNavClick = (href) => (event) => {
+    restoreFocusRef.current = false;
     handleSectionClick(href.replace("#", ""))(event);
     setOpen(false);
   };
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+      className={`site-header fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         scrolled || open ? "backdrop-blur-2xl" : ""
       }`}
       style={{
-        backgroundColor:
-          scrolled || open ? "rgba(0,0,0,0.78)" : "transparent",
+        backgroundColor: scrolled || open ? "rgba(0,0,0,0.78)" : "transparent",
         borderBottom:
           scrolled || open
             ? `1px solid ${theme.cardBorder}`
@@ -54,7 +79,7 @@ export default function SiteNav({ theme }) {
         <a
           href="#top"
           onClick={onNavClick("#top")}
-          className="flex min-w-0 items-center gap-3"
+          className="flex min-h-[44px] min-w-0 items-center gap-3"
           aria-label="LJB Media Group home"
         >
           <span
@@ -86,8 +111,9 @@ export default function SiteNav({ theme }) {
         </nav>
 
         <button
+          ref={menuButtonRef}
           type="button"
-          className="inline-flex min-h-[44px] items-center justify-center rounded-full border px-4 py-2 text-sm text-white/88 transition hover:bg-white/10 md:hidden"
+          className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border px-4 py-2 text-sm text-white/88 transition hover:bg-white/10 md:hidden"
           style={{
             backgroundColor: theme.heroPillBg,
             borderColor: theme.cardBorder,
@@ -95,7 +121,10 @@ export default function SiteNav({ theme }) {
           aria-expanded={open}
           aria-controls="mobile-nav"
           aria-label={open ? "Close menu" : "Open menu"}
-          onClick={() => setOpen((value) => !value)}
+          onClick={() => {
+            restoreFocusRef.current = true;
+            setOpen((value) => !value);
+          }}
         >
           {open ? "Close" : "Menu"}
         </button>
@@ -103,8 +132,9 @@ export default function SiteNav({ theme }) {
 
       {open ? (
         <nav
+          ref={mobileNavRef}
           id="mobile-nav"
-          className="border-t px-5 py-4 md:hidden"
+          className="site-header__menu border-t px-5 py-4 md:hidden"
           style={{ borderColor: theme.cardBorder }}
           aria-label="Mobile"
         >
@@ -114,7 +144,7 @@ export default function SiteNav({ theme }) {
                 key={item.href}
                 href={item.href}
                 onClick={onNavClick(item.href)}
-                className="rounded-2xl px-4 py-3 text-base text-white/80 transition hover:bg-white/5 hover:text-white"
+                className="inline-flex min-h-[44px] items-center rounded-2xl px-4 py-3 text-base text-white/80 transition hover:bg-white/5 hover:text-white"
               >
                 {item.label}
               </a>

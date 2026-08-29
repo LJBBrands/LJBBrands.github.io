@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useImageFallback } from "../hooks/useImageFallback";
 
 function resolveSrc(screenshot) {
   return screenshot?.src || screenshot?.image || "";
@@ -11,13 +11,9 @@ export default function DeviceFrame({
   decorative = false,
   className = "",
 }) {
-  const [failed, setFailed] = useState(false);
   const src = resolveSrc(screenshot);
+  const [failed, markFailed] = useImageFallback(src);
   const alt = decorative ? "" : screenshot?.alt || screenshot?.label || "";
-
-  useEffect(() => {
-    setFailed(false);
-  }, [src]);
 
   const frameClass =
     size === "showcase"
@@ -41,7 +37,7 @@ export default function DeviceFrame({
             height={1536}
             loading="lazy"
             draggable={false}
-            onError={() => setFailed(true)}
+            onError={markFailed}
           />
         ) : (
           <div

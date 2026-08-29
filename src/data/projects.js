@@ -1,3 +1,5 @@
+import { contactMailto } from "./contact";
+
 const projectAsset = (projectId, fileName) =>
   `${import.meta.env.BASE_URL}projects/${projectId}/${fileName}`;
 
@@ -46,19 +48,19 @@ export const projects = [
           "awy-card-home-dark.jpg",
           "Home — Live Presence",
           "Awy Home screen showing Live Presence in a dark theme",
-          "Presence"
+          "Presence",
         ),
         left: awyShot(
           "awy-card-profile-dark.jpg",
           "Profile — Overview",
           "Awy Profile screen in a dark theme",
-          "Identity"
+          "Identity",
         ),
         right: awyShot(
           "awy-card-lounges-aurora.jpg",
           "Lounges — Featured Lounges",
           "Awy Featured Lounges screen with Aurora theme accent",
-          "Community"
+          "Community",
         ),
       },
     },
@@ -75,7 +77,7 @@ export const projects = [
             "awy-home-live-presence-dark.jpg",
             "Home — Live Presence",
             "Awy Home Live Presence in a dark theme",
-            "Presence"
+            "Presence",
           ),
         },
         {
@@ -89,7 +91,7 @@ export const projects = [
             "awy-home-activity-dark.jpg",
             "Home — Activity",
             "Awy Home activity overview in a dark theme",
-            "Presence"
+            "Presence",
           ),
         },
         {
@@ -103,7 +105,7 @@ export const projects = [
             "awy-profile-overview-dark.jpg",
             "Profile — Overview",
             "Awy Profile overview in a dark theme",
-            "Identity"
+            "Identity",
           ),
         },
         {
@@ -117,7 +119,7 @@ export const projects = [
             "awy-profile-create-menu-dark.jpg",
             "Profile — Create Menu",
             "Awy Profile create menu in a dark theme",
-            "Identity"
+            "Identity",
           ),
         },
         {
@@ -131,7 +133,7 @@ export const projects = [
             "awy-string-privacy-controls-dark.jpg",
             "String — Privacy Controls",
             "Awy String privacy controls in a dark theme",
-            "Private Connection"
+            "Private Connection",
           ),
         },
         {
@@ -145,7 +147,7 @@ export const projects = [
             "awy-lounges-featured-aurora.jpg",
             "Lounges — Featured Lounges",
             "Awy Featured Lounges with Aurora theme accent",
-            "Community"
+            "Community",
           ),
         },
         {
@@ -159,7 +161,7 @@ export const projects = [
             "awy-lounge-car-culture-dark.jpg",
             "Lounge — Car Culture",
             "Awy Car Culture Lounge in a dark theme",
-            "Community"
+            "Community",
           ),
         },
         {
@@ -173,14 +175,14 @@ export const projects = [
             "awy-profile-studio-aurora.jpg",
             "Profile Studio",
             "Awy Profile Studio with Aurora theme accent",
-            "Personalization"
+            "Personalization",
           ),
         },
       ],
     },
     primaryAction: {
       label: "Email About Awy",
-      href: "mailto:dev@ljbbrands.com?subject=Awy%20Inquiry",
+      href: contactMailto({ subject: "Awy%20Inquiry" }),
     },
     accent: "#B8FF5A",
   },
@@ -212,7 +214,7 @@ export const projects = [
     mediaReady: true,
     primaryAction: {
       label: "Email LJB Rewind",
-      href: "mailto:podcast@ljbbrands.com?subject=LJB%20Rewind%20Inquiry",
+      href: contactMailto({ subject: "LJB%20Rewind%20Inquiry" }),
     },
     accent: "#D9FF9A",
   },
@@ -241,7 +243,7 @@ export const projects = [
     },
     primaryAction: {
       label: "Email About RT345LC",
-      href: "mailto:hello@ljbbrands.com?subject=RT345LC%20Inquiry",
+      href: contactMailto({ subject: "RT345LC%20Inquiry" }),
     },
     accent: "#F2F2F2",
   },
@@ -265,7 +267,7 @@ export const projects = [
     },
     primaryAction: {
       label: "Contact Give Love Co.",
-      href: "mailto:hello@ljbbrands.com?subject=Give%20Love%20Co.%20Inquiry",
+      href: contactMailto({ subject: "Give%20Love%20Co.%20Inquiry" }),
     },
     accent: "#F5F5F5",
   },
@@ -296,7 +298,7 @@ export const projects = [
     },
     primaryAction: {
       label: "Email About Arbor",
-      href: "mailto:dev@ljbbrands.com?subject=Arbor%20Inquiry",
+      href: contactMailto({ subject: "Arbor%20Inquiry" }),
     },
     accent: "#B8FF5A",
   },

@@ -1,0 +1,15 @@
+dist
+node_modules
+package-lock.json
+playwright-report
+test-results
+blob-report
+public/projects
+public/apple-touch-icon.png
+public/og-image.png
+public/favicon.svg
+*.webp
+*.jpg
+*.jpeg
+*.png
+*.log

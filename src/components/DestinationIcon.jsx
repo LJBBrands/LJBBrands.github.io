@@ -7,7 +7,13 @@ function CameraIcon() {
         strokeWidth="1.5"
         strokeLinejoin="round"
       />
-      <circle cx="12" cy="12.25" r="2.6" stroke="currentColor" strokeWidth="1.5" />
+      <circle
+        cx="12"
+        cy="12.25"
+        r="2.6"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      />
     </svg>
   );
 }

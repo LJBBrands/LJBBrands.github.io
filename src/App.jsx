@@ -24,22 +24,26 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-black text-white">
-      <AtmosphereBackground theme={ljbTheme} />
+    <div className="site-shell min-h-screen bg-black text-white">
+      <div id="site-content">
+        <AtmosphereBackground theme={ljbTheme} />
 
-      <SiteNav theme={ljbTheme} />
+        <SiteNav theme={ljbTheme} />
 
-      <main className="relative px-5 py-6 sm:px-8 lg:px-10">
-        <LjbHero theme={ljbTheme} />
-        <Projects theme={ljbTheme} />
-        <Ecosystem theme={ljbTheme} />
-        <About theme={ljbTheme} />
-        <Contact theme={ljbTheme} />
-        <Support theme={ljbTheme} />
-      </main>
+        <div id="site-main">
+          <main className="relative px-5 py-6 sm:px-8 lg:px-10">
+            <LjbHero theme={ljbTheme} />
+            <Projects theme={ljbTheme} />
+            <Ecosystem theme={ljbTheme} />
+            <About theme={ljbTheme} />
+            <Contact theme={ljbTheme} />
+            <Support theme={ljbTheme} />
+          </main>
 
-      <div className="relative px-5 pb-6 sm:px-8 lg:px-10">
-        <SiteFooter theme={ljbTheme} />
+          <div className="site-end relative px-5 pb-6 sm:px-8 lg:px-10">
+            <SiteFooter theme={ljbTheme} />
+          </div>
+        </div>
       </div>
     </div>
   );

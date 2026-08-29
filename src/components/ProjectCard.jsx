@@ -41,7 +41,7 @@ export default function ProjectCard({
 
         <div className="flex flex-1 flex-col px-5 pb-5 pt-4 sm:px-5 sm:pb-5 sm:pt-4">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-[11px] font-medium uppercase tracking-[0.14em] text-white/45">
+            <span className="text-[11px] font-medium uppercase tracking-[0.14em] text-white/52">
               {project.category}
             </span>
             {project.status ? (

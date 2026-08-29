@@ -4,7 +4,10 @@ import TeamMemberCard from "../TeamMemberCard";
 
 export default function About({ theme }) {
   return (
-    <section id="about" className="mx-auto max-w-6xl scroll-mt-24 pb-16 sm:pb-20">
+    <section
+      id="about"
+      className="mx-auto max-w-6xl scroll-mt-24 pb-16 sm:pb-20"
+    >
       <SectionHeader
         theme={theme}
         kicker="About"

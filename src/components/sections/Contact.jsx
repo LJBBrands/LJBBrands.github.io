@@ -1,9 +1,5 @@
 import { motion, useReducedMotion } from "framer-motion";
-import {
-  contactMailto,
-  departmentContacts,
-  primaryContact,
-} from "../../data/contact";
+import { contactMailto, primaryContact } from "../../data/contact";
 
 function CtaArrow() {
   return (
@@ -84,38 +80,6 @@ export default function Contact({ theme }) {
             </a>
           </div>
         </div>
-
-        <nav
-          className="contact-secondary-links"
-          aria-label="Department contacts"
-        >
-          {departmentContacts.map((department, index) => (
-            <span key={department.id} className="contact-secondary-item">
-              {index > 0 ? (
-                <span className="contact-secondary-sep" aria-hidden="true">
-                  ·
-                </span>
-              ) : null}
-              <a
-                href={contactMailto(department)}
-                aria-label={department.ariaLabel}
-                className="contact-secondary-link"
-              >
-                <span className="contact-secondary-link__label">
-                  <span className="contact-secondary-link__full">
-                    {department.label}
-                  </span>
-                  <span className="contact-secondary-link__short">
-                    {department.shortLabel}
-                  </span>
-                </span>
-                <span className="contact-secondary-link__email">
-                  {department.email}
-                </span>
-              </a>
-            </span>
-          ))}
-        </nav>
       </motion.div>
     </section>
   );
