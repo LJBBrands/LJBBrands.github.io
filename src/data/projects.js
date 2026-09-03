@@ -39,7 +39,12 @@ export const projects = [
     ],
     visual: {
       type: "screenshots",
+      brand: "awy",
+      cardStyle: "app-icon",
       icon: projectAsset("awy", "awy-app-icon.webp"),
+      logoAlt: "Awy social app icon",
+      eyebrow: "Awy",
+      badge: "Social Platform",
       card: {
         primary: awyShot(
           "awy-card-home-dark.jpg",
@@ -205,13 +210,14 @@ export const projects = [
     visual: {
       type: "branded",
       brand: "arclia",
+      cardStyle: "app-icon",
       coverStyle: "app-icon",
       logo: projectAsset("arclia", "arclia-app-icon.webp"),
       logoAlt: "Arclia AI learning app icon",
       hero: projectAsset("arclia", "arclia-app-icon.webp"),
       alt: "Arclia AI learning app icon",
-      eyebrow: "AI Academy",
-      badge: "Course + Sandbox",
+      eyebrow: "Arclia",
+      badge: "Courses + Sandbox",
     },
     primaryAction: {
       label: "Email About Arclia",
@@ -239,13 +245,14 @@ export const projects = [
     visual: {
       type: "branded",
       brand: "arbor",
+      cardStyle: "app-icon",
       coverStyle: "app-icon",
       logo: projectAsset("arbor", "arbor-app-icon.webp"),
       logoAlt: "Arbor macOS app icon",
       hero: projectAsset("arbor", "arbor-app-icon.webp"),
       alt: "Arbor macOS app icon",
-      eyebrow: "macOS Utility",
-      badge: "Local + External",
+      eyebrow: "Arbor",
+      badge: "macOS Utility",
     },
     primaryAction: {
       label: "Email About Arbor",
@@ -279,8 +286,8 @@ export const projects = [
       brand: "give-love-co",
       coverStyle: "logo-panel",
       logo: projectAsset("give-love-co", "give-love-co-logo.webp"),
-      hero: projectAsset("give-love-co", "give-love-co-logo.webp"),
-      alt: "Give Love Co. official wordmark logo",
+      hero: projectAsset("give-love-co", "give-love-apparel-v2.webp"),
+      alt: "Give Love Co. hoodie and T-shirt in a studio product photograph",
       dropLabel: "COMING FALL 2026 · LIMITED DROP",
     },
     primaryAction: {

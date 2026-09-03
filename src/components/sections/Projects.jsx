@@ -36,7 +36,7 @@ export default function Projects({ theme }) {
       <SectionHeader
         theme={theme}
         kicker="Apps"
-        title="Three Products. Built With Purpose."
+        title="Three Apps. Built With Purpose."
         description="Awy, Arclia, and Arbor each solve a different problem, with thoughtful design, practical utility, and people at the center."
       />
 
@@ -58,7 +58,7 @@ export default function Projects({ theme }) {
       <div className="projects-subsection">
         <div className="projects-subsection__heading">
           <p>Independent Work</p>
-          <h3>Apparel and original stories.</h3>
+          <h3>Apparel And Original Stories.</h3>
           <span>
             Personal projects with their own voice, developed with the same care
             as the product work.

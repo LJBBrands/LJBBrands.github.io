@@ -31,13 +31,25 @@ describe("public portfolio", () => {
     expect(ids).not.toContain("rt345lc");
   });
 
-  it("describes Arclia as an AI academy with guided learning and a sandbox", () => {
+  it("presents Arclia by name with guided learning and a sandbox", () => {
     const arclia = getProjectById("arclia");
 
     expect(arclia?.status).toBe("In Development");
+    expect(arclia?.visual?.eyebrow).toBe("Arclia");
     expect(arclia?.description).toMatch(/AI|artificial intelligence/i);
     expect(arclia?.description).toMatch(/sandbox/i);
     expect(arclia?.highlights).toContain("Beginner to Advanced");
+  });
+
+  it("uses the same app-icon card format for all three apps", () => {
+    const apps = getAppProjects();
+
+    expect(
+      apps.every((project) => project.visual?.cardStyle === "app-icon"),
+    ).toBe(true);
+    expect(
+      apps.every((project) => project.visual?.logo || project.visual?.icon),
+    ).toBe(true);
   });
 
   it("publishes the approved Give Love Co. Fall 2026 drop", () => {

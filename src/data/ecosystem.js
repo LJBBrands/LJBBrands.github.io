@@ -10,7 +10,7 @@ export const destinationUrls = {
 
 export const ecosystemSection = {
   kicker: "Instagram",
-  title: "A Personal Look Behind the Work.",
+  title: "A Personal Look Behind The Work.",
   description:
     "Cars, creative projects, and the everyday progress behind LJB Media Group — shared personally on Instagram.",
 };
@@ -18,7 +18,7 @@ export const ecosystemSection = {
 export const instagramProfile = {
   handle: "@RT345LC",
   href: destinationUrls.instagram,
-  title: "Cars, projects, and the story behind the work.",
+  title: "Cars, Projects, And The Story Behind The Work.",
   description:
     "Follow along for automotive photography, behind-the-scenes project updates, creative work, and a more personal view of what is being built at LJB Media Group.",
   cta: "Follow on Instagram",

@@ -1,4 +1,3 @@
-import DeviceFrame from "./DeviceFrame";
 import { useImageFallback } from "../hooks/useImageFallback";
 
 const FRAME = "relative h-[210px] w-full overflow-hidden sm:h-[228px]";
@@ -11,101 +10,65 @@ function PreviewShell({ children, className = "" }) {
   );
 }
 
-function AwyScreenshotVisual({ visual }) {
-  const { primary, left, right } = visual.card;
-
-  return (
-    <div className="awy-card-stage" aria-hidden="true">
-      <div className="absolute inset-0 bg-gradient-to-b from-white/[0.03] via-transparent to-black/20" />
-
-      {visual.icon ? (
-        <img
-          src={visual.icon}
-          alt=""
-          width={1024}
-          height={1024}
-          className="awy-card-app-icon"
-          loading="lazy"
-          decoding="async"
-          draggable={false}
-        />
-      ) : null}
-
-      <div className="awy-card-phone awy-card-phone--left">
-        <DeviceFrame screenshot={left} size="cardSide" decorative />
-      </div>
-
-      <div className="awy-card-phone awy-card-phone--right">
-        <DeviceFrame screenshot={right} size="cardSide" decorative />
-      </div>
-
-      <div className="awy-card-phone awy-card-phone--center">
-        <DeviceFrame screenshot={primary} size="card" decorative />
-      </div>
-    </div>
-  );
-}
-
 function GiveLoveLogoVisual({ project, theme, size = "card" }) {
+  const hero = project.visual?.hero;
   const logo = project.visual?.logo || project.visual?.hero;
-  const [failed, markFailed] = useImageFallback(logo);
-  const alt = project.visual?.alt || "Give Love Co. official wordmark logo";
+  const [failed, markFailed] = useImageFallback(hero);
+  const alt =
+    project.visual?.alt ||
+    "Give Love Co. hoodie and T-shirt in a studio product photograph";
   const shellClass =
     size === "dialog"
       ? "give-love-shell give-love-shell--dialog"
       : "give-love-shell";
 
-  if (!logo || failed) {
+  if (!hero || failed) {
     return (
-      <div
-        className={`${shellClass} relative overflow-hidden`}
-        aria-hidden="true"
-      >
+      <div className={`${shellClass} relative overflow-hidden`}>
         <div className="give-love-shell__glow" />
-        <div className="give-love-panel give-love-panel--fallback" />
+        {logo ? (
+          <div
+            className="give-love-panel"
+            style={{ borderColor: theme.cardBorder }}
+          >
+            <img
+              src={logo}
+              alt={size === "dialog" ? "Give Love Co. official wordmark" : ""}
+              width={1600}
+              height={611}
+              className="give-love-logo"
+              loading={size === "dialog" ? "eager" : "lazy"}
+              decoding="async"
+              draggable={false}
+            />
+          </div>
+        ) : null}
       </div>
     );
   }
 
   return (
     <div className={`${shellClass} relative overflow-hidden`}>
-      <div className="give-love-shell__glow" aria-hidden="true" />
+      <img
+        src={hero}
+        alt={size === "dialog" ? alt : ""}
+        width={1536}
+        height={1024}
+        className="give-love-apparel-photo"
+        loading={size === "dialog" ? "eager" : "lazy"}
+        decoding="async"
+        draggable={false}
+        onError={markFailed}
+      />
       <div className="give-love-shell__vignette" aria-hidden="true" />
-      <div
-        className="give-love-garment give-love-garment--hoodie"
-        aria-hidden="true"
-      >
-        <span>GIVE LOVE</span>
-      </div>
-      <div
-        className="give-love-garment give-love-garment--shirt"
-        aria-hidden="true"
-      >
-        <span>BE KIND</span>
-      </div>
       <span className="give-love-drop-label">{project.visual?.dropLabel}</span>
-      <div
-        className="give-love-panel"
-        style={{ borderColor: theme.cardBorder }}
-      >
-        <img
-          src={logo}
-          alt={size === "dialog" ? alt : ""}
-          width={1200}
-          height={630}
-          className="give-love-logo"
-          loading={size === "dialog" ? "eager" : "lazy"}
-          decoding="async"
-          draggable={false}
-          onError={markFailed}
-        />
-      </div>
     </div>
   );
 }
 
 function AppIconVisual({ project, theme, size = "card" }) {
-  const logo = project.visual?.logo || project.visual?.hero;
+  const logo =
+    project.visual?.logo || project.visual?.icon || project.visual?.hero;
   const [failed, markFailed] = useImageFallback(logo);
   const alt = project.visual?.logoAlt || `${project.name} app icon`;
   const brand = project.visual?.brand || "app";
@@ -142,17 +105,19 @@ function AppIconVisual({ project, theme, size = "card" }) {
         </span>
       </div>
 
-      <img
-        src={logo}
-        alt={size === "dialog" ? alt : ""}
-        width={1024}
-        height={1024}
-        className="project-app-icon"
-        loading={size === "dialog" ? "eager" : "lazy"}
-        decoding="async"
-        draggable={false}
-        onError={markFailed}
-      />
+      <div className="project-app-icon-frame">
+        <img
+          src={logo}
+          alt={size === "dialog" ? alt : ""}
+          width={1024}
+          height={1024}
+          className="project-app-icon"
+          loading={size === "dialog" ? "eager" : "lazy"}
+          decoding="async"
+          draggable={false}
+          onError={markFailed}
+        />
+      </div>
     </div>
   );
 }
@@ -223,7 +188,7 @@ function getBrandedFallback(project, theme) {
   if (brand === "give-love-co") {
     return <GiveLoveLogoVisual project={project} theme={theme} />;
   }
-  if (brand === "arbor" || brand === "arclia") {
+  if (brand === "awy" || brand === "arbor" || brand === "arclia") {
     return <AppIconVisual project={project} theme={theme} />;
   }
   if (brand === "hemlock-hollow") {
@@ -280,8 +245,12 @@ function HeroWithFallback({ project, theme, size = "card" }) {
 export default function ProjectVisual({ project, theme, size = "card" }) {
   const visual = project.visual;
 
+  if (project.group === "app" && visual?.cardStyle === "app-icon") {
+    return <AppIconVisual project={project} theme={theme} size={size} />;
+  }
+
   if (visual?.type === "screenshots" && visual.card?.primary) {
-    return <AwyScreenshotVisual visual={visual} />;
+    return <PreviewShell />;
   }
 
   if (visual?.type === "branded") {

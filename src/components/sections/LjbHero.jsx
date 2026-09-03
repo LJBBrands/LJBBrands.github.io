@@ -29,12 +29,12 @@ export default function LjbHero({ theme }) {
             LJB MEDIA GROUP
           </p>
 
-          <h1 className="mt-5 text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
+          <h1 className="mt-5 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
             <span className="block">Media.</span>
             <span className="block">Technology.</span>
             <span className="block">Stories.</span>
             <span className="mt-1 block" style={{ color: theme.accent }}>
-              Built with Purpose.
+              Built With Purpose.
             </span>
           </h1>
 

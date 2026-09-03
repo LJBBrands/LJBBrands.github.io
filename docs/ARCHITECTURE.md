@@ -17,7 +17,7 @@ This is **not** Website 2.0. Do not introduce a CMS, app server, or hosting migr
 
 ## Surfaces
 
-- Homepage sections in `src/App.jsx`: hero, projects, destinations, about, contact, support, footer
+- Homepage sections in `src/App.jsx`: hero, projects, Instagram, about, contact, support, footer
 - Project details: in-page dialog (`ProjectDialog`), not separate product routes
 - Static pages: `public/privacy/`, `public/terms/`, `public/404.html`
 - Public origin recorded in metadata: `https://ljbbrands.github.io/`

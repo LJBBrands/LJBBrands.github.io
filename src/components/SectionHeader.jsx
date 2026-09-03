@@ -32,7 +32,7 @@ export default function SectionHeader({
       ) : null}
       <h2
         id={titleId}
-        className={`text-3xl font-semibold tracking-tight sm:text-4xl ${
+        className={`text-3xl font-bold tracking-tight sm:text-4xl ${
           kicker ? "mt-4" : ""
         }`}
       >

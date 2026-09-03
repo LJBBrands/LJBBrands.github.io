@@ -148,7 +148,7 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
                 </div>
                 <h2
                   id={titleId}
-                  className="mt-1 truncate text-xl font-semibold tracking-tight sm:text-2xl"
+                  className="mt-1 truncate text-xl font-bold tracking-tight sm:text-2xl"
                 >
                   {project.name}
                 </h2>

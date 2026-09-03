@@ -4,7 +4,7 @@
 import { contactMailto, PUBLIC_EMAIL } from "./contact";
 
 export const supportContent = {
-  headline: "Support the Mission",
+  headline: "Support The Mission",
   copy: "Support helps fund independent apps, AI learning tools, apparel, original stories, and future LJB creative work — from careful product development to limited releases and long-form storytelling.",
   areas: [
     "App Development",
