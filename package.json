@@ -31,7 +31,8 @@
     "check:links": "node scripts/check-links.mjs",
     "check:a11y": "node scripts/check-a11y.mjs",
     "check:site": "npm run check:links && npm run check:a11y",
-    "ci": "npm run doctor && npm run lint && npm run format:check && npm run test && npm run check:secrets && npm run check:seo",
+    "audit": "npm audit --audit-level=high",
+    "ci": "npm run doctor && npm run lint && npm run format:check && npm run test && npm run check:secrets && npm run check:seo && npm run audit",
     "test:e2e": "playwright test",
     "test:e2e:webkit": "playwright test --project=webkit"
   },

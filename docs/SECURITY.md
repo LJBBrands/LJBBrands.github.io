@@ -22,8 +22,8 @@ The only published inbox is `K.Bousquet92@pm.me` (`src/data/contact.js`). Compan
 
 - `npm run check:secrets` scans tracked source for high-risk patterns and unexpected email addresses
 - CI runs that scan on every pull request and on `main`
-- GitHub Dependency Review runs on pull requests
-- Enable GitHub Secret Protection / push protection on the repository (human GitHub-settings step)
+- CI runs `npm audit --audit-level=high`
+- Enable Dependency graph, then GitHub Dependency Review, plus Secret Protection / push protection (human GitHub-settings steps)
 
 ## Dependency changes
 

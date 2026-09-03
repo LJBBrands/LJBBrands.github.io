@@ -39,7 +39,11 @@ On pull requests and `main`:
 - production build
 - `npm run check:site` (internal links, static HTML a11y)
 - Playwright WebKit smoke
-- GitHub Dependency Review (pull requests)
+- `npm audit --audit-level=high`
+
+GitHub Dependency Review is documented as a human settings step. It is not in CI until Dependency graph is enabled at
+https://github.com/LJBBrands/LJBBrands.github.io/settings/security_analysis
+— the official action fails on this repository today.
 
 ## Orchestrator recommendation
 
