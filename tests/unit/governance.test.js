@@ -1,6 +1,10 @@
 import { describe, expect, it } from "vitest";
 import { PUBLIC_EMAIL } from "../../src/data/contact";
 import {
+  PUBLIC_EMAIL as scriptEmail,
+  readRepoFile,
+} from "../../scripts/lib/repo.mjs";
+import {
   checkRequiredFiles,
   checkPinnedVersions,
 } from "../../scripts/doctor.mjs";
@@ -11,8 +15,15 @@ import { checkStaticPage } from "../../scripts/check-a11y.mjs";
 describe("autonomy foundation", () => {
   it("keeps the published inbox and toolchain pins", () => {
     expect(PUBLIC_EMAIL).toBe("K.Bousquet92@pm.me");
+    expect(scriptEmail).toBe(PUBLIC_EMAIL);
     expect(checkRequiredFiles()).toEqual([]);
     expect(checkPinnedVersions()).toEqual([]);
+  });
+
+  it("requires a human-merge pull request template", () => {
+    const template = readRepoFile(".github/PULL_REQUEST_TEMPLATE.md");
+    expect(template).toMatch(/human must approve and merge/i);
+    expect(template).toMatch(/K\.Bousquet92@pm\.me/);
   });
 
   it("enforces homepage SEO structure and the public email", () => {

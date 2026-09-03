@@ -22,6 +22,12 @@ const requiredFiles = [
   "docs/ROADMAP.md",
   ".github/workflows/ci.yml",
   ".github/workflows/deploy.yml",
+  ".github/PULL_REQUEST_TEMPLATE.md",
+  ".github/ISSUE_TEMPLATE/agent-ready.yml",
+  ".github/ISSUE_TEMPLATE/config.yml",
+  ".cursor/rules/ljb-website.mdc",
+  ".cursor/rules/human-only.mdc",
+  ".cursor/rules/agent-ready.mdc",
   "src/data/contact.js",
 ];
 

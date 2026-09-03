@@ -43,7 +43,12 @@ On pull requests and `main`:
 
 GitHub Dependency Review is documented as a human settings step. It is not in CI until Dependency graph is enabled at
 https://github.com/LJBBrands/LJBBrands.github.io/settings/security_analysis
-— the official action fails on this repository today.
+— the official action fails on this repository today. This is a public GitHub Pages
+repository; Dependency graph is usually available without a paid plan, but it still
+has to be turned on if it was disabled.
+
+Pull requests should use `.github/PULL_REQUEST_TEMPLATE.md`. Agents must not
+self-approve or merge to `main`.
 
 ## Orchestrator recommendation
 

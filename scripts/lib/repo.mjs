@@ -1,8 +1,9 @@
 import { readFileSync, existsSync, readdirSync, statSync } from "node:fs";
 import { dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
+import { PUBLIC_EMAIL } from "../../src/data/contact.js";
 
-export const PUBLIC_EMAIL = "K.Bousquet92@pm.me";
+export { PUBLIC_EMAIL };
 export const REQUIRED_NODE = "24.19.0";
 export const REQUIRED_NPM = "11.17.0";
 
