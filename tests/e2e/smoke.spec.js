@@ -281,3 +281,21 @@ test.describe("public contact", () => {
     ).toHaveAttribute("href", `mailto:${PUBLIC_EMAIL}`);
   });
 });
+
+test.describe("legal page metadata", () => {
+  test("declares self-referential canonical URLs on privacy and terms", async ({
+    page,
+  }) => {
+    await page.goto("/privacy/");
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+      "href",
+      "https://ljbbrands.github.io/privacy/",
+    );
+
+    await page.goto("/terms/");
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+      "href",
+      "https://ljbbrands.github.io/terms/",
+    );
+  });
+});
