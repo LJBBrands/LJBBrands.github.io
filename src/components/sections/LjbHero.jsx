@@ -39,9 +39,9 @@ export default function LjbHero({ theme }) {
           </h1>
 
           <p className="mt-6 max-w-2xl text-base leading-7 text-white/68 sm:text-lg sm:leading-8">
-            LJB Media Group is an independent company building technology,
-            media, automotive stories, apparel, and creative experiences as one
-            connected ecosystem.
+            LJB Media Group is a founder-led independent company building
+            thoughtful apps, practical AI learning, apparel, and original
+            stories as one connected body of work.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">

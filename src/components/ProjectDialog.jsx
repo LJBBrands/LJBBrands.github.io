@@ -2,13 +2,11 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useEffect, useId, useRef } from "react";
 import { createPortal } from "react-dom";
 import { faqItems } from "../data/awyContent";
-import { rewindDialogDestinations } from "../data/ecosystem";
 import { getAwyShowcaseSlides } from "../data/projects";
 import { useBodyScrollLock } from "../hooks/useBodyScrollLock";
 import { getScrollBehavior } from "../utils/prefersReducedMotion";
 import { setInert } from "../utils/setInert";
 import AwyShowcase from "./AwyShowcase";
-import DestinationIcon from "./DestinationIcon";
 import ProjectVisual from "./ProjectVisual";
 
 const FOCUSABLE =
@@ -271,69 +269,9 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
                       <ProjectVisual
                         project={project}
                         theme={theme}
-                        size={
-                          project.id === "rt345lc" ||
-                          project.id === "give-love-co" ||
-                          project.id === "arbor" ||
-                          project.id === "hemlock-hollow"
-                            ? "dialog"
-                            : "card"
-                        }
+                        size="dialog"
                       />
                     </div>
-
-                    {project.id === "ljb-rewind" ? (
-                      <div
-                        className="mt-4 rounded-[1.25rem] border px-4 py-4"
-                        style={{ borderColor: theme.cardBorder }}
-                      >
-                        <div className="text-xs font-medium tracking-[0.04em] text-white/52">
-                          Destinations
-                        </div>
-                        <ul className="mt-3 space-y-3">
-                          {rewindDialogDestinations.map((item) => (
-                            <li key={item.id}>
-                              {item.description ? (
-                                <p className="mb-2 text-xs leading-5 text-white/50">
-                                  <span className="font-medium text-white/70">
-                                    {item.title}:
-                                  </span>{" "}
-                                  {item.description}
-                                </p>
-                              ) : null}
-                              <a
-                                href={item.href}
-                                aria-label={item.ariaLabel}
-                                target={item.external ? "_blank" : undefined}
-                                rel={
-                                  item.external
-                                    ? "noopener noreferrer"
-                                    : undefined
-                                }
-                                className="rewind-destination"
-                                style={{ borderColor: theme.cardBorder }}
-                              >
-                                <DestinationIcon name={item.icon} />
-                                <span>{item.cta}</span>
-                              </a>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ) : project.mediaReady ? (
-                      <div
-                        className="mt-4 rounded-[1.25rem] border px-4 py-4"
-                        style={{ borderColor: theme.cardBorder }}
-                      >
-                        <div className="text-xs font-medium tracking-[0.04em] text-white/52">
-                          Media Library
-                        </div>
-                        <p className="mt-2 text-sm leading-6 text-white/55">
-                          Podcast episodes, LIVE destinations, and watch links
-                          will appear here when published.
-                        </p>
-                      </div>
-                    ) : null}
                   </div>
 
                   <div className="p-5 sm:p-6">
