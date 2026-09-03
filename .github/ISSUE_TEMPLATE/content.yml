@@ -1,0 +1,33 @@
+name: Content
+description: Copy, product naming, or asset change on the current site.
+labels: ["content"]
+body:
+  - type: textarea
+    id: change
+    attributes:
+      label: Requested change
+      description: Exact copy or asset. Do not ask an agent to invent product claims.
+    validations:
+      required: true
+  - type: dropdown
+    id: product
+    attributes:
+      label: Product
+      options:
+        - Company / LJB Media Group
+        - Awy
+        - Arclia
+        - Arbor
+        - Studio / other
+        - Not product-specific
+    validations:
+      required: true
+  - type: checkboxes
+    id: approved
+    attributes:
+      label: Approval
+      options:
+        - label: This copy or asset is approved to publish
+          required: true
+        - label: This does not add fake metrics, testimonials, or unshipped links
+          required: true

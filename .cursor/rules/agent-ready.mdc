@@ -1,0 +1,10 @@
+---
+description: Stop when an issue is not agent-ready
+alwaysApply: true
+---
+
+Before implementing, confirm the request has a single testable outcome, named scope, named human-only boundaries, and acceptance checks.
+
+If product facts, legal text, financial claims, or assets are missing, report the gap. Do not fabricate them.
+
+Required local verification when code changes: `npm run doctor`, `npm run ci`, and `npm run build`. Add `npm run check:site` after a production build when HTML output or links changed.

@@ -1,0 +1,30 @@
+name: Security / Privacy
+description: Secret exposure, tracking, or data-collection change.
+labels: ["security", "privacy"]
+body:
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind
+      options:
+        - Secret or credential risk
+        - Data collection / form fields
+        - Analytics / tracking
+        - Legal page contact consistency
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: detail
+    attributes:
+      label: Detail
+      description: Do not paste live secrets into this issue. Rotate first, then describe.
+    validations:
+      required: true
+  - type: checkboxes
+    id: human
+    attributes:
+      label: Human-only
+      options:
+        - label: I understand analytics providers, legal publication, and production secrets are human-only
+          required: true

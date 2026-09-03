@@ -24,7 +24,9 @@ Pictures/
 
 # Dev tools
 .codex/
-.cursor/
+.cursor/*
+!.cursor/rules/
+!.cursor/rules/**
 .config/
 .npm/
 .ssh/

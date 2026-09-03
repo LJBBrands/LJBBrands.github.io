@@ -1,0 +1,16 @@
+---
+description: Operations agents must not perform without explicit approval
+alwaysApply: true
+---
+
+Human-only unless the current request explicitly approves the action:
+
+- production secrets, form-backend credentials, or client-side API keys
+- domain / DNS / GitHub Pages settings
+- production deployment or claiming the live site is updated
+- public investor financial claims or data-room files
+- legal-policy publication
+- analytics provider changes
+- Website 2.0 architecture migration
+- publishing unconfirmed company email addresses
+- merging to main without an explicit merge request

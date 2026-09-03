@@ -1,47 +1,54 @@
 # LJB Media Group
 
-Public website for **LJB Media Group** — an independent company building technology, media, automotive stories, apparel, and creative experiences as one connected ecosystem.
+Public website for **LJB Media Group** — the corporate/investor-facing site for LJB Media Group, LLC.
 
-The public product name for the macOS file-organization tool is **Arbor**.
+Intended technology products: **Awy**, **Arclia**, and **Arbor**. The public name for the macOS file-organization tool is **Arbor**. Unshipped product names are not added to the live UI until copy and assets are approved.
 
-## Requirements
+## Toolchain
 
-This repository pins:
+- **Node.js** `24.19.0` (`.nvmrc` / `.node-version`)
+- **npm** `11.17.0` (`packageManager` in `package.json`)
 
-- **Node.js** `24.19.0` (see `.nvmrc` / `.node-version`)
-- **npm** `11.17.0` (see `packageManager` in `package.json`)
-
-Use a version manager (`nvm`, `fnm`, or `n`) so the local toolchain matches CI.
-
-## Scripts
+## Standard commands
 
 ```sh
-npm ci
-npm run dev
-npm run ci
+npm run doctor
+npm run bootstrap
+npm run lint
+npm run test
 npm run build
-npm run preview
-npm run test:e2e:webkit
+npm run ci
 ```
 
-- `ci` — ESLint, Prettier check, and unit tests
-- `lint` / `format:check` / `test` — individual checks
-- `test:e2e` / `test:e2e:webkit` — Playwright browser smoke tests
-
-Install the WebKit browser once after `npm ci`:
+| Command           | What it does                                       |
+| ----------------- | -------------------------------------------------- |
+| `doctor`          | Node/npm pins and required files                   |
+| `bootstrap`       | `doctor` + `npm ci`                                |
+| `lint`            | ESLint, including jsx-a11y                         |
+| `test`            | Vitest unit tests                                  |
+| `build`           | Production Vite build                              |
+| `ci`              | doctor, lint, format, tests, secret scan, SEO scan |
+| `check:site`      | Internal links + static HTML a11y (needs `dist`)   |
+| `test:e2e:webkit` | Playwright WebKit smoke                            |
 
 ```sh
 npx playwright install --with-deps webkit
 ```
 
+## Docs
+
+- [Architecture](docs/ARCHITECTURE.md)
+- [Development](docs/DEVELOPMENT.md)
+- [Security](docs/SECURITY.md)
+- [Privacy](docs/PRIVACY.md)
+- [Automation](docs/AUTOMATION.md)
+- [Release](docs/RELEASE.md)
+- [Roadmap](docs/ROADMAP.md)
+- [Browser support](docs/browser-support.md)
+- [Contrast](docs/accessibility-contrast.md)
+
 ## Deployment
 
-Production publishing uses **GitHub Actions** with an artifact-based GitHub Pages deploy (`.github/workflows/deploy.yml`). The manual `gh-pages` npm script is not part of this repository.
+Production publishing uses GitHub Actions (`.github/workflows/deploy.yml`) on push to `main`. Agents do not deploy or change Pages settings unless a human explicitly approves it.
 
-Enabling GitHub Pages from the Actions artifact is a repository setting and is not changed by this codebase.
-
-## Browser support
-
-See [docs/browser-support.md](docs/browser-support.md) for the declared Safari/iOS policy, viewport and safe-area behavior, and remaining device checks.
-
-Contrast measurements and any intentionally deferred WCAG AA items are recorded in [docs/accessibility-contrast.md](docs/accessibility-contrast.md).
+Current public origin in metadata: `https://ljbbrands.github.io/`.

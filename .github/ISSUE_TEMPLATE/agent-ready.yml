@@ -1,0 +1,49 @@
+name: Agent-ready
+description: Use this when a Cursor/cloud agent should implement the work.
+labels: ["agent-ready"]
+body:
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Single testable outcome
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: In-scope files or surfaces
+    validations:
+      required: true
+  - type: textarea
+    id: human_only
+    attributes:
+      label: Human-only / out of scope
+      value: |
+        - Production deploy
+        - Domain / DNS
+        - Form-backend credentials
+        - Website 2.0
+    validations:
+      required: true
+  - type: textarea
+    id: accept
+    attributes:
+      label: Acceptance checks
+      value: |
+        - npm run doctor
+        - npm run ci
+        - npm run build
+        - npm run check:site
+    validations:
+      required: true
+  - type: checkboxes
+    id: ready
+    attributes:
+      label: Ready
+      options:
+        - label: Product facts, legal text, and assets are provided or explicitly not required
+          required: true
+        - label: The agent does not need to invent metrics, testimonials, or unshipped links
+          required: true
+        - label: This is not a Website 2.0 rebuild
+          required: true
