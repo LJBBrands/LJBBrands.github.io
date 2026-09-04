@@ -5,6 +5,7 @@ import {
   readRepoFile,
   repoFileExists,
   repoRoot,
+  walkFiles,
 } from "./lib/repo.mjs";
 
 const requiredFiles = [
@@ -63,6 +64,15 @@ export function checkRequiredFiles() {
     .map((file) => `Missing required file: ${file}`);
 }
 
+export function checkEnvironmentFiles(files = walkFiles(".")) {
+  return files
+    .filter(
+      (file) =>
+        /(^|\/)\.env(?:\..+)?$/.test(file) && !file.endsWith(".env.example"),
+    )
+    .map((file) => `Do not keep environment file ${file} in the workspace`);
+}
+
 function runtimeVersion(command, args) {
   return execFileSync(command, args, { encoding: "utf8" }).trim();
 }
@@ -85,11 +95,8 @@ function main() {
     ...checkRequiredFiles(),
     ...checkPinnedVersions(),
     ...checkRuntime(),
+    ...checkEnvironmentFiles(),
   ];
-
-  if (repoFileExists(".env") || repoFileExists(".env.local")) {
-    errors.push("Do not keep .env files in the repository workspace");
-  }
 
   if (errors.length > 0) {
     for (const error of errors) console.error(`doctor: ${error}`);

@@ -35,11 +35,10 @@ If an issue is not agent-ready, the agent should stop and say so.
 On pull requests and `main`:
 
 - pinned Node/npm install (`npm ci`)
-- `npm run ci` (doctor, lint, format, unit tests, secret scan, SEO structure)
+- `npm run ci` (doctor, lint, format, unit tests, secret scan, SEO structure, npm audit)
 - production build
 - `npm run check:site` (internal links, static HTML a11y)
 - Playwright WebKit smoke
-- `npm audit --audit-level=high`
 
 GitHub Dependency Review is documented as a human settings step. It is not in CI until Dependency graph is enabled at
 https://github.com/LJBBrands/LJBBrands.github.io/settings/security_analysis

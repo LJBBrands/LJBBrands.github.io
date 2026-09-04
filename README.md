@@ -20,16 +20,16 @@ npm run build
 npm run ci
 ```
 
-| Command           | What it does                                       |
-| ----------------- | -------------------------------------------------- |
-| `doctor`          | Node/npm pins and required files                   |
-| `bootstrap`       | `doctor` + `npm ci`                                |
-| `lint`            | ESLint, including jsx-a11y                         |
-| `test`            | Vitest unit tests                                  |
-| `build`           | Production Vite build                              |
-| `ci`              | doctor, lint, format, tests, secret scan, SEO scan |
-| `check:site`      | Internal links + static HTML a11y (needs `dist`)   |
-| `test:e2e:webkit` | Playwright WebKit smoke                            |
+| Command           | What it does                                        |
+| ----------------- | --------------------------------------------------- |
+| `doctor`          | Node/npm pins and required files                    |
+| `bootstrap`       | `doctor` + `npm ci`                                 |
+| `lint`            | ESLint, including jsx-a11y                          |
+| `test`            | Vitest unit tests                                   |
+| `build`           | Production Vite build                               |
+| `ci`              | doctor, lint, format, tests, security and SEO scans |
+| `check:site`      | Internal links + static HTML a11y (needs `dist`)    |
+| `test:e2e:webkit` | Playwright WebKit smoke                             |
 
 ```sh
 npx playwright install --with-deps webkit

@@ -153,6 +153,12 @@ test.describe("project dialog", () => {
     await expect(dialog).toBeVisible();
     await expect(dialog.getByRole("button", { name: "Close" })).toBeFocused();
 
+    const backdrop = page.locator(".project-dialog-root > button");
+    await expect(backdrop).toHaveAttribute("aria-hidden", "true");
+    await expect(backdrop).toHaveAttribute("tabindex", "-1");
+    await page.keyboard.press("Shift+Tab");
+    await expect(backdrop).not.toBeFocused();
+
     await page.keyboard.press("Tab");
     const focusStayedInside = await page.evaluate(() => {
       const panel = document.querySelector('[role="dialog"]');

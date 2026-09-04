@@ -48,7 +48,10 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
 
       const focusable = [
         ...panelRef.current.querySelectorAll(FOCUSABLE),
-      ].filter((el) => !el.hasAttribute("disabled"));
+      ].filter(
+        (el) =>
+          !el.hasAttribute("disabled") && el.getAttribute("tabindex") !== "-1",
+      );
 
       if (focusable.length === 0) {
         event.preventDefault();
@@ -97,6 +100,8 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
           <motion.button
             type="button"
             aria-label="Close project details"
+            aria-hidden="true"
+            tabIndex={-1}
             className="absolute inset-0 bg-black/72 backdrop-blur-sm"
             initial={reduceMotion ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}

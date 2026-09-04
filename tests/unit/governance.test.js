@@ -5,6 +5,7 @@ import {
   readRepoFile,
 } from "../../scripts/lib/repo.mjs";
 import {
+  checkEnvironmentFiles,
   checkRequiredFiles,
   checkPinnedVersions,
 } from "../../scripts/doctor.mjs";
@@ -18,6 +19,21 @@ describe("autonomy foundation", () => {
     expect(scriptEmail).toBe(PUBLIC_EMAIL);
     expect(checkRequiredFiles()).toEqual([]);
     expect(checkPinnedVersions()).toEqual([]);
+  });
+
+  it("rejects local environment variants but permits a documented example", () => {
+    expect(
+      checkEnvironmentFiles([
+        ".env",
+        ".env.local",
+        "config/.env.production",
+        ".env.example",
+      ]),
+    ).toEqual([
+      "Do not keep environment file .env in the workspace",
+      "Do not keep environment file .env.local in the workspace",
+      "Do not keep environment file config/.env.production in the workspace",
+    ]);
   });
 
   it("requires a human-merge pull request template", () => {
