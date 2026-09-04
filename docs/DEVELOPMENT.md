@@ -17,7 +17,7 @@ npm run bootstrap   # doctor + npm ci
 npm run lint
 npm run test
 npm run build
-npm run ci          # doctor, lint, format, unit tests, secret scan, SEO scan
+npm run ci          # doctor, lint, format, tests, secret/SEO scans, npm audit
 npm run check:site  # internal links + static HTML a11y (requires dist)
 npm run preview
 npm run test:e2e:webkit
