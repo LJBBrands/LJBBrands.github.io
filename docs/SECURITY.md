@@ -21,8 +21,10 @@ The only published inbox is `K.Bousquet92@pm.me` (`src/data/contact.js`). Compan
 ## Automated checks
 
 - `npm run check:secrets` scans tracked source for high-risk patterns and unexpected email addresses
-- CI runs that scan on every pull request and on `main`
-- CI runs `npm audit --audit-level=high`
+- `npm run verify:local` runs the secret scan and `npm audit --audit-level=high`
+  before review
+- the manual production publisher repeats core security checks when a human
+  approves a release; there are no automatic pull-request or push runners
 - Enable Dependency graph, then GitHub Dependency Review, plus Secret Protection / push protection (human GitHub-settings steps). This repository is public; Dependency graph does not require GitHub Advanced Security here, but the official review action still fails until the graph is enabled.
 
 ## Dependency changes

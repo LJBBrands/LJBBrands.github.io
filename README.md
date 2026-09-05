@@ -17,22 +17,27 @@ npm run bootstrap
 npm run lint
 npm run test
 npm run build
-npm run ci
+npm run verify:local
 ```
 
-| Command           | What it does                                        |
-| ----------------- | --------------------------------------------------- |
-| `doctor`          | Node/npm pins and required files                    |
-| `bootstrap`       | `doctor` + `npm ci`                                 |
-| `lint`            | ESLint, including jsx-a11y                          |
-| `test`            | Vitest unit tests                                   |
-| `build`           | Production Vite build                               |
-| `ci`              | doctor, lint, format, tests, security and SEO scans |
-| `check:site`      | Internal links + static HTML a11y (needs `dist`)    |
-| `test:e2e:webkit` | Playwright WebKit smoke                             |
+| Command                  | What it does                                                         |
+| ------------------------ | -------------------------------------------------------------------- |
+| `doctor`                 | Node/npm pins and required files                                     |
+| `bootstrap`              | `doctor` + reproducible `npm ci` install                             |
+| `lint`                   | ESLint, including jsx-a11y                                           |
+| `test`                   | Vitest unit tests                                                    |
+| `build`                  | Production Vite build                                                |
+| `check:core`             | Toolchain, lint, format, unit, secret, SEO, and dependency checks    |
+| `check:site`             | Internal links + static HTML a11y (needs `dist`)                     |
+| `browser:install:webkit` | Install the isolated local WebKit test runtime                       |
+| `test:e2e:webkit`        | Fresh production build + Playwright WebKit smoke                     |
+| `verify:local`           | Complete local gate: core checks, build, WebKit smoke, and static QA |
+
+`npm run ci` remains a compatibility alias for `npm run check:core`; it does
+not start or depend on a hosted CI service.
 
 ```sh
-npx playwright install --with-deps webkit
+npm run browser:install:webkit
 ```
 
 ## Docs
@@ -50,8 +55,13 @@ npx playwright install --with-deps webkit
 ## Deployment
 
 Production publishing uses the manually dispatched GitHub Actions workflow in
-`.github/workflows/deploy.yml`. The repository owner must select GitHub Actions
-as the sole Pages source and approve production publication. Agents do not deploy
-or change Pages settings unless a human explicitly approves it.
+`.github/workflows/deploy.yml`. Routine pull-request and push validation is local
+and has no GitHub Actions trigger. The deployment workflow still builds and
+checks the release artifact on a GitHub-hosted runner because GitHub Pages needs
+that artifact and its deployment token. It runs only after a human explicitly
+starts a production release.
+
+Agents do not deploy or change Pages settings unless a human explicitly approves
+it. See [Automation](docs/AUTOMATION.md) and [Release](docs/RELEASE.md).
 
 Current public origin in metadata: `https://ljbbrands.github.io/`.

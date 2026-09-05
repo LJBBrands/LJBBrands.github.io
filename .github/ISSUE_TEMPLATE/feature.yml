@@ -26,8 +26,6 @@ body:
     attributes:
       label: Acceptance
       value: |
-        - npm run doctor
-        - npm run ci
-        - npm run build
+        - npm run verify:local
     validations:
       required: true

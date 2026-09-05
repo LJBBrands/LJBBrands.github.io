@@ -1,5 +1,5 @@
 name: Agent-ready
-description: Use this when a Cursor/cloud agent should implement the work.
+description: Use this when a local development agent should implement the work.
 labels: ["agent-ready"]
 body:
   - type: textarea
@@ -30,10 +30,7 @@ body:
     attributes:
       label: Acceptance checks
       value: |
-        - npm run doctor
-        - npm run ci
-        - npm run build
-        - npm run check:site
+        - npm run verify:local
     validations:
       required: true
   - type: checkboxes

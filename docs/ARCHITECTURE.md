@@ -6,14 +6,14 @@ This is **not** Website 2.0. Do not introduce a CMS, app server, or hosting migr
 
 ## Runtime
 
-| Layer        | Choice                            | Notes                                    |
-| ------------ | --------------------------------- | ---------------------------------------- |
-| UI           | React 18                          | Existing component tree                  |
-| Bundler      | Vite 8                            | `base: "/"`                              |
-| Styling      | Tailwind 3 + `src/index.css`      | Dark tokens, safe-area, WebKit fallbacks |
-| Motion       | Framer Motion 11                  | Must respect `prefers-reduced-motion`    |
-| Hosting      | GitHub Pages via Actions artifact | Deploy workflow runs on push to `main`   |
-| Public email | `K.Bousquet92@pm.me`              | Single source: `src/data/contact.js`     |
+| Layer        | Choice                            | Notes                                     |
+| ------------ | --------------------------------- | ----------------------------------------- |
+| UI           | React 18                          | Existing component tree                   |
+| Bundler      | Vite 8                            | `base: "/"`                               |
+| Styling      | Tailwind 3 + `src/index.css`      | Dark tokens, safe-area, WebKit fallbacks  |
+| Motion       | Framer Motion 11                  | Must respect `prefers-reduced-motion`     |
+| Hosting      | GitHub Pages via Actions artifact | Manual, human-approved workflow on `main` |
+| Public email | `K.Bousquet92@pm.me`              | Single source: `src/data/contact.js`      |
 
 ## Surfaces
 

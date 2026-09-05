@@ -32,9 +32,12 @@
     "check:a11y": "node scripts/check-a11y.mjs",
     "check:site": "npm run check:links && npm run check:a11y",
     "audit": "npm audit --audit-level=high",
-    "ci": "npm run doctor && npm run lint && npm run format:check && npm run test && npm run check:secrets && npm run check:seo && npm run audit",
-    "test:e2e": "playwright test",
-    "test:e2e:webkit": "playwright test --project=webkit"
+    "check:core": "npm run doctor && npm run lint && npm run format:check && npm run test && npm run check:secrets && npm run check:seo && npm run audit",
+    "ci": "npm run check:core",
+    "browser:install:webkit": "PLAYWRIGHT_BROWSERS_PATH=.cache/ms-playwright playwright install webkit",
+    "test:e2e": "npm run build && PLAYWRIGHT_BROWSERS_PATH=.cache/ms-playwright playwright test",
+    "test:e2e:webkit": "npm run build && PLAYWRIGHT_BROWSERS_PATH=.cache/ms-playwright playwright test --project=webkit",
+    "verify:local": "npm run check:core && npm run test:e2e:webkit && npm run check:site"
   },
   "dependencies": {
     "framer-motion": "^11.3.19",

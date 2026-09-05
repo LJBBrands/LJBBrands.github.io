@@ -8,6 +8,7 @@ import globals from "globals";
 export default [
   {
     ignores: [
+      ".cache/**",
       "dist/**",
       "node_modules/**",
       "playwright-report/**",

@@ -75,6 +75,11 @@ Keep React 18, Vite 8, Tailwind 3, and Framer Motion 11 unless a human approves 
 1. Inspect the relevant implementation before editing.
 2. Keep the change scoped. Preserve unrelated work.
 3. Check accessibility and responsive behavior for affected UI.
-4. Run `npm run doctor`, `npm run ci`, and `npm run build` when practical.
+4. Run `npm run verify:local` before requesting review when practical.
 5. If the production build cannot run, report the blocker and do not claim the work is complete.
 6. Do not deploy or change GitHub Pages settings unless explicitly requested.
+
+Routine build, test, security, and browser validation runs locally. Do not add
+pull-request or push-triggered cloud CI, cloud agents, or self-hosted runners.
+The manual GitHub Pages workflow is the production publisher and is the only
+approved GitHub-hosted build path.

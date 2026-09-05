@@ -3,6 +3,7 @@ import { PUBLIC_EMAIL } from "../../src/data/contact";
 import {
   PUBLIC_EMAIL as scriptEmail,
   readRepoFile,
+  repoFileExists,
 } from "../../scripts/lib/repo.mjs";
 import {
   checkEnvironmentFiles,
@@ -55,6 +56,18 @@ describe("autonomy foundation", () => {
     for (const ref of actionRefs) {
       expect(ref).toMatch(/^[0-9a-f]{40}$/);
     }
+  });
+
+  it("keeps routine validation local and exposes one complete command", () => {
+    const packageJson = JSON.parse(readRepoFile("package.json"));
+
+    expect(repoFileExists(".github/workflows/ci.yml")).toBe(false);
+    expect(packageJson.scripts["verify:local"]).toContain("check:core");
+    expect(packageJson.scripts["verify:local"]).toContain("test:e2e:webkit");
+    expect(packageJson.scripts["verify:local"]).toContain("check:site");
+    expect(packageJson.scripts["browser:install:webkit"]).toContain(
+      ".cache/ms-playwright",
+    );
   });
 
   it("enforces homepage SEO structure and the public email", () => {

@@ -21,7 +21,6 @@ const requiredFiles = [
   "docs/AUTOMATION.md",
   "docs/RELEASE.md",
   "docs/ROADMAP.md",
-  ".github/workflows/ci.yml",
   ".github/workflows/deploy.yml",
   ".github/PULL_REQUEST_TEMPLATE.md",
   ".github/ISSUE_TEMPLATE/agent-ready.yml",

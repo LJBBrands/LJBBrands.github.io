@@ -24,7 +24,9 @@ jobs:
           cache: npm
 
       - run: npm ci
-      - run: npm run ci
+      # Pages must build on GitHub-hosted infrastructure. These release-safety
+      # gates mirror the local checks; routine PR/push validation stays local.
+      - run: npm run check:core
       - run: npm run build
       - run: npm run check:site
 

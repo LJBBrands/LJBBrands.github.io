@@ -15,4 +15,4 @@ run("node", ["scripts/doctor.mjs"]);
 run("npm", ["ci"]);
 
 console.log("bootstrap: dependencies installed.");
-console.log("Optional, once: npx playwright install --with-deps webkit");
+console.log("Before browser checks, once: npm run browser:install:webkit");

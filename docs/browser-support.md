@@ -11,6 +11,19 @@ Those versions introduced `svh` / `dvh` / `lvh`. Older Safari still receives `vh
 
 React, Tailwind, and Framer Motion versions are unchanged in the WebKit compatibility pass.
 
+## Local WebKit gate
+
+Install the repository-scoped runtime once with
+`npm run browser:install:webkit`, then run `npm run verify:local`. The browser
+bundle lives under ignored `.cache/ms-playwright` and is not shared with other
+projects.
+
+Playwright WebKit is a WebKit compatibility signal, not the system Safari app.
+On an Apple beta where the Playwright browser itself aborts before a page opens,
+record that as a toolchain blocker, keep the WebKit test mandatory, and perform a
+current Safari spot check when it can be done without contending with app/device
+testing. Do not silently replace or remove the WebKit gate.
+
 ## Viewport units
 
 | Token                       | Fallback | Progressive enhancement       |

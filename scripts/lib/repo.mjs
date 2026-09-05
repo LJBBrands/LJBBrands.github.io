@@ -23,6 +23,7 @@ export function repoFileExists(relativePath) {
 
 const SKIP_DIR_NAMES = new Set([
   ".git",
+  ".cache",
   "node_modules",
   "dist",
   "playwright-report",

@@ -22,11 +22,13 @@
 
 ## Validation
 
-- [ ] `npm run doctor`
-- [ ] `npm run ci`
-- [ ] `npm run build`
-- [ ] `npm run check:site` when HTML or links changed
-- [ ] `npm run test:e2e:webkit` when UI, a11y, or responsive behavior changed
+- [ ] `npm run verify:local`
+- [ ] Local Node/npm versions match the repository pins
+- [ ] Result and any relevant browser/UI notes are recorded below
+
+### Local evidence
+
+<!-- Date, command result, and affected browser/viewport notes. -->
 
 ## Accuracy
 

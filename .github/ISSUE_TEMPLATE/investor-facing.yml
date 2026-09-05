@@ -26,7 +26,7 @@ body:
       label: Acceptance
       value: |
         - Investor 60-second questions remain answerable
-        - npm run ci && npm run build
+        - npm run verify:local
         - Email search still finds only K.Bousquet92@pm.me
     validations:
       required: true
