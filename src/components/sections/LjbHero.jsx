@@ -29,19 +29,19 @@ export default function LjbHero({ theme }) {
             LJB MEDIA GROUP
           </p>
 
-          <h1 className="mt-5 text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
+          <h1 className="mt-5 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
             <span className="block">Media.</span>
             <span className="block">Technology.</span>
             <span className="block">Stories.</span>
             <span className="mt-1 block" style={{ color: theme.accent }}>
-              Built with Purpose.
+              Built With Purpose.
             </span>
           </h1>
 
           <p className="mt-6 max-w-2xl text-base leading-7 text-white/68 sm:text-lg sm:leading-8">
-            LJB Media Group is an independent company building technology,
-            media, automotive stories, apparel, and creative experiences as one
-            connected ecosystem.
+            LJB Media Group is a founder-led independent company building
+            thoughtful apps, practical AI learning, apparel, and original
+            stories as one connected body of work.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">

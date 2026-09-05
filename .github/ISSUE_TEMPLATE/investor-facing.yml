@@ -1,0 +1,32 @@
+name: Investor-facing change
+description: Positioning, investor CTA, or inquiry-path change. No financial claims.
+labels: ["investor"]
+body:
+  - type: textarea
+    id: change
+    attributes:
+      label: Public change
+      description: What an investor should see. No valuation, cap table, or guaranteed returns.
+    validations:
+      required: true
+  - type: checkboxes
+    id: bounds
+    attributes:
+      label: Boundaries
+      options:
+        - label: No public financial figures, forecasts, or data-room files
+          required: true
+        - label: No unpublished company email addresses
+          required: true
+        - label: Form delivery is not described as operational unless a backend exists
+          required: true
+  - type: textarea
+    id: accept
+    attributes:
+      label: Acceptance
+      value: |
+        - Investor 60-second questions remain answerable
+        - npm run ci && npm run build
+        - Email search still finds only K.Bousquet92@pm.me
+    validations:
+      required: true

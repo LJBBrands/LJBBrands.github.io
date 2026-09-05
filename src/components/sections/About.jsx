@@ -41,7 +41,7 @@ export default function About({ theme }) {
           >
             {aboutCompany.subtitle}
           </div>
-          <h3 className="mt-4 text-2xl font-semibold tracking-tight">
+          <h3 className="mt-4 text-2xl font-bold tracking-tight">
             {aboutCompany.title}
           </h3>
           <p className="mt-4 max-w-3xl text-sm leading-7 text-white/64 sm:text-base sm:leading-8">

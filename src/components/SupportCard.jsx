@@ -33,7 +33,7 @@ export default function SupportCard({ theme }) {
           Support
         </div>
 
-        <h2 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
+        <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
           {supportContent.headline}
         </h2>
         <p className="mt-4 text-base leading-7 text-white/68 sm:text-lg sm:leading-8">

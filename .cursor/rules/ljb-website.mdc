@@ -1,0 +1,14 @@
+---
+description: LJB Media Group website engineering and brand constraints
+alwaysApply: true
+---
+
+Preserve the existing Vite/React site. Do not rebuild it or start Website 2.0.
+
+Public brand: LJB Media Group. Intended products: Awy, Arclia, Arbor. Public macOS product name: Arbor. Never publish Atlas/Project Atlas.
+
+Do not invent metrics, testimonials, team members, unshipped product pages, or operational form backends.
+
+The only published email is K.Bousquet92@pm.me until a human confirms company mailboxes.
+
+Keep React, Vite, Tailwind, and Framer Motion unless a human approves a change. Prefer incremental edits and existing components.

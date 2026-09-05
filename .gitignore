@@ -24,8 +24,13 @@ Pictures/
 
 # Dev tools
 .codex/
-.cursor/
+.cursor/*
+!.cursor/rules/
+!.cursor/rules/**
 .config/
+.env
+.env.*
+!.env.example
 .npm/
 .ssh/
 .zsh_history

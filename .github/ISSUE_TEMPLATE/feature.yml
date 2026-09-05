@@ -1,0 +1,33 @@
+name: Feature
+description: A scoped improvement to the current website, not Website 2.0.
+labels: ["feature"]
+body:
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Outcome
+      description: One testable result. Do not use this template for Website 2.0.
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: In scope
+    validations:
+      required: true
+  - type: textarea
+    id: out
+    attributes:
+      label: Out of scope
+    validations:
+      required: true
+  - type: textarea
+    id: accept
+    attributes:
+      label: Acceptance
+      value: |
+        - npm run doctor
+        - npm run ci
+        - npm run build
+    validations:
+      required: true

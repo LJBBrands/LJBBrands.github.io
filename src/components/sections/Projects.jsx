@@ -1,5 +1,9 @@
 import { useCallback, useRef, useState } from "react";
-import { getListedProjects, getProjectById } from "../../data/projects";
+import {
+  getAppProjects,
+  getProjectById,
+  getStudioProjects,
+} from "../../data/projects";
 import ProjectCard from "../ProjectCard";
 import ProjectDialog from "../ProjectDialog";
 import SectionHeader from "../SectionHeader";
@@ -7,7 +11,8 @@ import SectionHeader from "../SectionHeader";
 export default function Projects({ theme }) {
   const [activeId, setActiveId] = useState(null);
   const triggerRefs = useRef({});
-  const listedProjects = getListedProjects();
+  const appProjects = getAppProjects();
+  const studioProjects = getStudioProjects();
 
   const activeProject = activeId ? getProjectById(activeId) : null;
 
@@ -30,13 +35,13 @@ export default function Projects({ theme }) {
     >
       <SectionHeader
         theme={theme}
-        kicker="Projects"
-        title="Explore the LJB Ecosystem"
-        description="Preview each part of the company, then open a project for highlights, selected visuals, and next steps."
+        kicker="Apps"
+        title="Three Apps. Built With Purpose."
+        description="Awy, Arclia, and Arbor each solve a different problem, with thoughtful design, practical utility, and people at the center."
       />
 
-      <div className="projects-grid">
-        {listedProjects.map((project, index) => (
+      <div className="projects-grid projects-grid--apps">
+        {appProjects.map((project, index) => (
           <ProjectCard
             key={project.id}
             project={project}
@@ -48,6 +53,32 @@ export default function Projects({ theme }) {
             }}
           />
         ))}
+      </div>
+
+      <div className="projects-subsection">
+        <div className="projects-subsection__heading">
+          <p>Independent Work</p>
+          <h3>Apparel And Original Stories.</h3>
+          <span>
+            Personal projects with their own voice, developed with the same care
+            as the product work.
+          </span>
+        </div>
+
+        <div className="projects-grid projects-grid--studio">
+          {studioProjects.map((project, index) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              theme={theme}
+              index={index}
+              onOpen={openProject}
+              buttonRef={(node) => {
+                triggerRefs.current[project.id] = node;
+              }}
+            />
+          ))}
+        </div>
       </div>
 
       <ProjectDialog

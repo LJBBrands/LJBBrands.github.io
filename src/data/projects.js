@@ -16,15 +16,11 @@ const awyShot = (fileName, label, alt, group) => ({
   empty/unfinished states from the public site.
 */
 
-/*
-  RT345LC visual uses owner Charger photography at
-  public/projects/rt345lc/rt345lc-hero.webp
-*/
-
 export const projects = [
   {
     id: "awy",
     name: "Awy",
+    group: "app",
     category: "Technology / Social Platform",
     preview:
       "A private social environment built around presence, shared rhythm, quiet spaces, and consent-aware communication.",
@@ -43,6 +39,12 @@ export const projects = [
     ],
     visual: {
       type: "screenshots",
+      brand: "awy",
+      cardStyle: "app-icon",
+      icon: projectAsset("awy", "awy-app-icon-v3.webp"),
+      logoAlt: "Awy social app icon",
+      eyebrow: "Awy",
+      badge: "Social Platform",
       card: {
         primary: awyShot(
           "awy-card-home-dark.jpg",
@@ -187,93 +189,46 @@ export const projects = [
     accent: "#B8FF5A",
   },
   {
-    id: "ljb-rewind",
-    name: "LJB Rewind",
-    category: "Media / Entertainment",
+    id: "arclia",
+    name: "Arclia",
+    group: "app",
+    category: "Education / AI Learning",
     preview:
-      "Podcasts, LEGO builds, unboxings, road trips, LIVE conversations, and behind-the-scenes project stories.",
+      "An AI academy for beginner through advanced learners, combining guided courses with a hands-on sandbox.",
     description:
-      "LJB Rewind is the media arm of LJB Media Group — podcasts, LEGO builds, unboxings, LIVE discussions, project updates, community content, road trips, and behind-the-scenes stories.",
+      "Arclia helps people learn AI with greater clarity and confidence. Guided courses support beginners and advanced learners, while a hands-on sandbox provides space to explore, practice, and become more comfortable using AI.",
     summary:
-      "LJB Rewind now uses a focused public presence: Instagram for updates, short-form moments, and LIVE announcements; Kick for full-length LIVE podcasts, LEGO builds, unboxings, and community conversations.",
-    status: null,
+      "Learn the concepts, practice them safely, and build practical confidence at your own pace.",
+    status: "In Development",
     highlights: [
-      "Podcasts",
-      "LEGO Builds",
-      "Unboxings",
-      "LIVE Conversations",
-      "Road Trips",
-      "Behind the Scenes",
+      "Beginner to Advanced",
+      "Guided AI Courses",
+      "Hands-on Sandbox",
+      "Practical Learning",
+      "Build Confidence",
     ],
     visual: {
       type: "branded",
-      brand: "rewind",
-      coverStyle: "media-atmosphere",
-      alt: "LJB Rewind media preview",
-    },
-    mediaReady: true,
-    primaryAction: {
-      label: "Email LJB Rewind",
-      href: contactMailto({ subject: "LJB%20Rewind%20Inquiry" }),
-    },
-    accent: "#D9FF9A",
-  },
-  {
-    id: "rt345lc",
-    name: "RT345LC",
-    category: "Automotive / Visual Storytelling",
-    preview:
-      "Automotive builds, photography, road trips, collaborations, and long-form project stories.",
-    description:
-      "RT345LC focuses on automotive culture through photography, builds, road trips, and long-form project storytelling.",
-    status: null,
-    highlights: [
-      "Builds",
-      "Photography",
-      "Road Trips",
-      "Collaborations",
-      "Long-form Project Stories",
-    ],
-    visual: {
-      type: "branded",
-      brand: "rt345lc",
-      hero: projectAsset("rt345lc", "rt345lc-hero.webp"),
-      alt: "Front view of the green RT345LC performance sedan",
-      coverStyle: "automotive-editorial",
+      brand: "arclia",
+      cardStyle: "app-icon",
+      coverStyle: "app-icon",
+      logo: projectAsset("arclia", "arclia-app-icon.webp"),
+      logoAlt: "Arclia AI learning app icon",
+      hero: projectAsset("arclia", "arclia-app-icon.webp"),
+      alt: "Arclia AI learning app icon",
+      eyebrow: "Arclia",
+      badge: "Courses + Sandbox",
     },
     primaryAction: {
-      label: "Email About RT345LC",
-      href: contactMailto({ subject: "RT345LC%20Inquiry" }),
+      label: "Email About Arclia",
+      href: contactMailto({ subject: "Arclia%20Inquiry" }),
     },
-    accent: "#F2F2F2",
-  },
-  {
-    id: "give-love-co",
-    name: "Give Love Co.",
-    category: "Apparel / Limited Drops",
-    preview:
-      "An independent clothing brand centered on intentional designs, preorder drops, and limited releases.",
-    description:
-      "Give Love Co. is an independent clothing brand built around intentional design, limited preorder drops, and messages centered on kindness, connection, and purpose.",
-    status: null,
-    highlights: ["Give Love", "Be Kind", "Embrace Peace", "Spread Joy"],
-    visual: {
-      type: "branded",
-      brand: "give-love-co",
-      coverStyle: "logo-panel",
-      logo: projectAsset("give-love-co", "give-love-co-logo.webp"),
-      hero: projectAsset("give-love-co", "give-love-co-logo.webp"),
-      alt: "Give Love Co. official wordmark logo",
-    },
-    primaryAction: {
-      label: "Contact Give Love Co.",
-      href: contactMailto({ subject: "Give%20Love%20Co.%20Inquiry" }),
-    },
-    accent: "#F5F5F5",
+    accent: "#8EEBFF",
   },
   {
     id: "arbor",
     name: "Arbor",
+    group: "app",
     category: "Software / File Organization",
     preview:
       "A macOS file-organization tool built to help people scan, preview, and safely organize files across local and external storage.",
@@ -290,11 +245,14 @@ export const projects = [
     visual: {
       type: "branded",
       brand: "arbor",
+      cardStyle: "app-icon",
       coverStyle: "app-icon",
-      logo: projectAsset("arbor", "arbor-app-icon.webp"),
+      logo: projectAsset("arbor", "arbor-folder-app-icon.webp"),
       logoAlt: "Arbor macOS app icon",
-      hero: projectAsset("arbor", "arbor-app-icon.webp"),
+      hero: projectAsset("arbor", "arbor-folder-app-icon.webp"),
       alt: "Arbor macOS app icon",
+      eyebrow: "Arbor",
+      badge: "macOS Utility",
     },
     primaryAction: {
       label: "Email About Arbor",
@@ -303,8 +261,45 @@ export const projects = [
     accent: "#B8FF5A",
   },
   {
+    id: "give-love-co",
+    name: "Give Love Co.",
+    group: "studio",
+    category: "Apparel / Limited Drops",
+    preview:
+      "A personal apparel project built around kindness, connection, and a limited Fall 2026 release.",
+    description:
+      "Give Love Co. is a personal apparel project from LJB Media Group, created around simple messages worth carrying into everyday life: give love, be kind, embrace peace, and spread joy.",
+    summary:
+      "Hoodies and shirts arrive in a limited Fall 2026 drop. Release details will be shared when the collection is ready.",
+    status: "Coming Fall 2026",
+    highlights: [
+      "Limited Drop",
+      "Hoodies",
+      "Shirts",
+      "Give Love",
+      "Be Kind",
+      "Embrace Peace",
+      "Spread Joy",
+    ],
+    visual: {
+      type: "branded",
+      brand: "give-love-co",
+      coverStyle: "logo-panel",
+      logo: projectAsset("give-love-co", "give-love-co-logo.webp"),
+      hero: projectAsset("give-love-co", "give-love-apparel-v2.webp"),
+      alt: "Give Love Co. hoodie and T-shirt in a studio product photograph",
+      dropLabel: "COMING FALL 2026 · LIMITED DROP",
+    },
+    primaryAction: {
+      label: "Contact Give Love Co.",
+      href: contactMailto({ subject: "Give%20Love%20Co.%20Inquiry" }),
+    },
+    accent: "#F5F5F5",
+  },
+  {
     id: "hemlock-hollow",
     name: "Hemlock Hollow",
+    group: "studio",
     category: "Novel / Mystery Thriller",
     preview:
       "A woman returns home after new evidence surfaces in her twin sister’s disappearance, uncovering buried secrets beneath Hemlock Hollow.",
@@ -349,10 +344,18 @@ export function getListedProjects() {
   return projects.filter((project) => project.listed !== false);
 }
 
+export function getAppProjects() {
+  return getListedProjects().filter((project) => project.group === "app");
+}
+
+export function getStudioProjects() {
+  return getListedProjects().filter((project) => project.group === "studio");
+}
+
 export const navItems = [
   { label: "Home", href: "#top" },
   { label: "Projects", href: "#projects" },
-  { label: "Ecosystem", href: "#ecosystem" },
+  { label: "Instagram", href: "#instagram" },
   { label: "About", href: "#about" },
   { label: "Contact", href: "#contact" },
   { label: "Support", href: "#support" },

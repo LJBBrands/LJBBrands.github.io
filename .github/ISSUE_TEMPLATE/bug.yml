@@ -1,0 +1,36 @@
+name: Bug
+description: Something on the current website is broken.
+labels: ["bug"]
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: What is broken
+      description: Observed vs expected. Include URL or section.
+    validations:
+      required: true
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Surface
+      options:
+        - Homepage
+        - Navigation
+        - Product / project dialog
+        - Contact
+        - Privacy / Terms
+        - CI / tooling
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+    validations:
+      required: true
+  - type: input
+    id: browsers
+    attributes:
+      label: Browser and viewport
+      placeholder: Safari 18, iPhone 14 / 390x844

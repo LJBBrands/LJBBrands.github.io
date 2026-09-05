@@ -54,7 +54,7 @@ export default function ProjectCard({
             ) : null}
           </div>
 
-          <h3 className="mt-2.5 text-[1.35rem] font-semibold tracking-tight text-white sm:text-[1.5rem]">
+          <h3 className="mt-2.5 text-[1.35rem] font-bold tracking-tight text-white sm:text-[1.5rem]">
             {project.name}
           </h3>
 

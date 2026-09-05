@@ -116,7 +116,7 @@ test.describe("mobile menu", () => {
   test("restores page scroll after the menu closes", async ({ page }) => {
     await page.goto("/");
     await page
-      .getByRole("heading", { name: "Explore the LJB Ecosystem" })
+      .getByRole("heading", { name: "Three Apps. Built With Purpose." })
       .scrollIntoViewIfNeeded();
     const before = await page.evaluate(() => window.scrollY);
     expect(before).toBeGreaterThan(50);
@@ -152,6 +152,12 @@ test.describe("project dialog", () => {
     const dialog = page.getByRole("dialog", { name: "Awy" });
     await expect(dialog).toBeVisible();
     await expect(dialog.getByRole("button", { name: "Close" })).toBeFocused();
+
+    const backdrop = page.locator(".project-dialog-root > button");
+    await expect(backdrop).toHaveAttribute("aria-hidden", "true");
+    await expect(backdrop).toHaveAttribute("tabindex", "-1");
+    await page.keyboard.press("Shift+Tab");
+    await expect(backdrop).not.toBeFocused();
 
     await page.keyboard.press("Tab");
     const focusStayedInside = await page.evaluate(() => {
@@ -279,5 +285,23 @@ test.describe("public contact", () => {
     await expect(
       page.getByRole("link", { name: PUBLIC_EMAIL }).first(),
     ).toHaveAttribute("href", `mailto:${PUBLIC_EMAIL}`);
+  });
+});
+
+test.describe("legal page metadata", () => {
+  test("declares self-referential canonical URLs on privacy and terms", async ({
+    page,
+  }) => {
+    await page.goto("/privacy/");
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+      "href",
+      "https://ljbbrands.github.io/privacy/",
+    );
+
+    await page.goto("/terms/");
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+      "href",
+      "https://ljbbrands.github.io/terms/",
+    );
   });
 });
