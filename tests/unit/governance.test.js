@@ -81,4 +81,17 @@ describe("autonomy foundation", () => {
       ).length,
     ).toBeGreaterThan(0);
   });
+
+  it("keeps the social-app Terms current without silently redating Privacy", () => {
+    const terms = readRepoFile("public/terms/index.html");
+    const privacy = readRepoFile("public/privacy/index.html");
+
+    expect(terms).toContain("Last updated: September 5, 2026");
+    expect(terms).toContain("Prohibited Content and Conduct");
+    expect(terms).toContain("Reports, Blocks, and Moderation");
+    expect(terms).toContain("Copyright Complaints");
+    expect(terms).toContain("Account Deletion and Termination");
+    expect(privacy).toContain("Last updated: August 26, 2026");
+    expect(privacy).not.toContain("Last updated: September 5, 2026");
+  });
 });
