@@ -1,6 +1,6 @@
 # LJB Media Group
 
-Public website for **LJB Media Group** — the corporate/investor-facing site for LJB Media Group, LLC.
+Public website for **LJB Media Group**.
 
 Intended technology products: **Awy**, **Arclia**, and **Arbor**. The public name for the macOS file-organization tool is **Arbor**. Unshipped product names are not added to the live UI until copy and assets are approved.
 
@@ -49,6 +49,9 @@ npx playwright install --with-deps webkit
 
 ## Deployment
 
-Production publishing uses GitHub Actions (`.github/workflows/deploy.yml`) on push to `main`. Agents do not deploy or change Pages settings unless a human explicitly approves it.
+Production publishing uses the manually dispatched GitHub Actions workflow in
+`.github/workflows/deploy.yml`. The repository owner must select GitHub Actions
+as the sole Pages source and approve production publication. Agents do not deploy
+or change Pages settings unless a human explicitly approves it.
 
 Current public origin in metadata: `https://ljbbrands.github.io/`.

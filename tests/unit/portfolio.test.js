@@ -52,6 +52,15 @@ describe("public portfolio", () => {
     ).toBe(true);
   });
 
+  it("uses the current approved Awy and Arbor icon exports", () => {
+    const awy = getProjectById("awy");
+    const arbor = getProjectById("arbor");
+
+    expect(awy?.visual?.icon).toMatch(/awy-app-icon-v3\.webp$/);
+    expect(arbor?.visual?.logo).toMatch(/arbor-folder-app-icon\.webp$/);
+    expect(arbor?.visual?.hero).toBe(arbor?.visual?.logo);
+  });
+
   it("publishes the approved Give Love Co. Fall 2026 drop", () => {
     const giveLove = getProjectById("give-love-co");
 

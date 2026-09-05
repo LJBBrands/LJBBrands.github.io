@@ -10,7 +10,7 @@ This is the public corporate/investor-facing site for **LJB Media Group**.
 
 ## Brand
 
-- The public parent brand is **LJB Media Group**. The legal name is **LJB Media Group, LLC** when company identification is required.
+- The public parent brand is **LJB Media Group**. It is not a filed LLC; do not append “LLC” or represent it as a registered entity.
 - Intended technology products: **Awy**, **Arclia**, and **Arbor**.
 - The public product name for the macOS file-organization tool is **Arbor**.
 - Do not add **Arclia** (or any unshipped product) to public UI, metadata, or navigation until copy and assets are approved.

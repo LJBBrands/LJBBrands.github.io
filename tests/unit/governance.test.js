@@ -42,6 +42,21 @@ describe("autonomy foundation", () => {
     expect(template).toMatch(/K\.Bousquet92@pm\.me/);
   });
 
+  it("keeps production deployment manual, main-only, and commit-pinned", () => {
+    const workflow = readRepoFile(".github/workflows/deploy.yml");
+    const actionRefs = [...workflow.matchAll(/uses:\s+\S+@(\S+)/g)].map(
+      (match) => match[1],
+    );
+
+    expect(workflow).toMatch(/workflow_dispatch:/);
+    expect(workflow).not.toMatch(/\n\s+push:/);
+    expect(workflow).toContain("github.ref == 'refs/heads/main'");
+    expect(actionRefs).toHaveLength(4);
+    for (const ref of actionRefs) {
+      expect(ref).toMatch(/^[0-9a-f]{40}$/);
+    }
+  });
+
   it("enforces homepage SEO structure and the public email", () => {
     expect(checkSeoSources()).toEqual([]);
   });

@@ -16,7 +16,9 @@ Issue
   → human production approval
 ```
 
-Today, merge to `main` also triggers GitHub Pages. That is **not** the same as a human production-approval gate. See [RELEASE.md](./RELEASE.md).
+Merge to `main` runs CI but does not publish. Production uses a manually dispatched
+Pages workflow from `main`; the repository owner retains the release gate. See
+[RELEASE.md](./RELEASE.md).
 
 ## Agent-ready criteria
 
@@ -55,11 +57,12 @@ Keep **GitHub Issues + GitHub Actions + this repository’s AGENTS.md** as the o
 
 Do not add a second system (custom agent bus, extra project manager, or Website 2.0 pipeline) until issue volume or preview hosting makes the current path fail. Cursor Cloud agents should read the Agent-ready template and the docs in this folder.
 
-A later optional improvement, requiring human GitHub settings:
+Required owner activation in GitHub settings:
 
 - required status checks on `main`
 - required reviewers
-- environment protection on `github-pages` so deploy is not implicit in merge
+- environment protection on `github-pages`
+- GitHub Actions as the sole Pages source instead of the legacy `gh-pages` publisher
 
 ## Future Playwright coverage
 
