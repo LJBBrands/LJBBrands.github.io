@@ -219,6 +219,20 @@ test.describe("project dialog", () => {
     await dialog.getByRole("button", { name: "Close" }).click();
     await expect(page.getByRole("dialog")).toHaveCount(0);
   });
+
+  test("opens the factual film-project placeholder", async ({ page }) => {
+    await page.goto("/");
+
+    await page
+      .getByRole("button", { name: "View Film Project project" })
+      .click();
+
+    const dialog = page.getByRole("dialog", { name: "Film Project" });
+    await expect(dialog).toBeVisible();
+    await expect(dialog).toContainText(
+      "Screenplay in development. More details coming soon.",
+    );
+  });
 });
 
 const PUBLIC_EMAIL = "K.Bousquet92@pm.me";

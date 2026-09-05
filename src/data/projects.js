@@ -329,6 +329,29 @@ export const projects = [
     },
     accent: "#C8D4C0",
   },
+  {
+    id: "film-project",
+    name: "Film Project",
+    group: "studio",
+    category: "Film / Screenplay",
+    preview: "Screenplay in development. More details coming soon.",
+    description:
+      "A screenplay is being developed as a potential film project. The title and story details will be shared only when they are ready.",
+    summary: "Screenplay in development. More details coming soon.",
+    status: "In Development",
+    highlights: ["Screenplay", "Early Development", "More Details Coming Soon"],
+    visual: {
+      type: "branded",
+      brand: "film-project",
+      coverStyle: "screenplay-placeholder",
+      alt: "Film Project screenplay in development",
+    },
+    primaryAction: {
+      label: "Follow the Project",
+      href: "#contact",
+    },
+    accent: "#D9C8A8",
+  },
 ];
 
 export function getAwyShowcaseSlides(project) {

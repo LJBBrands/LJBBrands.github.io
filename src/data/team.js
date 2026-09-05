@@ -11,7 +11,14 @@ export const aboutCompany = {
   subtitle: "Founder-Led Independent Company",
   description:
     "LJB Media Group brings thoughtful apps, AI learning, apparel, and original storytelling under one roof. The work is founder-led and personal: each project serves a different purpose, but all of it is shaped by practical design, real curiosity, and a long-term point of view. Public updates are shared through Instagram, while product development remains documented through LJB-owned repositories and infrastructure where practical.",
-  projects: ["Awy", "Arclia", "Arbor", "Give Love Co.", "Hemlock Hollow"],
+  projects: [
+    "Awy",
+    "Arclia",
+    "Arbor",
+    "Give Love Co.",
+    "Hemlock Hollow",
+    "Film Project",
+  ],
 };
 
 export const aboutSection = {

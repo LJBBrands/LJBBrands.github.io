@@ -679,6 +679,114 @@ summary::-webkit-details-marker {
   }
 }
 
+/* Film Project — restrained screenplay-in-development placeholder */
+.film-project-shell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 210px;
+  overflow: hidden;
+  padding: 1.15rem;
+  background:
+    radial-gradient(
+      circle at 74% 22%,
+      rgba(217, 200, 168, 0.16),
+      transparent 34%
+    ),
+    linear-gradient(145deg, #171613 0%, #090a09 48%, #11130f 100%);
+}
+
+.film-project-shell--dialog {
+  height: clamp(240px, 42vw, 320px);
+}
+
+@media (min-width: 640px) {
+  .film-project-shell {
+    height: 228px;
+  }
+}
+
+.film-project-shell__light {
+  position: absolute;
+  inset: -30% 20% 28%;
+  transform: rotate(-8deg);
+  background: linear-gradient(
+    105deg,
+    transparent 12%,
+    rgba(255, 244, 218, 0.1) 50%,
+    transparent 84%
+  );
+  filter: blur(12px);
+}
+
+.film-project-shell__frame {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: min(88%, 360px);
+  min-height: 72%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 1rem;
+  padding: 1rem 1.1rem;
+  background: rgba(9, 10, 9, 0.7);
+  box-shadow:
+    0 22px 55px rgba(0, 0, 0, 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.055);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+.film-project-shell--dialog .film-project-shell__frame {
+  width: min(84%, 480px);
+  min-height: 68%;
+  padding: clamp(1.15rem, 3vw, 1.6rem);
+}
+
+.film-project-shell__topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(230, 216, 190, 0.62);
+}
+
+.film-project-shell__frame strong {
+  align-self: center;
+  font-family: ui-serif, Georgia, Cambria, "Times New Roman", serif;
+  font-size: clamp(1.55rem, 5vw, 2.15rem);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  color: rgba(255, 250, 238, 0.94);
+}
+
+.film-project-shell__status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.54);
+}
+
+.film-project-shell__status span {
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 999px;
+  background: #d9c8a8;
+  box-shadow: 0 0 14px rgba(217, 200, 168, 0.45);
+}
+
 /* Projects grid — equal responsive columns */
 .projects-grid {
   display: grid;
@@ -697,10 +805,6 @@ summary::-webkit-details-marker {
 @media (min-width: 1024px) {
   .projects-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .projects-grid--studio {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 

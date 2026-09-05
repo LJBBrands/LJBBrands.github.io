@@ -182,6 +182,38 @@ function HemlockAtmosphere({ project, theme, size = "card" }) {
   );
 }
 
+function FilmProjectVisual({ project, theme, size = "card" }) {
+  const shellClass =
+    size === "dialog"
+      ? "film-project-shell film-project-shell--dialog"
+      : "film-project-shell";
+
+  return (
+    <div
+      className={shellClass}
+      role={size === "dialog" ? "img" : undefined}
+      aria-label={size === "dialog" ? project.visual?.alt : undefined}
+    >
+      <div className="film-project-shell__light" aria-hidden="true" />
+      <div
+        className="film-project-shell__frame"
+        style={{ borderColor: theme.cardBorder }}
+        aria-hidden="true"
+      >
+        <div className="film-project-shell__topline">
+          <span>Screenplay</span>
+          <span>LJB</span>
+        </div>
+        <strong>Film Project</strong>
+        <div className="film-project-shell__status">
+          <span />
+          In Development
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function getBrandedFallback(project, theme) {
   const brand = project.visual?.brand;
 
@@ -193,6 +225,9 @@ function getBrandedFallback(project, theme) {
   }
   if (brand === "hemlock-hollow") {
     return <HemlockAtmosphere project={project} theme={theme} />;
+  }
+  if (brand === "film-project") {
+    return <FilmProjectVisual project={project} theme={theme} />;
   }
   return <PreviewShell />;
 }
@@ -211,6 +246,10 @@ function HeroWithFallback({ project, theme, size = "card" }) {
 
   if (brand === "hemlock-hollow" || coverStyle === "cinematic-environment") {
     return <HemlockAtmosphere project={project} theme={theme} size={size} />;
+  }
+
+  if (brand === "film-project" || coverStyle === "screenplay-placeholder") {
+    return <FilmProjectVisual project={project} theme={theme} size={size} />;
   }
 
   if (!hero || failed) {

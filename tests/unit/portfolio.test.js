@@ -21,6 +21,7 @@ describe("public portfolio", () => {
     expect(getStudioProjects().map((project) => project.name)).toEqual([
       "Give Love Co.",
       "Hemlock Hollow",
+      "Film Project",
     ]);
   });
 
@@ -69,6 +70,17 @@ describe("public portfolio", () => {
     expect(giveLove?.highlights).toEqual(
       expect.arrayContaining(["Hoodies", "Shirts", "Limited Drop"]),
     );
+  });
+
+  it("keeps the film placeholder factual and intentionally generic", () => {
+    const film = getProjectById("film-project");
+
+    expect(film?.name).toBe("Film Project");
+    expect(film?.status).toBe("In Development");
+    expect(film?.preview).toBe(
+      "Screenplay in development. More details coming soon.",
+    );
+    expect(film?.visual?.hero).toBeUndefined();
   });
 
   it("uses Instagram as the only public social platform", () => {

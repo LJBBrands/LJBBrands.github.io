@@ -58,7 +58,7 @@ export default function Projects({ theme }) {
       <div className="projects-subsection">
         <div className="projects-subsection__heading">
           <p>Independent Work</p>
-          <h3>Apparel And Original Stories.</h3>
+          <h3>Apparel And Story Projects.</h3>
           <span>
             Personal projects with their own voice, developed with the same care
             as the product work.
