@@ -281,7 +281,9 @@ test.describe("public contact", () => {
     ).toHaveAttribute("href", `mailto:${PUBLIC_EMAIL}`);
 
     await page.goto("/terms/");
-    await expect(page.getByText("Last updated: August 26, 2026")).toBeVisible();
+    await expect(
+      page.getByText("Last updated: September 5, 2026"),
+    ).toBeVisible();
     await expect(
       page.getByRole("link", { name: PUBLIC_EMAIL }).first(),
     ).toHaveAttribute("href", `mailto:${PUBLIC_EMAIL}`);
