@@ -67,7 +67,7 @@ export default function ProjectCard({
               className="inline-flex min-h-[44px] items-center rounded-full border px-4 text-[13px] font-medium text-white/85 transition group-hover:border-white/30 group-hover:bg-white/[0.06] group-hover:text-white"
               style={{ borderColor: theme.cardBorder }}
             >
-              View Project
+              Explore The App Preview
             </span>
           </div>
         </div>

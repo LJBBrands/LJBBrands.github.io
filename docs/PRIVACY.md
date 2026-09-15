@@ -4,7 +4,7 @@ This document is an engineering boundary, not a published legal policy. Do not t
 
 ## Current public collection
 
-The live site does not operate a server-side form. Contact uses `mailto:` to `K.Bousquet92@pm.me`. Whatever the visitor’s mail client sends is email, not an application database we control.
+The live site does not operate a server-side form. Contact uses `mailto:` to `K.Bousquet92@pm.me`. The waitlist, updates, and investor interest form prepares a mailto draft only after local validation. It does not call an API, persist browser storage, send email, create an account, or enroll a subscriber. Visitors review and send the draft in their own email client. Update interest requires an unchecked opt-in control; waitlist requests do not imply update consent. Whatever the visitor’s mail client sends is email, not an application database we control.
 
 Do not add fields that collect:
 

@@ -3,6 +3,8 @@ import AtmosphereBackground from "./components/AtmosphereBackground";
 import SiteNav from "./components/SiteNav";
 import Contact from "./components/sections/Contact";
 import LjbHero from "./components/sections/LjbHero";
+import Interest from "./components/sections/Interest";
+import Questions from "./components/sections/Questions";
 import Projects from "./components/sections/Projects";
 import SiteFooter from "./components/sections/SiteFooter";
 import { ljbTheme } from "./data/ljbTheme";
@@ -31,6 +33,8 @@ export default function App() {
           <main className="relative px-5 py-6 sm:px-8 lg:px-10">
             <LjbHero theme={ljbTheme} />
             <Projects theme={ljbTheme} />
+            <Questions theme={ljbTheme} />
+            <Interest theme={ljbTheme} />
             <Contact theme={ljbTheme} />
           </main>
 

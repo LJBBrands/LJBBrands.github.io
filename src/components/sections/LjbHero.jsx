@@ -44,12 +44,12 @@ export default function LjbHero({ theme }) {
               Explore Awy
             </a>
             <a
-              href="#contact"
-              onClick={handleSectionClick("contact")}
+              href="#get-involved"
+              onClick={handleSectionClick("get-involved")}
               className="inline-flex min-h-[44px] items-center rounded-full border px-6 py-3 text-base font-medium text-white transition hover:bg-white/10"
               style={{ borderColor: theme.cardBorder }}
             >
-              Contact &amp; Support
+              Waitlist &amp; Updates
             </a>
           </div>
           <p className="mt-8 text-sm leading-6 text-white/55">

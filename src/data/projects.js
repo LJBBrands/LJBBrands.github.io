@@ -210,5 +210,6 @@ export function getAppProjects() {
 export const navItems = [
   { label: "Home", href: "#top" },
   { label: "Inside Awy", href: "#projects" },
-  { label: "Contact & Support", href: "#contact" },
+  { label: "Waitlist & Investors", href: "#get-involved" },
+  { label: "Contact", href: "#contact" },
 ];
