@@ -61,7 +61,7 @@ If those are missing, stop and report the gap. Do not guess.
 
 ## Privacy and security
 
-- The only published email is `K.Bousquet92@pm.me` until a human confirms company mailboxes.
+- The only published email is `dev.ljbmedia@gmail.com` until a human confirms company mailboxes.
 - Collect only necessary contact fields. Do not commit investor materials, decks, or data-room files.
 - Do not put API keys, signing secrets, Apple Team IDs, or environment credentials in frontend code.
 - Do not present `mailto:` or an unfinished form as a secure submission backend.

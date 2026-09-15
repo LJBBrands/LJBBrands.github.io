@@ -6,7 +6,7 @@ This is a planning document. It is not permission to implement Website 2.0.
 
 Keep the current Vite/React marketing site reliable, accessible, and honest.
 
-Shipped public work includes the existing project directory, Awy visuals, contact via `K.Bousquet92@pm.me`, and the toolchain from the WebKit/contact merge.
+Shipped public work includes the existing project directory, Awy visuals, contact via `dev.ljbmedia@gmail.com`, and the toolchain from the WebKit/contact merge.
 
 ## Next — scoped interim improvements (not 2.0)
 

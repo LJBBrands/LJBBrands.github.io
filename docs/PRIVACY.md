@@ -4,7 +4,9 @@ This document is an engineering boundary, not a published legal policy. Do not t
 
 ## Current public collection
 
-The live site does not operate a server-side form. Contact uses `mailto:` to `K.Bousquet92@pm.me`. The waitlist, updates, and investor interest form prepares a mailto draft only after local validation. It does not call an API, persist browser storage, send email, create an account, or enroll a subscriber. Visitors review and send the draft in their own email client. Update interest requires an unchecked opt-in control; waitlist requests do not imply update consent. Whatever the visitor’s mail client sends is email, not an application database we control.
+The website submits waitlist, update, and investor/partner requests to the owner-provided Formspree endpoint. Fields are name, email, interest, optional organization/message, and explicit update consent. Formspree stores submissions; its dashboard controls notifications and retention. The owner selected `dev.ljbmedia@gmail.com` as the notification inbox. No credentials or submission lists are shipped to the browser. Direct contact uses the same mailbox.
+
+Consent defaults to unchecked and is required for Updates. Waitlist and investor inquiries do not imply update consent. A successful request does not create an Awy account, guarantee access, or configure newsletter delivery. The form displays success only after a successful service response and preserves fields on failure. A honeypot supplements Formspree spam filtering.
 
 Do not add fields that collect:
 

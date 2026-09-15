@@ -8,7 +8,7 @@ import { getListedProjects } from "../../src/data/projects";
 
 describe("public contact email", () => {
   it("exposes only the approved Proton address", () => {
-    expect(PUBLIC_EMAIL).toBe("K.Bousquet92@pm.me");
+    expect(PUBLIC_EMAIL).toBe("dev.ljbmedia@gmail.com");
     expect(primaryContact.email).toBe(PUBLIC_EMAIL);
     expect(contactMailto(primaryContact)).toContain(`mailto:${PUBLIC_EMAIL}`);
   });

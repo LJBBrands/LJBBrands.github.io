@@ -15,7 +15,7 @@ import { checkStaticPage } from "../../scripts/check-a11y.mjs";
 
 describe("autonomy foundation", () => {
   it("keeps the published inbox and toolchain pins", () => {
-    expect(PUBLIC_EMAIL).toBe("K.Bousquet92@pm.me");
+    expect(PUBLIC_EMAIL).toBe("dev.ljbmedia@gmail.com");
     expect(scriptEmail).toBe(PUBLIC_EMAIL);
     expect(checkRequiredFiles()).toEqual([]);
     expect(checkPinnedVersions()).toEqual([]);
@@ -39,7 +39,7 @@ describe("autonomy foundation", () => {
   it("requires a human-merge pull request template", () => {
     const template = readRepoFile(".github/PULL_REQUEST_TEMPLATE.md");
     expect(template).toMatch(/human must approve and merge/i);
-    expect(template).toMatch(/K\.Bousquet92@pm\.me/);
+    expect(template).toMatch(/dev\.ljbmedia@gmail\.com/);
   });
 
   it("keeps production deployment manual, main-only, and commit-pinned", () => {

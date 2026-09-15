@@ -31,7 +31,7 @@
 ## Accuracy
 
 - [ ] No invented metrics, testimonials, team members, or unshipped product pages
-- [ ] Contact still uses only `K.Bousquet92@pm.me`
+- [ ] Contact still uses only `dev.ljbmedia@gmail.com`
 - [ ] Forms are not described as operational unless a backend exists
 
 A human must approve and merge. Agents must not self-approve or merge to `main`.

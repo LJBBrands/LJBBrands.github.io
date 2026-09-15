@@ -14,7 +14,7 @@ This repository ships a static marketing site. There is no authenticated session
 
 ## Contact
 
-The only published inbox is `K.Bousquet92@pm.me` (`src/data/contact.js`). Company addresses stay unpublished until a human confirms they exist.
+The only published inbox is `dev.ljbmedia@gmail.com` (`src/data/contact.js`). Company addresses stay unpublished until a human confirms they exist.
 
 `mailto:` is not a secure intake system. Do not describe it as one.
 
