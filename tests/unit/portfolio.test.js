@@ -12,12 +12,8 @@ import {
 } from "../../src/data/ecosystem";
 
 describe("public portfolio", () => {
-  it("leads with the three approved apps", () => {
-    expect(getAppProjects().map((project) => project.name)).toEqual([
-      "Awy",
-      "Arclia",
-      "Arbor",
-    ]);
+  it("lists Awy as the only active app", () => {
+    expect(getAppProjects().map((project) => project.name)).toEqual(["Awy"]);
     expect(getStudioProjects().map((project) => project.name)).toEqual([
       "Give Love Co.",
       "Hemlock Hollow",
@@ -31,17 +27,12 @@ describe("public portfolio", () => {
     expect(ids).not.toContain("rt345lc");
   });
 
-  it("presents Arclia by name with guided learning and a sandbox", () => {
-    const arclia = getProjectById("arclia");
-
-    expect(arclia?.status).toBe("In Development");
-    expect(arclia?.visual?.eyebrow).toBe("Arclia");
-    expect(arclia?.description).toMatch(/AI|artificial intelligence/i);
-    expect(arclia?.description).toMatch(/sandbox/i);
-    expect(arclia?.highlights).toContain("Beginner to Advanced");
+  it("removes retired apps from lookup and public listings", () => {
+    expect(getProjectById("arclia")).toBeNull();
+    expect(getProjectById("arbor")).toBeNull();
   });
 
-  it("uses the same app-icon card format for all three apps", () => {
+  it("preserves the active app icon card format", () => {
     const apps = getAppProjects();
 
     expect(
@@ -52,13 +43,10 @@ describe("public portfolio", () => {
     ).toBe(true);
   });
 
-  it("uses the current approved Awy and Arbor icon exports", () => {
+  it("preserves the approved Awy icon", () => {
     const awy = getProjectById("awy");
-    const arbor = getProjectById("arbor");
 
     expect(awy?.visual?.icon).toMatch(/awy-app-icon-v3\.webp$/);
-    expect(arbor?.visual?.logo).toMatch(/arbor-folder-app-icon\.webp$/);
-    expect(arbor?.visual?.hero).toBe(arbor?.visual?.logo);
   });
 
   it("publishes the approved Give Love Co. Fall 2026 drop", () => {

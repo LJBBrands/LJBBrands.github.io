@@ -35,9 +35,9 @@ export default function Projects({ theme }) {
     >
       <SectionHeader
         theme={theme}
-        kicker="Apps"
-        title="Three Apps. Built With Purpose."
-        description="Awy, Arclia, and Arbor each solve a different problem, with thoughtful design, practical utility, and people at the center."
+        kicker="Our Focus"
+        title="Awy. Our Sole Product Focus."
+        description="LJB Media Group is focused on building Awy: a private social environment for presence, shared spaces, and intentional connection."
       />
 
       <div className="projects-grid projects-grid--apps">

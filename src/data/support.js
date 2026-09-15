@@ -5,14 +5,8 @@ import { contactMailto, PUBLIC_EMAIL } from "./contact";
 
 export const supportContent = {
   headline: "Support The Mission",
-  copy: "Support helps fund independent apps, AI learning tools, apparel, original stories, and future LJB creative work — from careful product development to limited releases and long-form storytelling.",
-  areas: [
-    "App Development",
-    "AI Learning",
-    "Apparel Projects",
-    "Books & Story Worlds",
-    "Future Creative Projects",
-  ],
+  copy: "Support helps move Awy forward, with a focus on thoughtful product development, accessibility, and a reliable experience for its community.",
+  areas: ["Awy Development", "Accessibility", "Community Support"],
   inquiryMailto: contactMailto({ subject: "Support%20Request" }),
   inquiryAriaLabel: `Email LJB Media Group support at ${PUBLIC_EMAIL}`,
 };

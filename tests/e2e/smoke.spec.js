@@ -116,7 +116,7 @@ test.describe("mobile menu", () => {
   test("restores page scroll after the menu closes", async ({ page }) => {
     await page.goto("/");
     await page
-      .getByRole("heading", { name: "Three Apps. Built With Purpose." })
+      .getByRole("heading", { name: "Awy. Our Sole Product Focus." })
       .scrollIntoViewIfNeeded();
     const before = await page.evaluate(() => window.scrollY);
     expect(before).toBeGreaterThan(50);

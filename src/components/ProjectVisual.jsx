@@ -188,7 +188,7 @@ function getBrandedFallback(project, theme) {
   if (brand === "give-love-co") {
     return <GiveLoveLogoVisual project={project} theme={theme} />;
   }
-  if (brand === "awy" || brand === "arbor" || brand === "arclia") {
+  if (brand === "awy") {
     return <AppIconVisual project={project} theme={theme} />;
   }
   if (brand === "hemlock-hollow") {
@@ -205,7 +205,7 @@ function HeroWithFallback({ project, theme, size = "card" }) {
     return <GiveLoveLogoVisual project={project} theme={theme} size={size} />;
   }
 
-  if (brand === "arbor" || brand === "arclia" || coverStyle === "app-icon") {
+  if (coverStyle === "app-icon") {
     return <AppIconVisual project={project} theme={theme} size={size} />;
   }
 

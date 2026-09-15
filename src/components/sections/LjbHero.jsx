@@ -39,9 +39,9 @@ export default function LjbHero({ theme }) {
           </h1>
 
           <p className="mt-6 max-w-2xl text-base leading-7 text-white/68 sm:text-lg sm:leading-8">
-            LJB Media Group is a founder-led independent company building
-            thoughtful apps, practical AI learning, apparel, and original
-            stories as one connected body of work.
+            LJB Media Group is a founder-led independent company focused on
+            building Awy, a private social environment for intentional
+            connection.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
@@ -50,7 +50,7 @@ export default function LjbHero({ theme }) {
               onClick={handleSectionClick("projects")}
               className="inline-flex min-h-[44px] items-center rounded-full bg-white px-6 py-3 text-sm font-medium text-black transition hover:opacity-90"
             >
-              Explore Projects
+              Explore Awy
             </a>
             <a
               href="#about"

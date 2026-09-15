@@ -28,7 +28,7 @@ Product and contact copy live in `src/data/`. Do not treat that folder as a CMS.
 
 ## Intended product set
 
-Awy, Arclia, and Arbor are the intended technology products and lead the public Projects section as a distinct three-app group. Independent apparel and fiction work follow in a separate studio group. Automotive updates are represented by the dedicated Instagram feature rather than a standalone product page.
+Awy is the sole active technology product and leads the public Projects section as a single featured app. Independent apparel and fiction work follow in a separate studio group. Automotive updates are represented by the dedicated Instagram feature rather than a standalone product page.
 
 ## Out of scope for this architecture
 

@@ -357,7 +357,7 @@ summary::-webkit-details-marker {
   }
 }
 
-/* Consistent official app-icon stages for Awy, Arclia, and Arbor */
+/* Official app-icon stage */
 .app-icon-shell {
   position: relative;
   display: flex;
@@ -395,21 +395,6 @@ summary::-webkit-details-marker {
     #070719;
 }
 
-.app-icon-shell--arclia {
-  background:
-    radial-gradient(
-      circle at 50% 55%,
-      rgba(80, 120, 255, 0.2),
-      transparent 46%
-    ),
-    radial-gradient(
-      circle at 68% 30%,
-      rgba(154, 96, 255, 0.12),
-      transparent 44%
-    ),
-    #05081a;
-}
-
 .app-icon-shell--dialog {
   height: clamp(240px, 42vw, 320px);
 }
@@ -427,14 +412,6 @@ summary::-webkit-details-marker {
   background: radial-gradient(
     ellipse at center,
     rgba(184, 255, 90, 0.16),
-    transparent 70%
-  );
-}
-
-.app-icon-shell--arclia .app-icon-shell__glow {
-  background: radial-gradient(
-    ellipse at center,
-    rgba(77, 123, 255, 0.24),
     transparent 70%
   );
 }
@@ -702,6 +679,12 @@ summary::-webkit-details-marker {
   .projects-grid--studio {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+}
+
+.projects-grid--apps {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 40rem;
+  margin-inline: auto;
 }
 
 .projects-subsection {
