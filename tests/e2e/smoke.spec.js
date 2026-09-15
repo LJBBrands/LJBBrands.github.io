@@ -70,7 +70,7 @@ test.describe("homepage smoke", () => {
       };
     });
 
-    await page.getByRole("link", { name: "Explore Projects" }).click();
+    await page.getByRole("link", { name: "Explore Awy" }).click();
 
     const behaviors = await page.evaluate(() => window.__scrollBehaviors);
     expect(
@@ -116,7 +116,7 @@ test.describe("mobile menu", () => {
   test("restores page scroll after the menu closes", async ({ page }) => {
     await page.goto("/");
     await page
-      .getByRole("heading", { name: "Awy. Our Sole Product Focus." })
+      .getByRole("heading", { name: "Connection, On Your Terms." })
       .scrollIntoViewIfNeeded();
     const before = await page.evaluate(() => window.scrollY);
     expect(before).toBeGreaterThan(50);
@@ -236,7 +236,7 @@ test.describe("public contact", () => {
     await page.goto("/");
     await expect(
       page
-        .getByRole("link", { name: `Email LJB Media Group at ${PUBLIC_EMAIL}` })
+        .getByRole("link", { name: `Contact Awy at ${PUBLIC_EMAIL}` })
         .first(),
     ).toBeVisible();
     await expect(page.locator(".contact-primary-action__email")).toHaveText(
@@ -256,7 +256,7 @@ test.describe("public contact", () => {
     await expect(footer.getByText(PUBLIC_EMAIL, { exact: true })).toBeVisible();
     await expect(
       footer.getByRole("link", {
-        name: `Email LJB Media Group at ${PUBLIC_EMAIL}`,
+        name: `Contact Awy at ${PUBLIC_EMAIL}`,
       }),
     ).toHaveAttribute(
       "href",

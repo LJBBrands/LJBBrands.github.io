@@ -1,4 +1,3 @@
-import { footerPlatformLinks } from "../../data/ecosystem";
 import { contactMailto, primaryContact } from "../../data/contact";
 import { navItems } from "../../data/projects";
 import { handleSectionClick } from "../../utils/scrollToSection";
@@ -16,11 +15,9 @@ export default function SiteFooter({ theme }) {
         }}
       >
         <div>
-          <div className="text-sm font-medium text-white/80">
-            LJB Media Group
-          </div>
+          <div className="text-sm font-medium text-white/80">Awy</div>
           <div className="mt-1 text-sm text-white/50">
-            © {year} LJB Media Group
+            By LJB Media Group · © {year}
           </div>
           <a
             href={contactMailto(primaryContact)}
@@ -29,23 +26,6 @@ export default function SiteFooter({ theme }) {
           >
             {primaryContact.email}
           </a>
-          <nav
-            className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-white/55"
-            aria-label="Platform destinations"
-          >
-            {footerPlatformLinks.map((link) => (
-              <a
-                key={link.id}
-                href={link.href}
-                aria-label={link.ariaLabel}
-                target={link.external ? "_blank" : undefined}
-                rel={link.external ? "noopener noreferrer" : undefined}
-                className="transition hover:text-white"
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
         </div>
 
         <nav

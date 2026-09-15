@@ -188,75 +188,6 @@ export const projects = [
     },
     accent: "#B8FF5A",
   },
-  {
-    id: "give-love-co",
-    name: "Give Love Co.",
-    group: "studio",
-    category: "Apparel / Limited Drops",
-    preview:
-      "A personal apparel project built around kindness, connection, and a limited Fall 2026 release.",
-    description:
-      "Give Love Co. is a personal apparel project from LJB Media Group, created around simple messages worth carrying into everyday life: give love, be kind, embrace peace, and spread joy.",
-    summary:
-      "Hoodies and shirts arrive in a limited Fall 2026 drop. Release details will be shared when the collection is ready.",
-    status: "Coming Fall 2026",
-    highlights: [
-      "Limited Drop",
-      "Hoodies",
-      "Shirts",
-      "Give Love",
-      "Be Kind",
-      "Embrace Peace",
-      "Spread Joy",
-    ],
-    visual: {
-      type: "branded",
-      brand: "give-love-co",
-      coverStyle: "logo-panel",
-      logo: projectAsset("give-love-co", "give-love-co-logo.webp"),
-      hero: projectAsset("give-love-co", "give-love-apparel-v2.webp"),
-      alt: "Give Love Co. hoodie and T-shirt in a studio product photograph",
-      dropLabel: "COMING FALL 2026 · LIMITED DROP",
-    },
-    primaryAction: {
-      label: "Contact Give Love Co.",
-      href: contactMailto({ subject: "Give%20Love%20Co.%20Inquiry" }),
-    },
-    accent: "#F5F5F5",
-  },
-  {
-    id: "hemlock-hollow",
-    name: "Hemlock Hollow",
-    group: "studio",
-    category: "Novel / Mystery Thriller",
-    preview:
-      "A woman returns home after new evidence surfaces in her twin sister’s disappearance, uncovering buried secrets beneath Hemlock Hollow.",
-    description:
-      "After years away, Veronica returns to Hemlock Hollow when new evidence surfaces in the disappearance of her twin sister, Lena. A cryptic letter, a gold necklace, and a trail through the town’s lakeside secrets pull her into a mystery shaped by silence, power, and the people determined to keep the truth buried.",
-    summary: "A small town with a dark secret.",
-    status: "In Development",
-    highlights: [
-      "Family",
-      "Disappearance",
-      "Buried Secrets",
-      "Small-Town Power",
-      "Memory",
-      "Guilt",
-      "Truth",
-    ],
-    visual: {
-      type: "branded",
-      brand: "hemlock-hollow",
-      coverStyle: "cinematic-environment",
-      hero: projectAsset("hemlock-hollow", "hemlock-hollow-hero.webp"),
-      alt: "Secluded luxury mansion in wooded hills at blue hour for Hemlock Hollow",
-    },
-    primaryAction: {
-      label: "Follow the Story",
-      href: "#contact",
-    },
-    accent: "#C8D4C0",
-  },
 ];
 
 export function getAwyShowcaseSlides(project) {
@@ -276,15 +207,8 @@ export function getAppProjects() {
   return getListedProjects().filter((project) => project.group === "app");
 }
 
-export function getStudioProjects() {
-  return getListedProjects().filter((project) => project.group === "studio");
-}
-
 export const navItems = [
   { label: "Home", href: "#top" },
-  { label: "Projects", href: "#projects" },
-  { label: "Instagram", href: "#instagram" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
-  { label: "Support", href: "#support" },
+  { label: "Inside Awy", href: "#projects" },
+  { label: "Contact & Support", href: "#contact" },
 ];

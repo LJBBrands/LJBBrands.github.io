@@ -80,20 +80,17 @@ export default function SiteNav({ theme }) {
           href="#top"
           onClick={onNavClick("#top")}
           className="flex min-h-[44px] min-w-0 items-center gap-3"
-          aria-label="LJB Media Group home"
+          aria-label="Awy home"
         >
-          <span
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border text-xs font-semibold tracking-wide"
-            style={{
-              borderColor: theme.accentBorder,
-              backgroundColor: theme.accentSoft,
-              color: theme.accent,
-            }}
-          >
-            LJB
-          </span>
+          <img
+            src={`${import.meta.env.BASE_URL}projects/awy/awy-app-icon-v3.webp`}
+            alt=""
+            width={40}
+            height={40}
+            className="h-10 w-10 shrink-0 rounded-xl"
+          />
           <span className="truncate text-sm font-medium tracking-tight text-white/92 sm:text-base">
-            LJB Media Group
+            Awy
           </span>
         </a>
 
