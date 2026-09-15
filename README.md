@@ -2,7 +2,7 @@
 
 Public website for **LJB Media Group**.
 
-Intended technology products: **Awy**, **Arclia**, and **Arbor**. The public name for the macOS file-organization tool is **Arbor**. Unshipped product names are not added to the live UI until copy and assets are approved.
+**Awy is the sole active product focus.** The retired standalone apps are excluded from the public directory and bundled assets. Do not announce planned bot features until they are approved for publication.
 
 ## Toolchain
 

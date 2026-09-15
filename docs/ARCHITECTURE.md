@@ -17,7 +17,7 @@ This is **not** Website 2.0. Do not introduce a CMS, app server, or hosting migr
 
 ## Surfaces
 
-- Homepage sections in `src/App.jsx`: hero, projects, Instagram, about, contact, support, footer
+- Homepage sections in `src/App.jsx`: Awy hero, feature overview and app preview, FAQs, interest requests, contact/support, footer
 - Project details: in-page dialog (`ProjectDialog`), not separate product routes
 - Static pages: `public/privacy/`, `public/terms/`, `public/404.html`
 - Public origin recorded in metadata: `https://ljbbrands.github.io/`
@@ -28,7 +28,7 @@ Product and contact copy live in `src/data/`. Do not treat that folder as a CMS.
 
 ## Intended product set
 
-Awy, Arclia, and Arbor are the intended technology products and lead the public Projects section as a distinct three-app group. Independent apparel and fiction work follow in a separate studio group. Automotive updates are represented by the dedicated Instagram feature rather than a standalone product page.
+Awy is the sole active technology product and leads the public Projects section as a single featured app. No other product, apparel, fiction, automotive, or social-profile sections are included.
 
 ## Out of scope for this architecture
 

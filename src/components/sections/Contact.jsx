@@ -47,13 +47,12 @@ export default function Contact({ theme }) {
 
         <div className="contact-editorial__main">
           <div className="contact-copy">
-            <p className="contact-copy__eyebrow">Contact</p>
+            <p className="contact-copy__eyebrow">Contact &amp; Support</p>
             <h2 id="contact-heading" className="contact-copy__headline">
-              Start A Conversation.
+              Let’s Talk About Awy.
             </h2>
             <p className="contact-copy__support">
-              Questions, collaborations, partnerships, and project inquiries are
-              welcome.
+              Questions about Awy, feedback, or help with the app? Get in touch.
             </p>
           </div>
 

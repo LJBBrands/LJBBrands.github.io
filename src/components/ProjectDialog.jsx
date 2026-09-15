@@ -117,11 +117,9 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
             aria-labelledby={titleId}
             aria-describedby={descriptionId}
             tabIndex={-1}
-            initial={reduceMotion ? false : { opacity: 0, y: 24, scale: 0.985 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={
-              reduceMotion ? undefined : { opacity: 0, y: 16, scale: 0.985 }
-            }
+            initial={reduceMotion ? false : { opacity: 0, scale: 0.985 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={reduceMotion ? undefined : { opacity: 0, scale: 0.985 }}
             transition={{ duration: reduceMotion ? 0 : 0.22 }}
             className="project-dialog relative z-10 flex w-full max-w-6xl flex-col overflow-hidden rounded-t-[1.75rem] border border-b-0 sm:rounded-[1.75rem] sm:border-b"
             style={{

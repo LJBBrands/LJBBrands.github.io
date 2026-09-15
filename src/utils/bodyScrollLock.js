@@ -48,7 +48,8 @@ function writeScrollY(y) {
   const apply = () => {
     document.documentElement.scrollTop = y;
     document.body.scrollTop = y;
-    window.scrollTo(0, y);
+    // Restore immediately even when the page enables smooth section scrolling.
+    window.scrollTo({ top: y, left: 0, behavior: "instant" });
   };
 
   apply();

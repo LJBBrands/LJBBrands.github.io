@@ -188,147 +188,6 @@ export const projects = [
     },
     accent: "#B8FF5A",
   },
-  {
-    id: "arclia",
-    name: "Arclia",
-    group: "app",
-    category: "Education / AI Learning",
-    preview:
-      "An AI academy for beginner through advanced learners, combining guided courses with a hands-on sandbox.",
-    description:
-      "Arclia helps people learn AI with greater clarity and confidence. Guided courses support beginners and advanced learners, while a hands-on sandbox provides space to explore, practice, and become more comfortable using AI.",
-    summary:
-      "Learn the concepts, practice them safely, and build practical confidence at your own pace.",
-    status: "In Development",
-    highlights: [
-      "Beginner to Advanced",
-      "Guided AI Courses",
-      "Hands-on Sandbox",
-      "Practical Learning",
-      "Build Confidence",
-    ],
-    visual: {
-      type: "branded",
-      brand: "arclia",
-      cardStyle: "app-icon",
-      coverStyle: "app-icon",
-      logo: projectAsset("arclia", "arclia-app-icon.webp"),
-      logoAlt: "Arclia AI learning app icon",
-      hero: projectAsset("arclia", "arclia-app-icon.webp"),
-      alt: "Arclia AI learning app icon",
-      eyebrow: "Arclia",
-      badge: "Courses + Sandbox",
-    },
-    primaryAction: {
-      label: "Email About Arclia",
-      href: contactMailto({ subject: "Arclia%20Inquiry" }),
-    },
-    accent: "#8EEBFF",
-  },
-  {
-    id: "arbor",
-    name: "Arbor",
-    group: "app",
-    category: "Software / File Organization",
-    preview:
-      "A macOS file-organization tool built to help people scan, preview, and safely organize files across local and external storage.",
-    description:
-      "Arbor helps people scan local and external storage, preview proposed organization, and organize files safely — with recovery and verification controls designed to keep organization deliberate and reversible.",
-    status: "In Development",
-    highlights: [
-      "Scan Local and External Storage",
-      "Preview Proposed Organization",
-      "Organize Files Safely",
-      "Recovery and Verification",
-      "macOS Utility",
-    ],
-    visual: {
-      type: "branded",
-      brand: "arbor",
-      cardStyle: "app-icon",
-      coverStyle: "app-icon",
-      logo: projectAsset("arbor", "arbor-folder-app-icon.webp"),
-      logoAlt: "Arbor macOS app icon",
-      hero: projectAsset("arbor", "arbor-folder-app-icon.webp"),
-      alt: "Arbor macOS app icon",
-      eyebrow: "Arbor",
-      badge: "macOS Utility",
-    },
-    primaryAction: {
-      label: "Email About Arbor",
-      href: contactMailto({ subject: "Arbor%20Inquiry" }),
-    },
-    accent: "#B8FF5A",
-  },
-  {
-    id: "give-love-co",
-    name: "Give Love Co.",
-    group: "studio",
-    category: "Apparel / Limited Drops",
-    preview:
-      "A personal apparel project built around kindness, connection, and a limited Fall 2026 release.",
-    description:
-      "Give Love Co. is a personal apparel project from LJB Media Group, created around simple messages worth carrying into everyday life: give love, be kind, embrace peace, and spread joy.",
-    summary:
-      "Hoodies and shirts arrive in a limited Fall 2026 drop. Release details will be shared when the collection is ready.",
-    status: "Coming Fall 2026",
-    highlights: [
-      "Limited Drop",
-      "Hoodies",
-      "Shirts",
-      "Give Love",
-      "Be Kind",
-      "Embrace Peace",
-      "Spread Joy",
-    ],
-    visual: {
-      type: "branded",
-      brand: "give-love-co",
-      coverStyle: "logo-panel",
-      logo: projectAsset("give-love-co", "give-love-co-logo.webp"),
-      hero: projectAsset("give-love-co", "give-love-apparel-v2.webp"),
-      alt: "Give Love Co. hoodie and T-shirt in a studio product photograph",
-      dropLabel: "COMING FALL 2026 · LIMITED DROP",
-    },
-    primaryAction: {
-      label: "Contact Give Love Co.",
-      href: contactMailto({ subject: "Give%20Love%20Co.%20Inquiry" }),
-    },
-    accent: "#F5F5F5",
-  },
-  {
-    id: "hemlock-hollow",
-    name: "Hemlock Hollow",
-    group: "studio",
-    category: "Novel / Mystery Thriller",
-    preview:
-      "A woman returns home after new evidence surfaces in her twin sister’s disappearance, uncovering buried secrets beneath Hemlock Hollow.",
-    description:
-      "After years away, Veronica returns to Hemlock Hollow when new evidence surfaces in the disappearance of her twin sister, Lena. A cryptic letter, a gold necklace, and a trail through the town’s lakeside secrets pull her into a mystery shaped by silence, power, and the people determined to keep the truth buried.",
-    summary: "A small town with a dark secret.",
-    status: "In Development",
-    highlights: [
-      "Family",
-      "Disappearance",
-      "Buried Secrets",
-      "Small-Town Power",
-      "Memory",
-      "Guilt",
-      "Truth",
-    ],
-    visual: {
-      type: "branded",
-      brand: "hemlock-hollow",
-      coverStyle: "cinematic-environment",
-      hero: projectAsset("hemlock-hollow", "hemlock-hollow-hero.webp"),
-      alt: "Secluded luxury mansion in wooded hills at blue hour for Hemlock Hollow",
-    },
-    primaryAction: {
-      label: "Follow the Story",
-      href: "#contact",
-    },
-    accent: "#C8D4C0",
-  },
 ];
 
 export function getAwyShowcaseSlides(project) {
@@ -348,15 +207,9 @@ export function getAppProjects() {
   return getListedProjects().filter((project) => project.group === "app");
 }
 
-export function getStudioProjects() {
-  return getListedProjects().filter((project) => project.group === "studio");
-}
-
 export const navItems = [
   { label: "Home", href: "#top" },
-  { label: "Projects", href: "#projects" },
-  { label: "Instagram", href: "#instagram" },
-  { label: "About", href: "#about" },
+  { label: "Inside Awy", href: "#projects" },
+  { label: "Waitlist & Investors", href: "#get-involved" },
   { label: "Contact", href: "#contact" },
-  { label: "Support", href: "#support" },
 ];

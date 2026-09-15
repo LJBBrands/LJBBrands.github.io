@@ -1,80 +1,67 @@
 import { motion, useReducedMotion } from "framer-motion";
+import DeviceFrame from "../DeviceFrame";
+import { getProjectById } from "../../data/projects";
 import { handleSectionClick } from "../../utils/scrollToSection";
 
 export default function LjbHero({ theme }) {
   const reduceMotion = useReducedMotion();
+  const awy = getProjectById("awy");
 
   return (
     <section
       id="top"
-      className="mx-auto max-w-6xl scroll-mt-24 pb-12 pt-24 sm:pb-14 sm:pt-28"
+      className="mx-auto max-w-6xl scroll-mt-24 pb-16 pt-24 sm:pb-20 sm:pt-28"
     >
       <motion.div
         initial={reduceMotion ? false : { opacity: 0, y: 16 }}
         animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
         transition={{ duration: 0.45 }}
-        className="relative overflow-hidden rounded-[2rem] border px-6 py-10 backdrop-blur-2xl sm:px-10 sm:py-12"
-        style={{
-          backgroundColor: theme.panelBg,
-          borderColor: theme.cardBorder,
-        }}
+        className="grid items-center gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:gap-16"
       >
-        <div
-          className="pointer-events-none absolute -right-20 -top-20 h-52 w-52 rounded-full blur-3xl opacity-70"
-          style={{ backgroundColor: theme.accentSoft }}
-        />
-
-        <div className="relative max-w-3xl">
-          <p className="text-sm font-medium tracking-[0.16em] text-white/60">
-            LJB MEDIA GROUP
+        <div className="min-w-0">
+          <p
+            className="text-sm font-medium tracking-[0.16em]"
+            style={{ color: theme.accent }}
+          >
+            AWY
           </p>
-
-          <h1 className="mt-5 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-            <span className="block">Media.</span>
-            <span className="block">Technology.</span>
-            <span className="block">Stories.</span>
-            <span className="mt-1 block" style={{ color: theme.accent }}>
-              Built With Purpose.
+          <h1 className="mt-5 text-4xl font-bold leading-tight tracking-tight sm:text-6xl lg:text-7xl">
+            More presence.
+            <span className="block" style={{ color: theme.accent }}>
+              Less pressure.
             </span>
           </h1>
-
-          <p className="mt-6 max-w-2xl text-base leading-7 text-white/68 sm:text-lg sm:leading-8">
-            LJB Media Group is a founder-led independent company building
-            thoughtful apps, practical AI learning, apparel, and original
-            stories as one connected body of work.
+          <p className="mt-7 max-w-xl text-base leading-8 text-white/70 sm:text-lg">
+            A private social environment for intentional connection. Share on
+            your terms, find your people, and make room for quieter moments.
           </p>
-
           <div className="mt-8 flex flex-wrap gap-3">
             <a
               href="#projects"
               onClick={handleSectionClick("projects")}
-              className="inline-flex min-h-[44px] items-center rounded-full bg-white px-6 py-3 text-sm font-medium text-black transition hover:opacity-90"
+              className="inline-flex min-h-[44px] items-center rounded-full bg-white px-6 py-3 text-base font-medium text-black transition hover:opacity-90"
             >
-              Explore Projects
+              Explore Awy
             </a>
             <a
-              href="#about"
-              onClick={handleSectionClick("about")}
-              className="inline-flex min-h-[44px] items-center rounded-full border px-6 py-3 text-sm font-medium text-white transition hover:bg-white/10"
-              style={{
-                backgroundColor: theme.heroPillBg,
-                borderColor: theme.cardBorder,
-              }}
+              href="#get-involved"
+              onClick={handleSectionClick("get-involved")}
+              className="inline-flex min-h-[44px] items-center rounded-full border px-6 py-3 text-base font-medium text-white transition hover:bg-white/10"
+              style={{ borderColor: theme.cardBorder }}
             >
-              About LJB
-            </a>
-            <a
-              href="#contact"
-              onClick={handleSectionClick("contact")}
-              className="inline-flex min-h-[44px] items-center rounded-full border px-6 py-3 text-sm font-medium text-white transition hover:bg-white/10"
-              style={{
-                backgroundColor: theme.heroPillBg,
-                borderColor: theme.cardBorder,
-              }}
-            >
-              Contact
+              Waitlist &amp; Updates
             </a>
           </div>
+          <p className="mt-8 text-sm leading-6 text-white/55">
+            Presence. Private conversations. Lounges.
+          </p>
+        </div>
+        <div className="min-w-0" aria-label="A look inside Awy">
+          <DeviceFrame
+            screenshot={awy.visual.card.primary}
+            size="hero"
+            caption
+          />
         </div>
       </motion.div>
     </section>
