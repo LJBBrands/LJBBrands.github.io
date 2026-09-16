@@ -1,4 +1,4 @@
-export const PUBLIC_EMAIL = "K.Bousquet92@pm.me";
+export const PUBLIC_EMAIL = "dev.ljbmedia@gmail.com";
 
 export const primaryContact = {
   id: "general",

@@ -1,8 +1,14 @@
 import React from "react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import {
+  cleanup,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+} from "@testing-library/react";
 import Interest from "../../src/components/sections/Interest";
-import { buildInterestMailto } from "../../src/data/interest";
+import { FORMSPREE_ENDPOINT } from "../../src/data/interest";
 import { PUBLIC_EMAIL } from "../../src/data/contact";
 import { ljbTheme } from "../../src/data/ljbTheme";
 
@@ -31,61 +37,100 @@ function completeContact(form) {
 }
 
 describe("interest requests", () => {
-  it("encodes email content without turning input into mail headers", () => {
-    const href = buildInterestMailto({
-      intent: "investor",
-      name: "A & B",
-      email: PUBLIC_EMAIL,
-      message: `Hello &bcc=${PUBLIC_EMAIL}\nThanks`,
-    });
-    const url = new URL(href);
-    expect(url.pathname).toBe("K.Bousquet92@pm.me");
-    expect([...url.searchParams.keys()]).toEqual(["subject", "body"]);
-    expect(url.searchParams.get("body")).toContain(
-      `Hello &bcc=${PUBLIC_EMAIL}\nThanks`,
+  it("submits waitlist details without opting into updates and waits for acceptance", async () => {
+    let resolve;
+    const request = vi.fn(
+      () =>
+        new Promise((done) => {
+          resolve = done;
+        }),
     );
-  });
-
-  it("keeps waitlist requests separate from update consent", () => {
+    vi.stubGlobal("fetch", request);
     render(<Interest theme={ljbTheme} />);
-    const checkbox = screen.getByRole("checkbox");
-    expect(checkbox.checked).toBe(false);
-    expect(checkbox.required).toBe(false);
     const form = screen.getByRole("form", { name: "Waitlist inquiry" });
     completeContact(form);
     fireEvent.submit(form);
-    const draft = screen.getByRole("link", { name: "Open Email Draft" });
-    expect(new URL(draft.href).searchParams.get("body")).toContain(
-      "Awy update emails requested: No",
+    expect(request).toHaveBeenCalledTimes(1);
+    const [url, options] = request.mock.calls[0];
+    expect(url).toBe(FORMSPREE_ENDPOINT);
+    expect(options.method).toBe("POST");
+    expect(options.body.get("interest")).toBe("waitlist");
+    expect(options.body.get("updates_consent")).toBe("no");
+    expect(screen.getByRole("button", { name: "Sending…" }).disabled).toBe(
+      true,
     );
-    expect(screen.getByRole("status").textContent).toContain(
-      "Nothing has been sent",
+    expect(screen.getByRole("status").textContent).toBe("");
+    fireEvent.submit(form);
+    expect(request).toHaveBeenCalledTimes(1);
+    resolve({ ok: true });
+    await waitFor(() =>
+      expect(screen.getByRole("status").textContent).toContain("received"),
     );
+    expect(form.elements.email.value).toBe("");
   });
 
-  it("requires explicit consent in updates mode", () => {
+  it("requires explicit consent in updates mode and sends it", async () => {
+    const request = vi.fn().mockResolvedValue({ ok: true });
+    vi.stubGlobal("fetch", request);
     render(<Interest theme={ljbTheme} />);
     fireEvent.click(screen.getByRole("radio", { name: "Updates" }));
     const form = screen.getByRole("form", { name: "Updates inquiry" });
     completeContact(form);
-    expect(form.checkValidity()).toBe(false);
+    fireEvent.submit(form);
+    expect(request).not.toHaveBeenCalled();
     fireEvent.click(screen.getByRole("checkbox"));
-    expect(form.checkValidity()).toBe(true);
+    fireEvent.submit(form);
+    await waitFor(() =>
+      expect(screen.getByRole("status").textContent).toContain("received"),
+    );
+    expect(request.mock.calls[0][1].body.get("updates_consent")).toBe("yes");
   });
 
-  it("clears stale drafts when visitor changes intent or edits a field", () => {
+  it.each(["rejected", "network"])(
+    "preserves details after a %s failure and allows retry",
+    async (failure) => {
+      const request = vi.fn();
+      if (failure === "network")
+        request.mockRejectedValueOnce(new Error("offline"));
+      else request.mockResolvedValueOnce({ ok: false, status: 422 });
+      request.mockResolvedValueOnce({ ok: true });
+      vi.stubGlobal("fetch", request);
+      render(<Interest theme={ljbTheme} />);
+      const form = screen.getByRole("form", { name: "Waitlist inquiry" });
+      completeContact(form);
+      fireEvent.submit(form);
+      await screen.findByRole("alert");
+      expect(form.elements.email.value).toBe(PUBLIC_EMAIL);
+      expect(screen.getByRole("status").textContent).toBe("");
+      fireEvent.submit(form);
+      await waitFor(() =>
+        expect(screen.getByRole("status").textContent).toContain("received"),
+      );
+    },
+  );
+
+  it("keeps investor introductions separate from newsletter consent", async () => {
+    const request = vi.fn().mockResolvedValue({ ok: true });
+    vi.stubGlobal("fetch", request);
     render(<Interest theme={ljbTheme} />);
-    const form = screen.getByRole("form", { name: "Waitlist inquiry" });
-    completeContact(form);
-    fireEvent.submit(form);
-    fireEvent.change(form.elements.name, { target: { value: "Updated name" } });
-    expect(screen.queryByRole("link", { name: "Open Email Draft" })).toBeNull();
-    fireEvent.submit(form);
     fireEvent.click(
       screen.getByRole("radio", { name: "Investors & Partners" }),
     );
-    expect(screen.queryByRole("link", { name: "Open Email Draft" })).toBeNull();
+    const form = screen.getByRole("form", {
+      name: "Investors & Partners inquiry",
+    });
+    completeContact(form);
+    fireEvent.change(form.elements.organization, {
+      target: { value: "A partner" },
+    });
     expect(screen.queryByRole("checkbox")).toBeNull();
-    expect(screen.getByRole("textbox", { name: /Organization/ })).toBeTruthy();
+    fireEvent.submit(form);
+    await waitFor(() =>
+      expect(screen.getByRole("status").textContent).toContain("received"),
+    );
+    expect(request.mock.calls[0][1].body.get("organization")).toBe("A partner");
+    expect(request.mock.calls[0][1].body.get("updates_consent")).toBe("no");
+    fireEvent.click(screen.getByRole("radio", { name: "Waitlist" }));
+    expect(screen.getByRole("status").textContent).toBe("");
   });
 });

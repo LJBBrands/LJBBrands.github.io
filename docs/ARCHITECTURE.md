@@ -13,7 +13,7 @@ This is **not** Website 2.0. Do not introduce a CMS, app server, or hosting migr
 | Styling      | Tailwind 3 + `src/index.css`      | Dark tokens, safe-area, WebKit fallbacks |
 | Motion       | Framer Motion 11                  | Must respect `prefers-reduced-motion`    |
 | Hosting      | GitHub Pages via Actions artifact | Deploy workflow runs on push to `main`   |
-| Public email | `K.Bousquet92@pm.me`              | Single source: `src/data/contact.js`     |
+| Public email | `dev.ljbmedia@gmail.com`          | Single source: `src/data/contact.js`     |
 
 ## Surfaces
 

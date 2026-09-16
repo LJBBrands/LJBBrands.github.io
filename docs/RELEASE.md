@@ -39,4 +39,4 @@ npm run check:site
 npm run test:e2e:webkit
 ```
 
-Search source and `dist` for email addresses. The only allowed public address is `K.Bousquet92@pm.me`.
+Search source and `dist` for email addresses. The only allowed public address is `dev.ljbmedia@gmail.com`.

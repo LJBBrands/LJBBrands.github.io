@@ -27,6 +27,6 @@ body:
       value: |
         - Investor 60-second questions remain answerable
         - npm run ci && npm run build
-        - Email search still finds only K.Bousquet92@pm.me
+        - Email search still finds only dev.ljbmedia@gmail.com
     validations:
       required: true

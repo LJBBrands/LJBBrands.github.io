@@ -221,7 +221,7 @@ test.describe("project dialog", () => {
   });
 });
 
-const PUBLIC_EMAIL = "K.Bousquet92@pm.me";
+const PUBLIC_EMAIL = "dev.ljbmedia@gmail.com";
 
 test.describe("public contact", () => {
   test("shows the approved email in contact, footer, and metadata", async ({

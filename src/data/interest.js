@@ -1,4 +1,4 @@
-import { PUBLIC_EMAIL } from "./contact";
+export const FORMSPREE_ENDPOINT = "https://formspree.io/f/xoevalpq";
 
 export const interestOptions = [
   {
@@ -24,27 +24,3 @@ export const interestOptions = [
     subject: "Awy investor or partnership inquiry",
   },
 ];
-
-export function buildInterestMailto({
-  intent,
-  name,
-  email,
-  organization = "",
-  message = "",
-  wantsUpdates = false,
-}) {
-  const option = interestOptions.find((item) => item.id === intent);
-  if (!option) throw new Error("Choose a valid inquiry type.");
-  const lines = [
-    option.subject,
-    "",
-    `Name: ${name.trim()}`,
-    `Reply email: ${email.trim()}`,
-  ];
-  if (intent === "investor" && organization.trim())
-    lines.push(`Organization: ${organization.trim()}`);
-  if (intent !== "investor")
-    lines.push(`Awy update emails requested: ${wantsUpdates ? "Yes" : "No"}`);
-  if (message.trim()) lines.push("", message.trim());
-  return `mailto:${PUBLIC_EMAIL}?subject=${encodeURIComponent(option.subject)}&body=${encodeURIComponent(lines.join("\n"))}`;
-}
