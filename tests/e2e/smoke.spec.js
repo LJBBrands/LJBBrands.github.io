@@ -161,7 +161,10 @@ test.describe("product presentation", () => {
     await expect(
       page.getByRole("heading", { name: "Your starting point in Awy." }),
     ).toBeVisible();
-    await expect(page.getByText("LIVE PRESENCE")).toHaveCount(0);
+    await expect(page.getByText("03 / HOME")).toBeVisible();
+    await expect(
+      page.locator(".story-kicker", { hasText: "LIVE PRESENCE" }),
+    ).toHaveCount(0);
     await expect(
       page.getByRole("img", {
         name: "Awy Home on iPhone, showing profile shortcuts, notification shortcuts, and Top Lounges",
