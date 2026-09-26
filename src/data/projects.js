@@ -10,6 +10,13 @@ const awyShot = (fileName, label, alt, group) => ({
   group,
 });
 
+const awyDeviceShot = (fileName, label, alt, group) => ({
+  ...awyShot(fileName, label, alt, group),
+  presentation: "device",
+  width: 704,
+  height: 1554,
+});
+
 /*
   Public Awy set only. Continue excluding Membership, Moderator Tools,
   unfinished billing, incomplete workflows, admin-heavy menus, and
@@ -69,17 +76,17 @@ export const projects = [
     showcase: {
       slides: [
         {
-          id: "presence",
-          eyebrow: "Presence",
-          title: "Live Presence",
+          id: "home",
+          eyebrow: "Home",
+          title: "Home",
           description:
-            "See what is active now without turning connection into an endless feed.",
-          points: ["Live status", "Shared rhythm", "No feed pressure"],
-          image: awyShot(
-            "awy-home-live-presence-dark.jpg",
-            "Home — Live Presence",
-            "Awy Home Live Presence in a dark theme",
-            "Presence",
+            "Home is the starting point for your profile, notification shortcuts, and Top Lounges.",
+          points: ["Home", "Notification shortcuts", "Top Lounges"],
+          image: awyDeviceShot(
+            "current/home.png",
+            "Home",
+            "Awy Home on iPhone, showing profile shortcuts, notification shortcuts, and Top Lounges",
+            "Home",
           ),
         },
         {
@@ -173,10 +180,10 @@ export const projects = [
           description:
             "Personalization adds atmosphere and identity without compromising clarity.",
           points: ["Atmosphere", "Identity", "Clarity first"],
-          image: awyShot(
-            "awy-profile-studio-aurora.jpg",
+          image: awyDeviceShot(
+            "current/studio.png",
             "Profile Studio",
-            "Awy Profile Studio with Aurora theme accent",
+            "Awy Profile Studio on iPhone, with accent colors and profile presets",
             "Personalization",
           ),
         },

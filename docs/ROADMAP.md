@@ -8,7 +8,7 @@ The public site is an Awy product website on the current Vite/React/Tailwind/Fra
 
 Shipped public work includes the recovered visual redesign, ProductStory as the primary product presentation, a live Formspree waitlist, contact via `dev.ljbmedia@gmail.com`, and the toolchain from the WebKit/contact merge. Production deploy remains a manual GitHub Actions gate from `main`.
 
-Active redesign branch for this work: `codex/awy-visual-walkthrough`. Current screenshots are still being reviewed and replaced separately. Do not wire `public/projects/awy/current/` into DeviceFrame until that review lands.
+Active redesign branch for this work: `codex/awy-visual-walkthrough`. Current Home and Profile Studio captures are wired as pre-framed device art, not through DeviceFrame. Lounge and Strings screenshots are still waiting on current approved captures.
 
 ## Next — scoped interim improvements (not 2.0)
 

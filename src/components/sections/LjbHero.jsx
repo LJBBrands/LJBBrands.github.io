@@ -1,15 +1,15 @@
 import { useState } from "react";
-import DeviceFrame from "../DeviceFrame";
+import ProductMedia from "../ProductMedia";
 import { getProjectById } from "../../data/projects";
 import { handleSectionClick } from "../../utils/scrollToSection";
 
 export default function LjbHero({ theme }) {
   const slides = getProjectById("awy").showcase.slides;
-  const choices = ["community", "private-connection", "presence"].map((id) =>
+  const choices = ["community", "private-connection", "home"].map((id) =>
     slides.find((slide) => slide.id === id),
   );
   const [selected, setSelected] = useState(0);
-  const labels = ["Find your people", "Your conversations", "See who’s around"];
+  const labels = ["Find your people", "Your conversations", "Home"];
   return (
     <section id="top" className="visual-hero mx-auto max-w-6xl scroll-mt-24">
       <div className="visual-hero__intro">
@@ -50,7 +50,7 @@ export default function LjbHero({ theme }) {
       </div>
       <div className="visual-hero__product">
         <div id="hero-screen" className="visual-hero__phone" aria-live="polite">
-          <DeviceFrame
+          <ProductMedia
             screenshot={choices[selected].image}
             size="hero"
             priority

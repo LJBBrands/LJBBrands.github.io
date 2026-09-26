@@ -1,4 +1,4 @@
-import DeviceFrame from "../DeviceFrame";
+import ProductMedia from "../ProductMedia";
 import { getProjectById } from "../../data/projects";
 import { handleSectionClick } from "../../utils/scrollToSection";
 
@@ -22,12 +22,12 @@ const chapters = [
     link: "Connect on your terms",
   },
   {
-    id: "presence",
-    label: "LIVE PRESENCE",
-    title: "See what’s happening. Be part of the moment.",
+    id: "home",
+    label: "HOME",
+    title: "Your starting point in Awy.",
     description:
-      "Get a view of what’s active across Awy, with your conversations and Lounges close at hand.",
-    detail: "A starting point for connection, whenever you’re ready.",
+      "Home brings your profile, notification shortcuts, and Top Lounges together so you can get to what you need next.",
+    detail: "Quick access into conversations, Lounges, and Profile Studio.",
     link: "Stay connected",
   },
   {
@@ -69,7 +69,7 @@ export default function ProductStory({ theme }) {
             </a>
           </div>
           <div className="story-chapter__visual">
-            <DeviceFrame
+            <ProductMedia
               screenshot={slides.find((slide) => slide.id === chapter.id).image}
               size="hero"
               caption

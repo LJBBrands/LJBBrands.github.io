@@ -70,6 +70,25 @@ describe("public portfolio", () => {
     );
   });
 
+  it("uses pre-framed current Home and Studio captures", () => {
+    const slides = getProjectById("awy")?.showcase?.slides ?? [];
+    const home = slides.find((slide) => slide.id === "home");
+    const studio = slides.find((slide) => slide.id === "personalization");
+    const lounges = slides.find((slide) => slide.id === "community");
+    const strings = slides.find((slide) => slide.id === "private-connection");
+
+    expect(home?.image?.src).toMatch(/current\/home\.png$/);
+    expect(home?.image?.presentation).toBe("device");
+    expect(studio?.image?.src).toMatch(/current\/studio\.png$/);
+    expect(studio?.image?.presentation).toBe("device");
+    expect(lounges?.image?.src).toMatch(/awy-lounge-car-culture-dark\.jpg$/);
+    expect(lounges?.image?.presentation).toBeUndefined();
+    expect(strings?.image?.src).toMatch(
+      /awy-string-privacy-controls-dark\.jpg$/,
+    );
+    expect(strings?.image?.presentation).toBeUndefined();
+  });
+
   it("keeps parked FAQ copy aligned with current product language", () => {
     const text = faqItems
       .map((item) => `${item.question} ${item.answer}`)

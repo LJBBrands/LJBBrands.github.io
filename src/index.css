@@ -237,6 +237,48 @@ summary::-webkit-details-marker {
   color: rgba(255, 255, 255, 0.52);
 }
 
+/*
+  Complete device captures already include phone chrome. Do not wrap these
+  in .device-frame. Corner radius hides the light canvas outside the bezel.
+*/
+.device-capture {
+  position: relative;
+  flex-shrink: 0;
+  width: clamp(210px, 22vw, 310px);
+  max-width: 100%;
+  overflow: hidden;
+  border-radius: 13%;
+  background: transparent;
+  filter: drop-shadow(0 18px 40px rgba(0, 0, 0, 0.42));
+}
+
+.device-capture img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 704 / 1554;
+  object-fit: contain;
+  object-position: center;
+  vertical-align: middle;
+}
+
+.device-capture--hero {
+  width: clamp(210px, 22vw, 310px);
+}
+
+.device-capture__fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 704 / 1554;
+  width: 100%;
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.03);
+}
+
 /* Official app-icon stage */
 .app-icon-shell {
   position: relative;
@@ -1016,7 +1058,8 @@ summary::-webkit-details-marker {
     transparent 65%
   );
 }
-.visual-hero__phone .device-frame--hero {
+.visual-hero__phone .device-frame--hero,
+.visual-hero__phone .device-capture--hero {
   width: min(100%, 310px);
 }
 .visual-hero__choices {
@@ -1079,7 +1122,8 @@ summary::-webkit-details-marker {
     rgb(255 255 255 / 0.02) 70%
   );
 }
-.story-chapter__visual .device-frame--hero {
+.story-chapter__visual .device-frame--hero,
+.story-chapter__visual .device-capture--hero {
   width: min(100%, 300px);
 }
 .story-chapter--reverse .story-chapter__copy {
@@ -1102,7 +1146,8 @@ summary::-webkit-details-marker {
     gap: 1.5rem;
     padding: 5.5rem 0 4rem;
   }
-  .visual-hero__phone .device-frame--hero {
+  .visual-hero__phone .device-frame--hero,
+  .visual-hero__phone .device-capture--hero {
     width: min(74vw, 300px);
   }
   .visual-hero__intro {
@@ -1126,7 +1171,8 @@ summary::-webkit-details-marker {
   .story-chapter__copy {
     max-width: none;
   }
-  .story-chapter__visual .device-frame--hero {
+  .story-chapter__visual .device-frame--hero,
+  .story-chapter__visual .device-capture--hero {
     width: min(70vw, 300px);
   }
 }

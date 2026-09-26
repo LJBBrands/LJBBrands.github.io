@@ -158,6 +158,22 @@ test.describe("product presentation", () => {
         name: "A place for what brings you together.",
       }),
     ).toBeVisible();
+    await expect(
+      page.getByRole("heading", { name: "Your starting point in Awy." }),
+    ).toBeVisible();
+    await expect(page.getByText("LIVE PRESENCE")).toHaveCount(0);
+    await expect(
+      page.getByRole("img", {
+        name: "Awy Home on iPhone, showing profile shortcuts, notification shortcuts, and Top Lounges",
+      }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("img", {
+        name: "Awy Profile Studio on iPhone, with accent colors and profile presets",
+      }),
+    ).toBeVisible();
+    await expect(page.locator(".product-story .device-capture")).toHaveCount(2);
+    await expect(page.locator(".product-story .device-frame")).toHaveCount(2);
 
     await expect(
       page.getByRole("button", { name: "View Awy project" }),
@@ -327,6 +343,21 @@ test("hero screen choices work with the keyboard and preserve waitlist navigatio
     "alt",
     "Awy String privacy controls in a dark theme",
   );
+  await expect(page.locator("#hero-screen .device-frame")).toHaveCount(1);
+
+  const home = choices.getByRole("button", { name: "Home" });
+  await home.click();
+  await expect(home).toHaveAttribute("aria-pressed", "true");
+  await expect(page.locator("#hero-screen img")).toHaveAttribute(
+    "alt",
+    "Awy Home on iPhone, showing profile shortcuts, notification shortcuts, and Top Lounges",
+  );
+  await expect(page.locator("#hero-screen img")).toHaveAttribute(
+    "src",
+    /current\/home\.png$/,
+  );
+  await expect(page.locator("#hero-screen .device-capture")).toHaveCount(1);
+  await expect(page.locator("#hero-screen .device-frame")).toHaveCount(0);
   await page
     .locator(".visual-hero")
     .getByRole("link", { name: "Join the Waitlist" })
