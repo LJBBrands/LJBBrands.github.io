@@ -23,19 +23,19 @@ export const projects = [
     group: "app",
     category: "Technology / Social Platform",
     preview:
-      "A private social environment built around presence, shared rhythm, quiet spaces, and consent-aware communication.",
+      "A social app for private conversations, shared-interest Lounges, live presence, and profiles you can make your own.",
     description:
-      "Awy is a private social environment designed for intentional presence, consent-aware sharing, and calmer communication — without turning connection into consumption.",
+      "Awy is a social app for connection — private Strings, interest-based Lounges, live presence, and a profile you can make your own.",
     summary:
-      "What makes Awy different: quieter spaces, consent-aware sharing, and presence without feed pressure.",
+      "What you can do in Awy: talk in Strings, join Lounges, see who’s around, and shape your space in Profile Studio.",
     status: null,
     highlights: [
-      "Presence",
-      "Shared Areas",
+      "Home",
       "Strings",
       "Lounges",
-      "Verified Signals",
-      "Personalization",
+      "Live Presence",
+      "Profiles",
+      "Profile Studio",
     ],
     visual: {
       type: "screenshots",
@@ -208,8 +208,7 @@ export function getAppProjects() {
 }
 
 export const navItems = [
-  { label: "Home", href: "#top" },
-  { label: "Inside Awy", href: "#projects" },
-  { label: "Waitlist & Investors", href: "#get-involved" },
-  { label: "Contact", href: "#contact" },
+  { label: "Explore Awy", href: "#projects" },
+  { label: "Questions", href: "#questions" },
+  { label: "Join the Waitlist", href: "#get-involved" },
 ];

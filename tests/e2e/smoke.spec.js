@@ -70,7 +70,10 @@ test.describe("homepage smoke", () => {
       };
     });
 
-    await page.getByRole("link", { name: "Explore Awy" }).click();
+    await page
+      .locator(".visual-hero")
+      .getByRole("link", { name: "Explore Awy" })
+      .click();
 
     const behaviors = await page.evaluate(() => window.__scrollBehaviors);
     expect(
@@ -138,86 +141,73 @@ test.describe("mobile menu", () => {
   });
 });
 
-test.describe("project dialog", () => {
-  test.use({ viewport: { width: 390, height: 844 } });
-
-  test("contains focus, handles Escape, and restores the trigger", async ({
+test.describe("product presentation", () => {
+  test("shows ProductStory and keeps the project-directory card retired", async ({
     page,
   }) => {
     await page.goto("/");
 
-    const trigger = page.getByRole("button", { name: "View Awy project" });
-    await trigger.click();
+    await expect(
+      page.getByRole("heading", { name: "Here’s what connection looks like." }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("region", { name: "What you can do with Awy" }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("heading", {
+        name: "A place for what brings you together.",
+      }),
+    ).toBeVisible();
 
-    const dialog = page.getByRole("dialog", { name: "Awy" });
-    await expect(dialog).toBeVisible();
-    await expect(dialog.getByRole("button", { name: "Close" })).toBeFocused();
-
-    const backdrop = page.locator(".project-dialog-root > button");
-    await expect(backdrop).toHaveAttribute("aria-hidden", "true");
-    await expect(backdrop).toHaveAttribute("tabindex", "-1");
-    await page.keyboard.press("Shift+Tab");
-    await expect(backdrop).not.toBeFocused();
-
-    await page.keyboard.press("Tab");
-    const focusStayedInside = await page.evaluate(() => {
-      const panel = document.querySelector('[role="dialog"]');
-      return Boolean(panel && panel.contains(document.activeElement));
-    });
-    expect(focusStayedInside).toBe(true);
-
-    const siteIsInert = await page.evaluate(() => {
-      const site = document.getElementById("site-content");
-      return Boolean(
-        site?.inert || site?.getAttribute("aria-hidden") === "true",
-      );
-    });
-    expect(siteIsInert).toBe(true);
-
-    await page.keyboard.press("Escape");
+    await expect(
+      page.getByRole("button", { name: "View Awy project" }),
+    ).toHaveCount(0);
+    await expect(page.getByText("Explore The App Preview")).toHaveCount(0);
     await expect(page.getByRole("dialog")).toHaveCount(0);
-    await expect(trigger).toBeFocused();
+  });
+});
+
+test.describe("consumer navigation", () => {
+  test("desktop nav reaches Questions and the waitlist", async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.goto("/");
+
+    const nav = page.getByRole("navigation", { name: "Primary" });
+    await expect(nav.getByRole("link", { name: "Explore Awy" })).toBeVisible();
+    await expect(nav.getByRole("link", { name: "Questions" })).toBeVisible();
+    await expect(
+      nav.getByRole("link", { name: "Join the Waitlist" }),
+    ).toBeVisible();
+    await expect(nav.getByRole("link", { name: "Investors" })).toHaveCount(0);
+
+    await nav.getByRole("link", { name: "Questions" }).click();
+    await expect(
+      page.getByRole("heading", { name: "A Little More About Awy." }),
+    ).toBeInViewport();
+
+    await nav.getByRole("link", { name: "Join the Waitlist" }).click();
+    await expect(
+      page.getByRole("form", { name: "Waitlist inquiry" }),
+    ).toBeInViewport();
   });
 
-  test("restores page scroll after the dialog closes", async ({ page }) => {
+  test("mobile menu reaches Questions and the waitlist", async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
     await page.goto("/");
-    const trigger = page.getByRole("button", { name: "View Awy project" });
-    await trigger.scrollIntoViewIfNeeded();
-    const before = await page.evaluate(() => window.scrollY);
-    expect(before).toBeGreaterThan(50);
 
-    await trigger.click({ force: true });
-    await expect(page.getByRole("dialog", { name: "Awy" })).toBeVisible();
-    await page.keyboard.press("Escape");
-    await expect(page.getByRole("dialog")).toHaveCount(0);
+    await page.getByRole("button", { name: "Open menu" }).click();
+    const menu = page.getByRole("navigation", { name: "Mobile" });
+    await expect(menu.getByRole("link", { name: "Explore Awy" })).toBeVisible();
+    await expect(menu.getByRole("link", { name: "Questions" })).toBeVisible();
+    await expect(
+      menu.getByRole("link", { name: "Join the Waitlist" }),
+    ).toBeVisible();
 
-    const after = await page.evaluate(() => window.scrollY);
-    expect(after).toBeGreaterThan(50);
-    expect(Math.abs(after - before)).toBeLessThan(80);
-  });
-
-  test("stays usable in a short mobile viewport", async ({ page }) => {
-    await page.setViewportSize({ width: 390, height: 560 });
-    await page.goto("/");
-    await page.getByRole("button", { name: "View Awy project" }).click();
-
-    const dialog = page.getByRole("dialog", { name: "Awy" });
-    await expect(dialog).toBeVisible();
-
-    const box = await dialog.boundingBox();
-    expect(box).toBeTruthy();
-    expect(box.height).toBeLessThanOrEqual(568);
-    expect(box.y).toBeGreaterThanOrEqual(-1);
-    expect(box.y + box.height).toBeLessThanOrEqual(568);
-
-    const body = dialog.locator(".project-dialog__body");
-    await expect(body).toBeVisible();
-    await body.evaluate((node) => {
-      node.scrollTop = 80;
-    });
-    await expect(dialog.getByRole("button", { name: "Close" })).toBeVisible();
-    await dialog.getByRole("button", { name: "Close" }).click();
-    await expect(page.getByRole("dialog")).toHaveCount(0);
+    await menu.getByRole("link", { name: "Questions" }).click();
+    await expect(menu).toHaveCount(0);
+    await expect(
+      page.getByRole("heading", { name: "A Little More About Awy." }),
+    ).toBeInViewport();
   });
 });
 
@@ -267,6 +257,8 @@ test.describe("public contact", () => {
       .locator('script[type="application/ld+json"]')
       .textContent();
     expect(jsonLd).toContain(`"email": "${PUBLIC_EMAIL}"`);
+    expect(jsonLd).toContain("SoftwareApplication");
+    expect(jsonLd).toContain('"name": "Awy"');
     expect(jsonLd).not.toMatch(/@ljbbrands\.com/);
     expect(errors).toEqual([]);
   });
@@ -324,7 +316,8 @@ test("hero screen choices work with the keyboard and preserve waitlist navigatio
     "Awy String privacy controls in a dark theme",
   );
   await page
-    .getByRole("link", { name: "Join the Waitlist", exact: true })
+    .locator(".visual-hero")
+    .getByRole("link", { name: "Join the Waitlist" })
     .click();
   await expect(
     page.getByRole("form", { name: "Waitlist inquiry" }),

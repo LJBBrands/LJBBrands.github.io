@@ -2,37 +2,32 @@ export const faqItems = [
   {
     question: "What is Awy?",
     answer:
-      "Awy is a private social environment built around presence, quiet spaces, shared rhythm, and consent-aware communication.",
+      "Awy is a social app for private conversations, shared-interest Lounges, live presence, and profiles you can make your own.",
   },
   {
     question: "How is Awy different from a regular social app?",
     answer:
-      "Awy is designed to reduce noise instead of increase it. It focuses on intentional sharing, calmer communication, trusted signals, and spaces that feel more personal.",
+      "Awy is designed to reduce noise instead of increase it. It focuses on private conversations, Lounges around shared interests, live presence, and a calmer place to stay connected.",
   },
   {
     question: "What are Lounges?",
     answer:
-      "Lounges are quiet shared rooms for people, groups, and communities. They are built for focused connection without the chaos of constant feeds or crowded group chats.",
+      "Lounges are shared rooms for people, groups, and communities. They are built for focused connection around interests, without the chaos of constant feeds or crowded group chats.",
   },
   {
     question: "What are Strings?",
     answer:
-      "Strings are intentional one-to-one conversation threads for people and connections that deserve more care than a noisy inbox.",
+      "Strings are one-to-one conversation threads with privacy controls you can see and understand.",
   },
   {
-    question: "What are Shared Areas?",
+    question: "What is live presence?",
     answer:
-      "Shared Areas are personal spaces that open around what someone chooses to share. They are designed around consent-aware visibility and intentional access.",
+      "Live presence shows what’s active across Awy, with your conversations and Lounges close at hand.",
   },
   {
-    question: "What is Pulse?",
+    question: "What is Profile Studio?",
     answer:
-      "Pulse will become Awy’s public conversation space — a calmer layer for broader discovery and shared context.",
-  },
-  {
-    question: "What are Verified Signals?",
-    answer:
-      "Verified Signals help make discovery feel more trusted and contextual. They support finding people, Lounges, Strings, and shared spaces with more intention.",
+      "Profile Studio is how you give your Awy profile an atmosphere that feels like you.",
   },
   {
     question: "Is Awy public yet?",
@@ -42,11 +37,6 @@ export const faqItems = [
   {
     question: "Does Awy replace messaging apps?",
     answer:
-      "Awy is not trying to recreate a noisy inbox. It is being built as a calmer social environment for presence, shared spaces, and more intentional communication.",
-  },
-  {
-    question: "Why is Awy built around consent-aware sharing?",
-    answer:
-      "Awy is designed so personal spaces feel more controlled and intentional. People should be able to choose what they share, where it appears, and who can access it.",
+      "Awy is not trying to recreate a noisy inbox. It is being built as a calmer social environment for presence, shared Lounges, and more intentional communication.",
   },
 ];

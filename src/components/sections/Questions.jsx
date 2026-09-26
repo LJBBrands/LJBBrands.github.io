@@ -4,12 +4,12 @@ const questions = [
   {
     question: "What is Awy?",
     answer:
-      "Awy is a private social environment built around presence, consent-aware sharing, and calmer communication. It brings private conversations and shared lounges into one place.",
+      "Awy is a social app for private conversations, shared-interest Lounges, live presence, and profiles you can make your own.",
   },
   {
-    question: "What can I explore in the preview?",
+    question: "What can I explore on this page?",
     answer:
-      "The interactive preview walks through live presence, profiles, privacy controls, and lounges. It shows the product experience; it does not create an Awy account.",
+      "The product story walks through Lounges, Strings, live presence, and Profile Studio. It shows the product experience; it does not create an Awy account.",
   },
   {
     question: "Who is Awy for?",

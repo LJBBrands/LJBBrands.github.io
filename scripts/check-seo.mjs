@@ -1,7 +1,7 @@
 import { PUBLIC_EMAIL, readRepoFile, repoFileExists } from "./lib/repo.mjs";
 
 const REQUIRED_META = [
-  ["title", /<title>[\s\S]*LJB Media Group[\s\S]*<\/title>/],
+  ["title", /<title>Awy[\s\S]*LJB Media Group[\s\S]*<\/title>/],
   ["description", /name="description"/],
   ["canonical", /rel="canonical"/],
   ["og:title", /property="og:title"/],

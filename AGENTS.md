@@ -6,17 +6,23 @@ These instructions apply to the entire repository.
 
 Preserve and evolve the existing website. Do not rebuild it, replace the stack, or begin **Website 2.0** unless a human explicitly requests that work.
 
-This is the public corporate/investor-facing site for **LJB Media Group**.
+This is the public **Awy** consumer product website, attributed to **LJB Media Group**.
 
 ## Brand
 
 - The public parent brand is **LJB Media Group**. It is not a filed LLC; do not append “LLC” or represent it as a registered entity.
-- Intended technology products: **Awy**, **Arclia**, and **Arbor**.
-- The public product name for the macOS file-organization tool is **Arbor**.
-- Do not add **Arclia** (or any unshipped product) to public UI, metadata, or navigation until copy and assets are approved.
+- The only product presented on this site is **Awy**.
+- Do not add **Arclia**, **Arbor**, or any unshipped product to public UI, metadata, or navigation until copy and assets are approved.
 - Do not use the internal codenames **Atlas** or **Project Atlas** in public-facing UI, navigation, metadata, alt text, status labels, or customer-facing copy.
 - Keep the existing dark visual system with restrained white and neon-green accents.
 - Prefer focused, incremental changes over redesigns.
+
+## Site shape
+
+- Primary public presentation is the homepage: hero → **ProductStory** → Questions → waitlist/contact.
+- ProductStory is the current primary product presentation. Do not restore a project-directory card/dialog as the main product path unless a human asks.
+- The Formspree waitlist is live. Do not change the endpoint or field contract unless a human asks.
+- Production publishing is a manual GitHub Actions deploy from `main`. Agents do not deploy.
 
 ## Engineering standard
 

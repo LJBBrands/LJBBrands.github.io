@@ -38,7 +38,7 @@ npx playwright install --with-deps webkit
 npm run dev
 ```
 
-The app is a client-rendered SPA. Hash targets (`#contact`, `#projects`) are handled in `src/App.jsx`.
+The app is a client-rendered SPA. Hash targets (`#top`, `#projects`, `#questions`, `#get-involved`, `#contact`) are handled in `src/App.jsx`.
 
 ## Tests
 
