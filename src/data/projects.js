@@ -1,3 +1,4 @@
+import { attachSurfaceMedia } from "./awyProductMedia";
 import { contactMailto } from "./contact";
 
 const projectAsset = (projectId, fileName) =>
@@ -75,7 +76,7 @@ export const projects = [
     },
     showcase: {
       slides: [
-        {
+        attachSurfaceMedia({
           id: "home",
           eyebrow: "Home",
           title: "Home",
@@ -88,8 +89,8 @@ export const projects = [
             "Awy Home on iPhone, showing profile shortcuts, notification shortcuts, and Top Lounges",
             "Home",
           ),
-        },
-        {
+        }),
+        attachSurfaceMedia({
           id: "activity",
           eyebrow: "Activity",
           title: "A Calmer Activity View",
@@ -102,8 +103,8 @@ export const projects = [
             "Awy Home activity overview in a dark theme",
             "Presence",
           ),
-        },
-        {
+        }),
+        attachSurfaceMedia({
           id: "identity",
           eyebrow: "Identity",
           title: "Your Space",
@@ -116,8 +117,8 @@ export const projects = [
             "Awy Profile overview in a dark theme",
             "Identity",
           ),
-        },
-        {
+        }),
+        attachSurfaceMedia({
           id: "create",
           eyebrow: "Create",
           title: "Share With Intention",
@@ -130,8 +131,8 @@ export const projects = [
             "Awy Profile create menu in a dark theme",
             "Identity",
           ),
-        },
-        {
+        }),
+        attachSurfaceMedia({
           id: "private-connection",
           eyebrow: "Private Connection",
           title: "Consent-Aware Conversations",
@@ -144,8 +145,8 @@ export const projects = [
             "Awy String privacy controls in a dark theme",
             "Private Connection",
           ),
-        },
-        {
+        }),
+        attachSurfaceMedia({
           id: "lounges",
           eyebrow: "Lounges",
           title: "Spaces With Purpose",
@@ -158,8 +159,13 @@ export const projects = [
             "Awy Featured Lounges with Aurora theme accent",
             "Community",
           ),
-        },
-        {
+        }),
+        /*
+          Interim hero/story share the existing Lounge JPG until reserved
+          current captures arrive. Drop-in will set different heroImage
+          (lounges-discovery) and storyImage (lounge-orlando-demo).
+        */
+        attachSurfaceMedia({
           id: "community",
           eyebrow: "Community",
           title: "Communities That Feel Alive",
@@ -172,8 +178,8 @@ export const projects = [
             "Awy Car Culture Lounge in a dark theme",
             "Community",
           ),
-        },
-        {
+        }),
+        attachSurfaceMedia({
           id: "personalization",
           eyebrow: "Personalization",
           title: "Make Awy Yours",
@@ -186,7 +192,7 @@ export const projects = [
             "Awy Profile Studio on iPhone, with accent colors and profile presets",
             "Personalization",
           ),
-        },
+        }),
       ],
     },
     primaryAction: {

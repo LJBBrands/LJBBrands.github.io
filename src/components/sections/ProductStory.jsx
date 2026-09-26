@@ -1,4 +1,5 @@
 import ProductMedia from "../ProductMedia";
+import { getSlideStoryImage } from "../../data/awyProductMedia";
 import { getProjectById } from "../../data/projects";
 import { handleSectionClick } from "../../utils/scrollToSection";
 
@@ -70,7 +71,9 @@ export default function ProductStory({ theme }) {
           </div>
           <div className="story-chapter__visual">
             <ProductMedia
-              screenshot={slides.find((slide) => slide.id === chapter.id).image}
+              screenshot={getSlideStoryImage(
+                slides.find((slide) => slide.id === chapter.id),
+              )}
               size="hero"
               caption
             />

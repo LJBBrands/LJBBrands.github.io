@@ -1,12 +1,18 @@
 import DeviceFrame from "./DeviceFrame";
+import { isPreframedPresentation } from "../data/awyProductMedia";
 import { useImageFallback } from "../hooks/useImageFallback";
 
 function resolveSrc(screenshot) {
   return screenshot?.src || screenshot?.image || "";
 }
 
+/**
+ * Pre-framed captures already include iPhone chrome.
+ * `presentation: "device"` is the live value used by current Home/Studio.
+ * `presentation: "preframed"` is an accepted alias. Neither path uses DeviceFrame.
+ */
 export function isPreframedDevice(screenshot) {
-  return screenshot?.presentation === "device";
+  return isPreframedPresentation(screenshot?.presentation);
 }
 
 function PreframedDevice({

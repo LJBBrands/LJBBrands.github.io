@@ -1,6 +1,10 @@
 import { describe, expect, it } from "vitest";
 import { faqItems } from "../../src/data/awyContent";
 import {
+  getSlideHeroImage,
+  getSlideStoryImage,
+} from "../../src/data/awyProductMedia";
+import {
   getAppProjects,
   getListedProjects,
   getProjectById,
@@ -77,16 +81,24 @@ describe("public portfolio", () => {
     const lounges = slides.find((slide) => slide.id === "community");
     const strings = slides.find((slide) => slide.id === "private-connection");
 
-    expect(home?.image?.src).toMatch(/current\/home\.png$/);
-    expect(home?.image?.presentation).toBe("device");
-    expect(studio?.image?.src).toMatch(/current\/studio\.png$/);
-    expect(studio?.image?.presentation).toBe("device");
-    expect(lounges?.image?.src).toMatch(/awy-lounge-car-culture-dark\.jpg$/);
-    expect(lounges?.image?.presentation).toBeUndefined();
-    expect(strings?.image?.src).toMatch(
+    expect(getSlideHeroImage(home).src).toMatch(/current\/home\.png$/);
+    expect(getSlideHeroImage(home).presentation).toBe("device");
+    expect(getSlideStoryImage(studio).src).toMatch(/current\/studio\.png$/);
+    expect(getSlideStoryImage(studio).presentation).toBe("device");
+    expect(getSlideHeroImage(lounges).src).toMatch(
+      /awy-lounge-car-culture-dark\.jpg$/,
+    );
+    expect(getSlideStoryImage(lounges).src).toMatch(
+      /awy-lounge-car-culture-dark\.jpg$/,
+    );
+    expect(getSlideHeroImage(lounges).presentation).toBeUndefined();
+    expect(getSlideHeroImage(strings).src).toMatch(
       /awy-string-privacy-controls-dark\.jpg$/,
     );
-    expect(strings?.image?.presentation).toBeUndefined();
+    expect(getSlideStoryImage(strings).src).toBe(
+      getSlideHeroImage(strings).src,
+    );
+    expect(getSlideHeroImage(strings).presentation).toBeUndefined();
   });
 
   it("keeps parked FAQ copy aligned with current product language", () => {

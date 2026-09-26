@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ProductMedia from "../ProductMedia";
+import { getSlideHeroImage } from "../../data/awyProductMedia";
 import { getProjectById } from "../../data/projects";
 import { handleSectionClick } from "../../utils/scrollToSection";
 
@@ -51,7 +52,7 @@ export default function LjbHero({ theme }) {
       <div className="visual-hero__product">
         <div id="hero-screen" className="visual-hero__phone" aria-live="polite">
           <ProductMedia
-            screenshot={choices[selected].image}
+            screenshot={getSlideHeroImage(choices[selected])}
             size="hero"
             priority
           />

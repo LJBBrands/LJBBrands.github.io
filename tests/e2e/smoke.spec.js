@@ -336,6 +336,14 @@ test("hero screen choices work with the keyboard and preserve waitlist navigatio
 }) => {
   await page.goto("/");
   const choices = page.getByRole("group", { name: "Explore Awy screens" });
+  const lounges = choices.getByRole("button", { name: "Find your people" });
+  await expect(lounges).toHaveAttribute("aria-pressed", "true");
+  await expect(page.locator("#hero-screen img")).toHaveAttribute(
+    "alt",
+    "Awy Car Culture Lounge in a dark theme",
+  );
+  await expect(page.locator("#hero-screen .device-frame")).toHaveCount(1);
+
   const conversations = choices.getByRole("button", {
     name: "Your conversations",
   });
