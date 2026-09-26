@@ -3,6 +3,7 @@ import {
   getBodyScrollLockCount,
   lockBodyScroll,
   resetBodyScrollLockForTests,
+  skipNextBodyScrollRestore,
   unlockBodyScroll,
 } from "../../src/utils/bodyScrollLock";
 
@@ -60,5 +61,23 @@ describe("bodyScrollLock", () => {
     unlockBodyScroll();
     unlockBodyScroll();
     expect(getBodyScrollLockCount()).toBe(0);
+  });
+
+  it("can skip restoring scroll when a menu link navigates away", () => {
+    mockScrollPosition(240);
+    lockBodyScroll();
+    window.scrollY = 0;
+    skipNextBodyScrollRestore();
+    unlockBodyScroll();
+
+    expect(document.body.dataset.bodyScrollLocked).toBeUndefined();
+    expect(document.body.style.position).toBe("");
+    expect(window.scrollY).toBe(0);
+
+    mockScrollPosition(180);
+    lockBodyScroll();
+    window.scrollY = 0;
+    unlockBodyScroll();
+    expect(window.scrollY).toBe(180);
   });
 });

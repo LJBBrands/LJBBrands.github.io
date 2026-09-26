@@ -208,6 +208,18 @@ test.describe("consumer navigation", () => {
     await expect(
       page.getByRole("heading", { name: "A Little More About Awy." }),
     ).toBeInViewport();
+
+    await page.getByRole("button", { name: "Open menu" }).click();
+    await page
+      .getByRole("navigation", { name: "Mobile" })
+      .getByRole("link", { name: "Join the Waitlist" })
+      .click();
+    await expect(
+      page.getByRole("heading", { name: "Be Part Of What’s Next." }),
+    ).toBeInViewport();
+    await expect(
+      page.getByRole("form", { name: "Waitlist inquiry" }),
+    ).toBeVisible();
   });
 });
 
