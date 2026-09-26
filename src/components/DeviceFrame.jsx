@@ -8,6 +8,7 @@ export default function DeviceFrame({
   screenshot,
   size = "gallery",
   caption = false,
+  priority = false,
   decorative = false,
   className = "",
 }) {
@@ -35,7 +36,8 @@ export default function DeviceFrame({
             alt={alt}
             width={706}
             height={1536}
-            loading="lazy"
+            loading={priority ? "eager" : "lazy"}
+            fetchPriority={priority ? "high" : undefined}
             draggable={false}
             onError={markFailed}
           />

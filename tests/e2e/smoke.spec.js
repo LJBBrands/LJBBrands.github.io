@@ -116,7 +116,7 @@ test.describe("mobile menu", () => {
   test("restores page scroll after the menu closes", async ({ page }) => {
     await page.goto("/");
     await page
-      .getByRole("heading", { name: "Connection, On Your Terms." })
+      .getByRole("heading", { name: "Here’s what connection looks like." })
       .scrollIntoViewIfNeeded();
     const before = await page.evaluate(() => window.scrollY);
     expect(before).toBeGreaterThan(50);
@@ -306,4 +306,27 @@ test.describe("legal page metadata", () => {
       "https://ljbbrands.github.io/terms/",
     );
   });
+});
+
+test("hero screen choices work with the keyboard and preserve waitlist navigation", async ({
+  page,
+}) => {
+  await page.goto("/");
+  const choices = page.getByRole("group", { name: "Explore Awy screens" });
+  const conversations = choices.getByRole("button", {
+    name: "Your conversations",
+  });
+  await conversations.focus();
+  await page.keyboard.press("Enter");
+  await expect(conversations).toHaveAttribute("aria-pressed", "true");
+  await expect(page.locator("#hero-screen img")).toHaveAttribute(
+    "alt",
+    "Awy String privacy controls in a dark theme",
+  );
+  await page
+    .getByRole("link", { name: "Join the Waitlist", exact: true })
+    .click();
+  await expect(
+    page.getByRole("form", { name: "Waitlist inquiry" }),
+  ).toBeVisible();
 });
