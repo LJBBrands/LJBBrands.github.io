@@ -28,7 +28,7 @@ const chapters = [
     title: "Your starting point in Awy.",
     description:
       "Home brings your profile, notification shortcuts, and Top Lounges together so you can get to what you need next.",
-    detail: "Quick access into conversations, Lounges, and Profile Studio.",
+    detail: "Quick access into conversations and Lounges.",
     link: "Stay connected",
   },
   {
@@ -36,7 +36,7 @@ const chapters = [
     label: "YOUR SPACE",
     title: "Make yourself at home.",
     description:
-      "Give your profile an atmosphere that feels like you. Explore Awy’s personalization through Profile Studio.",
+      "Choose a theme mode and background that feel like you. Explore Awy’s Appearance settings.",
     detail: "A personal space with room for your identity.",
     link: "Make Awy yours",
   },

@@ -67,38 +67,44 @@ describe("public portfolio", () => {
       "Lounges",
       "Live Presence",
       "Profiles",
-      "Profile Studio",
+      "Appearance",
     ]);
     expect(highlights).not.toEqual(
       expect.arrayContaining(["Shared Areas", "Verified Signals", "Pulse"]),
     );
   });
 
-  it("uses pre-framed current Home and Studio captures", () => {
+  it("uses the approved current captures and labeled demos", () => {
     const slides = getProjectById("awy")?.showcase?.slides ?? [];
     const home = slides.find((slide) => slide.id === "home");
     const studio = slides.find((slide) => slide.id === "personalization");
     const lounges = slides.find((slide) => slide.id === "community");
     const strings = slides.find((slide) => slide.id === "private-connection");
 
-    expect(getSlideHeroImage(home).src).toMatch(/current\/home\.png$/);
-    expect(getSlideHeroImage(home).presentation).toBe("device");
-    expect(getSlideStoryImage(studio).src).toMatch(/current\/studio\.png$/);
-    expect(getSlideStoryImage(studio).presentation).toBe("device");
+    expect(getSlideHeroImage(home).src).toMatch(
+      /current\/home-2026-10-01\.png$/,
+    );
+    expect(getSlideHeroImage(home).width).toBe(943);
+    expect(getSlideStoryImage(studio).src).toMatch(
+      /current\/appearance\.webp$/,
+    );
+    expect(getSlideStoryImage(studio).width).toBe(943);
     expect(getSlideHeroImage(lounges).src).toMatch(
-      /awy-lounge-car-culture-dark\.jpg$/,
+      /current\/lounges-discovery\.png$/,
     );
     expect(getSlideStoryImage(lounges).src).toMatch(
-      /awy-lounge-car-culture-dark\.jpg$/,
+      /current\/lounge-demo\.png$/,
     );
     expect(getSlideHeroImage(lounges).presentation).toBeUndefined();
     expect(getSlideHeroImage(strings).src).toMatch(
-      /awy-string-privacy-controls-dark\.jpg$/,
+      /current\/strings-demo\.png$/,
     );
     expect(getSlideStoryImage(strings).src).toBe(
       getSlideHeroImage(strings).src,
     );
     expect(getSlideHeroImage(strings).presentation).toBeUndefined();
+    expect(getSlideHeroImage(strings).demo).toBe(true);
+    expect(getSlideStoryImage(lounges).demo).toBe(true);
   });
 
   it("keeps parked FAQ copy aligned with current product language", () => {

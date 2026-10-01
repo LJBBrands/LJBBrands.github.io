@@ -167,16 +167,22 @@ test.describe("product presentation", () => {
     ).toHaveCount(0);
     await expect(
       page.getByRole("img", {
-        name: "Awy Home on iPhone, showing profile shortcuts, notification shortcuts, and Top Lounges",
+        name: "Awy Home with profile shortcuts, notifications, and top Lounges in a lime theme",
       }),
     ).toBeVisible();
     await expect(
       page.getByRole("img", {
-        name: "Awy Profile Studio on iPhone, with accent colors and profile presets",
+        name: "Awy Appearance settings showing theme modes and background choices in a dark cosmic theme",
       }),
     ).toBeVisible();
-    await expect(page.locator(".product-story .device-capture")).toHaveCount(2);
-    await expect(page.locator(".product-story .device-frame")).toHaveCount(2);
+    await expect(page.locator(".product-story .device-capture")).toHaveCount(0);
+    await expect(page.locator(".product-story .device-frame")).toHaveCount(4);
+    await expect(
+      page.getByText("Lounge — Demo conversation", { exact: true }),
+    ).toBeVisible();
+    await expect(
+      page.getByText("Strings — Demo conversation", { exact: true }),
+    ).toBeVisible();
 
     await expect(
       page.getByRole("button", { name: "View Awy project" }),
@@ -340,7 +346,7 @@ test("hero screen choices work with the keyboard and preserve waitlist navigatio
   await expect(lounges).toHaveAttribute("aria-pressed", "true");
   await expect(page.locator("#hero-screen img")).toHaveAttribute(
     "alt",
-    "Awy Car Culture Lounge in a dark theme",
+    "Awy Lounges discovery with categories and a featured Support Lounge in a blue and violet theme",
   );
   await expect(page.locator("#hero-screen .device-frame")).toHaveCount(1);
 
@@ -351,24 +357,27 @@ test("hero screen choices work with the keyboard and preserve waitlist navigatio
   await page.keyboard.press("Enter");
   await expect(conversations).toHaveAttribute("aria-pressed", "true");
   await expect(page.locator("#hero-screen img")).toHaveAttribute(
-    "alt",
-    "Awy String privacy controls in a dark theme",
+    "src",
+    /strings-demo\.png$/,
+  );
+  await expect(page.locator("#hero-screen figcaption")).toHaveText(
+    "Strings — Demo conversation",
   );
   await expect(page.locator("#hero-screen .device-frame")).toHaveCount(1);
 
-  const home = choices.getByRole("button", { name: "Home" });
-  await home.click();
-  await expect(home).toHaveAttribute("aria-pressed", "true");
+  const appearance = choices.getByRole("button", { name: "Make it yours" });
+  await appearance.click();
+  await expect(appearance).toHaveAttribute("aria-pressed", "true");
   await expect(page.locator("#hero-screen img")).toHaveAttribute(
     "alt",
-    "Awy Home on iPhone, showing profile shortcuts, notification shortcuts, and Top Lounges",
+    "Awy Appearance settings showing theme modes and background choices in a dark cosmic theme",
   );
   await expect(page.locator("#hero-screen img")).toHaveAttribute(
     "src",
-    /current\/home\.png$/,
+    /current\/appearance\.webp$/,
   );
-  await expect(page.locator("#hero-screen .device-capture")).toHaveCount(1);
-  await expect(page.locator("#hero-screen .device-frame")).toHaveCount(0);
+  await expect(page.locator("#hero-screen .device-capture")).toHaveCount(0);
+  await expect(page.locator("#hero-screen .device-frame")).toHaveCount(1);
   await page
     .locator(".visual-hero")
     .getByRole("link", { name: "Join the Waitlist" })

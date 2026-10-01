@@ -5,8 +5,8 @@
  * (pre-framed). ProductMedia must NOT wrap those assets in DeviceFrame.
  * `presentation: "preframed"` is an accepted alias for the same path.
  *
- * Reserved current-capture paths are documented here for drop-in. Do not
- * point rendered `src` at them until the derived files exist.
+ * Current approved captures are screen-only. Legacy pre-framed media
+ * remains supported, while hero and story may use separate assets.
  */
 
 export const AWY_PREFRAMED_PRESENTATIONS = Object.freeze([
@@ -15,33 +15,33 @@ export const AWY_PREFRAMED_PRESENTATIONS = Object.freeze([
 ]);
 
 export const AWY_CURRENT_ASSET_CONTRACT = Object.freeze({
-  width: 704,
-  height: 1554,
-  presentation: "device",
+  width: 943,
+  height: 2048,
+  presentation: "screen",
   directory: "current/",
 });
 
 export const AWY_RESERVED_CURRENT_ASSETS = Object.freeze({
   loungesDiscovery: Object.freeze({
     file: "current/lounges-discovery.png",
-    label: "Lounges",
-    alt: "Awy Lounges discovery showing live and featured communities.",
+    label: "Lounges — Discovery",
+    alt: "Awy Lounges discovery with categories and a featured Support Lounge in a blue and violet theme",
     slideId: "community",
     field: "heroImage",
     surfaces: Object.freeze(["hero"]),
   }),
-  loungeOrlandoDemo: Object.freeze({
-    file: "current/lounge-orlando-demo.png",
-    label: "Orlando Attractions",
-    alt: "Illustrative Awy Lounge conversation in Orlando Attractions.",
+  loungeDemo: Object.freeze({
+    file: "current/lounge-demo.png",
+    label: "Lounge — Demo conversation",
+    alt: "Awy Local Hangout Lounge with a fictional Sunday-walk conversation; demo content",
     slideId: "community",
     field: "storyImage",
     surfaces: Object.freeze(["story"]),
   }),
   stringsDemo: Object.freeze({
     file: "current/strings-demo.png",
-    label: "Strings",
-    alt: "Illustrative private conversation in Awy Strings.",
+    label: "Strings — Demo conversation",
+    alt: "Awy Strings with a fictional Sunday-walk conversation between Jamie and Alex; demo content",
     slideId: "private-connection",
     field: "heroImage",
     sharedField: "storyImage",
@@ -50,46 +50,40 @@ export const AWY_RESERVED_CURRENT_ASSETS = Object.freeze({
 });
 
 export const AWY_STRINGS_DEMO_COPY = Object.freeze({
-  peerName: "Riley",
-  peerHandle: "@demo.riley",
+  peerName: "Jamie",
+  peerHandle: "@jamie_demo",
   messages: Object.freeze([
     Object.freeze({
-      speaker: "Riley",
-      text: "You still thinking about Saturday?",
+      speaker: "Alex",
+      text: "Hey! Up for a quiet walk on Sunday?",
     }),
     Object.freeze({
-      speaker: "You",
-      text: "Yeah, I’m in. What time are you heading over?",
+      speaker: "Jamie",
+      text: "Sounds good. Shall we meet at the park?",
     }),
-    Object.freeze({ speaker: "Riley", text: "Probably around 6." }),
     Object.freeze({
-      speaker: "You",
-      text: "Perfect. Send me a message when you’re leaving.",
+      speaker: "Alex",
+      text: "Perfect. Around 5 PM works for me!",
     }),
-    Object.freeze({ speaker: "Riley", text: "Will do." }),
+    Object.freeze({ speaker: "Jamie", text: "Lovely. See you there!" }),
   ]),
 });
 
 export const AWY_LOUNGE_DEMO_COPY = Object.freeze({
-  title: "Orlando Attractions",
+  title: "Local Hangout",
   messages: Object.freeze([
     Object.freeze({
-      speaker: "Maya",
-      text: "Anyone going to the parks this weekend?",
-    }),
-    Object.freeze({
-      speaker: "Jordan",
-      text: "Thinking about Saturday morning.",
+      speaker: "Jamie",
+      text: "Anyone up for a quiet walk this weekend?",
     }),
     Object.freeze({
       speaker: "Alex",
-      text: "Same — probably starting at Islands.",
+      text: "Sunday sounds lovely. Maybe the park?",
     }),
     Object.freeze({
-      speaker: "Maya",
-      text: "Nice. I’m trying to get there before it gets busy.",
+      speaker: "Sam",
+      text: "Count me in. No rush, just fresh air.",
     }),
-    Object.freeze({ speaker: "Jordan", text: "Early crew it is." }),
   ]),
 });
 

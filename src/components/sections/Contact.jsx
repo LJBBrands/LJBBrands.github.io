@@ -71,7 +71,7 @@ export default function Contact({ theme }) {
               style={{
                 borderColor: theme.accentBorder,
                 backgroundColor: theme.accent,
-                color: "#061006",
+                color: "#0A1024",
               }}
             >
               <span>{primaryContact.cta}</span>

@@ -9,7 +9,7 @@ const questions = [
   {
     question: "What can I explore on this page?",
     answer:
-      "The product story walks through Lounges, Strings, live presence, and Profile Studio. It shows the product experience; it does not create an Awy account.",
+      "The product story walks through Lounges, Strings, Home, and Appearance settings. The two conversation images use labeled fictional demo content. Exploring this page does not create an Awy account.",
   },
   {
     question: "Who is Awy for?",

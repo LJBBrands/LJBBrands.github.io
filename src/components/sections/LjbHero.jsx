@@ -6,11 +6,11 @@ import { handleSectionClick } from "../../utils/scrollToSection";
 
 export default function LjbHero({ theme }) {
   const slides = getProjectById("awy").showcase.slides;
-  const choices = ["community", "private-connection", "home"].map((id) =>
-    slides.find((slide) => slide.id === id),
+  const choices = ["community", "private-connection", "personalization"].map(
+    (id) => slides.find((slide) => slide.id === id),
   );
   const [selected, setSelected] = useState(0);
-  const labels = ["Find your people", "Your conversations", "Home"];
+  const labels = ["Find your people", "Your conversations", "Make it yours"];
   return (
     <section id="top" className="visual-hero mx-auto max-w-6xl scroll-mt-24">
       <div className="visual-hero__intro">
@@ -33,7 +33,6 @@ export default function LjbHero({ theme }) {
             href="#get-involved"
             onClick={handleSectionClick("get-involved")}
             className="story-cta"
-            style={{ background: theme.accent }}
           >
             Join the Waitlist <span aria-hidden="true">↗</span>
           </a>

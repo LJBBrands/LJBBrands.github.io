@@ -28,12 +28,12 @@ describe("Awy product media contract", () => {
       { id: "community" },
       {
         heroImage: { src: "/projects/awy/current/lounges-discovery.png" },
-        storyImage: { src: "/projects/awy/current/lounge-orlando-demo.png" },
+        storyImage: { src: "/projects/awy/current/lounge-demo.png" },
       },
     );
 
     expect(getSlideHeroImage(split).src).toMatch(/lounges-discovery\.png$/);
-    expect(getSlideStoryImage(split).src).toMatch(/lounge-orlando-demo\.png$/);
+    expect(getSlideStoryImage(split).src).toMatch(/lounge-demo\.png$/);
     expect(getSlideHeroImage(split).src).not.toBe(
       getSlideStoryImage(split).src,
     );
@@ -53,69 +53,69 @@ describe("Awy product media contract", () => {
     expect(getSlideHeroImage(strings).src).toMatch(/strings-demo\.png$/);
   });
 
-  it("keeps current Home and Studio wired to the existing pre-framed captures", () => {
+  it("uses current Home and Appearance screen captures", () => {
     const home = slideById("home");
     const studio = slideById("personalization");
 
-    expect(getSlideHeroImage(home).src).toMatch(/current\/home\.png$/);
-    expect(getSlideStoryImage(home).src).toMatch(/current\/home\.png$/);
-    expect(getSlideHeroImage(home).presentation).toBe("device");
-    expect(getSlideStoryImage(studio).src).toMatch(/current\/studio\.png$/);
-    expect(getSlideHeroImage(studio).src).toMatch(/current\/studio\.png$/);
-    expect(getSlideStoryImage(studio).presentation).toBe("device");
+    expect(getSlideHeroImage(home).src).toMatch(
+      /current\/home-2026-10-01\.png$/,
+    );
+    expect(getSlideStoryImage(home).src).toMatch(
+      /current\/home-2026-10-01\.png$/,
+    );
+    expect(getSlideHeroImage(home).width).toBe(943);
+    expect(getSlideStoryImage(studio).src).toMatch(
+      /current\/appearance\.webp$/,
+    );
+    expect(getSlideHeroImage(studio).src).toMatch(/current\/appearance\.webp$/);
+    expect(getSlideStoryImage(studio).width).toBe(943);
   });
 
-  it("keeps interim Lounge and Strings srcs on existing files until drop-in", () => {
+  it("uses separate current Lounge surfaces and labeled Strings demos", () => {
     const lounges = slideById("community");
     const strings = slideById("private-connection");
-    const reserved = reservedCurrentAssetFiles();
-
     expect(getSlideHeroImage(lounges).src).toMatch(
-      /awy-lounge-car-culture-dark\.jpg$/,
+      /current\/lounges-discovery\.png$/,
     );
     expect(getSlideStoryImage(lounges).src).toMatch(
-      /awy-lounge-car-culture-dark\.jpg$/,
+      /current\/lounge-demo\.png$/,
     );
     expect(getSlideHeroImage(strings).src).toMatch(
-      /awy-string-privacy-controls-dark\.jpg$/,
+      /current\/strings-demo\.png$/,
     );
-    expect(getSlideStoryImage(strings).src).toBe(
-      getSlideHeroImage(strings).src,
-    );
-
-    for (const file of reserved) {
-      expect(getSlideHeroImage(lounges).src).not.toContain(file);
-      expect(getSlideStoryImage(lounges).src).not.toContain(file);
-      expect(getSlideHeroImage(strings).src).not.toContain(file);
-      expect(existsSync(join(publicAwy, file))).toBe(false);
+    expect(getSlideStoryImage(strings)).toBe(getSlideHeroImage(strings));
+    expect(getSlideStoryImage(lounges).demo).toBe(true);
+    expect(getSlideHeroImage(strings).demo).toBe(true);
+    for (const file of reservedCurrentAssetFiles()) {
+      expect(existsSync(join(publicAwy, file))).toBe(true);
     }
   });
 
-  it("reserves the approved alt text for the future current captures", () => {
+  it("describes the actual current captures and approved fictional content", () => {
     expect(AWY_RESERVED_CURRENT_ASSETS.loungesDiscovery.alt).toBe(
-      "Awy Lounges discovery showing live and featured communities.",
+      "Awy Lounges discovery with categories and a featured Support Lounge in a blue and violet theme",
     );
-    expect(AWY_RESERVED_CURRENT_ASSETS.loungeOrlandoDemo.alt).toBe(
-      "Illustrative Awy Lounge conversation in Orlando Attractions.",
+    expect(AWY_RESERVED_CURRENT_ASSETS.loungeDemo.alt).toBe(
+      "Awy Local Hangout Lounge with a fictional Sunday-walk conversation; demo content",
     );
     expect(AWY_RESERVED_CURRENT_ASSETS.stringsDemo.alt).toBe(
-      "Illustrative private conversation in Awy Strings.",
+      "Awy Strings with a fictional Sunday-walk conversation between Jamie and Alex; demo content",
     );
-    expect(AWY_RESERVED_CURRENT_ASSETS.loungeOrlandoDemo.alt).not.toMatch(
+    expect(AWY_RESERVED_CURRENT_ASSETS.loungeDemo.alt).not.toMatch(
       /real users|active users|live conversation/i,
     );
     expect(AWY_RESERVED_CURRENT_ASSETS.stringsDemo.alt).not.toMatch(
       /real users|active users|live conversation/i,
     );
-    expect(AWY_STRINGS_DEMO_COPY.peerHandle).toBe("@demo.riley");
-    expect(AWY_LOUNGE_DEMO_COPY.title).toBe("Orlando Attractions");
+    expect(AWY_STRINGS_DEMO_COPY.peerHandle).toBe("@jamie_demo");
+    expect(AWY_LOUNGE_DEMO_COPY.title).toBe("Local Hangout");
   });
 
-  it("documents the Home/Studio pre-framed pixel contract", () => {
+  it("documents current dimensions and preserves legacy framing support", () => {
     expect(AWY_CURRENT_ASSET_CONTRACT).toMatchObject({
-      width: 704,
-      height: 1554,
-      presentation: "device",
+      width: 943,
+      height: 2048,
+      presentation: "screen",
     });
     expect(isPreframedPresentation("device")).toBe(true);
     expect(isPreframedPresentation("preframed")).toBe(true);

@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 :root {
-  --ljb-bg: #000000;
-  --ljb-accent: #b8ff5a;
-  --ljb-accent-soft: rgba(184, 255, 90, 0.14);
-  --ljb-accent-border: rgba(184, 255, 90, 0.42);
+  --ljb-bg: #070a18;
+  --ljb-accent: #b8a7ff;
+  --ljb-accent-soft: rgba(184, 167, 255, 0.14);
+  --ljb-accent-border: rgba(184, 167, 255, 0.42);
   --ljb-text: #ffffff;
   --ljb-muted: rgba(255, 255, 255, 0.64);
   --safe-top: env(safe-area-inset-top, 0px);
@@ -80,7 +80,7 @@ a {
 }
 
 ::selection {
-  background: rgba(184, 255, 90, 0.28);
+  background: rgba(184, 167, 255, 0.28);
   color: #000;
 }
 
@@ -163,7 +163,7 @@ summary::-webkit-details-marker {
   flex-shrink: 0;
   border-radius: 2rem;
   border: 1px solid rgba(255, 255, 255, 0.16);
-  background: rgba(8, 10, 10, 0.92);
+  background: rgba(10, 13, 28, 0.92);
   box-shadow:
     0 18px 40px rgba(0, 0, 0, 0.42),
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
@@ -291,7 +291,7 @@ summary::-webkit-details-marker {
   background:
     radial-gradient(
       circle at 50% 55%,
-      rgba(184, 255, 90, 0.12),
+      rgba(184, 167, 255, 0.12),
       transparent 46%
     ),
     radial-gradient(
@@ -333,7 +333,7 @@ summary::-webkit-details-marker {
   inset: 18% 22%;
   background: radial-gradient(
     ellipse at center,
-    rgba(184, 255, 90, 0.16),
+    rgba(184, 167, 255, 0.16),
     transparent 70%
   );
 }
@@ -607,7 +607,7 @@ summary::-webkit-details-marker {
   width: 4px;
   height: 4px;
   border-radius: 999px;
-  background: rgba(184, 255, 90, 0.7);
+  background: rgba(184, 167, 255, 0.7);
 }
 
 .awy-showcase__progress {
@@ -738,7 +738,7 @@ summary::-webkit-details-marker {
 
 .awy-showcase__thumb--active {
   opacity: 1;
-  border-color: rgba(184, 255, 90, 0.55) !important;
+  border-color: rgba(184, 167, 255, 0.55) !important;
 }
 
 @media (min-width: 960px) {
@@ -834,7 +834,11 @@ summary::-webkit-details-marker {
   padding: clamp(1.75rem, 4vw, 3.25rem) clamp(1.35rem, 3.5vw, 3rem);
   background:
     linear-gradient(160deg, rgba(255, 255, 255, 0.035) 0%, transparent 42%),
-    linear-gradient(180deg, rgba(12, 14, 12, 0.92) 0%, rgba(5, 6, 5, 0.96) 100%);
+    linear-gradient(
+      180deg,
+      rgba(14, 18, 36, 0.92) 0%,
+      rgba(7, 10, 24, 0.96) 100%
+    );
 }
 
 .contact-editorial__glow {
@@ -844,7 +848,7 @@ summary::-webkit-details-marker {
   height: 70%;
   background: radial-gradient(
     ellipse at center,
-    rgba(184, 255, 90, 0.1),
+    rgba(184, 167, 255, 0.1),
     transparent 68%
   );
   filter: blur(2px);
@@ -1039,7 +1043,8 @@ summary::-webkit-details-marker {
   border-radius: 999px;
 }
 .story-cta {
-  color: #111;
+  background: linear-gradient(120deg, var(--ljb-accent), #80caff);
+  color: #0a1024;
 }
 .story-link {
   border: 1px solid rgb(255 255 255 / 0.25);
@@ -1054,7 +1059,7 @@ summary::-webkit-details-marker {
   padding: 2rem 0 0;
   background: radial-gradient(
     ellipse at 50% 45%,
-    rgb(184 255 90 / 0.13),
+    rgb(128 202 255 / 0.13),
     transparent 65%
   );
 }
@@ -1078,9 +1083,9 @@ summary::-webkit-details-marker {
   color: rgb(255 255 255 / 0.75);
 }
 .visual-hero__choices button[aria-pressed="true"] {
-  background: #b8ff5a;
+  background: #b8a7ff;
   color: #111;
-  border-color: #b8ff5a;
+  border-color: #b8a7ff;
 }
 .story-chapter {
   display: grid;
@@ -1118,7 +1123,7 @@ summary::-webkit-details-marker {
   border-radius: 2rem;
   background: radial-gradient(
     ellipse at 50% 45%,
-    rgb(184 255 90 / 0.12),
+    rgb(128 202 255 / 0.12),
     rgb(255 255 255 / 0.02) 70%
   );
 }
@@ -1175,4 +1180,24 @@ summary::-webkit-details-marker {
   .story-chapter__visual .device-capture--hero {
     width: min(70vw, 300px);
   }
+}
+
+.story-link:hover,
+.awy-showcase__nav:hover:not(:disabled) {
+  border-color: var(--ljb-accent-border);
+  background-color: var(--ljb-accent-soft);
+}
+
+.visual-hero__choices button:hover:not([aria-pressed="true"]) {
+  border-color: var(--ljb-accent-border);
+  background: var(--ljb-accent-soft);
+}
+
+.awy-showcase__thumb-placeholder {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  padding: 0.25rem;
+  color: #e5deff;
+  font-size: 0.65rem;
 }
