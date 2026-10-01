@@ -23,7 +23,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="site-shell min-h-screen bg-black text-white">
+    <div className="site-shell min-h-screen text-white">
       <div id="site-content">
         <AtmosphereBackground theme={ljbTheme} />
 

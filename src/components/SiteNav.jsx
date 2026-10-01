@@ -1,12 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import { useBodyScrollLock } from "../hooks/useBodyScrollLock";
 import { navItems } from "../data/projects";
+import { skipNextBodyScrollRestore } from "../utils/bodyScrollLock";
 import { setInert } from "../utils/setInert";
-import { handleSectionClick } from "../utils/scrollToSection";
+import { scrollToSection } from "../utils/scrollToSection";
 
 export default function SiteNav({ theme }) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [pendingSection, setPendingSection] = useState(null);
   const menuButtonRef = useRef(null);
   const mobileNavRef = useRef(null);
   const restoreFocusRef = useRef(true);
@@ -56,9 +58,21 @@ export default function SiteNav({ theme }) {
     };
   }, [open]);
 
+  useEffect(() => {
+    if (!pendingSection || open) return undefined;
+    scrollToSection(pendingSection);
+    setPendingSection(null);
+    return undefined;
+  }, [pendingSection, open]);
+
   const onNavClick = (href) => (event) => {
     restoreFocusRef.current = false;
-    handleSectionClick(href.replace("#", ""))(event);
+    event.preventDefault();
+    const sectionId = href.replace("#", "");
+    if (open) {
+      skipNextBodyScrollRestore();
+    }
+    setPendingSection(sectionId);
     setOpen(false);
   };
 
@@ -100,7 +114,7 @@ export default function SiteNav({ theme }) {
               key={item.href}
               href={item.href}
               onClick={onNavClick(item.href)}
-              className="inline-flex min-h-[44px] items-center rounded-full px-3 py-2 text-sm text-white/68 transition hover:bg-white/5 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgba(184,255,90,0.55)]"
+              className="inline-flex min-h-[44px] items-center rounded-full px-3 py-2 text-sm text-white/68 transition hover:bg-white/5 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgba(184,167,255,0.85)]"
             >
               {item.label}
             </a>

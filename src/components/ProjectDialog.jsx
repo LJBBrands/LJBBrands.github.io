@@ -123,7 +123,7 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
             transition={{ duration: reduceMotion ? 0 : 0.22 }}
             className="project-dialog relative z-10 flex w-full max-w-6xl flex-col overflow-hidden rounded-t-[1.75rem] border border-b-0 sm:rounded-[1.75rem] sm:border-b"
             style={{
-              backgroundColor: "rgba(7,9,7,0.97)",
+              backgroundColor: "rgba(10,13,28,0.97)",
               borderColor: theme.cardBorder,
               boxShadow: `inset 0 1px 0 ${accent}22`,
             }}
@@ -132,7 +132,7 @@ export default function ProjectDialog({ project, theme, open, onClose }) {
               className="project-dialog__header sticky top-0 z-20 flex items-center justify-between gap-3 border-b px-5 py-3.5 backdrop-blur-xl sm:px-8"
               style={{
                 borderColor: theme.cardBorder,
-                backgroundColor: "rgba(7,9,7,0.92)",
+                backgroundColor: "rgba(10,13,28,0.92)",
               }}
             >
               <div className="min-w-0">

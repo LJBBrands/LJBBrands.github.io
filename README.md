@@ -1,8 +1,8 @@
 # LJB Media Group
 
-Public website for **LJB Media Group**.
+Public **Awy** consumer product website, attributed to **LJB Media Group**.
 
-**Awy is the sole active product focus.** The retired standalone apps are excluded from the public directory and bundled assets. Do not announce planned bot features until they are approved for publication.
+**Awy is the sole public product on this site.** Retired standalone apps are excluded from the homepage and bundled assets. Do not announce planned bot features until they are approved for publication. ProductStory is the current primary product presentation. The Formspree waitlist is live.
 
 ## Toolchain
 

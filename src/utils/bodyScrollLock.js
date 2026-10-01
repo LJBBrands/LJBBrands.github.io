@@ -2,6 +2,7 @@ let lockCount = 0;
 let savedScrollY = 0;
 let savedStyles = null;
 let touchListener = null;
+let restoreScrollOnUnlock = true;
 
 function allowTouchScroll(event) {
   const scroller = event.target?.closest?.("[data-scroll-lock-allow]");
@@ -127,9 +128,17 @@ export function unlockBodyScroll() {
   }
 
   const y = savedScrollY;
+  const shouldRestore = restoreScrollOnUnlock;
+  restoreScrollOnUnlock = true;
   savedStyles = null;
   savedScrollY = 0;
-  writeScrollY(y);
+  if (shouldRestore) {
+    writeScrollY(y);
+  }
+}
+
+export function skipNextBodyScrollRestore() {
+  restoreScrollOnUnlock = false;
 }
 
 export function getBodyScrollLockCount() {
@@ -158,4 +167,5 @@ export function resetBodyScrollLockForTests() {
   savedScrollY = 0;
   savedStyles = null;
   touchListener = null;
+  restoreScrollOnUnlock = true;
 }

@@ -8,6 +8,7 @@ export default function DeviceFrame({
   screenshot,
   size = "gallery",
   caption = false,
+  priority = false,
   decorative = false,
   className = "",
 }) {
@@ -33,9 +34,10 @@ export default function DeviceFrame({
           <img
             src={src}
             alt={alt}
-            width={706}
-            height={1536}
-            loading="lazy"
+            width={screenshot?.width ?? 706}
+            height={screenshot?.height ?? 1536}
+            loading={priority ? "eager" : "lazy"}
+            fetchPriority={priority ? "high" : undefined}
             draggable={false}
             onError={markFailed}
           />
@@ -46,11 +48,11 @@ export default function DeviceFrame({
             aria-label={decorative ? undefined : alt || "Preview unavailable"}
             aria-hidden={decorative || undefined}
           >
-            <span>Preview unavailable</span>
+            <span>{screenshot?.placeholder || "Preview unavailable"}</span>
           </div>
         )}
       </div>
-      {caption && screenshot?.label ? (
+      {(caption || screenshot?.demo) && screenshot?.label ? (
         <figcaption className="device-caption">{screenshot.label}</figcaption>
       ) : null}
     </figure>

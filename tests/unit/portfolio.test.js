@@ -1,8 +1,14 @@
 import { describe, expect, it } from "vitest";
+import { faqItems } from "../../src/data/awyContent";
+import {
+  getSlideHeroImage,
+  getSlideStoryImage,
+} from "../../src/data/awyProductMedia";
 import {
   getAppProjects,
   getListedProjects,
   getProjectById,
+  navItems,
 } from "../../src/data/projects";
 
 describe("public portfolio", () => {
@@ -41,5 +47,71 @@ describe("public portfolio", () => {
 
   it("has no other projects in the public directory", () => {
     expect(getListedProjects().map((project) => project.id)).toEqual(["awy"]);
+  });
+
+  it("uses consumer-facing Awy navigation", () => {
+    expect(navItems).toEqual([
+      { label: "Explore Awy", href: "#projects" },
+      { label: "Questions", href: "#questions" },
+      { label: "Join the Waitlist", href: "#get-involved" },
+    ]);
+  });
+
+  it("does not market retired product pillars", () => {
+    const awy = getProjectById("awy");
+    const highlights = awy?.highlights ?? [];
+
+    expect(highlights).toEqual([
+      "Home",
+      "Strings",
+      "Lounges",
+      "Live Presence",
+      "Profiles",
+      "Appearance",
+    ]);
+    expect(highlights).not.toEqual(
+      expect.arrayContaining(["Shared Areas", "Verified Signals", "Pulse"]),
+    );
+  });
+
+  it("uses the approved current captures and labeled demos", () => {
+    const slides = getProjectById("awy")?.showcase?.slides ?? [];
+    const home = slides.find((slide) => slide.id === "home");
+    const studio = slides.find((slide) => slide.id === "personalization");
+    const lounges = slides.find((slide) => slide.id === "community");
+    const strings = slides.find((slide) => slide.id === "private-connection");
+
+    expect(getSlideHeroImage(home).src).toMatch(
+      /current\/home-2026-10-01\.png$/,
+    );
+    expect(getSlideHeroImage(home).width).toBe(943);
+    expect(getSlideStoryImage(studio).src).toMatch(
+      /current\/appearance\.webp$/,
+    );
+    expect(getSlideStoryImage(studio).width).toBe(943);
+    expect(getSlideHeroImage(lounges).src).toMatch(
+      /current\/lounges-discovery\.png$/,
+    );
+    expect(getSlideStoryImage(lounges).src).toMatch(
+      /current\/lounge-demo\.png$/,
+    );
+    expect(getSlideHeroImage(lounges).presentation).toBeUndefined();
+    expect(getSlideHeroImage(strings).src).toMatch(
+      /current\/strings-demo\.png$/,
+    );
+    expect(getSlideStoryImage(strings).src).toBe(
+      getSlideHeroImage(strings).src,
+    );
+    expect(getSlideHeroImage(strings).presentation).toBeUndefined();
+    expect(getSlideHeroImage(strings).demo).toBe(true);
+    expect(getSlideStoryImage(lounges).demo).toBe(true);
+  });
+
+  it("keeps parked FAQ copy aligned with current product language", () => {
+    const text = faqItems
+      .map((item) => `${item.question} ${item.answer}`)
+      .join(" ");
+
+    expect(text).not.toMatch(/Shared Areas|Verified Signals|\bPulse\b/);
   });
 });

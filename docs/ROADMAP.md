@@ -2,19 +2,20 @@
 
 This is a planning document. It is not permission to implement Website 2.0.
 
-## Now — interim GitHub Pages site
+## Now — Awy consumer product site
 
-Keep the current Vite/React marketing site reliable, accessible, and honest.
+The public site is an Awy product website on the current Vite/React/Tailwind/Framer Motion stack.
 
-Shipped public work includes the existing project directory, Awy visuals, contact via `dev.ljbmedia@gmail.com`, and the toolchain from the WebKit/contact merge.
+Shipped public work includes the recovered visual redesign, ProductStory as the primary product presentation, a live Formspree waitlist, contact via `dev.ljbmedia@gmail.com`, and the toolchain from the WebKit/contact merge. Production deploy remains a manual GitHub Actions gate from `main`.
+
+Active redesign branch for this work: `codex/awy-visual-walkthrough`. Current Home and Profile Studio captures are wired as pre-framed device art, not through DeviceFrame. Lounge and Strings screenshots are still waiting on current approved captures.
 
 ## Next — scoped interim improvements (not 2.0)
 
 Only with an agent-ready issue and human approval:
 
-- Investor-ready positioning of the current homepage
-- Accurate status for Awy as the sole active product, without fake launch claims
-- A real form backend, after credentials and a provider are approved
+- Screenshot replacement and DeviceFrame presentation decisions
+- Accurate status for Awy as the sole public product, without fake launch claims
 - Company mailboxes, after they exist
 - Custom domain, after DNS is approved
 
@@ -24,7 +25,7 @@ A purpose-built corporate/product/investor site. Evaluated later, not built in t
 
 Possible 2.0 structure: Home, Awy, About, Investors, Contact, Privacy, Terms.
 
-Possible 2.0 capabilities (none are automatically required): secure inquiry handling, CRM, privacy-first analytics, waitlists, demo hosting, controlled material requests, CMS.
+Possible 2.0 capabilities (none are automatically required): secure inquiry handling, CRM, privacy-first analytics, demo hosting, controlled material requests, CMS.
 
 Leave GitHub Pages until a concrete requirement (auth, server-side forms, CMS workflow, or compliance) forces a move.
 
@@ -34,3 +35,4 @@ Leave GitHub Pages until a concrete requirement (auth, server-side forms, CMS wo
 - Hosting migration
 - Publishing legal policies
 - Public financial claims
+- Merging or deploying this redesign without an explicit human request

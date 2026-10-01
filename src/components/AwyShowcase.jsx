@@ -182,7 +182,7 @@ export default function AwyShowcase({ slides = [], theme }) {
                       active ? " awy-showcase__dot--active" : ""
                     }`}
                     style={
-                      active ? { color: theme.accent || "#B8FF5A" } : undefined
+                      active ? { color: theme.accent || "#B8A7FF" } : undefined
                     }
                     onClick={() =>
                       goTo(slideIndex, slideIndex > index ? 1 : -1)
@@ -233,12 +233,18 @@ export default function AwyShowcase({ slides = [], theme }) {
               style={{ borderColor: theme.cardBorder }}
               onClick={() => goTo(slideIndex, slideIndex > index ? 1 : -1)}
             >
-              <img
-                src={item.image.src}
-                alt=""
-                draggable={false}
-                loading="lazy"
-              />
+              {item.image.src ? (
+                <img
+                  src={item.image.src}
+                  alt=""
+                  draggable={false}
+                  loading="lazy"
+                />
+              ) : (
+                <span className="awy-showcase__thumb-placeholder">
+                  Demo preview pending
+                </span>
+              )}
             </button>
           );
         })}
