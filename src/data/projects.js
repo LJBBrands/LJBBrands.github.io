@@ -13,6 +13,13 @@ const awyShot = (fileName, label, alt, group) => ({
   height: 2048,
 });
 
+const loungesDiscovery = awyShot(
+  "current/lounges-discovery.png",
+  "Lounges — Discovery",
+  "Awy Lounges discovery with categories and a featured Support Lounge in a blue and violet theme",
+  "Community",
+);
+
 /*
   Public Awy set only. Continue excluding Membership, Moderator Tools,
   unfinished billing, incomplete workflows, admin-heavy menus, and
@@ -58,12 +65,7 @@ export const projects = [
           description:
             "Explore public, professional, and private Lounges around shared interests and community.",
           points: ["Shared interests", "Featured spaces", "Your communities"],
-          image: awyShot(
-            "current/lounges-discovery.png",
-            "Lounges — Discovery",
-            "Awy Lounges discovery with categories and a featured Support Lounge in a blue and violet theme",
-            "Community",
-          ),
+          image: loungesDiscovery,
         },
         {
           id: "private-connection",
@@ -155,12 +157,7 @@ export const projects = [
           slide.id === "community"
             ? {
                 storyImage: slide.image,
-                heroImage: awyShot(
-                  "current/lounges-discovery.png",
-                  "Lounges — Discovery",
-                  "Awy Lounges discovery with categories and a featured Support Lounge in a blue and violet theme",
-                  "Community",
-                ),
+                heroImage: loungesDiscovery,
               }
             : {},
         ),
