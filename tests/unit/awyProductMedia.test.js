@@ -41,6 +41,7 @@ describe("Awy product media contract", () => {
     expect(getProjectById("awy").showcase.slides.map((s) => s.id)).toEqual([
       "community",
       "home",
+      "private-connection",
       "canvas",
     ]);
   });

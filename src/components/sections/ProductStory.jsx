@@ -5,6 +5,15 @@ import { handleSectionClick } from "../../utils/scrollToSection";
 
 const chapters = [
   {
+    id: "home",
+    label: "HOME",
+    title: "Your starting point in Awy.",
+    description:
+      "Your profile, Connections, Statistics and Profile Studio sit together above the Notification Hub. Canvas has its own space beneath them.",
+    detail: "Your identity and activity, brought together.",
+    link: "Stay connected",
+  },
+  {
     id: "community",
     label: "LOUNGES",
     title: "A place for what brings you together.",
@@ -21,15 +30,6 @@ const chapters = [
       "Strings bring your one-to-one conversations together in a dedicated space, with recent conversations close at hand.",
     detail: "A quieter place to keep in touch.",
     link: "Connect on your terms",
-  },
-  {
-    id: "home",
-    label: "HOME",
-    title: "Your starting point in Awy.",
-    description:
-      "Your profile, Connections, Statistics and Profile Studio sit together above the Notification Hub. Canvas has its own space beneath them.",
-    detail: "Your identity and activity, brought together.",
-    link: "Stay connected",
   },
   {
     id: "canvas",

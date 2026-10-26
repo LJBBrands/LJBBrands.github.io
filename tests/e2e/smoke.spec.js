@@ -161,7 +161,14 @@ test.describe("product presentation", () => {
     await expect(
       page.getByRole("heading", { name: "Your starting point in Awy." }),
     ).toBeVisible();
-    await expect(page.getByText("03 / HOME")).toBeVisible();
+    await expect(page.getByText("03 / STRINGS")).toBeVisible();
+    await expect(
+      page.locator(".product-story article").nth(2).getByRole("img", {
+        name: "Awy Strings list on iPhone Air with a recent private conversation and New String button",
+      }),
+    ).toBeVisible();
+    await expect(page.getByText("01 / HOME")).toBeVisible();
+    await expect(page.getByText("03 / HOME")).toHaveCount(0);
     await expect(
       page.locator(".story-kicker", { hasText: "LIVE PRESENCE" }),
     ).toHaveCount(0);
@@ -176,15 +183,15 @@ test.describe("product presentation", () => {
       }),
     ).toBeVisible();
     await expect(page.locator(".product-story .device-capture")).toHaveCount(0);
-    await expect(page.locator(".product-story .device-frame")).toHaveCount(3);
+    await expect(page.locator(".product-story .device-frame")).toHaveCount(4);
     await expect(
       page.getByRole("img", {
         name: "Awy Spaces on iPhone Air with Lounges and Ripple cards, plus Challenges and Events marked Planned",
       }),
     ).toBeVisible();
     await expect(page.locator('img[src*="lounges-"]')).toHaveCount(0);
-    await expect(page.locator('img[src*="strings-"]')).toHaveCount(0);
-    await expect(page.locator(".story-chapter--text")).toHaveCount(1);
+    await expect(page.locator('img[src*="strings-"]')).toHaveCount(1);
+    await expect(page.locator(".story-chapter--text")).toHaveCount(0);
 
     await expect(
       page.getByRole("button", { name: "View Awy project" }),
@@ -365,7 +372,23 @@ test("hero screen choices work with the keyboard and preserve waitlist navigatio
     "Canvas — Your expression space · iPhone Air development preview",
   );
   await expect(page.locator("#hero-screen .device-frame")).toHaveCount(1);
+  const strings = choices.getByRole("button", {
+    name: "Your Strings",
+    exact: true,
+  });
+  await strings.focus();
+  await page.keyboard.press("Enter");
+  await expect(strings).toHaveAttribute("aria-pressed", "true");
+  await expect(canvas).toHaveAttribute("aria-pressed", "false");
+  await expect(page.locator("#hero-screen img")).toHaveAttribute(
+    "src",
+    /strings-840\.webp$/,
+  );
+  await expect(page.locator("#hero-screen figcaption")).toHaveText(
+    "Strings — Recent conversations · iPhone Air development preview",
+  );
   await home.click();
+  await expect(strings).toHaveAttribute("aria-pressed", "false");
   await expect(home).toHaveAttribute("aria-pressed", "true");
   await expect(page.locator("#hero-screen img")).toHaveAttribute(
     "src",

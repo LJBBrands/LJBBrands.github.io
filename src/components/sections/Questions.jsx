@@ -9,7 +9,7 @@ const questions = [
   {
     question: "What can I explore on this page?",
     answer:
-      "Explore iPhone Air captures of Spaces, Home and Canvas, alongside an introduction to Strings. Awy is being prepared for wider availability; these previews do not announce a public release. Exploring this page does not create an Awy account.",
+      "Explore iPhone Air captures of Home, Spaces, Strings and Canvas. Use the preview selector to switch between Home, Canvas and Strings. Awy is being prepared for wider availability; these previews do not announce a public release. Exploring this page does not create an Awy account.",
   },
   {
     question: "Who is Awy for?",
