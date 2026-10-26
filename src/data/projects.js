@@ -88,6 +88,24 @@ export const projects = [
           ),
         },
         {
+          id: "private-connection",
+          eyebrow: "Strings",
+          title: "A Place For Personal Conversations",
+          description:
+            "Strings bring Awy’s one-to-one conversations together in a dedicated space.",
+          points: [
+            "Private conversations",
+            "Recent Strings",
+            "A personal space",
+          ],
+          image: airShot(
+            "strings",
+            "Strings — Recent conversations",
+            "Awy Strings list on iPhone Air with a recent private conversation and New String button",
+            "Private Connection",
+          ),
+        },
+        {
           id: "canvas",
           eyebrow: "Canvas",
           title: "Room To Express Yourself",
