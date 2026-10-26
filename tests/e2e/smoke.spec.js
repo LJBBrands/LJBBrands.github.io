@@ -166,23 +166,25 @@ test.describe("product presentation", () => {
       page.locator(".story-kicker", { hasText: "LIVE PRESENCE" }),
     ).toHaveCount(0);
     await expect(
-      page.getByRole("img", {
-        name: "Awy Home with profile shortcuts, notifications, and top Lounges in a lime theme",
+      page.locator(".product-story").getByRole("img", {
+        name: "Awy Home on iPhone Air with profile, Connections, Statistics, Profile Studio, Notification Hub and a separate Canvas surface",
       }),
     ).toBeVisible();
     await expect(
       page.getByRole("img", {
-        name: "Awy Appearance settings showing theme modes and background choices in a dark cosmic theme",
+        name: "Awy Canvas on iPhone Air beneath the Notification Hub, with an Express Yourself composer and management menu",
       }),
     ).toBeVisible();
     await expect(page.locator(".product-story .device-capture")).toHaveCount(0);
-    await expect(page.locator(".product-story .device-frame")).toHaveCount(4);
+    await expect(page.locator(".product-story .device-frame")).toHaveCount(3);
     await expect(
-      page.getByText("Lounge — Demo conversation", { exact: true }),
+      page.getByRole("img", {
+        name: "Awy Spaces on iPhone Air with Lounges and Ripple cards, plus Challenges and Events marked Planned",
+      }),
     ).toBeVisible();
-    await expect(
-      page.getByText("Strings — Demo conversation", { exact: true }),
-    ).toBeVisible();
+    await expect(page.locator('img[src*="lounges-"]')).toHaveCount(0);
+    await expect(page.locator('img[src*="strings-"]')).toHaveCount(0);
+    await expect(page.locator(".story-chapter--text")).toHaveCount(1);
 
     await expect(
       page.getByRole("button", { name: "View Awy project" }),
@@ -342,42 +344,33 @@ test("hero screen choices work with the keyboard and preserve waitlist navigatio
 }) => {
   await page.goto("/");
   const choices = page.getByRole("group", { name: "Explore Awy screens" });
-  const lounges = choices.getByRole("button", { name: "Find your people" });
-  await expect(lounges).toHaveAttribute("aria-pressed", "true");
-  await expect(page.locator("#hero-screen img")).toHaveAttribute(
-    "alt",
-    "Awy Lounges discovery with categories and a featured Support Lounge in a blue and violet theme",
-  );
-  await expect(page.locator("#hero-screen .device-frame")).toHaveCount(1);
-
-  const conversations = choices.getByRole("button", {
-    name: "Your conversations",
-  });
-  await conversations.focus();
-  await page.keyboard.press("Enter");
-  await expect(conversations).toHaveAttribute("aria-pressed", "true");
+  const home = choices.getByRole("button", { name: "Your space", exact: true });
+  await expect(home).toHaveAttribute("aria-pressed", "true");
   await expect(page.locator("#hero-screen img")).toHaveAttribute(
     "src",
-    /strings-demo\.png$/,
+    /home-840\.webp$/,
+  );
+  const canvas = choices.getByRole("button", {
+    name: "Your Canvas",
+    exact: true,
+  });
+  await canvas.focus();
+  await page.keyboard.press("Enter");
+  await expect(canvas).toHaveAttribute("aria-pressed", "true");
+  await expect(page.locator("#hero-screen img")).toHaveAttribute(
+    "src",
+    /canvas-840\.webp$/,
   );
   await expect(page.locator("#hero-screen figcaption")).toHaveText(
-    "Strings — Demo conversation",
+    "Canvas — Your expression space · iPhone Air development preview",
   );
   await expect(page.locator("#hero-screen .device-frame")).toHaveCount(1);
-
-  const appearance = choices.getByRole("button", { name: "Make it yours" });
-  await appearance.click();
-  await expect(appearance).toHaveAttribute("aria-pressed", "true");
-  await expect(page.locator("#hero-screen img")).toHaveAttribute(
-    "alt",
-    "Awy Appearance settings showing theme modes and background choices in a dark cosmic theme",
-  );
+  await home.click();
+  await expect(home).toHaveAttribute("aria-pressed", "true");
   await expect(page.locator("#hero-screen img")).toHaveAttribute(
     "src",
-    /current\/appearance\.webp$/,
+    /home-840\.webp$/,
   );
-  await expect(page.locator("#hero-screen .device-capture")).toHaveCount(0);
-  await expect(page.locator("#hero-screen .device-frame")).toHaveCount(1);
   await page
     .locator(".visual-hero")
     .getByRole("link", { name: "Join the Waitlist" })

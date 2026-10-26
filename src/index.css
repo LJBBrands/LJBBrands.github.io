@@ -1095,6 +1095,12 @@ summary::-webkit-details-marker {
   padding: 4rem 0;
   border-top: 1px solid rgb(255 255 255 / 0.14);
 }
+.story-chapter--text {
+  grid-template-columns: 1fr;
+}
+.story-chapter--text .story-chapter__copy {
+  max-width: 48rem;
+}
 .story-chapter__copy {
   max-width: 30rem;
 }
