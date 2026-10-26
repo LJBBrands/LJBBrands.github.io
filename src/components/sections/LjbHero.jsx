@@ -6,11 +6,11 @@ import { handleSectionClick } from "../../utils/scrollToSection";
 
 export default function LjbHero({ theme }) {
   const slides = getProjectById("awy").showcase.slides;
-  const choices = ["community", "private-connection", "personalization"].map(
-    (id) => slides.find((slide) => slide.id === id),
+  const choices = ["home", "canvas"].map((id) =>
+    slides.find((slide) => slide.id === id),
   );
   const [selected, setSelected] = useState(0);
-  const labels = ["Find your people", "Your conversations", "Make it yours"];
+  const labels = ["Your space", "Your Canvas"];
   return (
     <section id="top" className="visual-hero mx-auto max-w-6xl scroll-mt-24">
       <div className="visual-hero__intro">

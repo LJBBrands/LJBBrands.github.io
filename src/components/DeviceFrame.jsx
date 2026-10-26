@@ -33,6 +33,9 @@ export default function DeviceFrame({
         {src && !failed ? (
           <img
             src={src}
+            srcSet={screenshot?.srcSet}
+            sizes={screenshot?.sizes}
+            decoding="async"
             alt={alt}
             width={screenshot?.width ?? 706}
             height={screenshot?.height ?? 1536}
@@ -52,7 +55,8 @@ export default function DeviceFrame({
           </div>
         )}
       </div>
-      {(caption || screenshot?.demo) && screenshot?.label ? (
+      {(caption || screenshot?.demo || screenshot?.preview) &&
+      screenshot?.label ? (
         <figcaption className="device-caption">{screenshot.label}</figcaption>
       ) : null}
     </figure>

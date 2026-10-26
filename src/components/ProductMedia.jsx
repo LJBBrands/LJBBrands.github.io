@@ -35,6 +35,9 @@ function PreframedDevice({
         {src && !failed ? (
           <img
             src={src}
+            srcSet={screenshot?.srcSet}
+            sizes={screenshot?.sizes}
+            decoding="async"
             alt={alt}
             width={width}
             height={height}

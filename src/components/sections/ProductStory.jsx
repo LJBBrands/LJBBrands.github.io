@@ -9,17 +9,17 @@ const chapters = [
     label: "LOUNGES",
     title: "A place for what brings you together.",
     description:
-      "Explore Lounges around shared interests. Step into a space where the conversation already has something in common.",
-    detail: "From a favorite hobby to a community you care about.",
+      "Start in Spaces to discover Lounges around shared interests. Find a community where the conversation already has something in common.",
+    detail: "Challenges and Events shown in the preview are marked Planned.",
     link: "Find your people",
   },
   {
     id: "private-connection",
     label: "STRINGS",
-    title: "Conversations with boundaries you choose.",
+    title: "A place for personal conversations.",
     description:
-      "Strings are Awy’s one-to-one conversations. Keep connection personal with privacy controls you can see and understand.",
-    detail: "Your conversations. Your choices about sharing.",
+      "Strings bring your one-to-one conversations together in a dedicated space, with recent conversations close at hand.",
+    detail: "A quieter place to keep in touch.",
     link: "Connect on your terms",
   },
   {
@@ -27,18 +27,18 @@ const chapters = [
     label: "HOME",
     title: "Your starting point in Awy.",
     description:
-      "Home brings your profile, notification shortcuts, and Top Lounges together so you can get to what you need next.",
-    detail: "Quick access into conversations and Lounges.",
+      "Your profile, Connections, Statistics and Profile Studio sit together above the Notification Hub. Canvas has its own space beneath them.",
+    detail: "Your identity and activity, brought together.",
     link: "Stay connected",
   },
   {
-    id: "personalization",
-    label: "YOUR SPACE",
-    title: "Make yourself at home.",
+    id: "canvas",
+    label: "CANVAS",
+    title: "A little room for self-expression.",
     description:
-      "Choose a theme mode and background that feel like you. Explore Awy’s Appearance settings.",
-    detail: "A personal space with room for your identity.",
-    link: "Make Awy yours",
+      "Canvas gives personal expression a place of its own beneath Home, with the composer and management menu together.",
+    detail: "Your Canvas. Your space to express yourself.",
+    link: "Explore your space",
   },
 ];
 
@@ -49,37 +49,40 @@ export default function ProductStory({ theme }) {
       className="product-story mx-auto max-w-6xl"
       aria-label="What you can do with Awy"
     >
-      {chapters.map((chapter, index) => (
-        <article
-          key={chapter.id}
-          className={`story-chapter ${index % 2 ? "story-chapter--reverse" : ""}`}
-        >
-          <div className="story-chapter__copy">
-            <p className="story-kicker" style={{ color: theme.accent }}>
-              {String(index + 1).padStart(2, "0")} / {chapter.label}
-            </p>
-            <h2>{chapter.title}</h2>
-            <p className="story-chapter__description">{chapter.description}</p>
-            <p className="story-chapter__detail">{chapter.detail}</p>
-            <a
-              href="#get-involved"
-              onClick={handleSectionClick("get-involved")}
-              className="story-link"
-            >
-              {chapter.link} <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-          <div className="story-chapter__visual">
-            <ProductMedia
-              screenshot={getSlideStoryImage(
-                slides.find((slide) => slide.id === chapter.id),
-              )}
-              size="hero"
-              caption
-            />
-          </div>
-        </article>
-      ))}
+      {chapters.map((chapter, index) => {
+        const screenshot = getSlideStoryImage(
+          slides.find((slide) => slide.id === chapter.id),
+        );
+        return (
+          <article
+            key={chapter.id}
+            className={`story-chapter ${index % 2 ? "story-chapter--reverse" : ""} ${!screenshot ? "story-chapter--text" : ""}`}
+          >
+            <div className="story-chapter__copy">
+              <p className="story-kicker" style={{ color: theme.accent }}>
+                {String(index + 1).padStart(2, "0")} / {chapter.label}
+              </p>
+              <h2>{chapter.title}</h2>
+              <p className="story-chapter__description">
+                {chapter.description}
+              </p>
+              <p className="story-chapter__detail">{chapter.detail}</p>
+              <a
+                href="#get-involved"
+                onClick={handleSectionClick("get-involved")}
+                className="story-link"
+              >
+                {chapter.link} <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+            {screenshot ? (
+              <div className="story-chapter__visual">
+                <ProductMedia screenshot={screenshot} size="hero" caption />
+              </div>
+            ) : null}
+          </article>
+        );
+      })}
     </section>
   );
 }

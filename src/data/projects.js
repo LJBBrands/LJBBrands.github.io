@@ -4,21 +4,22 @@ import { contactMailto } from "./contact";
 const projectAsset = (projectId, fileName) =>
   `${import.meta.env.BASE_URL}projects/${projectId}/${fileName}`;
 
-const awyShot = (fileName, label, alt, group) => ({
-  src: projectAsset("awy", fileName),
-  label,
+const airShot = (name, label, alt, group) => ({
+  src: projectAsset("awy", `iphone-air-2026-10/${name}-840.webp`),
+  srcSet: [420, 840]
+    .map(
+      (width) =>
+        `${projectAsset("awy", `iphone-air-2026-10/${name}-${width}.webp`)} ${width}w`,
+    )
+    .join(", "),
+  sizes: "(max-width: 405px) 74vw, 310px",
+  label: `${label} · iPhone Air development preview`,
   alt,
   group,
-  width: 943,
-  height: 2048,
+  width: 840,
+  height: 1824,
+  preview: true,
 });
-
-const loungesDiscovery = awyShot(
-  "current/lounges-discovery.png",
-  "Lounges — Discovery",
-  "Awy Lounges discovery with categories and a featured Support Lounge in a blue and violet theme",
-  "Community",
-);
 
 /*
   Public Awy set only. Continue excluding Membership, Moderator Tools,
@@ -37,7 +38,7 @@ export const projects = [
     description:
       "Awy is a social app for connection — private Strings, interest-based Lounges, live presence, and a profile you can make your own.",
     summary:
-      "What you can do in Awy: talk in Strings, join Lounges, see who’s around, and shape your space in Appearance settings.",
+      "Explore Awy’s Home, Canvas, private Strings and shared-interest Lounges as the app takes shape.",
     status: null,
     highlights: [
       "Home",
@@ -45,7 +46,7 @@ export const projects = [
       "Lounges",
       "Live Presence",
       "Profiles",
-      "Appearance",
+      "Canvas",
     ],
     visual: {
       type: "screenshots",
@@ -59,68 +60,17 @@ export const projects = [
     showcase: {
       slides: [
         {
-          id: "lounges",
-          eyebrow: "Lounges",
-          title: "Spaces With Purpose",
-          description:
-            "Explore public, professional, and private Lounges around shared interests and community.",
-          points: ["Shared interests", "Featured spaces", "Your communities"],
-          image: loungesDiscovery,
-        },
-        {
-          id: "private-connection",
-          eyebrow: "Strings",
-          title: "Conversations On Your Terms",
-          description:
-            "Strings give one-to-one conversations a personal space, with boundaries and sharing choices close at hand.",
-          points: [
-            "Personal conversations",
-            "Clear boundaries",
-            "Intentional connection",
-          ],
-          image: {
-            ...awyShot(
-              "current/strings-demo.png",
-              "Strings — Demo conversation",
-              "Awy Strings with a fictional Sunday-walk conversation between Jamie and Alex; demo content",
-              "Private Connection",
-            ),
-            demo: true,
-          },
-        },
-        {
           id: "community",
-          eyebrow: "Community",
-          title: "A Place To Come Together",
+          eyebrow: "Lounges",
+          title: "Find Your Community In Spaces",
           description:
-            "Give shared interests and local conversations a focused place to develop in a Lounge.",
-          points: [
-            "Focused rooms",
-            "Shared interests",
-            "Community conversations",
-          ],
-          image: {
-            ...awyShot(
-              "current/lounge-demo.png",
-              "Lounge — Demo conversation",
-              "Awy Local Hangout Lounge with a fictional Sunday-walk conversation; demo content",
-              "Community",
-            ),
-            demo: true,
-          },
-        },
-        {
-          id: "discovery",
-          eyebrow: "Search",
-          title: "Find Your People And Places",
-          description:
-            "Search for people, visible Lounges, and your Strings from one starting point.",
-          points: ["Awy Tags", "Lounges", "Strings"],
-          image: awyShot(
-            "current/search.png",
-            "Search — People, Lounges, and Strings",
-            "Awy Search with Awy Tags, Lounges, Strings, and Support shortcuts in a blue and violet theme",
-            "Discovery",
+            "Start in Spaces to discover Lounges around shared interests.",
+          points: ["Spaces", "Lounges", "Shared interests"],
+          image: airShot(
+            "spaces",
+            "Spaces — Find your community",
+            "Awy Spaces on iPhone Air with Lounges and Ripple cards, plus Challenges and Events marked Planned",
+            "Community",
           ),
         },
         {
@@ -128,40 +78,30 @@ export const projects = [
           eyebrow: "Home",
           title: "Your Starting Point",
           description:
-            "Your profile, notifications, conversations, and Lounges are close at hand from Home.",
-          points: ["Profile shortcuts", "Notifications", "Your Lounges"],
-          image: awyShot(
-            "current/home-2026-10-01.png",
+            "Your profile, Connections, Statistics and Profile Studio sit above the Notification Hub, with Canvas in its own space below.",
+          points: ["Your profile", "Notification Hub", "Separate Canvas"],
+          image: airShot(
+            "home",
             "Home — Your Space",
-            "Awy Home with profile shortcuts, notifications, and top Lounges in a lime theme",
+            "Awy Home on iPhone Air with profile, Connections, Statistics, Profile Studio, Notification Hub and a separate Canvas surface",
             "Home",
           ),
         },
         {
-          id: "personalization",
-          eyebrow: "Appearance",
-          title: "Make Awy Yours",
+          id: "canvas",
+          eyebrow: "Canvas",
+          title: "Room To Express Yourself",
           description:
-            "Choose your theme mode and background to give Awy an atmosphere that feels like you.",
-          points: ["Theme mode", "Background choices", "Personal atmosphere"],
-          image: awyShot(
-            "current/appearance.webp",
-            "Appearance — Theme and Background",
-            "Awy Appearance settings showing theme modes and background choices in a dark cosmic theme",
-            "Personalization",
+            "Canvas is your space for personal expression, with its own surface beneath Home.",
+          points: ["Your Canvas", "Personal expression", "A space of your own"],
+          image: airShot(
+            "canvas",
+            "Canvas — Your expression space",
+            "Awy Canvas on iPhone Air beneath the Notification Hub, with an Express Yourself composer and management menu",
+            "Canvas",
           ),
         },
-      ].map((slide) =>
-        attachSurfaceMedia(
-          slide,
-          slide.id === "community"
-            ? {
-                storyImage: slide.image,
-                heroImage: loungesDiscovery,
-              }
-            : {},
-        ),
-      ),
+      ].map((slide) => attachSurfaceMedia(slide)),
     },
     primaryAction: {
       label: "Email About Awy",
